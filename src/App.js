@@ -5,11 +5,13 @@ import routes from "./routes"
 
 const GlobalStyles = createGlobalStyle`
 body {
+  @import url('https://fonts.googleapis.com/css?family=Cousine');
+  font-family: 'Cousine', monospace;
   @import url('https://fonts.googleapis.com/css?family=Lora');
   font-family: 'Lora', serif;
   @import url('https://fonts.googleapis.com/css?family=Zilla+Slab:300');
   font-family: 'Zilla Slab', serif;
- 
+
 }
 `
 

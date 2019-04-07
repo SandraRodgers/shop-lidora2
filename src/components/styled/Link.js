@@ -3,17 +3,21 @@ import styled from "styled-components";
 
 export default styled(Link)`
   text-decoration: none;
-  color: #6d4878;
+  color: rgb(74, 72, 96);
   font-size: 3.5vh;
   font-family: Lora;
   font-weight: 900;
+  &:hover { color: ${props =>
+    props.primary ? "rgb(255,255,255)" : "rgb(74, 72, 96)"};}
+
   &:after {
     content: "";
     display: block;
-    border-bottom: solid 1.5px #6d4878;
+    border-bottom: solid 1.5px rgb(74, 72, 96);
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
   }
+ 
   &:hover:after {
     transform: scaleX(1);
   }

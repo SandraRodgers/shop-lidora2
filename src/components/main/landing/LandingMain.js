@@ -26,11 +26,11 @@ class LandingMain extends Component {
             for ready-made pieces or place your custom order.
           </Paragraph>
           <div className="LM-links">
-            <Link to="/">Shop</Link>
+            <Link to="/shop">Shop</Link>
             <Link to="/">Login</Link>
           </div>
         </div>
-        
+
         {/* RIGHT COLUMN */}
         <div className="LM-right-column">
           <img src={coverpic} className="LM-coverpic" />
