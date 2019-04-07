@@ -70,7 +70,7 @@ export default class NavMain extends React.Component {
             <SecondaryLink primary>Contact</SecondaryLink>
           </Column>
           <Column notHidden>
-            <SecondaryLink primary notHidden>Bag</SecondaryLink>
+            <SecondaryLink primary >Bag</SecondaryLink>
           </Column>
         </Nav>
         <HiddenNav open={this.state.hiddenMenu} onMouseOut={this.showMenu} />

@@ -25,6 +25,7 @@ export default styled(Link)`
     font-size: 3vh;
   }
   @media (max-width: 900px) {
+   
   }
   @media (max-width: 800px) {
   }

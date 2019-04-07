@@ -19,7 +19,7 @@ const Column = styled.div`
     transition:  250ms ease-in-out;
     
   }
-  @media (max-width: 1000px) {&:hover{
+  @media (max-width: 1030px) {&:hover{
     background: ${props => props.notHidden ? 'rgb(125, 190, 216)': 'white'}}
   }
   @media (max-width: 900px) {

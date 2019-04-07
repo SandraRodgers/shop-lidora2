@@ -12,6 +12,9 @@ const HiddenNavBar = styled.nav`
   max-height: ${props => (props.open ? "100%" : "0")};
   overflow: hidden;
   transition: linear 0.2s;
+  @media (max-width: 1000px) {
+   display: none;
+  }
 `;
 
 export default HiddenNavBar

@@ -115,6 +115,7 @@
   }
   .LM-left-column {
     width: 90%;
+    margin-left: 0vw;
   }
 }
 @media (max-width: 400px) {

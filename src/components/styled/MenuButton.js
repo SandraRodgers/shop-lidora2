@@ -12,8 +12,24 @@ import styled from "styled-components";
     cursor: pointer;
     background-color: white;
   &:hover{opacity: .5}
-    @media (max-width: 1000px) {
+    @media (max-width: 1030px) {
         display: block;
+  }
+  @media (max-width: 900px) {
+   
+  }
+  @media (max-width: 800px) {
+  }
+  @media (max-width: 700px) {
+  }
+  @media (max-width: 600px) {
+  }
+  @media (max-width: 500px) {
+    margin-left: 5vw;
+  }
+  @media (max-width: 400px) {
+  height: 25px;
+  width: 10vw;
   }
 
   `;

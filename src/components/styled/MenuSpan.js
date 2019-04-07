@@ -37,8 +37,11 @@ const MenuSpan = styled.span`
         -o-transform: ${props => (props.open? 'rotate(-135deg)': 'rotate(0deg)')};
         transform: ${props => (props.open? 'rotate(-135deg)': 'rotate(0deg)')};}
     }
-    @media (max-width: 1000px) {
+    @media (max-width: 1030px) {
         display: block;
+  }
+  @media (max-width: 400px) {
+  
   }
   `;
 

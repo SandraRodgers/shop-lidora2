@@ -23,7 +23,8 @@ const Paragraph = styled.div`
   @media (max-width: 500px) {
   }
   @media (max-width: 400px) {
-    width: 100%;
+    width: 85%;
+    
   }
 `;
 

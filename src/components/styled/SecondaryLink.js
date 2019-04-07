@@ -12,7 +12,7 @@ const SecondaryLink = styled(Link)`
     font-weight: 900;
   }
   
-@media (max-width: 1000px) {
+@media (max-width: 1030px) {
     display: ${props => props.notHidden ? 'inline': 'none'}
 }
 @media (max-width: 900px) {
