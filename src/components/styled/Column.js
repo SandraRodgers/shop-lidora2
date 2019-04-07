@@ -19,6 +19,22 @@ const Column = styled.div`
     transition:  250ms ease-in-out;
     
   }
+  @media (max-width: 1000px) {&:hover{
+    background: ${props => props.notHidden ? 'rgb(125, 190, 216)': 'white'}}
+  }
+  @media (max-width: 900px) {
+  }
+  @media (max-width: 800px) {
+  }
+  @media (max-width: 700px) {
+  }
+  @media (max-width: 600px) {
+  }
+  @media (max-width: 500px) {
+  }
+  @media (max-width: 400px) {
+
+  }
 `;
 
 export default Column

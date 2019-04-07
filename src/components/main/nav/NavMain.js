@@ -12,6 +12,11 @@ import flower from "../../../assets/flower.jpg";
 
 //components
 import HiddenNav from "./HiddenNav"
+import Hamburger from "./Hamburger"
+import SideMenu from "./SideMenu"
+
+//css
+import "./NavMain.css"
 
 const SecondaryColumn = styled(Column)`
   &:hover {
@@ -25,9 +30,16 @@ export default class NavMain extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          hiddenMenu: false
+          hiddenMenu: false,
+         
+            sideMenu: false
+          
         };
       }
+      showSideMenu = () => {
+        this.setState({ sideMenu: !this.state.sideMenu });
+      };
+
       showMenu = () => {
         this.setState({ hiddenMenu: !this.state.hiddenMenu });
       };
@@ -35,7 +47,9 @@ export default class NavMain extends React.Component {
     return (
       <div>
         <Nav>
-          <Column>
+          <Column >
+          <Hamburger onClick={this.showSideMenu}
+              showSideMenu={this.showSideMenu} className="NM-Hamburger"/>
             <SecondaryLink  onMouseOver={this.showMenu} primary>Products</SecondaryLink>
           </Column>
           <Column>
@@ -45,7 +59,7 @@ export default class NavMain extends React.Component {
             <SecondaryLink primary>Custom</SecondaryLink>
           </Column>
           <SecondaryColumn>
-            <SecondaryLink to="/">
+            <SecondaryLink notHidden to="/">
               <img style={{ height: "10vh" }} src={flower} />
             </SecondaryLink>
           </SecondaryColumn>
@@ -55,11 +69,12 @@ export default class NavMain extends React.Component {
           <Column>
             <SecondaryLink primary>Contact</SecondaryLink>
           </Column>
-          <Column>
-            <SecondaryLink primary>Bag</SecondaryLink>
+          <Column notHidden>
+            <SecondaryLink primary notHidden>Bag</SecondaryLink>
           </Column>
         </Nav>
         <HiddenNav open={this.state.hiddenMenu} onMouseOut={this.showMenu} />
+        <SideMenu open={this.state.sideMenu}/>
       </div>
     );
   }

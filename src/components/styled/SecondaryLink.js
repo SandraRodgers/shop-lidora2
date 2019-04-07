@@ -11,6 +11,23 @@ const SecondaryLink = styled(Link)`
   &:hover {
     font-weight: 900;
   }
+  
+@media (max-width: 1000px) {
+    display: ${props => props.notHidden ? 'inline': 'none'}
+}
+@media (max-width: 900px) {
+}
+@media (max-width: 800px) {
+}
+@media (max-width: 700px) {
+}
+@media (max-width: 600px) {
+}
+@media (max-width: 500px) {
+}
+@media (max-width: 400px) {
+
+}
 `;
 
 export default SecondaryLink

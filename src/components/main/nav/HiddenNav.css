@@ -1,0 +1,8 @@
+.HNB-clothing-div, .HNB-accessories-div, .HNB-baby-div {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5vh;
+    justify-content: space-between;
+    padding-bottom: 5vh
+}
+
