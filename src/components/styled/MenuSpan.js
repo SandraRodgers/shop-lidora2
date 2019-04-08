@@ -31,7 +31,7 @@ const MenuSpan = styled.span`
         left: ${props => (props.open ? "-60px" : "0px")};
     }
     &:nth-child(3); {
-        top: ${props => (props.open ? "13px" : "20px")};
+        top: ${props => (props.open ? "13px" : "19px")};
         -webkit-transform: ${props => (props.open? 'rotate(-135deg)': 'rotate(0deg)')};
         -moz-transform: ${props => (props.open? 'rotate(-135deg)': 'rotate(0deg)')};
         -o-transform: ${props => (props.open? 'rotate(-135deg)': 'rotate(0deg)')};

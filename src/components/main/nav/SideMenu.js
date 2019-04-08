@@ -30,15 +30,15 @@ export default class SideMenu extends React.Component {
     
     render() {
       console.log(this.props);
-      const accordionList = [{ title: 'Clothing', content: ['Dresses', 'Shorts', 'Bloomers', 'Skirts', 'Vests'] }, { title: 'Accessories', content:['Bonnets', 'Bowties', 'Suspenders', 'Hairbows', 'Headbands']}, { title: 'Baby', content: ['Bibdanas', 'Burb Clothes', 'Drool Pads'] }, {title: 'Style Guide'}, {title: 'Custom'}, {title: 'Account'}, {title: 'Contact'}, {title: 'Bag'}];
+      const accordionList = [{ title: 'Clothing', content: ['Dresses', 'Shorts', 'Bloomers', 'Skirts', 'Vests'] }, { title: 'Accessories', content:['Bonnets', 'Bowties', 'Suspenders', 'Hairbows', 'Headbands']}, { title: 'Baby', content: ['Bibdanas', 'Burp Cloths', 'Drool Pads'] }, {title: 'Style Guide'}, {title: 'Custom'}, {title: 'Account'}, {title: 'Contact'}, {title: 'Bag'}];
 
       return (
-        <div>
+        <div className='container'>
           <HiddenSideMenu open={this.props.open}>
           <dl className="accordion">
         {
           accordionList.map((item, index) => (
-            <Accordion nonLinks={['Clothing', 'Accessories', 'Baby']} title={item.title} onClick={this.toggle(index + 1)} expand={this.state[`block${index+1}`]}
+            <Accordion open={this.props.open} nonLinks={['Clothing', 'Accessories', 'Baby']} title={item.title} onClick={this.toggle(index + 1)} expand={this.state[`block${index+1}`]}
             content={item.content}
              />
           ))

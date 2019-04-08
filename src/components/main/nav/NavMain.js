@@ -8,7 +8,7 @@ import Link from "../../styled/Link";
 import SecondaryLink from "../../styled/SecondaryLink"
 
 //imported assets
-import flower from "../../../assets/flower.jpg";
+import flower from "../../../assets/flower.png";
 
 //components
 import HiddenNav from "./HiddenNav"
@@ -45,11 +45,15 @@ export default class NavMain extends React.Component {
       };
   render() {
     return (
-      <div>
+      <div className='NM-container'>
+         
         <Nav>
+        <SideMenu open={this.state.sideMenu}/>
           <Column >
+         
           <Hamburger onClick={this.showSideMenu}
               showSideMenu={this.showSideMenu} className="NM-Hamburger"/>
+             
             <SecondaryLink  onMouseOver={this.showMenu} primary>Products</SecondaryLink>
           </Column>
           <Column>
@@ -60,7 +64,7 @@ export default class NavMain extends React.Component {
           </Column>
           <SecondaryColumn>
             <SecondaryLink notHidden to="/">
-              <img style={{ height: "10vh" }} src={flower} />
+              <img   style={{ height: "10vh" }} src={flower} />
             </SecondaryLink>
           </SecondaryColumn>
           <Column>
@@ -74,7 +78,7 @@ export default class NavMain extends React.Component {
           </Column>
         </Nav>
         <HiddenNav open={this.state.hiddenMenu} onMouseOut={this.showMenu} />
-        <SideMenu open={this.state.sideMenu}/>
+     
       </div>
     );
   }

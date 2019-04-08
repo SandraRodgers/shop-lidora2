@@ -21,25 +21,35 @@ export default class HiddenNav extends React.Component {
         <HiddenNavBar open={this.props.open}>
           <div className="HNB-clothing-div">
             <LilacLink>Clothing</LilacLink>
-            <LilacLink primary>Dresses</LilacLink>
-            <LilacLink primary>Shorts</LilacLink>
-            <LilacLink primary>Bloomers</LilacLink>
-            <LilacLink primary>Skirts</LilacLink>
-            <LilacLink primary>Vests</LilacLink>
+            <LilacLink to={"/shop/dresses"} onClick={this.props.open} primary>
+              Dresses
+            </LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/shorts"} primary>
+              Shorts
+            </LilacLink>
+            <LilacLink onClick={this.props.open} primary to={"/shop/bloomers"}>
+              Bloomers
+            </LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/skirts"} primary>
+              Skirts
+            </LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/vests"} primary>
+              Vests
+            </LilacLink>
           </div>
           <div className="HNB-accessories-div">
             <LilacLink>Accessories</LilacLink>
-            <LilacLink primary>Bonnets</LilacLink>
-            <LilacLink primary>Bowties</LilacLink>
-            <LilacLink primary>Suspenders</LilacLink>
-            <LilacLink primary>Hairbows</LilacLink>
-            <LilacLink primary>Headbands</LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/bonnets"} primary>Bonnets</LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/bowties"} primary>Bowties</LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/suspenders"} primary>Suspenders</LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/hairbows"} primary>Hairbows</LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/headbands"} primary>Headbands</LilacLink>
           </div>
           <div className="HNB-baby-div">
             <LilacLink>Baby</LilacLink>
-            <LilacLink primary>Bibdanas</LilacLink>
-            <LilacLink primary>Burp Cloths</LilacLink>
-            <LilacLink primary>Drool Pads</LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/bibdanas"} primary>Bibdanas</LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/burpcloths"} primary>Burp Cloths</LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/droolpads"} primary>Drool Pads</LilacLink>
             <Placeholder primary>placeholder</Placeholder>
             <Placeholder primary>placeholder</Placeholder>
           </div>
