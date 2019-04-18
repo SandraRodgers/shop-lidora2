@@ -1,0 +1,29 @@
+.form-component-container {
+  display: flex;
+
+  justify-content: center;
+  background-color: rgb(240,220,221);
+
+  min-width: 100vw;
+}
+.form-category-name {
+  color: rgb(131, 113, 135);
+  font-size: 2.5vh;
+  display: flex;
+  margin-top: 4vh;
+  align-items: center;
+  justify-content: space-between;
+  width: 60vw;
+
+  
+
+}
+
+.form-input-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 60vw;
+
+}

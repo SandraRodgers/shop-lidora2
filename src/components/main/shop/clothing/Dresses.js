@@ -1,5 +1,5 @@
 import React from "react";
-import NavMain from "../../nav/NavMain"
+
 
 class Dresses extends React.Component {
     render(){

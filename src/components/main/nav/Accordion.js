@@ -4,7 +4,7 @@ import LilacLink from "../../styled/LilacLink";
 
 class Accordion extends React.Component {
   render() {
-    const { title, expand, onClick, content, nonLinks, links } = this.props;
+    const { title, expand, onClick, content, nonLinks } = this.props;
 console.log(this.props.open)
     return (
       <div>

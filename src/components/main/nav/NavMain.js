@@ -4,7 +4,6 @@ import styled from "styled-components";
 //styled components
 import Nav from "../../styled/Nav";
 import Column from "../../styled/Column";
-import Link from "../../styled/Link";
 import SecondaryLink from "../../styled/SecondaryLink"
 
 //imported assets
@@ -64,7 +63,7 @@ export default class NavMain extends React.Component {
           </Column>
           <SecondaryColumn>
             <SecondaryLink notHidden to="/">
-              <img   style={{ height: "10vh" }} src={flower} />
+              <img alt="flower"   style={{ height: "10vh" }} src={flower} />
             </SecondaryLink>
           </SecondaryColumn>
           <Column>

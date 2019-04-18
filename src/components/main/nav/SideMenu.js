@@ -38,7 +38,7 @@ export default class SideMenu extends React.Component {
           <dl className="accordion">
         {
           accordionList.map((item, index) => (
-            <Accordion open={this.props.open} nonLinks={['Clothing', 'Accessories', 'Baby']} title={item.title} onClick={this.toggle(index + 1)} expand={this.state[`block${index+1}`]}
+            <Accordion key={item.title} open={this.props.open} nonLinks={['Clothing', 'Accessories', 'Baby']} title={item.title} onClick={this.toggle(index + 1)} expand={this.state[`block${index+1}`]}
             content={item.content}
              />
           ))

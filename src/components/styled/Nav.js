@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Nav = styled.nav`
 width: 100%;
 height: 15vh;
-z-index: -5;
+
 
 background: ${props =>
   props.primary ? "rgb(255, 228, 250)" : "rgb(255,255,255)"};

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 //css
 import "./LandingMain.css";
@@ -33,7 +33,7 @@ class LandingMain extends Component {
 
         {/* RIGHT COLUMN */}
         <div className="LM-right-column">
-          <img src={coverpic} className="LM-coverpic" />
+          <img alt ="coverpic" src={coverpic} className="LM-coverpic" />
         </div>
       </div>
     );
