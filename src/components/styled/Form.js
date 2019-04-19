@@ -1,12 +1,10 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
- 
- 
   padding-top: 5vh;
   margin-top: 25vh;
   width: 70vw;
-  height: 80vh;
+  min-height: 100vh;
   display: flex;
   border: 2px solid lightgray;
   flex-direction: column;
@@ -18,19 +16,19 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
- position: relative;
-
-  width: 50vw;
+  background: ${props => (props.clicked ? "rgb(240,240,240)" : "white")};
+  position: relative;
+  width: 45vw;
   height: 4vh;
   border: 2px solid lightgray;
   background-color: white;
- 
   font-size: 2.5vh;
 `;
 
 export const Select = styled.select`
   background-color: white;
-  width: 50vw;
+  width: 45vw;
+  position: relative;
   height: 4vh;
   font-size: 2.5vh;
   background-color: white;
@@ -55,4 +53,5 @@ export const FormSubmit = styled.button`
   color: #f0f0f0;
   font-weight: 600;
   margin-top: 3vh;
+  margin-bottom: 5vh;
 `;

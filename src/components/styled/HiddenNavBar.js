@@ -4,7 +4,7 @@ import styled from "styled-components";
 const HiddenNavBar = styled.nav`
   display: flex;
   justify-content: space-around;
-position: relative;
+
   height: 40vh;
 
   opacity: ${props => (props.open ? "1" : "0")};

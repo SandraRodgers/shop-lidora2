@@ -11,6 +11,7 @@ const HiddenSideMenu = styled.div`
   min-height: 100%;
  display: block;
 position: absolute;
+z-index: 1;
   width: 40%;
   opacity: ${props => (props.open ? "1" : "0")};
   background: rgb(240,240,240);

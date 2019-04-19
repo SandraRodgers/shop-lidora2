@@ -1,14 +1,15 @@
 .form-component-container {
   display: flex;
-
+/* position: none; */
   justify-content: center;
   background-color: rgb(240,220,221);
 
   min-width: 100vw;
 }
 .form-category-name {
+   
   color: rgb(131, 113, 135);
-  font-size: 2.5vh;
+  font-size: 3vh;
   display: flex;
   margin-top: 4vh;
   align-items: center;

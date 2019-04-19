@@ -6,7 +6,7 @@ import styled from "styled-components";
     width: 45px;
     height: 35px;
     
-
+    z-index: 10;
     margin: 50vw auto;
     transform: rotate(0deg);
     transition:  0.5s ease-in-out;
