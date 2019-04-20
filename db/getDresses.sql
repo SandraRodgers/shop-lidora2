@@ -1,0 +1,1 @@
+SELECT * FROM dresses WHERE location= 'Dresses Main Page'

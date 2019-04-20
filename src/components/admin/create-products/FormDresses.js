@@ -19,7 +19,8 @@ class FormDresses extends Component {
       image: "",
       customize: "",
       description: "",
-      location: ""
+      location: "",
+      category: "dresses"
     };
   }
 
@@ -69,7 +70,8 @@ class FormDresses extends Component {
       image,
       customize,
       description,
-      location
+      location,
+      category
     } = this.state;
     axios
       .post("/api/admin/addDress", {
@@ -86,6 +88,7 @@ class FormDresses extends Component {
         description,
         location
       })
+      .then(() => axios.post("/api/admin/createProduct", {category}))
       .then(response => {
         return this.setState(
           {
@@ -255,7 +258,7 @@ class FormDresses extends Component {
               />
             </div>
           </div>
-        <FormSubmit onClick={this.handleSubmit} >Submit</FormSubmit>
+          <FormSubmit onClick={this.handleSubmit}>Submit</FormSubmit>
         </Form>
       </div>
     );

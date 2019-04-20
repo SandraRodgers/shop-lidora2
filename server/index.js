@@ -7,7 +7,8 @@ const app = express();
 app.use(json());
 
 //controllers
-const {addDress} = require('./controllers/createProductsController')
+const {addDress, createProduct} = require('./controllers/createProductsController')
+const {getDresses} = require('./controllers/getProductsController')
 
 //express session
 app.use(
@@ -30,6 +31,8 @@ massive(process.env.CONNECTION_STRING).then(db => {
 //ENDPOINTS
 
 app.post("/api/admin/addDress", addDress);
+app.get("/api/admin/getDresses", getDresses)
+app.post("/api/admin/createProduct", createProduct)
 
 
 app.listen(4000, () => {
