@@ -1,10 +1,14 @@
-import {createStore, applyMiddleware, compose} from "redux"
-import promiseMiddleware from "redux-promise-middleware"
-import reducer from "./reducer"
+import { createStore, applyMiddleware } from "redux";
+import promiseMiddleware from "redux-promise-middleware";
+import reducer from "./reducer";
 
-const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;
-const store = createStore(
-    reducer, 
-    composeEnhancers(applyMiddleware(promiseMiddleware)))
+import { createLogger } from "redux-logger";
 
-    export default store
+const logger = createLogger({
+  duration: true,
+  timestamp: true,
+  diff: true
+});
+
+createStore(reducer, logger);
+export default createStore(reducer, applyMiddleware(promiseMiddleware));

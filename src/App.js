@@ -39,7 +39,7 @@ class App extends Component {
     return (
       <div className="App">
          <GlobalStyles />
-         {this.props.location.pathname !== '/' ? <NavMain/> : null }
+         {this.props.location.pathname !== '/' ? <NavMain /> : null }
          {routes}
       </div>
     );

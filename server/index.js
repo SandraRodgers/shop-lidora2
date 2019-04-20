@@ -6,6 +6,9 @@ const session = require("express-session");
 const app = express();
 app.use(json());
 
+//controllers
+const {addDress} = require('./controllers/createProductsController')
+
 //express session
 app.use(
   session({
@@ -23,6 +26,10 @@ massive(process.env.CONNECTION_STRING).then(db => {
   app.set("db", db);
   console.log("Database connected");
 });
+
+//ENDPOINTS
+
+app.post("/api/admin/addDress", addDress);
 
 
 app.listen(4000, () => {

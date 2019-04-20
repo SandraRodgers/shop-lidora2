@@ -18,7 +18,9 @@ export const Form = styled.form`
 export const Input = styled.input`
   background: ${props => (props.clicked ? "rgb(240,240,240)" : "white")};
   position: relative;
+
   width: 45vw;
+  
   height: 4vh;
   border: 2px solid lightgray;
   background-color: white;
@@ -46,7 +48,7 @@ export const Image = styled.img`
 export const FormSubmit = styled.button`
   width: 20vh;
   font-family: "Zilla Slab";
-
+  position: relative;
   height: 5vh;
   background-color: #3ca6cd;
   font-size: 2.5vh;
