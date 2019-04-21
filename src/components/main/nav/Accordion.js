@@ -5,10 +5,10 @@ import LilacLink from "../../styled/LilacLink";
 class Accordion extends React.Component {
   render() {
     const { title, expand, onClick, content, nonLinks } = this.props;
-console.log(this.props.open)
+
     return (
       <div>
-        <dt
+        <div
           className={expand ? "title is-expanded" : "title"}
           onClick={onClick}
         >
@@ -40,8 +40,8 @@ console.log(this.props.open)
               Bag{" "}
             </LilacLink>
           ) : null}
-        </dt>
-        <dd
+        </div>
+        <div
           className={expand ? "content is-expanded" : "content"}
           onClick={onClick}
         >
@@ -200,7 +200,7 @@ console.log(this.props.open)
 
             </div>
           )}
-        </dd>
+        </div>
       </div>
     );
   }

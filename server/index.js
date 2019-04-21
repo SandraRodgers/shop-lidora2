@@ -8,7 +8,7 @@ app.use(json());
 
 //controllers
 const {addDress, createProduct} = require('./controllers/createProductsController')
-const {getDresses} = require('./controllers/getProductsController')
+const {getProductInfo, getDresses, getDress} = require('./controllers/getProductsController')
 
 //express session
 app.use(
@@ -33,6 +33,8 @@ massive(process.env.CONNECTION_STRING).then(db => {
 app.post("/api/admin/addDress", addDress);
 app.get("/api/admin/getDresses", getDresses)
 app.post("/api/admin/createProduct", createProduct)
+app.get("/api/product/:id", getProductInfo);
+app.get("/api/dress/:id", getDress);
 
 
 app.listen(4000, () => {

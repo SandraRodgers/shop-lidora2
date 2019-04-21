@@ -1,4 +1,4 @@
-const dressesID = [];
+let dressesID = [];
 
 
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
         description
       ])
       .then(response => {
-        console.log(response)
+    
         dressesID.push(response[0].dressesid);
         res.status(200).json(response);
       })
@@ -45,11 +45,12 @@ module.exports = {
     const dbInstance = req.app.get("db");
     const category = req.body.category
     let dressesid = dressesID[0];
-    console.log(req.body);
+    
     dbInstance
       .createProduct([dressesid, category])
       .then(response => {
-        console.log(response)
+        dressesID=[]
+    
         res.status(200).json(response);
       })
       .catch(error => {

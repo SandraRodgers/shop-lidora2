@@ -29,7 +29,7 @@ export default class SideMenu extends React.Component {
       }
     
     render() {
-      console.log(this.props);
+      
       const accordionList = [{ title: 'Clothing', content: ['Dresses', 'Shorts', 'Bloomers', 'Skirts', 'Vests'] }, { title: 'Accessories', content:['Bonnets', 'Bowties', 'Suspenders', 'Hairbows', 'Headbands']}, { title: 'Baby', content: ['Bibdanas', 'Burp Cloths', 'Drool Pads'] }, {title: 'Style Guide'}, {title: 'Custom'}, {title: 'Account'}, {title: 'Contact'}, {title: 'Bag'}];
 
       return (

@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+
+
+  
+  }
+
+.column1,
+.column2 {
+  margin-top: 15vh;
+}
+
+.column1 {
+  margin-left: 20vh;
+}
+
+.column2 {
+  margin-right: 2vh;
+  padding: 10vh;
+  font-size: 3vh;
+  margin-left: 10vh;
+}
+
+.product-title {
+    color: #39363d;
+    font-size: 5vh;
+    font-weight: 600;
+    font-family: "Mermaid";
+  }
+  
+  .product-img {
+    margin-top: 3vh;
+    height: 80vh;
+  }

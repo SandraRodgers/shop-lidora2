@@ -5,25 +5,34 @@ import { getDresses } from "../../../../ducks/reducer";
 import "../shop.css";
 
 class Dresses extends React.Component {
+  constructor(){
+    super()
+    this.state={productInfo:[]}
+    
+  }
   componentDidMount() {
     this.props.getDresses();
   }
+
+  
+
   render() {
-    console.log(this.props.dresses);
+    console.log(this.props.productid);
     let dressList = this.props.dresses.map((element, id) => {
-      console.log(element);
+      
       return (
-        <div className="product-container" key={element.dressesid}>
-          <Link to={`/products/${element.id}`}>
+        <div className="product-container" key={element.dressesid} >
+          <Link to={`/products/${element.productid}`} >
+  
             <img className="product-photo" src={element.image} alt="" />
           </Link>
 
           <div className="product-info">
-            <div className="product-name" to={`/products/${element.id}`}>
+            <div className="product-name" to={`/products/${element.productid}`}>
               {element.name}
             </div>
 
-            <Link className="product-price" to={`/products/${element.id}`}>
+            <Link className="product-price" to={`/products/${element.productid}`}>
               ${element.price}
             </Link>
           </div>

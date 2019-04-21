@@ -23,6 +23,7 @@ import BurpClothes from "./components/main/shop/baby/BurpClothes";
 import DroolPads from "./components/main/shop/baby/DroolPads";
 
 //Product
+import Product from "../src/components/main/product/Product"
 
 //Bag
 
@@ -51,6 +52,8 @@ export default (
     <Route path="/shop/bibdanas" exact component={Bibdanas} />{" "}
     <Route path="/shop/burpcloths" exact component={BurpClothes} />
     <Route path="/shop/droolpads" exact component={DroolPads} />
+{/* Product Page */}
+  <Route path="/products/:id" exact component={Product} />
 
     {/* AdminPages */}
     <Route path="/admin/form/dresses" exact component={FormDresses} />
