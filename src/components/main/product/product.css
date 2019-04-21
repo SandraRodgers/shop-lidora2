@@ -1,9 +1,6 @@
 .container {
-    display: flex;
-
-
-  
-  }
+  display: flex;
+}
 
 .column1,
 .column2 {
@@ -15,20 +12,85 @@
 }
 
 .column2 {
-  margin-right: 2vh;
   padding: 10vh;
   font-size: 3vh;
   margin-left: 10vh;
 }
 
 .product-title {
-    color: #39363d;
-    font-size: 5vh;
-    font-weight: 600;
-    font-family: "Mermaid";
-  }
+  color: #39363d;
+  font-size: 5vh;
+  font-weight: 600;
+  font-family: "Mermaid";
+}
+
+.product-img {
+  margin-top: 3vh;
+  height: 80vh;
+}
+
+.product-select {
+  background-color: white;
+    width: 25vw;
+  position: relative;
+  height: 5vh;
+  font-size: 2.5vh;
+  background-color: white;
+  border: none;
+  border-top: 1px solid #b68da4;
+  border-bottom: 1px solid #b68da4;
+  border-radius: 0;
   
-  .product-img {
-    margin-top: 3vh;
-    height: 80vh;
-  }
+}
+
+.product-price-div {
+  display: flex;
+  font-family: 'Zilla Slab';
+  justify-content: space-between;
+  padding-right: 3vw;
+}
+
+.product-size-options {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 3vw;
+
+}
+
+.product-description{
+    display: flex;
+    margin-top: 10vh;
+    height: 20vh;
+    
+    padding-right: 3vw;
+}
+
+.product-option {
+ 
+}
+
+.product-select:focus {
+  outline: none;
+}
+
+.product-size-heading{
+    display: flex;
+    align-items: center;
+}
+
+.product-select:not([multiple]) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-position: right 50%;
+  background-repeat: no-repeat;
+  background-image: url("../../../assets/arrow.svg");
+  
+  background-size: 15px;
+  
+  padding-right: 1.5em;
+}
+
+select.product-select{
+    font-family: 'Zilla Slab';
+
+}

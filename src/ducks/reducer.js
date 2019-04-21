@@ -3,7 +3,7 @@ import axios from "axios";
 const initialState = {
   productInfo: [],
   dresses: [],
-  dress:[]
+  currentProduct:[]
 };
 
 const GET_DRESSES = "GET_DRESSES";
@@ -18,7 +18,7 @@ export default function reducer(state = initialState, action) {
 
       case `${GET_DRESS}_FULFILLED`:
       console.log(action.payload.data);
-      return { ...state, dress: action.payload.data };
+      return { ...state, currentProduct: action.payload.data };
 
 
     default:
