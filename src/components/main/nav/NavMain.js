@@ -17,6 +17,7 @@ import flower from "../../../assets/flower.png";
 import HiddenNav from "./HiddenNav"
 import Hamburger from "./Hamburger"
 import SideMenu from "./SideMenu"
+import Bag from "../bag/Bag"
 
 //css
 import "./NavMain.css"
@@ -51,8 +52,10 @@ class NavMain extends React.Component {
     render() {
     console.log(this.props.bagIsOpen)
     return (
+
+    
       <div className='NM-container'>
-         
+      <Bag open={this.props.bagIsOpen}/> 
         <Nav>
         <SideMenu open={this.state.sideMenu}/>
           <Column >
@@ -82,10 +85,17 @@ class NavMain extends React.Component {
           <Column  notHidden>
             <SecondaryLink  onClick={()=>this.props.openBag()} primary >Bag</SecondaryLink>
           </Column>
+         
         </Nav>
+        
         <HiddenNav  open={this.state.hiddenMenu} onMouseOut={this.showMenu} />
-     
-      </div>
+       
+        </div>
+
+      
+    
+ 
+
     );
   }
 }
