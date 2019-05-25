@@ -14,6 +14,8 @@ const Placeholder = styled.div`
   }
 `;
 
+//This is the products menu that displays when you mouse-over "Products" in the top nav-bar
+
 export default class HiddenNav extends React.Component {
   render() {
     return (
@@ -39,17 +41,41 @@ export default class HiddenNav extends React.Component {
           </div>
           <div className="HNB-accessories-div">
             <LilacLink>Accessories</LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/bonnets"} primary>Bonnets</LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/bowties"} primary>Bowties</LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/suspenders"} primary>Suspenders</LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/hairbows"} primary>Hairbows</LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/headbands"} primary>Headbands</LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/bonnets"} primary>
+              Bonnets
+            </LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/bowties"} primary>
+              Bowties
+            </LilacLink>
+            <LilacLink
+              onClick={this.props.open}
+              to={"/shop/suspenders"}
+              primary
+            >
+              Suspenders
+            </LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/hairbows"} primary>
+              Hairbows
+            </LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/headbands"} primary>
+              Headbands
+            </LilacLink>
           </div>
           <div className="HNB-baby-div">
             <LilacLink>Baby</LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/bibdanas"} primary>Bibdanas</LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/burpcloths"} primary>Burp Cloths</LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/droolpads"} primary>Drool Pads</LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/bibdanas"} primary>
+              Bibdanas
+            </LilacLink>
+            <LilacLink
+              onClick={this.props.open}
+              to={"/shop/burpcloths"}
+              primary
+            >
+              Burp Cloths
+            </LilacLink>
+            <LilacLink onClick={this.props.open} to={"/shop/droolpads"} primary>
+              Drool Pads
+            </LilacLink>
             <Placeholder primary>placeholder</Placeholder>
             <Placeholder primary>placeholder</Placeholder>
           </div>

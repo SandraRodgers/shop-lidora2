@@ -3,23 +3,30 @@ import axios from "axios";
 const initialState = {
   productInfo: [],
   dresses: [],
-  currentProduct:[]
+  currentProduct:[],
+  bagIsOpen: false
+
 };
 
 const GET_DRESSES = "GET_DRESSES";
 const GET_DRESS = "GET_DRESS";
+const OPEN_BAG = "OPEN_BAG";
+
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     
     case `${GET_DRESSES}_FULFILLED`:
-      console.log(action.payload.data);
+
       return { ...state, dresses: action.payload.data };
 
       case `${GET_DRESS}_FULFILLED`:
-      console.log(action.payload.data);
+  
       return { ...state, currentProduct: action.payload.data };
 
+      case `${OPEN_BAG}`:
+ 
+      return {...state, bagIsOpen: !state.bagIsOpen}
 
     default:
       return state;
@@ -39,3 +46,11 @@ export function getDress(dressesid) {
     payload: axios.get(`/api/dress/${dressesid}`)
   };
 }
+
+export function openBag(bagIsOpen){
+return{
+  type: OPEN_BAG,
+  payload: bagIsOpen
+}
+}
+

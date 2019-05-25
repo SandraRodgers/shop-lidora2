@@ -17,7 +17,7 @@ class Dresses extends React.Component {
   
 
   render() {
-    console.log(this.props.productid);
+  
     let dressList = this.props.dresses.map((element, id) => {
       
       return (

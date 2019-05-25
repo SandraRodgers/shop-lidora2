@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+//redux
+import { connect } from "react-redux";
+import {openBag} from "../../../ducks/reducer"
+
 //styled components
 import Nav from "../../styled/Nav";
 import Column from "../../styled/Column";
@@ -23,14 +27,13 @@ const SecondaryColumn = styled(Column)`
   }
 `;
 
+///This component is the TOP NAVBAR
 
-
-export default class NavMain extends React.Component {
+class NavMain extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
           hiddenMenu: false,
-         
             sideMenu: false
           
         };
@@ -42,7 +45,11 @@ export default class NavMain extends React.Component {
       showMenu = () => {
         this.setState({ hiddenMenu: !this.state.hiddenMenu });
       };
-  render() {
+  
+    
+      
+    render() {
+    console.log(this.props.bagIsOpen)
     return (
       <div className='NM-container'>
          
@@ -72,13 +79,20 @@ export default class NavMain extends React.Component {
           <Column>
             <SecondaryLink primary>Contact</SecondaryLink>
           </Column>
-          <Column notHidden>
-            <SecondaryLink primary >Bag</SecondaryLink>
+          <Column  notHidden>
+            <SecondaryLink  onClick={()=>this.props.openBag()} primary >Bag</SecondaryLink>
           </Column>
         </Nav>
-        <HiddenNav open={this.state.hiddenMenu} onMouseOut={this.showMenu} />
+        <HiddenNav  open={this.state.hiddenMenu} onMouseOut={this.showMenu} />
      
       </div>
     );
   }
 }
+
+const mapStateToProps = state => state;
+
+export default connect(
+  mapStateToProps,
+  { openBag: openBag }
+)(NavMain);

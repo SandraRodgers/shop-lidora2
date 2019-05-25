@@ -19,15 +19,16 @@ openMenu = () => {
 }
 
     render( ){
-        console.log(this.props)
+    
 
 return (
-
+//The MenuButton shows up as screen is minimized (responsive design) The MenuSpan is each line of the button
   <MenuButton clicked={this.state.clicked} onClick={this.openMenu}>
     <MenuSpan open={this.state.openMenu} />
     <MenuSpan open={this.state.openMenu} />
     <MenuSpan open={this.state.openMenu} />
   </MenuButton>
+
 );
 }}
 
