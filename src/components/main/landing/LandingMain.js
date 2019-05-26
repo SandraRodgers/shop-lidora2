@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
 
+
+
 //css
 import "./LandingMain.css";
 
@@ -12,7 +14,22 @@ import coverpic from "../../../assets/shop-lidora.jpeg";
 import Link from "../../styled/Link";
 import Paragraph from "../../styled/Paragraph";
 
+
+
+
+
+
 class LandingMain extends Component {
+  constructor(props){
+    super(props)
+      this.state = {
+        open: false,
+        signedIn: false,
+        profile: []
+    }
+  }
+
+
   render() {
     return (
       <div className="LM-component">
@@ -27,7 +44,7 @@ class LandingMain extends Component {
           </Paragraph>
           <div className="LM-links">
             <Link to="/shop">Shop</Link>
-            <Link to="/">Login</Link>
+            <Link to="/login">Login</Link>
           </div>
         </div>
 

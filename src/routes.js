@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 
 //Landing
 import LandingMain from "../src/components/main/landing/LandingMain";
+import Login from "./components/main/landing/Login"
 
 //Shop
 import ShopMain from "../src/components/main/shop/ShopMain";
@@ -37,6 +38,7 @@ export default (
   <Switch>
 
     <Route path="/" exact component={LandingMain} />
+    <Route path="/login" exact component={Login} />
     <Route path="/shop" exact component={ShopMain} />
     {/* Product Pages */}
     <Route path="/shop/dresses" exact component={Dresses} />

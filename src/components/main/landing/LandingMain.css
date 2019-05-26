@@ -37,6 +37,10 @@
   width: 90%;
 }
 
+.LOG-component{
+padding-top: 50vh;
+}
+
 @media (max-width: 1000px) {
   .LM-coverpic {
     height: 90%;
