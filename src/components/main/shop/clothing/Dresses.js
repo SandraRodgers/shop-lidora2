@@ -1,29 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDresses } from "../../../../ducks/reducer";
+import { getDresses, openBag } from "../../../../ducks/reducer";
 import "../shop.css";
 
 class Dresses extends React.Component {
-  constructor(){
-    super()
-    this.state={productInfo:[]}
-    
+  constructor() {
+    super();
+    this.state = { productInfo: [] };
   }
   componentDidMount() {
     this.props.getDresses();
   }
 
-  
-
   render() {
-  
+    console.log(this.props.bagIsOpen);
+    // let toggleBag;
+    
+    // this.props.bagIsOpen === true ? (toggleBag = 0) : (toggleBag = 1);
+   
     let dressList = this.props.dresses.map((element, id) => {
-      
       return (
-        <div className="product-container" key={element.dressesid} >
-          <Link to={`/products/${element.productid}`} >
-  
+        <div
+          // style={{ zIndex: toggleBag }}
+          className="product-container"
+          key={element.dressesid}
+        >
+          <Link  to={`/products/${element.productid}`}>
             <img className="product-photo" src={element.image} alt="" />
           </Link>
 
@@ -32,7 +35,10 @@ class Dresses extends React.Component {
               {element.name}
             </div>
 
-            <Link className="product-price" to={`/products/${element.productid}`}>
+            <Link
+              className="product-price"
+              to={`/products/${element.productid}`}
+            >
               ${element.price}
             </Link>
           </div>
@@ -52,11 +58,12 @@ class Dresses extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    dresses: state.dresses
+    dresses: state.dresses,
+    bagIsOpen: state.bagIsOpen
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getDresses: getDresses }
+  { getDresses: getDresses, openBag: openBag }
 )(Dresses);

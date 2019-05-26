@@ -29,8 +29,11 @@ class Product extends Component {
   }
 
   render() {
-    console.log(this.props.currentProduct);
-
+    
+      let toggleBag;
+    
+    this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
+    console.log(this.props.bagIsOpen);
     return (
       <div>
         <div className="container">
@@ -67,7 +70,7 @@ class Product extends Component {
               <p className="product-size-options">
                 <div className="product-size-heading">Size: </div>
 
-                <select className="product-select">
+                <select style={{zIndex: toggleBag}} className="product-select">
                   <option>Choose an option</option>
                   <option>3-6 months</option>
                   <option>6-9 months</option>

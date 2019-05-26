@@ -2,3 +2,30 @@
 
 
 }
+
+.BAG-SM-component{
+  width: 50vw;
+}
+
+.BAG-top-icons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10vh;
+    margin-right: 7vw;
+    margin-left: 7vw;
+    font-family: Cousine;
+    font-size: .9em;
+    
+   
+}
+
+.BAG-close-button{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.BAG-bag-icon{
+    height: 6vh;
+    width: 6vh;
+}

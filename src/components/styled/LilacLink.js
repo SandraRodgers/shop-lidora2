@@ -7,7 +7,7 @@ import SecondaryLink from "./SecondaryLink"
 const LilacLink = styled(SecondaryLink)`
 cursor: default;
 font-family: Cousine;
-font-weight: ${props => (props.primary ? 500 : 900)}
+font-weight: ${props => (props.primary ? 500 : 900)};
  color: rgb(74, 72, 96);
 font-size: ${props => (props.primary ? "2vh" : "2.5vh")};
   &:hover {

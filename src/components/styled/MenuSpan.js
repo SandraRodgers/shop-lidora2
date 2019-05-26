@@ -20,10 +20,14 @@ const MenuSpan = styled.span`
     transition: 0.25s ease-in-out;
     &:nth-child(1) {
         top: ${props => (props.open ? "13px" : "0px")};
-        -webkit-transform: ${props => (props.open? 'rotate(135deg)': 'rotate(0deg)')};
-        -moz-transform: ${props => (props.open? 'rotate(135deg)': 'rotate(0deg)')};
-        -o-transform: ${props => (props.open? 'rotate(135deg)': 'rotate(0deg)')};
-        transform: ${props => (props.open? 'rotate(135deg)': 'rotate(0deg)')};}
+        -webkit-transform: ${props =>
+          props.open ? "rotate(135deg)" : "rotate(0deg)"};
+        -moz-transform: ${props =>
+          props.open ? "rotate(135deg)" : "rotate(0deg)"};
+        -o-transform: ${props =>
+          props.open ? "rotate(135deg)" : "rotate(0deg)"};
+        transform: ${props =>
+          props.open ? "rotate(135deg)" : "rotate(0deg)"};}
 
     &:nth-child(2) {
         opacity: ${props => (props.open ? "0" : "1")};
@@ -32,10 +36,14 @@ const MenuSpan = styled.span`
     }
     &:nth-child(3); {
         top: ${props => (props.open ? "13px" : "19px")};
-        -webkit-transform: ${props => (props.open? 'rotate(-135deg)': 'rotate(0deg)')};
-        -moz-transform: ${props => (props.open? 'rotate(-135deg)': 'rotate(0deg)')};
-        -o-transform: ${props => (props.open? 'rotate(-135deg)': 'rotate(0deg)')};
-        transform: ${props => (props.open? 'rotate(-135deg)': 'rotate(0deg)')};}
+        -webkit-transform: ${props =>
+          props.open ? "rotate(-135deg)" : "rotate(0deg)"};
+        -moz-transform: ${props =>
+          props.open ? "rotate(-135deg)" : "rotate(0deg)"};
+        -o-transform: ${props =>
+          props.open ? "rotate(-135deg)" : "rotate(0deg)"};
+        transform: ${props =>
+          props.open ? "rotate(-135deg)" : "rotate(0deg)"};}
     }
     @media (max-width: 1030px) {
         display: block;
@@ -45,4 +53,4 @@ const MenuSpan = styled.span`
   }
   `;
 
-  export default MenuSpan
+export default MenuSpan;

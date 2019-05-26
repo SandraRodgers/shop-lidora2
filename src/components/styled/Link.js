@@ -3,9 +3,11 @@ import styled from "styled-components";
 
 export default styled(Link)`
   text-decoration: none;
+  position:relative
   color: rgb(74, 72, 96);
   font-size: 3.5vh;
   font-family: Lora;
+  ${'' /* z-index: 1; */}
   font-weight: 900;
   &:hover { color: ${props =>
     props.primary ? "rgb(255,255,255)" : "rgb(74, 72, 96)"};}
