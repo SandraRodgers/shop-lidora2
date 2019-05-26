@@ -37,8 +37,17 @@
   width: 90%;
 }
 
+/* ///Login Page */
+
 .LOG-component{
 padding-top: 50vh;
+z-index: 10
+}
+
+.LOG-signout-button-div{
+  display: flex;
+  justify-content: center;
+
 }
 
 @media (max-width: 1000px) {

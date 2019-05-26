@@ -8,7 +8,6 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 //css
 import "./LandingMain.css";
-import { FirebaseAuth } from "react-firebaseui";
 
 // // Initialize the FirebaseUI Widget using Firebase.
 // var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -19,9 +18,9 @@ firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN
 });
-firebase.auth().onAuthStateChanged(user => {
-  this.setState({ isSignedIn: !user });
-});
+
+
+
 
 
 
@@ -32,6 +31,9 @@ class Login extends Component {
       isSignedIn: false
     };
   }
+
+  
+
 
   uiConfig = {
     signInFlow: "popup",
@@ -51,30 +53,39 @@ class Login extends Component {
     CredentialHelper: "none"
   };
 
-// checkUser=()=>{
-//     console.log('checkUser')
-//     firebase.auth().onAuthStateChanged(user => {
-//         this.setState({ isSignedIn: !user });
-//       });
-//   }
+componentDidMount(){
+   
+}
 
-  componentDidUpdate = prevState => {};
+logout() {
+    firebase
+      .auth()
+      .signOut()
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  }
 
   render() {
+    
     return (
       <div className="LOG-component">
-        {this.state.isSignedIn ? (
-          <div>
-            <h2>Signed In!</h2>
-            <button onClick={()=>console.log('working')} style={{zIndex: 2}}>
+        {this.state.isSignedIn ===true ? (
+    
+            <div className='LOG-signout-button-div'>
+            <button onClick={()=>console.log('click')} className='LOG-signout-button' >
               Sign Out!
-            </button>{" "}
-          </div>
+            </button>
+</div>
         ) : (
           <StyledFirebaseAuth
             uiConfig={this.uiConfig}
             firebaseAuth={firebase.auth()}
-            onClick={this.setState({isSignedIn: true})}
+            // onClick={this.setState({isSignedIn: true})}
+           
           />
         )}
       </div>
