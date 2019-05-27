@@ -4,7 +4,7 @@
     justify-content: center;
     position: relative;
     flex-direction: column;
-   
+    z-index: 1;
     margin-left: 10vh;
   }
 

@@ -4,23 +4,17 @@ import React, { Component } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "../../../firebase/firebase";
+// import config from "../../../firebase/firebase"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 //css
 import "./LandingMain.css";
 
-// // Initialize the FirebaseUI Widget using Firebase.
-// var ui = new firebaseui.auth.AuthUI(firebase.auth());
-// // The start method will wait until the DOM is loaded.
-// ui.start('#firebaseui-auth-container', uiConfig);
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN
-});
-
-
-
+})
 
 
 
@@ -32,6 +26,7 @@ class Login extends Component {
     };
   }
 
+  
   
 
 
@@ -57,6 +52,26 @@ componentDidMount(){
    
 }
 
+
+checkUser=()=> {
+  firebase.auth().onAuthStateChanged(function(user) {
+    // console.log(user)
+    if (user) {
+      const info = {
+        displayName: user.displayName,
+        email: user.email,
+        firebaseId: user.uid,
+        profileImg: user.photoURL
+      };
+     this.setState({isSignedIn:!!this.state.isSignedIn})
+    } else {
+      this.setState({isSignedIn:true})
+    }
+  });
+
+}
+
+
 logout() {
     firebase
       .auth()
@@ -70,9 +85,10 @@ logout() {
   }
 
   render() {
-    
+
+    console.log(this.firebase)
     return (
-      <div className="LOG-component">
+      <div className="LOG-component"   >
         {this.state.isSignedIn ===true ? (
     
             <div className='LOG-signout-button-div'>
@@ -84,6 +100,8 @@ logout() {
           <StyledFirebaseAuth
             uiConfig={this.uiConfig}
             firebaseAuth={firebase.auth()}
+            onClick={()=>this.checkUser()}
+          
             // onClick={this.setState({isSignedIn: true})}
            
           />

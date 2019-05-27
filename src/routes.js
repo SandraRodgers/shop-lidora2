@@ -30,6 +30,18 @@ import Product from "../src/components/main/product/Product"
 
 //Checkout
 
+//StyleGuide
+import StyleGuide from "./components/main/styleguide/StyleGuide"
+
+//Custom
+import Custom from "./components/main/custom/Custom"
+
+//Account
+import Account from "./components/user/Account"
+
+//Contact
+import Contact from "./components/main/contact/Contact"
+
 //ADMIN
 //Forms
 import FormDresses from "../src/components/admin/create-products/FormDresses"
@@ -40,6 +52,11 @@ export default (
     <Route path="/" exact component={LandingMain} />
     <Route path="/login" exact component={Login} />
     <Route path="/shop" exact component={ShopMain} />
+    <Route path="/styleguide" exact component={StyleGuide} />
+    <Route path="/custom" exact component={Custom} />
+    <Route path="/user/account" exact component={Account} />
+    <Route path="/contact" exact component={Contact} />
+
     {/* Product Pages */}
     <Route path="/shop/dresses" exact component={Dresses} />
     <Route path="/shop/shorts" exact component={Shorts} />
@@ -55,7 +72,7 @@ export default (
     <Route path="/shop/burpcloths" exact component={BurpClothes} />
     <Route path="/shop/droolpads" exact component={DroolPads} />
 {/* Product Page */}
-  <Route path="/products/:id" exact component={Product} />
+    <Route path="/products/:id" exact component={Product} />
 
     {/* AdminPages */}
     <Route path="/admin/form/dresses" exact component={FormDresses} />

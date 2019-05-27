@@ -14,17 +14,18 @@ class Dresses extends React.Component {
   }
 
   render() {
-    console.log(this.props.bagIsOpen);
-    // let toggleBag;
+  
+    let toggleBag;
     
-    // this.props.bagIsOpen === true ? (toggleBag = 0) : (toggleBag = 1);
+    this.props.bagIsOpen === true ? (toggleBag = 0) : (toggleBag = 1);
    
-    let dressList = this.props.dresses.map((element, id) => {
+    let dressList = this.props.dresses.map((element) => {
+      
       return (
         <div
-          // style={{ zIndex: toggleBag }}
+          style={{ zIndex: toggleBag }}
           className="product-container"
-          key={element.dressesid}
+          key={element.productid}
         >
           <Link  to={`/products/${element.productid}`}>
             <img className="product-photo" src={element.image} alt="" />

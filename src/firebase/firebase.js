@@ -12,6 +12,8 @@ const config = {
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   };
 
+ 
+
   class Firebase {
     constructor() {
       app.initializeApp(config);

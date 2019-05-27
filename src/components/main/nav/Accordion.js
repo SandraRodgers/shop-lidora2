@@ -1,8 +1,18 @@
 import React from "react";
 import "./Accordion.css";
+
+//redux
+import { connect } from "react-redux";
+import {openBag} from "../../../ducks/reducer"
+
+//styled-components
 import LilacLink from "../../styled/LilacLink";
 
 class Accordion extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={}
+  }
   render() {
     const { title, expand, onClick, content, nonLinks } = this.props;
 
@@ -16,27 +26,27 @@ class Accordion extends React.Component {
           {title === "Accessories" ? nonLinks[1] : null}
           {title === "Baby" ? nonLinks[2] : null}
           {title === "Style Guide" ? (
-            <LilacLink className="Acc-heading-link" primary notHidden>
+            <LilacLink to="/styleguide" className="Acc-heading-link" primary = "true" nothidden = "true">
               Style Guide
             </LilacLink>
           ) : null}
           {title === "Custom" ? (
-            <LilacLink className="Acc-heading-link" primary notHidden>
+            <LilacLink to="/custom" className="Acc-heading-link" primary = "true" nothidden = "true">
               Custom{" "}
             </LilacLink>
           ) : null}
           {title === "Account" ? (
-            <LilacLink className="Acc-heading-link" primary notHidden>
+            <LilacLink to="/user/account" className="Acc-heading-link" primary = "true" nothidden = "true">
               Account{" "}
             </LilacLink>
           ) : null}
           {title === "Contact" ? (
-            <LilacLink className="Acc-heading-link" primary notHidden>
+            <LilacLink to="/contact" className="Acc-heading-link" primary = "true" nothidden = "true">
               Contact{" "}
             </LilacLink>
           ) : null}
           {title === "Bag" ? (
-            <LilacLink className="Acc-heading-link" primary notHidden>
+            <LilacLink to="" className="Acc-heading-link" primary = "true" nothidden = "true">
               Bag{" "}
             </LilacLink>
           ) : null}
@@ -50,10 +60,10 @@ class Accordion extends React.Component {
               {content[0] === "Dresses" ? (
                 <LilacLink
                   to={"/shop/dresses"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[0]}
                 </LilacLink>
@@ -61,10 +71,10 @@ class Accordion extends React.Component {
               {content[1] === "Shorts" ? (
                 <LilacLink
                   to={"/shop/shorts"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[1]}
                 </LilacLink>
@@ -72,10 +82,10 @@ class Accordion extends React.Component {
               {content[2] === "Bloomers" ? (
                 <LilacLink
                   to={"/shop/bloomers"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[2]}
                 </LilacLink>
@@ -84,10 +94,10 @@ class Accordion extends React.Component {
               {content[3] === "Skirts" ? (
                 <LilacLink
                   to={"/shop/skirts"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[3]}
                 </LilacLink>
@@ -95,10 +105,10 @@ class Accordion extends React.Component {
               {content[4] === "Vests" ? (
                 <LilacLink
                   to={"/shop/vests"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[4]}
                 </LilacLink>
@@ -109,10 +119,10 @@ class Accordion extends React.Component {
               {content[0] === "Bonnets" ? (
                 <LilacLink
                   to={"/shop/bonnets"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[0]}
                 </LilacLink>
@@ -120,10 +130,10 @@ class Accordion extends React.Component {
               {content[1] === "Bowties" ? (
                 <LilacLink
                   to={"/shop/bowties"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[1]}
                 </LilacLink>
@@ -131,10 +141,10 @@ class Accordion extends React.Component {
               {content[2] === "Suspenders" ? (
                 <LilacLink
                   to={"/shop/suspenders"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[2]}
                 </LilacLink>
@@ -143,10 +153,10 @@ class Accordion extends React.Component {
               {content[3] === "Hairbows" ? (
                 <LilacLink
                   to={"/shop/hairbows"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[3]}
                 </LilacLink>
@@ -154,10 +164,10 @@ class Accordion extends React.Component {
               {content[4] === "Headbands" ? (
                 <LilacLink
                   to={"/shop/headbands"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[4]}
                 </LilacLink>
@@ -167,10 +177,10 @@ class Accordion extends React.Component {
 {content[0] === "Bibdanas" ? (
                 <LilacLink
                   to={"/shop/bibdanas"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[0]}
                 </LilacLink>
@@ -178,10 +188,10 @@ class Accordion extends React.Component {
               {content[1] === "Burp Cloths" ? (
                 <LilacLink
                   to={"/shop/burpcloths"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[1]}
                 </LilacLink>
@@ -189,10 +199,10 @@ class Accordion extends React.Component {
               {content[2] === "Drool Pads" ? (
                 <LilacLink
                   to={"/shop/droolpads"}
-                  onClick={this.props.open}
+                 
                   className="Acc-link"
-                  primary
-                  notHidden
+                  primary = "true"
+                  nothidden = "true"
                 >
                   {content[2]}
                 </LilacLink>
@@ -206,4 +216,10 @@ class Accordion extends React.Component {
   }
 }
 
-export default Accordion;
+const mapStateToProps = state => state;
+
+
+export default connect(
+  mapStateToProps,
+  { openBag: openBag }
+)(Accordion);

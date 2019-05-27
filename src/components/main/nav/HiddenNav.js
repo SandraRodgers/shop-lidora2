@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {withRouter} from 'react-router-dom'
 
 import "./HiddenNav.css";
 
@@ -16,71 +17,73 @@ const Placeholder = styled.div`
 
 //This is the products menu that displays when you mouse-over "Products" in the top nav-bar
 
-export default class HiddenNav extends React.Component {
+class HiddenNav extends React.Component {
   render() {
     return (
       <div>
         <HiddenNavBar open={this.props.open}>
           <div className="HNB-clothing-div">
-            <LilacLink>Clothing</LilacLink>
-            <LilacLink to={"/shop/dresses"} onClick={this.props.open} primary>
+            <LilacLink to={this.props.location.pathname}>Clothing</LilacLink>
+            <LilacLink to={"/shop/dresses"}  primary = "true">
               Dresses
             </LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/shorts"} primary>
+            <LilacLink  to={"/shop/shorts"} primary = "true">
               Shorts
             </LilacLink>
-            <LilacLink onClick={this.props.open} primary to={"/shop/bloomers"}>
+            <LilacLink  primary = "true" to={"/shop/bloomers"}>
               Bloomers
             </LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/skirts"} primary>
+            <LilacLink  to={"/shop/skirts"} primary = "true">
               Skirts
             </LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/vests"} primary>
+            <LilacLink  to={"/shop/vests"} primary = "true">
               Vests
             </LilacLink>
           </div>
           <div className="HNB-accessories-div">
-            <LilacLink>Accessories</LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/bonnets"} primary>
+            <LilacLink to={this.props.location.pathname}>Accessories</LilacLink>
+            <LilacLink  to={"/shop/bonnets"} primary = "true">
               Bonnets
             </LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/bowties"} primary>
+            <LilacLink  to={"/shop/bowties"} primary = "true">
               Bowties
             </LilacLink>
             <LilacLink
-              onClick={this.props.open}
+              
               to={"/shop/suspenders"}
-              primary
+              primary = "true"
             >
               Suspenders
             </LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/hairbows"} primary>
+            <LilacLink  to={"/shop/hairbows"} primary = "true">
               Hairbows
             </LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/headbands"} primary>
+            <LilacLink  to={"/shop/headbands"} primary = "true">
               Headbands
             </LilacLink>
           </div>
           <div className="HNB-baby-div">
-            <LilacLink>Baby</LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/bibdanas"} primary>
+            <LilacLink to={this.props.location.pathname}>Baby</LilacLink>
+            <LilacLink  to={"/shop/bibdanas"} primary = "true">
               Bibdanas
             </LilacLink>
             <LilacLink
-              onClick={this.props.open}
+              
               to={"/shop/burpcloths"}
-              primary
+              primary = "true"
             >
               Burp Cloths
             </LilacLink>
-            <LilacLink onClick={this.props.open} to={"/shop/droolpads"} primary>
+            <LilacLink  to={"/shop/droolpads"} primary = "true">
               Drool Pads
             </LilacLink>
-            <Placeholder primary>placeholder</Placeholder>
-            <Placeholder primary>placeholder</Placeholder>
+            <Placeholder primary = "true">placeholder</Placeholder>
+            <Placeholder primary = "true">placeholder</Placeholder>
           </div>
         </HiddenNavBar>
       </div>
     );
   }
 }
+
+export default withRouter(HiddenNav);

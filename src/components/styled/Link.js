@@ -5,6 +5,7 @@ export default styled(Link)`
   text-decoration: none;
   position:relative
   color: rgb(74, 72, 96);
+
   font-size: 3.5vh;
   font-family: Lora;
   ${'' /* z-index: 1; */}

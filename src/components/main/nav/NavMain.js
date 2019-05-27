@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {withRouter} from 'react-router-dom'
 
 //redux
 import { connect } from "react-redux";
@@ -50,9 +51,9 @@ class NavMain extends React.Component {
     
       
     render() {
-    console.log(this.props.bagIsOpen)
+ 
     return (
-
+      
     
       <div className='NM-container'>
       <Bag open={this.props.bagIsOpen}/> 
@@ -63,27 +64,27 @@ class NavMain extends React.Component {
           <Hamburger onClick={this.showSideMenu}
               showSideMenu={this.showSideMenu} className="NM-Hamburger"/>
              
-            <SecondaryLink  onMouseOver={this.showMenu} primary>Products</SecondaryLink>
+            <SecondaryLink to="/shop"  onMouseOver={this.showMenu} primary ="true">Products</SecondaryLink>
           </Column>
           <Column>
-            <SecondaryLink primary>Style Guide</SecondaryLink>
+            <SecondaryLink to="/styleguide" primary="true">Style Guide</SecondaryLink>
           </Column>
           <Column>
-            <SecondaryLink primary>Custom</SecondaryLink>
+            <SecondaryLink to="/custom" primary="true">Custom</SecondaryLink>
           </Column>
           <SecondaryColumn>
-            <SecondaryLink notHidden to="/">
+            <SecondaryLink nothidden ="true" to="/">
               <img alt="flower"   style={{ height: "10vh" }} src={flower} />
             </SecondaryLink>
           </SecondaryColumn>
           <Column>
-            <SecondaryLink primary>Account</SecondaryLink>
+            <SecondaryLink to="/user/account" primary="true">Account</SecondaryLink>
           </Column>
           <Column>
-            <SecondaryLink primary>Contact</SecondaryLink>
+            <SecondaryLink to="/contact" primary="true">Contact</SecondaryLink>
           </Column>
-          <Column  notHidden>
-            <SecondaryLink  onClick={()=>this.props.openBag()} primary >Bag</SecondaryLink>
+          <Column  nothidden ="true">
+            <SecondaryLink to={this.props.location.pathname}  onClick={()=>this.props.openBag()} primary="true" >Bag</SecondaryLink>
           </Column>
          
         </Nav>
@@ -102,7 +103,7 @@ class NavMain extends React.Component {
 
 const mapStateToProps = state => state;
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   { openBag: openBag }
-)(NavMain);
+)(NavMain));

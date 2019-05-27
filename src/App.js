@@ -34,6 +34,7 @@ class App extends Component {
   }
  
   render() {
+    // console.log(this.props.location)
    
     return (
       <div className="App">

@@ -13,7 +13,7 @@ const SecondaryLink = styled(Link)`
   }
   
 @media (max-width: 1030px) {
-    display: ${props => props.notHidden ? 'inline': 'none'}
+    display: ${props => props.nothidden ? 'inline': 'none'}
 }
 @media (max-width: 900px) {
 }

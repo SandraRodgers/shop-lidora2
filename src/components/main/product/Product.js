@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
 import { getDress } from "../../../ducks/reducer";
 import "./product.css";
 

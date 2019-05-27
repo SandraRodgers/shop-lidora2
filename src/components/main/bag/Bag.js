@@ -15,14 +15,14 @@ import "./Bag.css"
 
 class Bag extends Component{
     render(){
-        console.log(this.props.open)
+      
         return(
             <div className= 'bag-container'>
          
         
                 <BagSideMenu className='BAG-SM-component' open={this.props.open}  >
                     <div className= 'BAG-top-icons'>
-                        <img className='BAG-bag-icon' src={bagIcon}/>
+                        <img alt='bag-icon' className='BAG-bag-icon' src={bagIcon}/>
                         <div className='BAG-close-button' onClick={()=>this.props.openBag()}>CLOSE</div>
                     </div>
                     <div className='BAG-item-components'></div>

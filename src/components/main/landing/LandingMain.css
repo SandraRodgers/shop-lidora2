@@ -40,15 +40,26 @@
 /* ///Login Page */
 
 .LOG-component{
-padding-top: 50vh;
-z-index: 10
+padding-top: 80vh;
+ /* z-index: 10; */
+ position: relative;
+/* margin-left: 10vw; */
+} 
+
+.LOG-signout-button{
+  /* z-index: 15; */
 }
 
 .LOG-signout-button-div{
+  margin-top: 15vh;
   display: flex;
   justify-content: center;
-
+  /* z-index: 15; */
 }
+
+.LOG-google-signin{
+  /* z-index: 15; */
+} 
 
 @media (max-width: 1000px) {
   .LM-coverpic {
