@@ -5,12 +5,22 @@ import { getDresses, openBag } from "../../../../ducks/reducer";
 import "../shop.css";
 
 class Dresses extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+ 
     this.state = { productInfo: [] };
+    this.linkRef = React.createRef();
+    this.focusLink = this.focusLink.bind(this)
   }
   componentDidMount() {
     this.props.getDresses();
+  }
+  
+  focusLink() {
+    console.log('focus')
+    // Explicitly focus the text input using the raw DOM API
+    // Note: we're accessing "current" to get the DOM node
+    this.linkRef.current.focus();
   }
 
   render() {
@@ -26,8 +36,10 @@ class Dresses extends React.Component {
           style={{ zIndex: toggleBag }}
           className="product-container"
           key={element.productid}
+         
+          ref={this.linkRef} 
         >
-          <Link  to={`/products/${element.productid}`}>
+          <Link  onClick={() =>this.focusLink()}   to={`/products/${element.productid}`}>
             <img className="product-photo" src={element.image} alt="" />
           </Link>
 

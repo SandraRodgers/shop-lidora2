@@ -47,3 +47,4 @@ export function openBag(bagIsOpen) {
     payload: bagIsOpen
   };
 }
+

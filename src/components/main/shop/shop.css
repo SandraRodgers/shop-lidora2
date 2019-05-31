@@ -2,10 +2,11 @@
     width: 80vh;
     display: flex;
     justify-content: center;
-    position: relative;
+
     flex-direction: column;
-    z-index: 1;
+
     margin-left: 10vh;
+   top:0;
   }
 
   .product-photo {
@@ -16,7 +17,7 @@
     margin-bottom: 1vh;
     display: flex;
  position: relative;
- z-index: -1;
+ /* z-index: -1; */
    
   }
 
@@ -26,7 +27,7 @@
     justify-content: space-between;
     margin-bottom: 5vh;
     position: relative;
-    z-index: -1;
+    /* z-index: -1; */
   }
 
   .product-name,
@@ -42,10 +43,11 @@
 
 .store-product-main{
   min-height: 100vh;
+
 }
 
 .product-header {
-  
+  position: relative;
   font-size: 5vh;
   display: flex;
   margin-left: 30vh;
@@ -57,11 +59,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+ 
   flex-wrap: wrap;
 }
 
 .product {
   font-family: "Mermaid";
-  margin-top: 20vh;
+  /* margin-top: 20vh; */
 }
