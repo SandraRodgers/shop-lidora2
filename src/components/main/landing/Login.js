@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import axios from 'axios'
 
 //firebase
 import firebase from "firebase/app";
 import "firebase/auth";
 import "../../../firebase/firebase";
+
 // import config from "../../../firebase/firebase"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
@@ -20,7 +22,7 @@ class Login extends Component {
     super();
     this.state = {
       isSignedIn: false,
-      user: ""
+      user: {}
     };
 
     this.logout = this.logout.bind(this);
@@ -30,14 +32,9 @@ class Login extends Component {
     signInFlow: "popup",
     signInSuccessUrl: "/",
     signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID
     ],
-    // tosUrl and privacyPolicyUrl accept either url string or a callback
-    // function.
-    // Terms of service url/callback.
     callbacks: {
       // Avoid redirects after sign-in.
       signInSuccessWithAuthResult: () => false
@@ -49,6 +46,15 @@ class Login extends Component {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user, user: user });
     });
+  }
+
+  componentDidUpdate(prevProps, prevState){
+   console.log(prevState.isSignedIn, this.state.isSignedIn)
+    if(prevState.isSignedIn === false && this.state.isSignedIn ===true){
+      const {displayName, email, uid, photoURL} = this.state.user
+      console.log('post it')
+      axios.post('/api/auth/signin', {display_name: displayName, email:email, firebase_uid: uid, profile_photo: photoURL })
+    }
   }
 
   logout() {
@@ -82,6 +88,7 @@ class Login extends Component {
             <StyledFirebaseAuth
               uiConfig={this.uiConfig}
               firebaseAuth={firebase.auth()}
+             
             />
           </div>
         )}

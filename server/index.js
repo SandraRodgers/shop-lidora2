@@ -9,6 +9,7 @@ app.use(json());
 //controllers
 const {addDress, createProduct} = require('./controllers/createProductsController')
 const {getProductInfo, getDresses, getDress} = require('./controllers/getProductsController')
+const {signin} = require('./controllers/authenticationController')
 
 //express session
 app.use(
@@ -35,6 +36,7 @@ app.get("/api/admin/getDresses", getDresses)
 app.post("/api/admin/createProduct", createProduct)
 app.get("/api/product/:id", getProductInfo);
 app.get("/api/dress/:id", getDress);
+app.post("/api/auth/signin", signin )
 
 
 app.listen(4000, () => {
