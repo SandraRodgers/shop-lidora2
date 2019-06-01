@@ -4,7 +4,7 @@ import axios from 'axios'
 //firebase
 import firebase from "firebase/app";
 import "firebase/auth";
-import "../../../firebase/firebase";
+// import "../../../firebase/firebase";
 
 // import config from "../../../firebase/firebase"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -53,7 +53,9 @@ class Login extends Component {
     if(prevState.isSignedIn === false && this.state.isSignedIn ===true){
       const {displayName, email, uid, photoURL} = this.state.user
       console.log('post it')
-      axios.post('/api/auth/signin', {display_name: displayName, email:email, firebase_uid: uid, profile_photo: photoURL })
+      axios.post('/api/auth/signin', {display_name: displayName, email:email, firebase_uid: uid, profile_photo: photoURL, isadmin: false }).then(response => {
+        console.log(response.data)
+      })
     }
   }
 
