@@ -46,7 +46,7 @@ class Login extends Component {
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      this.setState({ isSignedIn: !!user });
+      this.setState({ isSignedIn: !!user, user: user.uid });
 
     });
    
@@ -62,7 +62,7 @@ class Login extends Component {
         var errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
-   console.log(firebase.auth())
+      this.setState({ isSignedIn: false, user: null });
     }
 
   render() {
