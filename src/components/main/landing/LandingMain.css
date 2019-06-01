@@ -37,29 +37,41 @@
   width: 90%;
 }
 
-/* ///Login Page */
+/* //////////////Login Page */
 
 .LOG-component{
-padding-top: 40vh;
- /* z-index: 10; */
+padding-top: 10vh;
  position: relative;
-/* margin-left: 10vw; */
 } 
 
 .LOG-signout-button{
-  /* z-index: 15; */
+  width: 10vw;
+  height: 5vh;
+  background-color: #6d4878;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  font-family: 'Zilla Slab';
 }
 
 .LOG-signout-button-div{
-  /* margin-top: 15vh; */
   display: flex;
   justify-content: center;
-  /* z-index: 15; */
+  margin-top: 20vh;
 }
 
-.LOG-google-signin{
-  /* z-index: 15; */
-} 
+.LOG-sign-in-text{
+display: flex;
+justify-content: center;
+margin-bottom: 10vh;
+color: #4a434a;
+}
+
+.LOG-sign-in-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 
 @media (max-width: 1000px) {
   .LM-coverpic {

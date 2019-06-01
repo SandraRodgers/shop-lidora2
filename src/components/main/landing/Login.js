@@ -20,7 +20,7 @@ class Login extends Component {
     super();
     this.state = {
       isSignedIn: false,
-      user: ''
+      user: ""
     };
 
     this.logout = this.logout.bind(this);
@@ -32,7 +32,8 @@ class Login extends Component {
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
 
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.FacebookAuthProvider.PROVIDER_ID
     ],
     // tosUrl and privacyPolicyUrl accept either url string or a callback
     // function.
@@ -46,10 +47,8 @@ class Login extends Component {
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      this.setState({ isSignedIn: !!user, user: user.uid });
-
+      this.setState({ isSignedIn: !!user, user: user });
     });
-   
   }
 
   logout() {
@@ -62,28 +61,29 @@ class Login extends Component {
         var errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
-      this.setState({ isSignedIn: false, user: null });
-    }
+    this.setState({ isSignedIn: false, user: null });
+  }
 
   render() {
-    console.log(this.state.user);
-
+    this.state.user ? console.log(this.state.user) : console.log("no user");
     return (
       <div className="LOG-component">
         {this.state.isSignedIn ? (
           <div className="LOG-signout-button-div">
-          <button onClick={this.logout}
-              className="LOG-signout-button"
-            >
+            <button onClick={this.logout} className="LOG-signout-button">
               Sign Out!
             </button>
           </div>
         ) : (
-          <StyledFirebaseAuth
-            uiConfig={this.uiConfig}
-            firebaseAuth={firebase.auth()}
-     
-          />
+          <div className="LOG-sign-in-container">
+            <h1 className="LOG-sign-in-text">
+              Sign in with Google or Facebook
+            </h1>
+            <StyledFirebaseAuth
+              uiConfig={this.uiConfig}
+              firebaseAuth={firebase.auth()}
+            />
+          </div>
         )}
       </div>
     );
