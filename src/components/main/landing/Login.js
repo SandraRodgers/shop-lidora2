@@ -10,25 +10,21 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 //css
 import "./LandingMain.css";
 
-
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN
-})
-
-
+});
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      isSignedIn: false
+      isSignedIn: false,
+      user: ''
     };
+
+    this.logout = this.logout.bind(this);
   }
-
-  
-  
-
 
   uiConfig = {
     signInFlow: "popup",
@@ -48,31 +44,15 @@ class Login extends Component {
     CredentialHelper: "none"
   };
 
-componentDidMount(){
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({ isSignedIn: !!user });
+
+    });
    
-}
+  }
 
-
-checkUser=()=> {
-  firebase.auth().onAuthStateChanged(function(user) {
-    // console.log(user)
-    if (user) {
-      const info = {
-        displayName: user.displayName,
-        email: user.email,
-        firebaseId: user.uid,
-        profileImg: user.photoURL
-      };
-     this.setState({isSignedIn:!!this.state.isSignedIn})
-    } else {
-      this.setState({isSignedIn:true})
-    }
-  });
-
-}
-
-
-logout() {
+  logout() {
     firebase
       .auth()
       .signOut()
@@ -82,28 +62,27 @@ logout() {
         var errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
-  }
+   console.log(firebase.auth())
+    }
 
   render() {
+    console.log(this.state.user);
 
-    console.log(this.firebase)
     return (
-      <div className="LOG-component"   >
-        {this.state.isSignedIn ===true ? (
-    
-            <div className='LOG-signout-button-div'>
-            <button onClick={()=>console.log('click')} className='LOG-signout-button' >
+      <div className="LOG-component">
+        {this.state.isSignedIn ? (
+          <div className="LOG-signout-button-div">
+          <button onClick={this.logout}
+              className="LOG-signout-button"
+            >
               Sign Out!
             </button>
-</div>
+          </div>
         ) : (
           <StyledFirebaseAuth
             uiConfig={this.uiConfig}
             firebaseAuth={firebase.auth()}
-            onClick={()=>this.checkUser()}
-          
-            // onClick={this.setState({isSignedIn: true})}
-           
+     
           />
         )}
       </div>
