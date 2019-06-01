@@ -8,7 +8,7 @@ const HiddenSideMenu = styled.div`
     ${"" /* justify-content: space-around; */}
     min-height: 100%;
     display: block;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     width: 40%;
     opacity: ${props => (props.open ? "1" : "0")};

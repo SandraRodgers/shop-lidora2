@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import axios from 'axios'
+
+//redux
+import { connect } from "react-redux";
+import {signIn, logOut} from "../../../ducks/reducer"
 
 //firebase
 import firebase from "firebase/app";
@@ -52,12 +55,13 @@ class Login extends Component {
    console.log(prevState.isSignedIn, this.state.isSignedIn)
     if(prevState.isSignedIn === false && this.state.isSignedIn ===true){
       const {displayName, email, uid, photoURL} = this.state.user
-      console.log('post it')
-      axios.post('/api/auth/signin', {display_name: displayName, email:email, firebase_uid: uid, profile_photo: photoURL })
+      this.props.signIn(displayName, email, uid, photoURL)
+     
     }
   }
 
   logout() {
+   
     firebase
       .auth()
       .signOut()
@@ -67,11 +71,15 @@ class Login extends Component {
         var errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
-    this.setState({ isSignedIn: false, user: null });
+    this.setState({ isSignedIn: false, user: null}, ()=> {
+      this.props.logOut()
+    });
+
   }
 
   render() {
-    this.state.user ? console.log(this.state.user) : console.log("no user");
+    console.log(this.props.user)
+    // this.state.user ? console.log(this.state.user) : console.log("no user");
     return (
       <div className="LOG-component">
         {this.state.isSignedIn ? (
@@ -97,4 +105,9 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => state;
+
+export default connect(
+  mapStateToProps,
+  { signIn: signIn, logOut: logOut }
+)(Login);

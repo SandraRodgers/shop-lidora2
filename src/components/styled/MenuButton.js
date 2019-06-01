@@ -17,6 +17,7 @@ import styled from "styled-components";
   
     @media (max-width: 1030px) {
         display: block;
+     
   }
   @media (max-width: 900px) {
    

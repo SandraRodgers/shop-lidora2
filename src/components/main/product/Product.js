@@ -25,6 +25,9 @@ class Product extends Component {
           this.props.getDress(this.state.productInfo[0].dressesid);
         }
       });
+    axios.get('/api/auth/user').then(response => {
+      console.log(response.data)
+    })
   }
 
   render() {

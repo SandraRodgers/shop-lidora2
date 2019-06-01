@@ -41,10 +41,10 @@ class NavMain extends React.Component {
     };
   }
 
-  nav = React.createRef();
 
   showSideMenu = () => {
     this.setState({ sideMenu: !this.state.sideMenu });
+
   };
 
   showMenu = () => {
@@ -52,11 +52,15 @@ class NavMain extends React.Component {
   };
 
   render() {
-    console.log(this.state.scrolling);
+    
+
+    let position;
+    this.state.sideMenu === true ? position = 'fixed' : position = 'sticky'
+
     return (
       <div
         className="NM-container"
-     
+        style={{position: position}}
       >
         <Bag open={this.props.bagIsOpen} />
         <Nav>
