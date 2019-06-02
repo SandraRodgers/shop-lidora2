@@ -1,5 +1,3 @@
-
-
 const signin = (req, res) => {
   const {
     display_name,
@@ -29,6 +27,7 @@ const signin = (req, res) => {
               displayName: response[0].display_name,
               email: response[0].email,
               isadmin: response[0].isadmin,
+              sessionid: req.sessionID,
               cart: [],
               total: 0.0
             };
@@ -41,6 +40,7 @@ const signin = (req, res) => {
           displayName: response[0].display_name,
           email: response[0].email,
           isadmin: response[0].isadmin,
+          sessionid: req.sessionID,
           cart: [],
           total: 0.0
         };
@@ -53,7 +53,7 @@ const signin = (req, res) => {
 };
 
 const getUser = (req, res) => {
-  console.log("hit the back");
+  console.log("sessionID:" + req.sessionID)
   if (req.session.user) {
     res.json(req.session.user);
   } else {

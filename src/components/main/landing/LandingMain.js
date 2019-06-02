@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
 
-
+//redux
+import { connect } from "react-redux";
+import { getUserSession } from "../../../ducks/reducer";
 
 //css
 import "./LandingMain.css";
@@ -14,26 +15,23 @@ import coverpic from "../../../assets/shop-lidora.jpeg";
 import Link from "../../styled/Link";
 import Paragraph from "../../styled/Paragraph";
 
-
-
-
-
-
 class LandingMain extends Component {
-  constructor(props){
-    super(props)
-      this.state = {
-        open: false,
-        signedIn: false,
-        profile: []
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      signedIn: false,
+      profile: []
+    };
   }
 
+  componentDidMount() {
+    this.props.getUserSession();
+  }
 
   render() {
     return (
       <div className="LM-component">
-
         {/* LEFT COLUMN */}
         <div className="LM-left-column">
           <img className="LM-logo" alt="logo" src={logo} />
@@ -50,11 +48,18 @@ class LandingMain extends Component {
 
         {/* RIGHT COLUMN */}
         <div className="LM-right-column">
-          <img alt ="coverpic" src={coverpic} className="LM-coverpic" />
+          <img alt="coverpic" src={coverpic} className="LM-coverpic" />
         </div>
       </div>
     );
   }
 }
 
-export default LandingMain;
+const mapStateToProps = state => state;
+
+export default connect(
+  mapStateToProps,
+  {
+    getUserSession: getUserSession
+  }
+)(LandingMain);

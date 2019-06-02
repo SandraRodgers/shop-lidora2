@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { getDress, getUserSession } from "../../../ducks/reducer";
+import { getDress, getUserSession, addToCart } from "../../../ducks/reducer";
 import "./product.css";
 
 class Product extends Component {
@@ -13,6 +13,7 @@ class Product extends Component {
   }
 
   componentDidMount() {
+    this.props.getUserSession()
     axios
       .get(`/api/product/${this.props.match.params.id}`)
       .then(response => {
@@ -28,7 +29,8 @@ class Product extends Component {
   }
 
   render() {
-    console.log(this.props.user)
+    console.log(this.props.user.cart)
+    console.log(this.props.user.total)
       let toggleBag;
     
     this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
@@ -85,7 +87,7 @@ class Product extends Component {
               </div>
             )}
               <div className='product-add-to-bag-button-container'>
-            <button onClick={this.props.getUserSession} className='product-add-to-bag-button'>ADD TO BAG</button>
+              {this.props.currentProduct[0] && <button onClick={()=>this.props.addToCart(this.props.currentProduct[0], this.props.currentProduct[0].price)} className='product-add-to-bag-button'>ADD TO BAG</button>}
             </div>
           </div>
         </div>
@@ -99,6 +101,7 @@ const mapStateToProps = state => state;
 export default connect(
   mapStateToProps,
   { getDress: getDress,
-     getUserSession: getUserSession 
+     getUserSession: getUserSession,
+     addToCart: addToCart 
     }
 )(Product);

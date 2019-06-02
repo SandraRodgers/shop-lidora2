@@ -5,19 +5,27 @@ const initialState = {
   dresses: [],
   currentProduct: [],
   bagIsOpen: false,
-  user: {},
-  userSession: []
-};
+  user: [],
+}
 
+//get product data
 const GET_DRESSES = "GET_DRESSES";
 const GET_DRESS = "GET_DRESS";
+
+//UI 
 const OPEN_BAG = "OPEN_BAG";
+
+//authentication
 const SIGN_IN = "SIGN_IN";
 const LOG_OUT = "LOG_OUT";
 const GET_USER_SESSION = "GET_USER_SESSION";
 
+//cart 
+const ADD_TO_CART = "ADD_TO_CART"
+const REMOVE_FROM_CART = "REMOVE_FROM_CART"
+
 export default function reducer(state = initialState, action) {
-  console.log(action);
+  console.log(state);
   switch (action.type) {
     case `${GET_DRESSES}_FULFILLED`:
       return { ...state, dresses: action.payload.data };
@@ -31,11 +39,14 @@ export default function reducer(state = initialState, action) {
     case `${SIGN_IN}_FULFILLED`:
       return { ...state, user: action.payload.data };
 
-    case `${LOG_OUT}`:
+    case `${LOG_OUT}_FULFILLED`:
       return { ...state, user: action.payload.data };
 
-    case `${GET_USER_SESSION}`:
+    case `${GET_USER_SESSION}_FULFILLED`:
       return { ...state, user: action.payload.data };
+    
+    case `${ADD_TO_CART}`:
+      return {...state, user: action.payload.data}  
 
     default:
       return state;
@@ -85,6 +96,22 @@ export function logOut() {
 export function getUserSession() {
   return {
     type: GET_USER_SESSION,
-    payload: axios.get("/api/auth/user")
+    payload: axios.get("/api/auth/user").catch((err) => err)
   };
+}
+
+export function addToCart(product, price) {
+  return {
+    type: ADD_TO_CART,
+    payload: axios.post("/api/cart", {
+      product : product,
+      price: price
+    })
+  }
+}
+
+
+
+export function removeFromCart(){
+
 }
