@@ -15,7 +15,7 @@ import "./Bag.css"
 
 class Bag extends Component{
     render(){
-      
+      console.log(this.props.user)
         return(
             <div className= 'bag-container'>
          

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 //redux
 import { connect } from "react-redux";
-import {signIn, logOut} from "../../../ducks/reducer"
+import { signIn, logOut } from "../../../ducks/reducer";
 
 //firebase
 import firebase from "firebase/app";
@@ -19,9 +19,6 @@ firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN
 });
-
-
-
 
 class Login extends Component {
   constructor() {
@@ -48,38 +45,27 @@ class Login extends Component {
     CredentialHelper: "none"
   };
 
-  
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         // User is signed in.
         this.setState({ isSignedIn: !!user, user: user });
-
       } else {
         // No user is signed in.
-        console.log('no user')
+        console.log("no user");
       }
-
-     
-     
-      
-      
     });
-
-   
   }
 
-  componentDidUpdate(prevProps, prevState){
-   console.log(prevState.isSignedIn, this.state.isSignedIn)
-    if(prevState.isSignedIn === false && this.state.isSignedIn ===true){
-      const {displayName, email, uid, photoURL} = this.state.user
-      this.props.signIn(displayName, email, uid, photoURL)
-     
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevState.isSignedIn, this.state.isSignedIn);
+    if (prevState.isSignedIn === false && this.state.isSignedIn === true) {
+      const { displayName, email, uid, photoURL } = this.state.user;
+      this.props.signIn(displayName, email, uid, photoURL);
     }
   }
 
   logout() {
-   
     firebase
       .auth()
       .signOut()
@@ -89,16 +75,13 @@ class Login extends Component {
         var errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
-    this.setState({ isSignedIn: false, user: null}, ()=> {
-      this.props.logOut()
+    this.setState({ isSignedIn: false, user: null }, () => {
+      this.props.logOut();
     });
-
   }
 
   render() {
-    console.log(this.state.user)
-
-    
+    console.log(this.state.user);
 
     // this.state.user ? console.log(this.state.user) : console.log("no user");
     return (
@@ -117,7 +100,6 @@ class Login extends Component {
             <StyledFirebaseAuth
               uiConfig={this.uiConfig}
               firebaseAuth={firebase.auth()}
-             
             />
           </div>
         )}
@@ -130,7 +112,8 @@ const mapStateToProps = state => state;
 
 export default connect(
   mapStateToProps,
-  { 
-    signIn: signIn, logOut: logOut 
+  {
+    signIn: signIn,
+    logOut: logOut
   }
 )(Login);

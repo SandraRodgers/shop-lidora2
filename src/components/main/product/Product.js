@@ -28,7 +28,7 @@ class Product extends Component {
   }
 
   render() {
-    console.log(this.props.userSession)
+    console.log(this.props.user)
       let toggleBag;
     
     this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
