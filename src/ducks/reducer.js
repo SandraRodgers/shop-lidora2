@@ -5,7 +5,8 @@ const initialState = {
   dresses: [],
   currentProduct: [],
   bagIsOpen: false,
-  user: {}
+  user: {},
+  userSession: []
 };
 
 const GET_DRESSES = "GET_DRESSES";
@@ -13,8 +14,11 @@ const GET_DRESS = "GET_DRESS";
 const OPEN_BAG = "OPEN_BAG";
 const SIGN_IN = "SIGN_IN";
 const LOG_OUT = "LOG_OUT"
+const GET_USER_SESSION = "GET_USER_SESSION"
+
 
 export default function reducer(state = initialState, action) {
+ 
   switch (action.type) {
     case `${GET_DRESSES}_FULFILLED`:
       return { ...state, dresses: action.payload.data };
@@ -30,6 +34,9 @@ export default function reducer(state = initialState, action) {
     
     case `${LOG_OUT}`:
     return {...state, user: {}}
+
+    case `${GET_USER_SESSION}`:
+    return {...state, userSession: action.payload.data}
 
       default:
       return state;
@@ -68,6 +75,13 @@ export function logOut(user){
   return{
     type: LOG_OUT,
     payload: user
+  }
+}
+
+export function getUserSession(){
+  return {
+    type: GET_USER_SESSION,
+    payload: axios.get('/api/auth/user')
   }
 }
 

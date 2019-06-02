@@ -7,39 +7,27 @@ import "../shop.css";
 class Dresses extends React.Component {
   constructor(props) {
     super(props);
- 
+
     this.state = { productInfo: [] };
-    this.linkRef = React.createRef();
-    this.focusLink = this.focusLink.bind(this)
   }
   componentDidMount() {
     this.props.getDresses();
   }
-  
-  focusLink() {
-    console.log('focus')
-    // Explicitly focus the text input using the raw DOM API
-    // Note: we're accessing "current" to get the DOM node
-    this.linkRef.current.focus();
-  }
 
   render() {
-  
     let toggleBag;
-    
+
     this.props.bagIsOpen === true ? (toggleBag = 0) : (toggleBag = 1);
-   
-    let dressList = this.props.dresses.map((element) => {
-      
+
+    let dressList = this.props.dresses.map(element => {
       return (
         <div
           style={{ zIndex: toggleBag }}
           className="product-container"
           key={element.productid}
-         
-          ref={this.linkRef} 
+          ref={this.linkRef}
         >
-          <Link  onClick={() =>this.focusLink()}   to={`/products/${element.productid}`}>
+          <Link to={`/products/${element.productid}`}>
             <img className="product-photo" src={element.image} alt="" />
           </Link>
 

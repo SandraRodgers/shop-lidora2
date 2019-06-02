@@ -20,6 +20,9 @@ firebase.initializeApp({
   authDomain: process.env.REACT_APP_AUTH_DOMAIN
 });
 
+
+
+
 class Login extends Component {
   constructor() {
     super();
@@ -45,10 +48,25 @@ class Login extends Component {
     CredentialHelper: "none"
   };
 
+  
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      this.setState({ isSignedIn: !!user, user: user });
+      if (user) {
+        // User is signed in.
+        this.setState({ isSignedIn: !!user, user: user });
+
+      } else {
+        // No user is signed in.
+        console.log('no user')
+      }
+
+     
+     
+      
+      
     });
+
+   
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -78,7 +96,10 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props.user)
+    console.log(this.state.user)
+
+    
+
     // this.state.user ? console.log(this.state.user) : console.log("no user");
     return (
       <div className="LOG-component">
@@ -109,5 +130,7 @@ const mapStateToProps = state => state;
 
 export default connect(
   mapStateToProps,
-  { signIn: signIn, logOut: logOut }
+  { 
+    signIn: signIn, logOut: logOut 
+  }
 )(Login);

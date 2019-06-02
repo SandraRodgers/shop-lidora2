@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { getDress } from "../../../ducks/reducer";
+import { getDress, getUserSession } from "../../../ducks/reducer";
 import "./product.css";
 
 class Product extends Component {
@@ -25,13 +25,10 @@ class Product extends Component {
           this.props.getDress(this.state.productInfo[0].dressesid);
         }
       });
-    axios.get('/api/auth/user').then(response => {
-      console.log(response.data)
-    })
   }
 
   render() {
-    
+    console.log(this.props.userSession)
       let toggleBag;
     
     this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
@@ -50,9 +47,9 @@ class Product extends Component {
           </div>
           <div className="column2">
             {this.props.currentProduct[0] && (
-              <p className="product-title">
+              <div className="product-title">
                 {this.props.currentProduct[0].name}
-              </p>
+              </div>
             )}
             {this.props.currentProduct[0] && (
               <div className="product-description">
@@ -61,15 +58,15 @@ class Product extends Component {
             )}
 
             {this.props.currentProduct[0] && (
-              <p className="product-price-div">
+              <div className="product-price-div">
                 Price:{" "}
                 <div className="product-price">
                   ${this.props.currentProduct[0].price}
                 </div>{" "}
-              </p>
+              </div>
             )}
             {this.props.currentProduct[0] && (
-              <p className="product-size-options">
+              <div className="product-size-options">
                 <div className="product-size-heading">Size: </div>
 
                 <select style={{zIndex: toggleBag}} className="product-select">
@@ -85,21 +82,11 @@ class Product extends Component {
                   <option>5</option>
                   <option>6</option>
                 </select>
-              </p>
+              </div>
             )}
-            
-            {/* {this.props.currentProduct[0] && 
-            <button
-              class="snipcart-add-item"
-              data-item-id={this.props.match.params.id}
-              data-item-name={this.props.currentProduct[0].name}
-              data-item-price={this.props.currentProduct[0].price}
-              // data-item-weight="20"
-              // data-item-url="http://myapp.com/products/bacon"
-              data-item-description={this.props.currentProduct[0].description}
-            >
-              Add to bag
-            </button>} */}
+              <div className='product-add-to-bag-button-container'>
+            <button onClick={this.props.getUserSession} className='product-add-to-bag-button'>ADD TO BAG</button>
+            </div>
           </div>
         </div>
       </div>
@@ -111,5 +98,7 @@ const mapStateToProps = state => state;
 
 export default connect(
   mapStateToProps,
-  { getDress: getDress }
+  { getDress: getDress,
+     getUserSession: getUserSession 
+    }
 )(Product);

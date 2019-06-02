@@ -4,7 +4,7 @@
 
 .column1,
 .column2 {
-  margin-top: 15vh;
+  margin-top: 5vh;
 }
 
 .column1 {
@@ -15,6 +15,7 @@
   padding: 10vh;
   font-size: 3vh;
   margin-left: 10vh;
+  
 }
 
 .product-title {
@@ -47,13 +48,15 @@
   display: flex;
   font-family: 'Zilla Slab';
   justify-content: space-between;
-  padding-right: 3vw;
+  /* padding-right: 3vw; */
+  margin-bottom:1.5em;
+  
 }
 
 .product-size-options {
   display: flex;
   justify-content: space-between;
-  padding-right: 3vw;
+  /* padding-right: 3vw; */
 
 }
 
@@ -62,7 +65,7 @@
     margin-top: 10vh;
     height: 20vh;
     
-    padding-right: 3vw;
+    /* padding-right: 3vw; */
 }
 
 .product-option {
@@ -93,4 +96,26 @@
 select.product-select{
     font-family: 'Zilla Slab';
 
+}
+
+.product-add-to-bag-button-container{
+  display: flex;
+  justify-content: center;
+}
+
+.product-add-to-bag-button{
+  margin-top: 15vh;
+  background-color: none;
+  border: solid 1px #3ca6cd;
+  width: 100%;
+  height: 6vh;
+  font-family: Cousine;
+  font-size: .66em;
+}
+
+
+.product-add-to-bag-button:hover{
+  background-color: #3ca6cd;
+  color: white;
+  
 }

@@ -24,12 +24,10 @@ module.exports = {
       });
   },
   getDress: (req, res) => {
-    console.log(req.params);
     const dbInstance = req.app.get("db");
     dbInstance
       .getDress(req.params.id)
       .then(response => {
-        console.log(response);
         res.status(200).json(response);
       })
       .catch(error => {
