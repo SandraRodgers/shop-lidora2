@@ -45,9 +45,11 @@ export default function reducer(state = initialState, action) {
     case `${GET_USER_SESSION}_FULFILLED`:
       return { ...state, user: action.payload.data };
     
-    case `${ADD_TO_CART}`:
+    case `${ADD_TO_CART}_FULFILLED`:
       return {...state, user: action.payload.data}  
 
+    case `${REMOVE_FROM_CART}_FULFILLED`:
+      return {...state, user: action.payload.data}
     default:
       return state;
   }
@@ -110,8 +112,9 @@ export function addToCart(product, price) {
   }
 }
 
-
-
-export function removeFromCart(){
-
+export function removeFromCart(productName){
+  return {
+    type: REMOVE_FROM_CART,
+    payload: axios.delete(`/api/cart/${productName}`)
+  }
 }

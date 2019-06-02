@@ -10,7 +10,7 @@ app.use(json());
 const {addDress, createProduct} = require('./controllers/createProductsController')
 const {getProductInfo, getDresses, getDress} = require('./controllers/getProductsController')
 const {signin, getUser, logout} = require('./controllers/authenticationController')
-const {addToCart} = require('./controllers/cartController')
+const {addToCart, removeFromCart} = require('./controllers/cartController')
 
 //express session
 const pgSession = require('connect-pg-simple')(session);
@@ -47,6 +47,7 @@ app.post("/api/auth/signin", signin )
 app.get("/api/auth/user", getUser);
 app.get("/api/auth/logout", logout)
 app.post("/api/cart", addToCart)
+app.delete("/api/cart/:productName", removeFromCart)
 
 
 app.listen(4000, () => {

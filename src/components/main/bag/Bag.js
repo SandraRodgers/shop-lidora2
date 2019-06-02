@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 
+import BagItem from "./BagItem"
+
 //redux
 import { connect } from "react-redux";
-import {openBag} from "../../../ducks/reducer"
+import {openBag, getUserSession} from "../../../ducks/reducer"
 
 //styled components
 import BagSideMenu from "../../styled/BagSideMenu"
@@ -14,7 +16,13 @@ import bagIcon from "../../../assets/shopping-bag.png"
 import "./Bag.css"
 
 class Bag extends Component{
+
+    componentDidMount(){
+    this.props.getUserSession()
+    console.log(this.props.user)
+    }
     render(){
+        
       console.log(this.props.user)
         return(
             <div className= 'bag-container'>
@@ -25,7 +33,15 @@ class Bag extends Component{
                         <img alt='bag-icon' className='BAG-bag-icon' src={bagIcon}/>
                         <div className='BAG-close-button' onClick={()=>this.props.openBag()}>CLOSE</div>
                     </div>
-                    <div className='BAG-item-components'></div>
+                    <div className='BAG-item-components'>
+                       {this.props.user.cart && this.props.user.cart.map((product, index)=>{
+                           return (
+                            <BagItem key={index} product={product} index={index} />
+                           )
+                       })}
+                        
+                   
+                    </div>
                 </BagSideMenu>
            
         
@@ -38,6 +54,6 @@ const mapStateToProps = state => state;
 
 export default connect(
   mapStateToProps,
-  { openBag: openBag }
+  { openBag: openBag, getUserSession: getUserSession }
 )(Bag);
 

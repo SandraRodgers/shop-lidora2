@@ -10,9 +10,9 @@
 .BAG-top-icons{
     display: flex;
     justify-content: space-between;
-    margin-top: 10vh;
-    margin-right: 7vw;
-    margin-left: 7vw;
+    margin-top: 8vh;
+    margin-right: 5vw;
+    margin-left: 5vw;
     font-family: Cousine;
     font-size: .9em;
     
@@ -28,4 +28,55 @@
 .BAG-bag-icon{
     height: 6vh;
     width: 6vh;
+}
+
+/* Bag Item Component */
+
+.BAG-item-components{
+    display: flex;
+    flex-direction: column;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    margin-top: 5vh;
+    
+}
+
+.BAGITEM-container{
+    display: flex;
+    margin-top:3vh;
+    border-bottom: solid 1px #3ca6cd;
+    padding-bottom: 2em;
+}
+
+.BAG-product-details-container{
+    width: 28vw;
+    margin-left: 3vw;
+    font-family: Cousine;
+    font-size: .9em;
+}
+
+.BAG-product-details-top-part{
+    display: flex;
+    flex-direction: column;
+    height: 15.5vh;
+
+}
+
+.BAG-ITEM-name{
+    font-weight: 900;
+    font-size: 1.2em;
+    font-family: 'Zilla Slab';
+}
+
+.BAG-ITEM-img{
+    width: 9vw;
+    height: 18vh;
+}
+
+.BAG-name-and-delete-row{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+
+
 }

@@ -29,8 +29,7 @@ class Product extends Component {
   }
 
   render() {
-    console.log(this.props.user.cart)
-    console.log(this.props.user.total)
+    console.log(this.props.match)
       let toggleBag;
     
     this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
