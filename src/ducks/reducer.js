@@ -25,7 +25,7 @@ const ADD_TO_CART = "ADD_TO_CART"
 const REMOVE_FROM_CART = "REMOVE_FROM_CART"
 
 export default function reducer(state = initialState, action) {
-  console.log(state);
+  
   switch (action.type) {
     case `${GET_DRESSES}_FULFILLED`:
       return { ...state, dresses: action.payload.data };

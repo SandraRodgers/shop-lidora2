@@ -37,11 +37,15 @@ class Bag extends Component{
                        {this.props.user.cart && this.props.user.cart.map((product, index)=>{
                            return (
                             <BagItem key={index} product={product} index={index} />
+                            
                            )
                        })}
-                        
-                   
+                       <div>
+                       <h3>Total: {this.props.user.total} </h3>
+                       <button className="BAG-checkout-button">CHECKOUT</button>
+                       </div>
                     </div>
+                 
                 </BagSideMenu>
            
         
