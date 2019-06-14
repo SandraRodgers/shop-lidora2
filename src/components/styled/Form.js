@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   padding-top: 5vh;
-  margin-top: 25vh;
+  margin-top: 10vh;
   width: 70vw;
   min-height: 100vh;
   display: flex;

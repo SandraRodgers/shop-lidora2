@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { getDress, getUserSession, addToCart } from "../../../ducks/reducer";
+import { getDress, getBonnet, getUserSession, addToCart } from "../../../ducks/reducer";
 import "./product.css";
 
 class Product extends Component {
@@ -22,9 +22,14 @@ class Product extends Component {
         //we get the productid from the component and set state so that productInfo contains that product (object)
       })
       .then(() => {
+        console.log(this.state.productInfo)
         if (this.state.productInfo[0].category === "dresses") {
           this.props.getDress(this.state.productInfo[0].dressesid);
         }
+        if(this.state.productInfo[0].category === "bonnets") {
+          this.props.getBonnet(this.state.productInfo[0].bonnetsid);
+        }
+    
       });
   }
 
@@ -100,6 +105,7 @@ const mapStateToProps = state => state;
 export default connect(
   mapStateToProps,
   { getDress: getDress,
+    getBonnet: getBonnet,
      getUserSession: getUserSession,
      addToCart: addToCart 
     }
