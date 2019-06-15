@@ -16,7 +16,7 @@ module.exports = {
     dbInstance
       .getBonnets()
       .then(response => {
-        console.log(response)
+        console.log(response);
         res.status(200).json(response);
       })
       .catch(error => {
@@ -24,6 +24,21 @@ module.exports = {
         res.status(500).send(error);
       });
   },
+
+  getShorts: (req, res) => {
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getShorts()
+      .then(response => {
+        console.log(response);
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
+  },
+
   getProductInfo: (req, res) => {
     const dbInstance = req.app.get("db");
     dbInstance
@@ -52,6 +67,18 @@ module.exports = {
     const dbInstance = req.app.get("db");
     dbInstance
       .getBonnet(req.params.id)
+      .then(response => {
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
+  },
+  getShort: (req, res) => {
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getShort(req.params.id)
       .then(response => {
         res.status(200).json(response);
       })

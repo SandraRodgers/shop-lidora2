@@ -46,6 +46,7 @@ import Contact from "./components/main/contact/Contact"
 //Forms
 import FormDresses from "../src/components/admin/create-products/FormDresses"
 import FormBonnets from "../src/components/admin/create-products/FormBonnets"
+import FormShorts from "../src/components/admin/create-products/FormShorts"
 
 export default (
   <Switch>
@@ -78,5 +79,6 @@ export default (
     {/* AdminPages */}
     <Route path="/admin/form/dresses" exact component={FormDresses} />
     <Route path="/admin/form/bonnets" exact component={FormBonnets} />
+    <Route path="/admin/form/shorts" exact component={FormShorts} />
   </Switch>
 );

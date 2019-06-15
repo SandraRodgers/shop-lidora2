@@ -1,5 +1,6 @@
 let dressesID = [];
 let bonnetsID = []
+let shortsID = []
 
 
 module.exports = {
@@ -74,17 +75,52 @@ module.exports = {
         res.status(500).send(error);
       });
   },
+  addShorts: (req, res) => {
+
+    const dbInstance = req.app.get("db");
+    const {
+      name,
+      price,
+      fabric,
+      customize,
+      image,
+      location,
+      description
+    } = req.body;
+    dbInstance
+      .addShorts([
+        name,
+        price,
+        fabric,
+        customize,
+        image,
+        location,
+        description
+      ])
+      .then(response => {
+    
+        shortsID.push(response[0].shortsid);
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
+  },
   createProduct: (req, res) => {
+    console.log(req.body)
     const dbInstance = req.app.get("db");
     const category = req.body.category
     let dressesid = dressesID[0];
     let bonnetsid = bonnetsID[0]
+    let shortsid = shortsID[0]
     
     dbInstance
-      .createProduct([dressesid, bonnetsid, category])
+      .createProduct([dressesid, bonnetsid, shortsid, category])
       .then(response => {
         dressesID=[] 
         bonnetsID = []
+        shortsID = []
         res.status(200).json(response);
       })
       .catch(error => {

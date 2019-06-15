@@ -1,0 +1,1 @@
+SELECT * FROM shorts WHERE shortsid = $1;

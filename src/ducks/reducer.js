@@ -4,6 +4,7 @@ const initialState = {
   productInfo: [],
   dresses: [],
   bonnets: [],
+  shorts:[],
   currentProduct: [],
   bagIsOpen: false,
   user: []
@@ -14,6 +15,8 @@ const GET_DRESSES = "GET_DRESSES";
 const GET_DRESS = "GET_DRESS";
 const GET_BONNETS = "GET_BONNETS";
 const GET_BONNET = "GET_BONNET"
+const GET_SHORTS = "GET_SHORTS";
+const GET_SHORT = "GET_SHORT"
 
 //UI
 const OPEN_BAG = "OPEN_BAG";
@@ -39,6 +42,12 @@ export default function reducer(state = initialState, action) {
       return { ...state, bonnets: action.payload.data };
 
       case `${GET_BONNET}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+      case `${GET_SHORTS}_FULFILLED`:
+      return { ...state, shorts: action.payload.data };
+
+      case `${GET_SHORT}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
     case `${OPEN_BAG}`:
@@ -88,6 +97,20 @@ export function getBonnet(bonnetsid) {
   return {
     type: GET_BONNET,
     payload: axios.get(`/api/bonnet/${bonnetsid}`)
+  };
+}
+
+export function getShorts() {
+  return {
+    type: GET_SHORTS,
+    payload: axios.get("/api/admin/getShorts")
+  };
+}
+
+export function getShort(shortsid) {
+  return {
+    type: GET_SHORT,
+    payload: axios.get(`/api/short/${shortsid}`)
   };
 }
 
