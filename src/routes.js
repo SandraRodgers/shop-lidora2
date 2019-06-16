@@ -47,6 +47,9 @@ import Contact from "./components/main/contact/Contact"
 import FormDresses from "../src/components/admin/create-products/FormDresses"
 import FormBonnets from "../src/components/admin/create-products/FormBonnets"
 import FormShorts from "../src/components/admin/create-products/FormShorts"
+import FormBloomers from "../src/components/admin/create-products/FormBloomers"
+import FormSkirts from "../src/components/admin/create-products/FormSkirts"
+import FormVests from "../src/components/admin/create-products/FormVests"
 
 export default (
   <Switch>
@@ -80,5 +83,8 @@ export default (
     <Route path="/admin/form/dresses" exact component={FormDresses} />
     <Route path="/admin/form/bonnets" exact component={FormBonnets} />
     <Route path="/admin/form/shorts" exact component={FormShorts} />
+    <Route path="/admin/form/bloomers" exact component={FormBloomers} />
+    <Route path="/admin/form/skirts" exact component={FormSkirts} />
+    <Route path="/admin/form/vests" exact component={FormVests} />
   </Switch>
 );

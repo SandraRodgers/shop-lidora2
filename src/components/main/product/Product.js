@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { getDress, getBonnet, getShort, getUserSession, addToCart } from "../../../ducks/reducer";
+import { getDress, getBonnet, getShort, getBloomer, getSkirt, getVest, getUserSession, addToCart } from "../../../ducks/reducer";
 import "./product.css";
 
 class Product extends Component {
@@ -31,6 +31,15 @@ class Product extends Component {
         }
         if(this.state.productInfo[0].category === "shorts") {
           this.props.getShort(this.state.productInfo[0].shortsid);
+        }
+        if(this.state.productInfo[0].category === "bloomers") {
+          this.props.getBloomer(this.state.productInfo[0].bloomersid);
+        }
+        if(this.state.productInfo[0].category === "skirts") {
+          this.props.getSkirt(this.state.productInfo[0].skirtsid);
+        }
+        if(this.state.productInfo[0].category === "vests") {
+          this.props.getVest(this.state.productInfo[0].vestsid);
         }
     
       });
@@ -110,6 +119,9 @@ export default connect(
   { getDress: getDress,
     getBonnet: getBonnet,
     getShort: getShort,
+    getBloomer: getBloomer,
+    getSkirt: getSkirt,
+    getVest: getVest,
      getUserSession: getUserSession,
      addToCart: addToCart 
     }

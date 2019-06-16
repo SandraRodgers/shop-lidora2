@@ -7,8 +7,8 @@ const app = express();
 app.use(json());
 
 //controllers
-const {addDress, addBonnet, addShorts, createProduct} = require('./controllers/createProductsController')
-const {getProductInfo, getDresses, getBonnets, getShorts, getDress, getBonnet, getShort} = require('./controllers/getProductsController')
+const {addDress, addBonnet, addShorts, addBloomers, addSkirt, addVest, createProduct} = require('./controllers/createProductsController')
+const {getProductInfo, getDresses, getBonnets, getShorts, getBloomers, getSkirts, getVests, getDress, getBonnet, getShort, getBloomer, getSkirt, getVest} = require('./controllers/getProductsController')
 const {signin, getUser, logout} = require('./controllers/authenticationController')
 const {addToCart, removeFromCart} = require('./controllers/cartController')
 
@@ -41,14 +41,23 @@ massive(process.env.CONNECTION_STRING).then(db => {
 app.post("/api/admin/addDress", addDress);
 app.post("/api/admin/addBonnet", addBonnet)
 app.post("/api/admin/addShorts", addShorts)
+app.post ("/api/admin/addBloomers", addBloomers)
+app.post ("/api/admin/addSkirt", addSkirt)
+app.post ("/api/admin/addVest", addVest)
 app.get("/api/admin/getDresses", getDresses)
 app.get("/api/admin/getBonnets", getBonnets)
 app.get("/api/admin/getShorts", getShorts)
+app.get("/api/admin/getBloomers", getBloomers)
+app.get("/api/admin/getSkirts", getSkirts)
+app.get("/api/admin/getVests", getVests)
 app.post("/api/admin/createProduct", createProduct)
 app.get("/api/product/:id", getProductInfo);
 app.get("/api/dress/:id", getDress);
 app.get("/api/bonnet/:id", getBonnet);
 app.get("/api/short/:id", getShort);
+app.get("/api/bloomer/:id", getBloomer);
+app.get("/api/skirt/:id", getSkirt);
+app.get("/api/vest/:id", getVest);
 app.post("/api/auth/signin", signin )
 app.get("/api/auth/user", getUser);
 app.get("/api/auth/logout", logout)

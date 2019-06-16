@@ -4,7 +4,10 @@ const initialState = {
   productInfo: [],
   dresses: [],
   bonnets: [],
-  shorts:[],
+  shorts: [],
+  bloomers: [],
+  skirts: [],
+  vests: [],
   currentProduct: [],
   bagIsOpen: false,
   user: []
@@ -14,9 +17,15 @@ const initialState = {
 const GET_DRESSES = "GET_DRESSES";
 const GET_DRESS = "GET_DRESS";
 const GET_BONNETS = "GET_BONNETS";
-const GET_BONNET = "GET_BONNET"
+const GET_BONNET = "GET_BONNET";
 const GET_SHORTS = "GET_SHORTS";
-const GET_SHORT = "GET_SHORT"
+const GET_SHORT = "GET_SHORT";
+const GET_BLOOMERS = "GET_BLOOMERS";
+const GET_BLOOMER = "GET_BLOOMER";
+const GET_SKIRTS = "GET_SKIRTS";
+const GET_SKIRT = "GET_SKIRT";
+const GET_VESTS = "GET_VESTS";
+const GET_VEST = "GET_VEST";
 
 //UI
 const OPEN_BAG = "OPEN_BAG";
@@ -41,13 +50,31 @@ export default function reducer(state = initialState, action) {
     case `${GET_BONNETS}_FULFILLED`:
       return { ...state, bonnets: action.payload.data };
 
-      case `${GET_BONNET}_FULFILLED`:
+    case `${GET_BONNET}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
-      case `${GET_SHORTS}_FULFILLED`:
+    case `${GET_SHORTS}_FULFILLED`:
       return { ...state, shorts: action.payload.data };
 
-      case `${GET_SHORT}_FULFILLED`:
+    case `${GET_SHORT}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+    case `${GET_BLOOMERS}_FULFILLED`:
+      return { ...state, bloomers: action.payload.data };
+
+    case `${GET_BLOOMER}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+    case `${GET_SKIRTS}_FULFILLED`:
+      return { ...state, skirts: action.payload.data };
+
+    case `${GET_SKIRT}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+    case `${GET_VESTS}_FULFILLED`:
+      return { ...state, vests: action.payload.data };
+
+    case `${GET_VEST}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
     case `${OPEN_BAG}`:
@@ -111,6 +138,49 @@ export function getShort(shortsid) {
   return {
     type: GET_SHORT,
     payload: axios.get(`/api/short/${shortsid}`)
+  };
+}
+
+export function getBloomers() {
+  return {
+    type: GET_BLOOMERS,
+    payload: axios.get("/api/admin/getBloomers")
+  };
+}
+
+export function getBloomer(bloomersid) {
+  return {
+    type: GET_SHORT,
+    payload: axios.get(`/api/bloomer/${bloomersid}`)
+  };
+}
+
+export function getSkirts() {
+  return {
+    type: GET_SKIRTS,
+    payload: axios.get("/api/admin/getSkirts")
+  };
+}
+
+export function getSkirt(skirtsid) {
+  return {
+    type: GET_SKIRT,
+    payload: axios.get(`/api/skirt/${skirtsid}`)
+  };
+}
+
+
+export function getVests() {
+  return {
+    type: GET_VESTS,
+    payload: axios.get("/api/admin/getVests")
+  };
+}
+
+export function getVest(vestsid) {
+  return {
+    type: GET_VEST,
+    payload: axios.get(`/api/vest/${vestsid}`)
   };
 }
 

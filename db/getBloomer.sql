@@ -1,0 +1,1 @@
+SELECT * FROM bloomers WHERE bloomersid = $1;
