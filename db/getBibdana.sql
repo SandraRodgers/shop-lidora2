@@ -1,0 +1,1 @@
+SELECT * FROM bibdanas WHERE bibdanasid = $1;

@@ -79,6 +79,28 @@ module.exports = {
       });
   },
 
+  getBowties: (req, res) => {
+
+  },
+  getSuspenders: (req, res) => {
+
+  },
+  getHairbows: (req, res) => {
+
+  },
+  getHeadbands: (req, res) => {
+
+  },
+  getBibdanas: (req, res) => {
+
+  },
+  getBurpcloths: (req, res) => {
+
+  },
+  getDroolpads: (req, res) => {
+
+  },
+
   getProductInfo: (req, res) => {
     const dbInstance = req.app.get("db");
     dbInstance
@@ -162,5 +184,26 @@ module.exports = {
         console.log(error);
         res.status(500).send(error);
       });
-  }
+  },
+  getBowtie: (req, res) => {
+
+  },
+  getSuspender: (req, res) => {
+
+  },
+  getHairbow: (req, res) => {
+
+  },
+  getHeadband: (req, res) => {
+
+  },
+  getBibdana: (req, res) => {
+
+  },
+  getBurpcloth: (req, res) => {
+
+  },
+  getDroolpad: (req, res) => {
+
+  },
 };

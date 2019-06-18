@@ -1,0 +1,1 @@
+SELECT * FROM hairbows WHERE hairbowsid = $1;

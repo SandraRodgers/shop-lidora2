@@ -1,0 +1,1 @@
+SELECT * FROM bowties WHERE bowtiesid = $1;
