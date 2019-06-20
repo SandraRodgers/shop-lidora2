@@ -1,30 +1,30 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getHairbows, openBag } from "../../../../ducks/reducer";
+import { getBurpcloths, openBag } from "../../../../ducks/reducer";
 import "../shop.css";
 
-class Hairbows extends React.Component {
+class BurpCloths extends React.Component {
     constructor(props){
         super(props)
         this.state = {productInfo:[]}
     }
 
     componentDidMount() {
-        this.props.getHairbows();
+        this.props.getBurpcloths();
       }
     render(){
         let toggleBag;
 
         this.props.bagIsOpen === true ? (toggleBag = 0) : (toggleBag = 1);
-  
-        let hairbowsList = this.props.hairbows.map(element => {
+        console.log(this.props.burpcloths)
+        let burpclothsList = this.props.burpcloths.map(element => {
             return (
               <div
                 style={{ zIndex: toggleBag }}
                 className="product-container"
                 key={element.productid}
-       
+ 
               >
                 <Link to={`/products/${element.productid}`}>
                   <img className="product-photo" src={element.image} alt="" />
@@ -46,9 +46,9 @@ class Hairbows extends React.Component {
     });
         return(<div className="store-product-main">
         <div className="product-header">
-          <p className="product">Hairbows</p>
+          <p className="product">Burp Cloths</p>
         </div>
-        <div className="product-rows">{hairbowsList}</div>
+        <div className="product-rows">{burpclothsList}</div>
       </div>)
     }
 
@@ -56,12 +56,12 @@ class Hairbows extends React.Component {
 }
 const mapStateToProps = state => {
     return {
-      hairbows: state.hairbows,
+      burpcloths: state.burpcloths,
       bagIsOpen: state.bagIsOpen
     };
   };
   
   export default connect(
     mapStateToProps,
-    { getHairbows: getHairbows, openBag: openBag }
-  )(Hairbows);
+    { getBurpcloths: getBurpcloths, openBag: openBag }
+  )(BurpCloths);

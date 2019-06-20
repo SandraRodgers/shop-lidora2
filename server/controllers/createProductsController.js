@@ -345,7 +345,8 @@ module.exports = {
     let bibdanasid = bibdanasID[0];
     let burpclothsid = burpclothsID[0];
     let droolpadsid = droolpadsID[0];
-
+    console.log(bibdanasid)
+    
     dbInstance
       .createProduct([
         dressesid,

@@ -8,6 +8,13 @@ const initialState = {
   bloomers: [],
   skirts: [],
   vests: [],
+  bibdanas: [],
+  bowties: [],
+  burpcloths: [],
+  droolpads: [],
+  hairbows: [],
+  headbands: [],
+  suspenders: [],
   currentProduct: [],
   bagIsOpen: false,
   user: []
@@ -26,6 +33,21 @@ const GET_SKIRTS = "GET_SKIRTS";
 const GET_SKIRT = "GET_SKIRT";
 const GET_VESTS = "GET_VESTS";
 const GET_VEST = "GET_VEST";
+const GET_BIBDANA = "GET_BIBDANA"
+const GET_BIBDANAS = "GET_BIBDANAS"
+const GET_BOWTIE = "GET_BOWTIE"
+const GET_BOWTIES = "GET_BOWTIES"
+const GET_BURPCLOTH = "GET_BURPCLOTH"
+const GET_BURPCLOTHS = "GET_BURPCLOTHS"
+const GET_DROOLPAD = "GET_DROOLPAD"
+const GET_DROOLPADS = "GET_DROOLPADS"
+const GET_HAIRBOW = "GET_HAIRBOW"
+const GET_HAIRBOWS = "GET_HAIRBOWS"
+const GET_HEADBAND = "GET_HEADBAND"
+const GET_HEADBANDS = "GET_HEADBANDS"
+const GET_SUSPENDER = "GET_SUSPENDER"
+const GET_SUSPENDERS = "GET_SUSPENDERS"
+
 
 //UI
 const OPEN_BAG = "OPEN_BAG";
@@ -40,6 +62,7 @@ const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 
 export default function reducer(state = initialState, action) {
+  console.log(state)
   switch (action.type) {
     case `${GET_DRESSES}_FULFILLED`:
       return { ...state, dresses: action.payload.data };
@@ -75,6 +98,48 @@ export default function reducer(state = initialState, action) {
       return { ...state, vests: action.payload.data };
 
     case `${GET_VEST}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+      case `${GET_BIBDANAS}_FULFILLED`:
+      return { ...state, bibdanas: action.payload.data };
+
+    case `${GET_BIBDANA}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+      case `${GET_BOWTIES}_FULFILLED`:
+      return { ...state, bowties: action.payload.data };
+
+    case `${GET_BOWTIE}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+      case `${GET_BURPCLOTHS}_FULFILLED`:
+      return { ...state, burpcloths: action.payload.data };
+
+    case `${GET_BURPCLOTH}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+      case `${GET_DROOLPADS}_FULFILLED`:
+      return { ...state, droolpads: action.payload.data };
+
+    case `${GET_DROOLPAD}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+      case `${GET_HAIRBOWS}_FULFILLED`:
+      return { ...state, hairbows: action.payload.data };
+
+    case `${GET_HAIRBOW}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+      case `${GET_HEADBANDS}_FULFILLED`:
+      return { ...state, headbands: action.payload.data };
+
+    case `${GET_HEADBAND}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+      case `${GET_SUSPENDERS}_FULFILLED`:
+      return { ...state, suspenders: action.payload.data };
+
+    case `${GET_SUSPENDER}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
     case `${OPEN_BAG}`:
@@ -181,6 +246,104 @@ export function getVest(vestsid) {
   return {
     type: GET_VEST,
     payload: axios.get(`/api/vest/${vestsid}`)
+  };
+}
+
+  export function getBibdanas() {
+  return {
+    type: GET_BIBDANAS,
+    payload: axios.get("/api/admin/getBibdanas")
+  };
+}
+
+export function getBibdana(bibdanasid) {
+  return {
+    type: GET_BIBDANA,
+    payload: axios.get(`/api/bibdana/${bibdanasid}`)
+  };
+}
+
+export function getBowties() {
+  return {
+    type: GET_BOWTIES,
+    payload: axios.get("/api/admin/getBowties")
+  };
+}
+
+export function getBowtie(bowtiesid) {
+  return {
+    type: GET_BOWTIE,
+    payload: axios.get(`/api/bowtie/${bowtiesid}`)
+  };
+}
+
+export function getBurpcloths() {
+  return {
+    type: GET_BURPCLOTHS,
+    payload: axios.get("/api/admin/getBurpcloths")
+  };
+}
+
+export function getBurpcloth(burpclothsid) {
+  return {
+    type: GET_BURPCLOTH,
+    payload: axios.get(`/api/burpcloth/${burpclothsid}`)
+  };
+}
+
+export function getDroolpads() {
+  return {
+    type: GET_DROOLPADS,
+    payload: axios.get("/api/admin/getDroolpads")
+  };
+}
+
+export function getDroolpad(droolpadsid) {
+  return {
+    type: GET_DROOLPAD,
+    payload: axios.get(`/api/droolpad/${droolpadsid}`)
+  };
+}
+
+export function getHairbows() {
+  return {
+    type: GET_HAIRBOWS,
+    payload: axios.get("/api/admin/getHairbows")
+  };
+}
+
+export function getHairbow(hairbowsid) {
+  return {
+    type: GET_HAIRBOW,
+    payload: axios.get(`/api/hairbow/${hairbowsid}`)
+  };
+}
+
+export function getHeadbands() {
+  return {
+    type: GET_HEADBANDS,
+    payload: axios.get("/api/admin/getHeadbands")
+  };
+}
+
+export function getHeadband(headbandsid) {
+  return {
+    type: GET_HEADBAND,
+    payload: axios.get(`/api/hairband/${headbandsid}`)
+  };
+}
+
+export function getSuspenders() {
+  return {
+    type: GET_SUSPENDERS,
+    payload: axios.get("/api/admin/getSuspenders")
+  };
+}
+
+export function getSuspender(suspendersid) {
+  return {
+    type: GET_SUSPENDER,
+    payload: axios.get(`/api/suspender/${suspendersid}`)
   };
 }
 

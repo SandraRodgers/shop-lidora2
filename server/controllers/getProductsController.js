@@ -80,25 +80,95 @@ module.exports = {
   },
 
   getBowties: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getBowties()
+      .then(response => {
+        console.log(response);
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
   getSuspenders: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getSuspenders()
+      .then(response => {
+        console.log(response);
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
   getHairbows: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getHairbows()
+      .then(response => {
+        console.log(response);
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
   getHeadbands: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getHeadbands()
+      .then(response => {
+        console.log(response);
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
   getBibdanas: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getBibdanas()
+      .then(response => {
+        console.log(response);
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
   getBurpcloths: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getBurpcloths()
+      .then(response => {
+        console.log(response);
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
   getDroolpads: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getDroolpads()
+      .then(response => {
+        console.log(response);
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
 
   getProductInfo: (req, res) => {
@@ -186,24 +256,87 @@ module.exports = {
       });
   },
   getBowtie: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getBowtie(req.params.id)
+      .then(response => {
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
   getSuspender: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getSuspender(req.params.id)
+      .then(response => {
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
   getHairbow: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getHairbow(req.params.id)
+      .then(response => {
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
   getHeadband: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getHeadband(req.params.id)
+      .then(response => {
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
   getBibdana: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getBibdana(req.params.id)
+      .then(response => {
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
   getBurpcloth: (req, res) => {
-
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getBurpcloth(req.params.id)
+      .then(response => {
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   },
   getDroolpad: (req, res) => {
-
-  },
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getDroolpad(req.params.id)
+      .then(response => {
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
+  }
 };
