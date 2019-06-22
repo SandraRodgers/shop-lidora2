@@ -112,6 +112,7 @@ class FormDresses extends Component {
   render() {
     return (
       <div className="form-component-container">
+      <div className="form-title">Add a dress to store inventory</div>
         <Form onSubmit={this.handleSubmit}>
           <Image
             src={this.state.image === "" ? placeholder : this.state.image}

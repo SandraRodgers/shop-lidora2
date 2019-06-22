@@ -1,0 +1,1 @@
+SELECT * FROM burpcloths WHERE burpclothsid = $1;

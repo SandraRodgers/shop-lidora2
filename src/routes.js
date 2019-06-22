@@ -20,7 +20,7 @@ import Hairbows from "./components/main/shop/accessories/Hairbows";
 import Headbands from "./components/main/shop/accessories/Headbands";
 import Suspenders from "./components/main/shop/accessories/Suspenders";
 import Bibdanas from "./components/main/shop/baby/Bibdanas";
-import BurpClothes from "./components/main/shop/baby/BurpClothes";
+import BurpCloths from "./components/main/shop/baby/BurpCloths";
 import DroolPads from "./components/main/shop/baby/DroolPads";
 
 //Product
@@ -45,6 +45,19 @@ import Contact from "./components/main/contact/Contact"
 //ADMIN
 //Forms
 import FormDresses from "../src/components/admin/create-products/FormDresses"
+import FormBonnets from "../src/components/admin/create-products/FormBonnets"
+import FormShorts from "../src/components/admin/create-products/FormShorts"
+import FormBloomers from "../src/components/admin/create-products/FormBloomers"
+import FormSkirts from "../src/components/admin/create-products/FormSkirts"
+import FormVests from "../src/components/admin/create-products/FormVests"
+import FormBibdanas from "../src/components/admin/create-products/FormBibdanas"
+import FormBowties from "../src/components/admin/create-products/FormBowties"
+import FormBurpcloths from "../src/components/admin/create-products/FormBurpcloths"
+import FormDroolpads from "../src/components/admin/create-products/FormDroolpads"
+import FormHairbows from "../src/components/admin/create-products/FormHairbows"
+import FormHeadbands from "../src/components/admin/create-products/FormHeadbands"
+import FormSuspenders from "../src/components/admin/create-products/FormSuspenders"
+
 
 export default (
   <Switch>
@@ -69,12 +82,25 @@ export default (
     <Route path="/shop/headbands" exact component={Headbands} />{" "}
     <Route path="/shop/suspenders" exact component={Suspenders} />
     <Route path="/shop/bibdanas" exact component={Bibdanas} />{" "}
-    <Route path="/shop/burpcloths" exact component={BurpClothes} />
+    <Route path="/shop/burpcloths" exact component={BurpCloths} />
     <Route path="/shop/droolpads" exact component={DroolPads} />
 {/* Product Page */}
     <Route path="/products/:id" exact component={Product} />
 
     {/* AdminPages */}
     <Route path="/admin/form/dresses" exact component={FormDresses} />
+    <Route path="/admin/form/bonnets" exact component={FormBonnets} />
+    <Route path="/admin/form/shorts" exact component={FormShorts} />
+    <Route path="/admin/form/bloomers" exact component={FormBloomers} />
+    <Route path="/admin/form/skirts" exact component={FormSkirts} />
+    <Route path="/admin/form/vests" exact component={FormVests} />
+    <Route path="/admin/form/bibdanas" exact component={FormBibdanas} />
+    <Route path="/admin/form/bowties" exact component={FormBowties} />
+    <Route path="/admin/form/burpcloths" exact component={FormBurpcloths} />
+    <Route path="/admin/form/droolpads" exact component={FormDroolpads} />
+    <Route path="/admin/form/hairbows" exact component={FormHairbows} />
+    <Route path="/admin/form/headbands" exact component={FormHeadbands} />
+    <Route path="/admin/form/suspenders" exact component={FormSuspenders} />
   </Switch>
 );
+

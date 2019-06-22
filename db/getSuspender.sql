@@ -1,0 +1,1 @@
+SELECT * FROM suspenders WHERE suspendersid = $1;

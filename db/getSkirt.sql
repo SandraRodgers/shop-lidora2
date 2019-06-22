@@ -1,0 +1,1 @@
+SELECT * FROM skirts WHERE skirtsid = $1;
