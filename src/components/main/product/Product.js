@@ -94,9 +94,9 @@ class Product extends Component {
   }
 
 
-//Use this componentWillMount to change state in reducer so the this.props.currentProduct does not hold onto the product image. This will help when user navigates back to this page. They will see the updated product image immediately instead of a flash of the previous product image:
+//Use this componentWillUnmount to change state in reducer so the this.props.currentProduct does not hold onto the product image. This will help when user navigates back to this page. They will see the updated product image immediately instead of a flash of the previous product image:
 
-componentWillMount(){
+componentWillUnmount(){
   this.props.updateProduct()
 }
 
