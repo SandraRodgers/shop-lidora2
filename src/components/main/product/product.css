@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  justify-content: center;
 }
 
 .column1,
@@ -8,7 +9,7 @@
 }
 
 .column1 {
-  margin-left: 20vh;
+
 }
 
 .column2 {

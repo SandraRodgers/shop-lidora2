@@ -17,10 +17,12 @@ const initialState = {
   suspenders: [],
   currentProduct: [],
   bagIsOpen: false,
-  user: []
+  user: [],
+  loading: false
 };
 
 //get product data
+const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 const GET_DRESSES = "GET_DRESSES";
 const GET_DRESS = "GET_DRESS";
 const GET_BONNETS = "GET_BONNETS";
@@ -33,21 +35,20 @@ const GET_SKIRTS = "GET_SKIRTS";
 const GET_SKIRT = "GET_SKIRT";
 const GET_VESTS = "GET_VESTS";
 const GET_VEST = "GET_VEST";
-const GET_BIBDANA = "GET_BIBDANA"
-const GET_BIBDANAS = "GET_BIBDANAS"
-const GET_BOWTIE = "GET_BOWTIE"
-const GET_BOWTIES = "GET_BOWTIES"
-const GET_BURPCLOTH = "GET_BURPCLOTH"
-const GET_BURPCLOTHS = "GET_BURPCLOTHS"
-const GET_DROOLPAD = "GET_DROOLPAD"
-const GET_DROOLPADS = "GET_DROOLPADS"
-const GET_HAIRBOW = "GET_HAIRBOW"
-const GET_HAIRBOWS = "GET_HAIRBOWS"
-const GET_HEADBAND = "GET_HEADBAND"
-const GET_HEADBANDS = "GET_HEADBANDS"
-const GET_SUSPENDER = "GET_SUSPENDER"
-const GET_SUSPENDERS = "GET_SUSPENDERS"
-
+const GET_BIBDANA = "GET_BIBDANA";
+const GET_BIBDANAS = "GET_BIBDANAS";
+const GET_BOWTIE = "GET_BOWTIE";
+const GET_BOWTIES = "GET_BOWTIES";
+const GET_BURPCLOTH = "GET_BURPCLOTH";
+const GET_BURPCLOTHS = "GET_BURPCLOTHS";
+const GET_DROOLPAD = "GET_DROOLPAD";
+const GET_DROOLPADS = "GET_DROOLPADS";
+const GET_HAIRBOW = "GET_HAIRBOW";
+const GET_HAIRBOWS = "GET_HAIRBOWS";
+const GET_HEADBAND = "GET_HEADBAND";
+const GET_HEADBANDS = "GET_HEADBANDS";
+const GET_SUSPENDER = "GET_SUSPENDER";
+const GET_SUSPENDERS = "GET_SUSPENDERS";
 
 //UI
 const OPEN_BAG = "OPEN_BAG";
@@ -62,13 +63,23 @@ const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 
 export default function reducer(state = initialState, action) {
-  console.log(state)
+  // console.log(state, action);
   switch (action.type) {
+
+    case UPDATE_PRODUCT:
+    return{...state, currentProduct: []}
+
     case `${GET_DRESSES}_FULFILLED`:
       return { ...state, dresses: action.payload.data };
 
+    case `${GET_DRESSES}_PENDING`:
+      return { ...state, loading: true };
+
     case `${GET_DRESS}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
+
+    case `${GET_DRESS}_PENDING`:
+      return { ...state, loading: true };
 
     case `${GET_BONNETS}_FULFILLED`:
       return { ...state, bonnets: action.payload.data };
@@ -100,43 +111,43 @@ export default function reducer(state = initialState, action) {
     case `${GET_VEST}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
-      case `${GET_BIBDANAS}_FULFILLED`:
+    case `${GET_BIBDANAS}_FULFILLED`:
       return { ...state, bibdanas: action.payload.data };
 
     case `${GET_BIBDANA}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
-      case `${GET_BOWTIES}_FULFILLED`:
+    case `${GET_BOWTIES}_FULFILLED`:
       return { ...state, bowties: action.payload.data };
 
     case `${GET_BOWTIE}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
-      case `${GET_BURPCLOTHS}_FULFILLED`:
+    case `${GET_BURPCLOTHS}_FULFILLED`:
       return { ...state, burpcloths: action.payload.data };
 
     case `${GET_BURPCLOTH}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
-      case `${GET_DROOLPADS}_FULFILLED`:
+    case `${GET_DROOLPADS}_FULFILLED`:
       return { ...state, droolpads: action.payload.data };
 
     case `${GET_DROOLPAD}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
-      case `${GET_HAIRBOWS}_FULFILLED`:
+    case `${GET_HAIRBOWS}_FULFILLED`:
       return { ...state, hairbows: action.payload.data };
 
     case `${GET_HAIRBOW}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
-      case `${GET_HEADBANDS}_FULFILLED`:
+    case `${GET_HEADBANDS}_FULFILLED`:
       return { ...state, headbands: action.payload.data };
 
     case `${GET_HEADBAND}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
-      case `${GET_SUSPENDERS}_FULFILLED`:
+    case `${GET_SUSPENDERS}_FULFILLED`:
       return { ...state, suspenders: action.payload.data };
 
     case `${GET_SUSPENDER}_FULFILLED`:
@@ -161,6 +172,13 @@ export default function reducer(state = initialState, action) {
       return { ...state, user: action.payload.data };
     default:
       return state;
+  }
+}
+
+export function updateProduct(currentProduct){
+  return{
+    type: UPDATE_PRODUCT,
+    payload: currentProduct
   }
 }
 
@@ -234,7 +252,6 @@ export function getSkirt(skirtsid) {
   };
 }
 
-
 export function getVests() {
   return {
     type: GET_VESTS,
@@ -249,7 +266,7 @@ export function getVest(vestsid) {
   };
 }
 
-  export function getBibdanas() {
+export function getBibdanas() {
   return {
     type: GET_BIBDANAS,
     payload: axios.get("/api/admin/getBibdanas")

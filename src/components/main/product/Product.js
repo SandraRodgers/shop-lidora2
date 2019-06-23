@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+
+
 import {
   getDress,
   getBonnet,
@@ -16,9 +18,11 @@ import {
   getHeadband,
   getSuspender,
   getUserSession,
-  addToCart
+  addToCart,
+  updateProduct
 } from "../../../ducks/reducer";
 import "./product.css";
+import image from "../../../assets/img-placeholder.jpg"
 
 class Product extends Component {
   constructor(props) {
@@ -33,12 +37,13 @@ class Product extends Component {
     axios
       .get(`/api/product/${this.props.match.params.id}`)
       .then(response => {
-        console.log(this.props.match.params.id);
+        
+      
         this.setState({ productInfo: response.data });
         //we get the productid from the component and set state so that productInfo contains that product (object)
       })
       .then(() => {
-        console.log(this.state.productInfo);
+
         if (this.state.productInfo[0].category === "dresses") {
           this.props.getDress(this.state.productInfo[0].dressesid);
         }
@@ -88,17 +93,28 @@ class Product extends Component {
       });
   }
 
+
+//Use this componentWillMount to change state in reducer so the this.props.currentProduct does not hold onto the product image. This will help when user navigates back to this page. They will see the updated product image immediately instead of a flash of the previous product image:
+
+componentWillMount(){
+  this.props.updateProduct()
+}
+
   render() {
-    console.log(this.props.match);
+    console.log(this.props)
+
     let toggleBag;
 
     this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
-    console.log(this.props.bagIsOpen);
+  
     return (
       <div>
         <div className="container">
           <div className="column1">
-            {this.props.currentProduct[0] && (
+       
+
+    
+           {this.props.currentProduct[0] && (
               <img
                 className="product-img"
                 src={this.props.currentProduct[0].image}
@@ -189,6 +205,7 @@ export default connect(
     getDroolpad: getDroolpad,
     getHairbow: getHairbow,
     getHairband: getHeadband,
-    getSuspender: getSuspender
+    getSuspender: getSuspender,
+    updateProduct: updateProduct
   }
 )(Product);
