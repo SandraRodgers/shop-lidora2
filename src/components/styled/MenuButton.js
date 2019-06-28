@@ -29,7 +29,8 @@ import styled from "styled-components";
   @media (max-width: 600px) {
   }
   @media (max-width: 500px) {
-    margin-left: 5vw;
+    margin-left: 0vw;
+   
   }
   @media (max-width: 400px) {
   height: 25px;
