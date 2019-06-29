@@ -343,7 +343,6 @@ module.exports = {
     const dbInstance = req.app.get("db");
     let favorites = [];
     dbInstance.getFavoriteBibdanas().then(response => {
-      console.log(response[0])
       favorites.push(response[0]);
     }).then(()=> dbInstance.getFavoriteBloomers().then(response => {
       favorites.push(response[0]);

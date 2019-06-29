@@ -57,6 +57,7 @@ import FormDroolpads from "../src/components/admin/create-products/FormDroolpads
 import FormHairbows from "../src/components/admin/create-products/FormHairbows"
 import FormHeadbands from "../src/components/admin/create-products/FormHeadbands"
 import FormSuspenders from "../src/components/admin/create-products/FormSuspenders"
+import AdminMain from "../src/components/admin/admin-main/AdminMain"
 
 
 export default (
@@ -88,6 +89,7 @@ export default (
     <Route path="/products/:id" exact component={Product} />
 
     {/* AdminPages */}
+    <Route path="/admin" exact component={AdminMain}></Route>
     <Route path="/admin/form/dresses" exact component={FormDresses} />
     <Route path="/admin/form/bonnets" exact component={FormBonnets} />
     <Route path="/admin/form/shorts" exact component={FormShorts} />

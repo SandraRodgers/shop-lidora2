@@ -30,6 +30,7 @@ class LandingMain extends Component {
   }
 
   render() {
+    console.log(this.props.user)
     return (
       <div className="LM-component">
         {/* LEFT COLUMN */}
@@ -44,13 +45,20 @@ class LandingMain extends Component {
             <Link to="/shop">Shop</Link>
             <Link to="/login">Login</Link>
           </div>
+          {this.props.user.isadmin    ? 
+
+<Link to='/admin'>Admin Page</Link>: null
+}
+
         </div>
 
         {/* RIGHT COLUMN */}
         <div className="LM-right-column">
           <img alt="coverpic" src={coverpic} className="LM-coverpic" />
         </div>
+        
       </div>
+      
     );
   }
 }
