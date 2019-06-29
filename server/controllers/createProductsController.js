@@ -11,6 +11,7 @@ let headbandsID = [];
 let bibdanasID = [];
 let burpclothsID = [];
 let droolpadsID = [];
+let flashID = [];
 
 module.exports = {
   addDress: (req, res) => {
@@ -328,6 +329,21 @@ module.exports = {
       });
   },
 
+  addFlashsale: (req, res) => {
+    const dbInstance = req.app.get("db");
+    const {name, price, size, description, fabric, image, sold} = req.body
+    dbInstance
+      .addFlashsale([name, price, size, description, fabric, image, sold])
+      .then(response => {
+        flashID.push(response[0].flashid);
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
+  },
+
   createProduct: (req, res) => {
     console.log(req.body);
     const dbInstance = req.app.get("db");
@@ -345,7 +361,8 @@ module.exports = {
     let bibdanasid = bibdanasID[0];
     let burpclothsid = burpclothsID[0];
     let droolpadsid = droolpadsID[0];
-    console.log(bibdanasid)
+    let flashid = flashID[0]
+    console.log(flashid)
     
     dbInstance
       .createProduct([
@@ -362,6 +379,7 @@ module.exports = {
         bibdanasid,
         burpclothsid,
         droolpadsid,
+        flashid,
         category
       ])
       .then(response => {
@@ -378,6 +396,7 @@ module.exports = {
         bibdanasID = [];
         burpclothsID = [];
         droolpadsID = [];
+        flashID = [];
         res.status(200).json(response);
       })
       .catch(error => {

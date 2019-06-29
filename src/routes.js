@@ -22,6 +22,7 @@ import Suspenders from "./components/main/shop/accessories/Suspenders";
 import Bibdanas from "./components/main/shop/baby/Bibdanas";
 import BurpCloths from "./components/main/shop/baby/BurpCloths";
 import DroolPads from "./components/main/shop/baby/DroolPads";
+import Flashsale from "./components/main/shop/Flashsale"
 
 //Product
 import Product from "../src/components/main/product/Product"
@@ -57,6 +58,7 @@ import FormDroolpads from "../src/components/admin/create-products/FormDroolpads
 import FormHairbows from "../src/components/admin/create-products/FormHairbows"
 import FormHeadbands from "../src/components/admin/create-products/FormHeadbands"
 import FormSuspenders from "../src/components/admin/create-products/FormSuspenders"
+import FormFlashsale from "../src/components/admin/create-products/FormFlashsale"
 import AdminMain from "../src/components/admin/admin-main/AdminMain"
 
 
@@ -85,6 +87,7 @@ export default (
     <Route path="/shop/bibdanas" exact component={Bibdanas} />{" "}
     <Route path="/shop/burpcloths" exact component={BurpCloths} />
     <Route path="/shop/droolpads" exact component={DroolPads} />
+    <Route path="/shop/flashsale" exact component={Flashsale} />
 {/* Product Page */}
     <Route path="/products/:id" exact component={Product} />
 
@@ -103,6 +106,7 @@ export default (
     <Route path="/admin/form/hairbows" exact component={FormHairbows} />
     <Route path="/admin/form/headbands" exact component={FormHeadbands} />
     <Route path="/admin/form/suspenders" exact component={FormSuspenders} />
+    <Route path="/admin/form/flashsale" exact component={FormFlashsale} />
   </Switch>
 );
 

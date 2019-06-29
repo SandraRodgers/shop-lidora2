@@ -19,6 +19,7 @@ const Placeholder = styled.div`
 
 class HiddenNav extends React.Component {
   render() {
+
     return (
       <div>
         <HiddenNavBar open={this.props.open}>
@@ -78,7 +79,7 @@ class HiddenNav extends React.Component {
               Drool Pads
             </LilacLink>
             <Placeholder primary = "true">placeholder</Placeholder>
-            <Placeholder primary = "true">placeholder</Placeholder>
+            <LilacLink to={"/shop/flashsale"}  primary = "true">Flash Sale!</LilacLink>
           </div>
         </HiddenNavBar>
       </div>

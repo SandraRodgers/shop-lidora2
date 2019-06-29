@@ -21,7 +21,8 @@ const {
   addHairbow,
   addHeadband,
   addSuspenders,
-  createProduct
+  createProduct,
+  addFlashsale
 } = require("./controllers/createProductsController");
 const {
   getProductInfo,
@@ -130,6 +131,7 @@ app.get("/api/hairbow/:id", getHairbow);
 app.get("/api/headband/:id", getHeadband);
 app.get("/api/suspender/:id", getSuspender);
 
+app.post("/api/admin/flashsale", addFlashsale)
 app.get("/api/favorites", getFavorites)
 
 

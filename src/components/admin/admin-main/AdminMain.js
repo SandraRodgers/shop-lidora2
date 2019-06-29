@@ -19,6 +19,7 @@ class AdminMain extends Component {
                 <Link to="/admin/form/hairbows">Form Hairbows</Link>
                 <Link to="/admin/form/headbands" >Form Headbands</Link>
                 <Link to="/admin/form/suspenders">Form Suspenders</Link>
+                <Link to="/admin/form/flashsale">Form Flashsale</Link>
                
 
 
