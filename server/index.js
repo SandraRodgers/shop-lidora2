@@ -50,7 +50,8 @@ const {
   getDroolpad,
   getHairbow,
   getHeadband,
-  getSuspender
+  getSuspender,
+  getFavorites
 } = require("./controllers/getProductsController");
 const {
   signin,
@@ -128,6 +129,8 @@ app.get("/api/droolpad/:id", getDroolpad);
 app.get("/api/hairbow/:id", getHairbow);
 app.get("/api/headband/:id", getHeadband);
 app.get("/api/suspender/:id", getSuspender);
+
+app.get("/api/favorites", getFavorites)
 
 
 

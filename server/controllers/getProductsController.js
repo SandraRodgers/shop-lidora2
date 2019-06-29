@@ -338,5 +338,43 @@ module.exports = {
         console.log(error);
         res.status(500).send(error);
       });
+  },
+  getFavorites: (req, res) => {
+    const dbInstance = req.app.get("db");
+    let favorites = [];
+    dbInstance.getFavoriteBibdanas().then(response => {
+      console.log(response[0])
+      favorites.push(response[0]);
+    }).then(()=> dbInstance.getFavoriteBloomers().then(response => {
+      favorites.push(response[0]);
+    })).then(()=>  dbInstance.getFavoriteBonnets().then(response => {
+      favorites.push(response[0]);
+    })).then(()=> dbInstance.getFavoriteBowties().then(response => {
+      favorites.push(response[0])
+    })).then(()=> dbInstance.getFavoriteBurpcloths().then(response => {
+      favorites.push(response[0])
+    })).then(()=> dbInstance.getFavoriteDresses().then(response => {
+      favorites.push(response[0])
+    })).then(()=> dbInstance.getFavoriteDroolpads().then(response => {
+      favorites.push(response[0])
+    })).then(()=> dbInstance.getFavoriteHairbows().then(response => {
+      favorites.push(response[0])
+    })).then(()=> dbInstance.getFavoriteHeadbands().then(response => {
+      favorites.push(response[0])
+    })).then(()=> dbInstance.getFavoriteShorts().then(response => {
+      favorites.push(response[0])
+    })).then(()=> dbInstance.getFavoriteSkirts().then(response => {
+      favorites.push(response[0])
+    })).then(()=> dbInstance.getFavoriteSuspenders().then(response => {
+      favorites.push(response[0])
+    })).then(()=> dbInstance.getFavoriteVests().then(response => {
+      favorites.push(response[0])
+    }))
+    .then(() =>{
+      res.status(200).json(favorites);
+    }).catch(error => {
+      console.log(error);
+      res.status(500).send(error);
+    });
   }
 };

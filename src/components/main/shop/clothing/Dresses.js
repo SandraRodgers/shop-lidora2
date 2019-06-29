@@ -25,7 +25,7 @@ class Dresses extends React.Component {
           style={{ zIndex: toggleBag }}
           className="product-container"
           key={element.productid}
-          ref={this.linkRef}
+          
         >
           <Link to={`/products/${element.productid}`}>
             <img className="product-photo" src={element.image} alt="" />
