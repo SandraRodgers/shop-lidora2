@@ -52,14 +52,16 @@ const {
   getHairbow,
   getHeadband,
   getSuspender,
-  getFavorites
+  getFavorites,
+  getFlashsale,
+  getFlashsaleProduct
 } = require("./controllers/getProductsController");
 const {
   signin,
   getUser,
   logout
 } = require("./controllers/authenticationController");
-const { addToCart, removeFromCart } = require("./controllers/cartController");
+const { addToCart, removeFromCart, removeFlashItem } = require("./controllers/cartController");
 
 //express session
 const pgSession = require("connect-pg-simple")(session);
@@ -131,6 +133,8 @@ app.get("/api/hairbow/:id", getHairbow);
 app.get("/api/headband/:id", getHeadband);
 app.get("/api/suspender/:id", getSuspender);
 
+app.get("/api/flashsale/:id", getFlashsaleProduct)
+app.get("/api/admin/flashsale", getFlashsale)
 app.post("/api/admin/flashsale", addFlashsale)
 app.get("/api/favorites", getFavorites)
 
@@ -141,6 +145,7 @@ app.get("/api/auth/user", getUser);
 app.get("/api/auth/logout", logout);
 app.post("/api/cart", addToCart);
 app.delete("/api/cart/:productName", removeFromCart);
+app.delete("/api/flashsale/cart/:flashid", removeFlashItem)
 
 app.listen(4000, () => {
   console.log(`Listening on ${process.env.EXPRESS_PORT}`);

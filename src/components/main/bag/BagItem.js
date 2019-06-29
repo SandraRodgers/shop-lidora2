@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Timer from "./Timer"
 
 //redux
 import { connect } from "react-redux";
@@ -15,8 +16,10 @@ class BagItem extends Component {
     this.state = {};
   }
 
-  render() {
   
+
+  render() {
+   
     return (
      this.props.user && <div className="BAGITEM-container">
         <img
@@ -35,7 +38,10 @@ class BagItem extends Component {
           <div className="BAG-name-and-delete-row">
             <div>{this.props.product.style}</div>
             <div>${this.props.product.price}</div>
+       
           </div>
+          {this.props.product.flashid ?  <div>Flash Sale<Timer flashid={this.props.product.flashid}/></div> : null }
+         
         </div>
       </div>
     );

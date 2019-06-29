@@ -20,6 +20,15 @@ class Bag extends Component {
     this.props.getUserSession();
     
   }
+
+  componentDidUpdate(prevProps, prevState) {
+  
+    if (prevProps.user !== this.props.user) {
+      this.props.getUserSession()
+    }
+  }
+
+
   render() {
   
     return (

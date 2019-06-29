@@ -1,0 +1,1 @@
+SELECT * FROM flashsale WHERE flashid = $1;

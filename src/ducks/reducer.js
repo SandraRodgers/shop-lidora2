@@ -49,6 +49,7 @@ const GET_HEADBAND = "GET_HEADBAND";
 const GET_HEADBANDS = "GET_HEADBANDS";
 const GET_SUSPENDER = "GET_SUSPENDER";
 const GET_SUSPENDERS = "GET_SUSPENDERS";
+const GET_FLASHSALE = "GET_FLASHSALE"
 
 //UI
 const OPEN_BAG = "OPEN_BAG";
@@ -151,6 +152,9 @@ export default function reducer(state = initialState, action) {
       return { ...state, suspenders: action.payload.data };
 
     case `${GET_SUSPENDER}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+      case `${GET_FLASHSALE}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
     case `${OPEN_BAG}`:
@@ -346,7 +350,7 @@ export function getHeadbands() {
 export function getHeadband(headbandsid) {
   return {
     type: GET_HEADBAND,
-    payload: axios.get(`/api/hairband/${headbandsid}`)
+    payload: axios.get(`/api/headband/${headbandsid}`)
   };
 }
 
@@ -361,6 +365,13 @@ export function getSuspender(suspendersid) {
   return {
     type: GET_SUSPENDER,
     payload: axios.get(`/api/suspender/${suspendersid}`)
+  };
+}
+
+export function getFlashsale(flashid) {
+  return {
+    type: GET_FLASHSALE,
+    payload: axios.get(`/api/flashsale/${flashid}`)
   };
 }
 

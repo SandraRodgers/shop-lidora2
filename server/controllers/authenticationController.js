@@ -53,7 +53,7 @@ const signin = (req, res) => {
 };
 
 const getUser = (req, res) => {
-  console.log("sessionID:" + req.sessionID)
+  // console.log("sessionID:" + req.sessionID)
   if (req.session.user) {
     res.json(req.session.user);
   } else {

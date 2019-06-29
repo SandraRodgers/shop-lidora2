@@ -17,12 +17,13 @@ import {
   getHairbow,
   getHeadband,
   getSuspender,
+  getFlashsale,
   getUserSession,
   addToCart,
   updateProduct
 } from "../../../ducks/reducer";
 import "./product.css";
-import image from "../../../assets/img-placeholder.jpg"
+
 
 class Product extends Component {
   constructor(props) {
@@ -90,6 +91,11 @@ class Product extends Component {
         if (this.state.productInfo[0].category === "suspenders") {
           this.props.getSuspender(this.state.productInfo[0].suspendersid);
         }
+
+        if (this.state.productInfo[0].category === "flashsale") {
+          this.props.getFlashsale(this.state.productInfo[0].flashid);
+        }
+        
       });
   }
 
@@ -101,7 +107,7 @@ componentWillUnmount(){
 }
 
   render() {
-    console.log(this.props)
+    // console.log(this.state.productInfo[0])
 
     let toggleBag;
 
@@ -204,8 +210,9 @@ export default connect(
     getBurpcloth: getBurpcloth,
     getDroolpad: getDroolpad,
     getHairbow: getHairbow,
-    getHairband: getHeadband,
+    getHeadband: getHeadband,
     getSuspender: getSuspender,
+    getFlashsale: getFlashsale,
     updateProduct: updateProduct
   }
 )(Product);

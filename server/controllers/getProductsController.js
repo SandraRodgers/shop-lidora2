@@ -375,5 +375,31 @@ module.exports = {
       console.log(error);
       res.status(500).send(error);
     });
-  }
+  },
+
+getFlashsale: (req, res) => {
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getFlashsales()
+      .then(response => {
+ 
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
+},
+getFlashsaleProduct: (req, res) => {
+  const dbInstance = req.app.get("db");
+  dbInstance
+    .getFlashsale(req.params.id)
+    .then(response => {
+      res.status(200).json(response);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).send(error);
+    });
+}
 };
