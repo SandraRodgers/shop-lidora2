@@ -407,12 +407,13 @@ export function getUserSession() {
   };
 }
 
-export function addToCart(product, price) {
+export function addToCart(product, price, size) {
   return {
     type: ADD_TO_CART,
     payload: axios.post("/api/cart", {
       product: product,
-      price: price
+      price: price,
+      size: size
     })
   };
 }

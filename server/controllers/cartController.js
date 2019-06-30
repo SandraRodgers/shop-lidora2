@@ -1,18 +1,21 @@
 const addToCart = (req, res) => {
-  const { product, price } = req.body;
+  const { product, price, size } = req.body;
+  console.log(req.body)
   product.time = Date.now();
+  product.size = size
   req.session.user.cart.push(product);
   req.session.user.total += price;
   res.status(200).json(req.session.user);
 
-  //check for flash item
+  //check for flash item (not using this code):
 
-  let tempItem = [];
-  for (let i = 0; i < req.session.user.cart.length; i++) {
-    if (req.session.user.cart[i].flashid) {
-      tempItem.push(req.session.user.cart[i]);
-    }
-  }
+  // let tempItem = [];
+  // for (let i = 0; i < req.session.user.cart.length; i++) {
+  //   if (req.session.user.cart[i].flashid) {
+  //     tempItem.push(req.session.user.cart[i]);
+  //   }
+  // }
+  console.log(req.session.user.cart)
 };
 
 const removeFromCart = (req, res) => {

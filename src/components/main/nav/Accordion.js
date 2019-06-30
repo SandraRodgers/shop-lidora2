@@ -1,5 +1,6 @@
 import React from "react";
 import "./Accordion.css";
+import {withRouter} from 'react-router-dom'
 
 //redux
 import { connect } from "react-redux";
@@ -14,6 +15,7 @@ class Accordion extends React.Component {
     this.state={}
   }
   render() {
+    console.log(this.props)
     const { title, expand, onClick, content, nonLinks } = this.props;
 
     return (
@@ -46,7 +48,7 @@ class Accordion extends React.Component {
             </LilacLink>
           ) : null}
           {title === "Bag" ? (
-            <LilacLink to="" className="Acc-heading-link" primary = "true" nothidden = "true">
+            <LilacLink onClick={() => this.props.openBag()}  to={this.props.history.location.pathname}className="Acc-heading-link" primary = "true" nothidden = "true">
               Bag{" "}
             </LilacLink>
           ) : null}
@@ -218,8 +220,15 @@ class Accordion extends React.Component {
 
 const mapStateToProps = state => state;
 
-
-export default connect(
+const thisComponent = connect(
   mapStateToProps,
   { openBag: openBag }
 )(Accordion);
+
+export default withRouter(thisComponent);
+
+// export default connect(
+//   mapStateToProps,
+//   { openBag: openBag }
+// )(Accordion);
+

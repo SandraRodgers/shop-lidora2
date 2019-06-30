@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
-
 import {
   getDress,
   getBonnet,
@@ -24,13 +23,15 @@ import {
 } from "../../../ducks/reducer";
 import "./product.css";
 
-
 class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productInfo: []
+      productInfo: [],
+      size: "",
+      category: ""
     };
+    this.holdSize = this.holdSize.bind(this);
   }
 
   componentDidMount() {
@@ -38,89 +39,100 @@ class Product extends Component {
     axios
       .get(`/api/product/${this.props.match.params.id}`)
       .then(response => {
-        
-      
         this.setState({ productInfo: response.data });
         //we get the productid from the component and set state so that productInfo contains that product (object)
       })
       .then(() => {
-
         if (this.state.productInfo[0].category === "dresses") {
           this.props.getDress(this.state.productInfo[0].dressesid);
+          this.setState({category: "dresses"})
         }
         if (this.state.productInfo[0].category === "bonnets") {
           this.props.getBonnet(this.state.productInfo[0].bonnetsid);
+          this.setState({category: "bonnets"})
         }
         if (this.state.productInfo[0].category === "shorts") {
           this.props.getShort(this.state.productInfo[0].shortsid);
+          this.setState({category: "shorts"})
         }
         if (this.state.productInfo[0].category === "bloomers") {
           this.props.getBloomer(this.state.productInfo[0].bloomersid);
+          this.setState({category: "bloomers"})
         }
         if (this.state.productInfo[0].category === "skirts") {
           this.props.getSkirt(this.state.productInfo[0].skirtsid);
+          this.setState({category: "skirts"})
         }
         if (this.state.productInfo[0].category === "vests") {
           this.props.getVest(this.state.productInfo[0].vestsid);
+          this.setState({category: "vests"})
         }
 
         if (this.state.productInfo[0].category === "bibdanas") {
           this.props.getBibdana(this.state.productInfo[0].bibdanasid);
+          this.setState({category: "bibdanas"})
         }
 
         if (this.state.productInfo[0].category === "bowties") {
           this.props.getBowtie(this.state.productInfo[0].bowtiesid);
+          this.setState({category: "bowties"})
         }
 
         if (this.state.productInfo[0].category === "burpcloths") {
           this.props.getBurpcloth(this.state.productInfo[0].burpclothsid);
+          this.setState({category: "burpcloths"})
         }
 
         if (this.state.productInfo[0].category === "droolpads") {
           this.props.getDroolpad(this.state.productInfo[0].droolpadsid);
+          this.setState({category: "droolpads"})
         }
 
         if (this.state.productInfo[0].category === "hairbows") {
           this.props.getHairbow(this.state.productInfo[0].hairbowsid);
+          this.setState({category: "hairbows"})
         }
 
         if (this.state.productInfo[0].category === "headbands") {
           this.props.getHeadband(this.state.productInfo[0].headbandsid);
+          this.setState({category: "headbands"})
         }
 
         if (this.state.productInfo[0].category === "suspenders") {
           this.props.getSuspender(this.state.productInfo[0].suspendersid);
+          this.setState({category: "suspenders"})
         }
 
         if (this.state.productInfo[0].category === "flashsale") {
           this.props.getFlashsale(this.state.productInfo[0].flashid);
+          this.setState({category: "flashsale"})
         }
-        
       });
   }
 
+  //Use this componentWillUnmount to change state in reducer so the this.props.currentProduct does not hold onto the product image. This will help when user navigates back to this page. They will see the updated product image immediately instead of a flash of the previous product image:
 
-//Use this componentWillUnmount to change state in reducer so the this.props.currentProduct does not hold onto the product image. This will help when user navigates back to this page. They will see the updated product image immediately instead of a flash of the previous product image:
+  componentWillUnmount() {
+    this.props.updateProduct();
+  }
 
-componentWillUnmount(){
-  this.props.updateProduct()
-}
+  holdSize(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
   render() {
-    // console.log(this.state.productInfo[0])
+    this.props.currentProduct && console.log(this.props.currentProduct)
+    // console.log(this.state.size);
 
     let toggleBag;
 
     this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
-  
+
     return (
       <div>
         <div className="container">
           <div className="column1">
-       
-
-    
-           {this.props.currentProduct[0] && (
+            {this.props.currentProduct[0] && (
               <img
                 className="product-img"
                 src={this.props.currentProduct[0].image}
@@ -148,13 +160,23 @@ componentWillUnmount(){
                 </div>{" "}
               </div>
             )}
-            {this.props.currentProduct[0] && (
+            {(
+             this.state.category === "dresses") ||
+            this.state.category === "bonnets" ||
+            this.state.category === "shorts" ||
+            this.state.category === "bloomers" ||
+            this.state.category === "skirts" ||
+            this.state.category === "vests" ||
+            this.state.category === "suspenders" ? (
               <div className="product-size-options">
                 <div className="product-size-heading">Size: </div>
 
                 <select
+                  value={this.state.size}
+                  name="size"
                   style={{ zIndex: toggleBag }}
                   className="product-select"
+                  onChange={this.holdSize}
                 >
                   <option>Choose an option</option>
                   <option>3-6 months</option>
@@ -169,14 +191,15 @@ componentWillUnmount(){
                   <option>6</option>
                 </select>
               </div>
-            )}
+            ) : null}
             <div className="product-add-to-bag-button-container">
               {this.props.currentProduct[0] && (
                 <button
                   onClick={() =>
                     this.props.addToCart(
                       this.props.currentProduct[0],
-                      this.props.currentProduct[0].price
+                      this.props.currentProduct[0].price,
+                      this.state.size
                     )
                   }
                   className="product-add-to-bag-button"

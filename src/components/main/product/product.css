@@ -11,13 +11,16 @@
 }
 
 .column1 {
-
+  width: 35vw;
 }
 
 .column2 {
-  padding: 10vh;
+  /* padding: 10vh; */
+  padding-top: 5vh;
+  padding-left: 5vh;
   font-size: 3vh;
   margin-left: 10vh;
+  width: 35vw;
   
 }
 
@@ -30,7 +33,8 @@
 
 .product-img {
   margin-top: 3vh;
-  height: 80vh;
+  height: 70vh;
+  width: 35vw;
 }
 
 .product-select {
@@ -107,7 +111,7 @@ select.product-select{
 }
 
 .product-add-to-bag-button{
-  margin-top: 15vh;
+  margin-top: 10vh;
   background-color: none;
   border: solid 1px #3ca6cd;
   width: 100%;

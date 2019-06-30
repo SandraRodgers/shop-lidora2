@@ -174,7 +174,7 @@ class FormDresses extends Component {
                 <option>Other</option>
               </Select>
             </div>
-            <div className="form-category-name">
+            {/* <div className="form-category-name">
               Size:
               <Select
                 value={this.state.size}
@@ -194,7 +194,7 @@ class FormDresses extends Component {
                 <option>6</option>
                 <option>Other</option>
               </Select>
-            </div>
+            </div> */}
             <div className="form-category-name">
               Price:
               <Input
