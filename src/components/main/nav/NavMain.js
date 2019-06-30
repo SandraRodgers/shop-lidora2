@@ -58,13 +58,15 @@ class NavMain extends React.Component {
     let marginBottom;
     this.state.sideMenu === true ? position = 'fixed' : position = 'sticky'
     this.state.sideMenu === true ? marginBottom = '0' : marginBottom = '0'
+    this.props.bagIsOpen === true ? position = 'relative' : position = 'sticky'
+
     return (
       <div
         className="NM-container"
         style={{position: position, marginBottom: marginBottom}}
       >
         <Bag open={this.props.bagIsOpen} />
-        <Nav>
+        <Nav >
           <SideMenu open={this.state.sideMenu} />
           <Column>
             <Hamburger

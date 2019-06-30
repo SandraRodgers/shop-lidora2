@@ -27,7 +27,7 @@ class ShopMain extends Component {
             
         }
         noneNull.push(response.data)
-        // console.log(noneNull)
+        
 
       this.setState({favorites: response.data})
     });
@@ -35,8 +35,7 @@ class ShopMain extends Component {
 
   render() {
     
-    let toggleBag;
-    this.props.bagIsOpen === true ? (toggleBag = 0) : (toggleBag = 1);
+
   
 
     return (

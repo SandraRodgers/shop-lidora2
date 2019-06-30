@@ -21,16 +21,20 @@ class Bag extends Component {
     
   }
 
-  componentDidUpdate(prevProps, prevState) {
-  
-    if (prevProps.user !== this.props.user) {
-      this.props.getUserSession()
+  componentDidUpdate(prevProps){
+    for(let i=0; i<this.props.user.cart.length; i++){
+      if(this.props.user.cart[i].flashid){
+        if (prevProps.user.cart !== this.props.user.cart) {
+              this.props.getUserSession()}
+      }
     }
   }
 
+  
 
   render() {
-  
+    console.log(this.props.user.cart)
+
     return (
       <div className="bag-container">
         <BagSideMenu className="BAG-SM-component" open={this.props.open}>

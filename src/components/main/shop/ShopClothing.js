@@ -18,7 +18,7 @@ class ShopClothing extends Component {
             ){clothing.push(this.props.favorites[i])}
         }
       
-        console.log(clothing)
+        
 
         let clothingList = clothing.map(element => {
                 console.log(element)

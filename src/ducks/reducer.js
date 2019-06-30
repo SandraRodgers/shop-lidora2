@@ -64,7 +64,6 @@ const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 
 export default function reducer(state = initialState, action) {
-  // console.log(state, action);
   switch (action.type) {
 
     case UPDATE_PRODUCT:
