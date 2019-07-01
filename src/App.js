@@ -8,14 +8,18 @@ import NavMain from "../src/components/main/nav/NavMain"
 
 const GlobalStyles = createGlobalStyle`
 body {
+  @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" );
+  font-family: 'Source Sans Pro', sans-serif;
+  @import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+  font-family: 'Playfair Display', serif;
   @import url('https://fonts.googleapis.com/css?family=Cousine');
   font-family: 'Cousine', monospace;
   @import url('https://fonts.googleapis.com/css?family=Lora');
   font-family: 'Lora', serif;
   @import url('https://fonts.googleapis.com/css?family=Zilla+Slab:300');
   font-family: 'Zilla Slab', serif;
-  @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" );
-  font-family: 'Source Sans Pro', sans-serif;
+
+
 }
 `
 

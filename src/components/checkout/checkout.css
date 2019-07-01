@@ -21,6 +21,18 @@
     height: .8em
 }
 
+.checkout-precious-shipping-address-container{
+    display: flex;
+    width: 45vw;
+    font-family: 'Source Sans Pro';
+}
+
+.checkout-previous-shipping-header{
+    font-family: 'Playfair Display';
+    font-size: 1.2em;
+    margin-top: 5vh;
+}
+
 .checkout-column-1-steps{
     margin-top: 1vh;
     display: flex;
@@ -87,9 +99,11 @@
 .checkout-one-tax-div {
   display: flex;
   justify-content: flex-end;
+  font-family: 'Source Sans Pro';
 }
 
 .checkout-one-total {
   display: flex;
   justify-content: flex-end;
+  font-family: 'Source Sans Pro';
 }

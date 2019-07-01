@@ -49,6 +49,9 @@ class CheckoutOne extends Component {
                 <img className='checkout-column1-arrow' src={Arrow}/>
                 <div>payment</div>
             </div>
+            <div className='checkout-precious-shipping-address-container'>
+                <div className='checkout-previous-shipping-header'>Previous Shipping Address</div>
+            </div>
         </div>
         <div className="checkout-one-column-2">
           {" "}
