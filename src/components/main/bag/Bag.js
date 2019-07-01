@@ -2,6 +2,9 @@ import React, { Component } from "react";
 
 import BagItem from "./BagItem";
 
+//react-router-dom
+import {Link} from 'react-router-dom'
+
 //redux
 import { connect } from "react-redux";
 import { openBag, getUserSession } from "../../../ducks/reducer";
@@ -55,7 +58,7 @@ class Bag extends Component {
               })}
             <div>
               {this.props.user && <h3>Total: ${this.props.user.total} </h3>}
-              <button className="BAG-checkout-button">CHECKOUT</button>
+              <Link to='/checkout/one'><button className="BAG-checkout-button">CHECKOUT</button></Link>
             </div>
           </div>
         </BagSideMenu>

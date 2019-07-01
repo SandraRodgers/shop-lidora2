@@ -14,7 +14,8 @@ body {
   font-family: 'Lora', serif;
   @import url('https://fonts.googleapis.com/css?family=Zilla+Slab:300');
   font-family: 'Zilla Slab', serif;
-
+  @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" );
+  font-family: 'Source Sans Pro', sans-serif;
 }
 `
 
@@ -39,7 +40,8 @@ class App extends Component {
     return (
       <div className="App">
          <GlobalStyles />
-         {this.props.location.pathname !== '/' ? <NavMain /> : null }
+         {this.props.location.pathname !== '/' && this.props.location.pathname !== '/checkout/one' ? <NavMain /> : null }
+        
          {routes}
       </div>
     );

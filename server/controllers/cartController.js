@@ -28,7 +28,7 @@ const removeFromCart = (req, res) => {
       index = i;
     }
   }
-  req.session.user.total -= req.session.user.cart[index].price;
+  req.session.user.total -= (req.session.user.cart[index].price * req.session.user.cart[index].quantity);
   req.session.user.cart.splice(index, 1);
   res.status(200).json(req.session.user);
 };

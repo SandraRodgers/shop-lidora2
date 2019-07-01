@@ -30,6 +30,7 @@ import Product from "../src/components/main/product/Product"
 //Bag
 
 //Checkout
+import CheckoutOne from "../src/components/checkout/CheckoutOne"
 
 //StyleGuide
 import StyleGuide from "./components/main/styleguide/StyleGuide"
@@ -107,6 +108,10 @@ export default (
     <Route path="/admin/form/headbands" exact component={FormHeadbands} />
     <Route path="/admin/form/suspenders" exact component={FormSuspenders} />
     <Route path="/admin/form/flashsale" exact component={FormFlashsale} />
+
+
+  {/* Checkout */}
+  <Route path="/checkout/one" exact component={CheckoutOne}/>
   </Switch>
 );
 

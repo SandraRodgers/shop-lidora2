@@ -15,7 +15,7 @@ class Accordion extends React.Component {
     this.state={}
   }
   render() {
-    console.log(this.props)
+
     const { title, expand, onClick, content, nonLinks } = this.props;
 
     return (
