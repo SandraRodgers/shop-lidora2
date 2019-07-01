@@ -33,14 +33,15 @@ class BagItem extends Component {
               <div className="BAG-ITEM-name"> {this.props.product.name}</div>
               <img onClick={()=>this.props.removeFromCart(this.props.product.name)}  className="BAG-ITEM-delete" alt="delete" src={deleteX} />
             </div>
-            <div>{this.props.product.size}</div>
+            <div className='BAG-ITEM-size'>{this.props.product.size}</div>
+            <div>{this.props.product.style}</div>
           </div>
           <div className="BAG-name-and-delete-row">
-            <div>{this.props.product.style}</div>
+           <div>QTY:{this.props.product.quantity}</div>
             <div>${this.props.product.price}</div>
        
           </div>
-          {this.props.product.flashid ?  <div>Flash Sale<Timer flashid={this.props.product.flashid}/></div> : null }
+          {this.props.product.flashid ?  <div className='BAG-ITEM-flashsale div'><div>Flash Sale<Timer flashid={this.props.product.flashid}/></div></div> : null }
          
         </div>
       </div>

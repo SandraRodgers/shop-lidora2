@@ -1,10 +1,11 @@
 const addToCart = (req, res) => {
-  const { product, price, size } = req.body;
+  const { product, price, size, quantity } = req.body;
   console.log(req.body)
   product.time = Date.now();
   product.size = size
+  product.quantity = +quantity
   req.session.user.cart.push(product);
-  req.session.user.total += price;
+  req.session.user.total += (price*quantity);
   res.status(200).json(req.session.user);
 
   //check for flash item (not using this code):

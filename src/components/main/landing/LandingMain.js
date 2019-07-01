@@ -45,7 +45,7 @@ class LandingMain extends Component {
             <Link to="/shop">Shop</Link>
             <Link to="/login">Login</Link>
           </div>
-          {this.props.user.isadmin    ? 
+          {this.props.user && this.props.user.isadmin    ? 
 
 <Link to='/admin'>Admin Page</Link>: null
 }

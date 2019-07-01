@@ -63,8 +63,34 @@
 .product-size-options {
   display: flex;
   justify-content: space-between;
-  /* padding-right: 3vw; */
 
+  /* padding-right: 3vw; */
+  margin-bottom:1.5em;
+}
+
+.product-quantity-div{
+  display: flex;
+  font-family: 'Zilla Slab';
+  justify-content: space-between;
+  /* padding-right: 3vw; */
+  margin-bottom:1.5em;
+  /* align-items: center; */
+  height: 2em;
+  
+  
+}
+
+
+
+.product-quantity-input{
+ margin-bottom:1.5em;
+ width: 3vw;
+ height: 3vh;
+ font-family: 'Zilla Slab';
+ font-size: 1em;
+ text-align: center; 
+ border: 1px solid #b68da4;
+ 
 }
 
 .product-description{
@@ -111,7 +137,7 @@ select.product-select{
 }
 
 .product-add-to-bag-button{
-  margin-top: 10vh;
+  margin-top: 3vh;
   background-color: none;
   border: solid 1px #3ca6cd;
   width: 100%;

@@ -37,16 +37,17 @@ class Login extends Component {
 
   uiConfig = {
     signInFlow: "popup",
-    signInSuccessUrl: "/",
+    signInSuccessUrl: "http://localhost:3000/login",
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID
     ],
     callbacks: {
       // Avoid redirects after sign-in.
-      signInSuccessWithAuthResult: () => false
+      signInSuccessWithAuthResult: () => true
     },
-    CredentialHelper: "none"
+    CredentialHelper: "none",
+  
   };
 
   componentDidMount() {
@@ -66,6 +67,7 @@ class Login extends Component {
     if (prevState.isSignedIn === false && this.state.isSignedIn === true) {
       const { displayName, email, uid, photoURL } = this.state.user;
       this.props.signIn(displayName, email, uid, photoURL);
+      
     }
   }
 
@@ -85,7 +87,7 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.state.user);
+    console.log(this.props);
 
     // this.state.user ? console.log(this.state.user) : console.log("no user");
     return (

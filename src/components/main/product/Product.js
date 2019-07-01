@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 import {
   getDress,
@@ -29,9 +30,13 @@ class Product extends Component {
     this.state = {
       productInfo: [],
       size: "",
-      category: ""
+      category: "",
+      redirect: false,
+      quantity: 1
     };
     this.holdSize = this.holdSize.bind(this);
+    this.holdQuantity = this.holdQuantity.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -45,67 +50,67 @@ class Product extends Component {
       .then(() => {
         if (this.state.productInfo[0].category === "dresses") {
           this.props.getDress(this.state.productInfo[0].dressesid);
-          this.setState({category: "dresses"})
+          this.setState({ category: "dresses" });
         }
         if (this.state.productInfo[0].category === "bonnets") {
           this.props.getBonnet(this.state.productInfo[0].bonnetsid);
-          this.setState({category: "bonnets"})
+          this.setState({ category: "bonnets" });
         }
         if (this.state.productInfo[0].category === "shorts") {
           this.props.getShort(this.state.productInfo[0].shortsid);
-          this.setState({category: "shorts"})
+          this.setState({ category: "shorts" });
         }
         if (this.state.productInfo[0].category === "bloomers") {
           this.props.getBloomer(this.state.productInfo[0].bloomersid);
-          this.setState({category: "bloomers"})
+          this.setState({ category: "bloomers" });
         }
         if (this.state.productInfo[0].category === "skirts") {
           this.props.getSkirt(this.state.productInfo[0].skirtsid);
-          this.setState({category: "skirts"})
+          this.setState({ category: "skirts" });
         }
         if (this.state.productInfo[0].category === "vests") {
           this.props.getVest(this.state.productInfo[0].vestsid);
-          this.setState({category: "vests"})
+          this.setState({ category: "vests" });
         }
 
         if (this.state.productInfo[0].category === "bibdanas") {
           this.props.getBibdana(this.state.productInfo[0].bibdanasid);
-          this.setState({category: "bibdanas"})
+          this.setState({ category: "bibdanas" });
         }
 
         if (this.state.productInfo[0].category === "bowties") {
           this.props.getBowtie(this.state.productInfo[0].bowtiesid);
-          this.setState({category: "bowties"})
+          this.setState({ category: "bowties" });
         }
 
         if (this.state.productInfo[0].category === "burpcloths") {
           this.props.getBurpcloth(this.state.productInfo[0].burpclothsid);
-          this.setState({category: "burpcloths"})
+          this.setState({ category: "burpcloths" });
         }
 
         if (this.state.productInfo[0].category === "droolpads") {
           this.props.getDroolpad(this.state.productInfo[0].droolpadsid);
-          this.setState({category: "droolpads"})
+          this.setState({ category: "droolpads" });
         }
 
         if (this.state.productInfo[0].category === "hairbows") {
           this.props.getHairbow(this.state.productInfo[0].hairbowsid);
-          this.setState({category: "hairbows"})
+          this.setState({ category: "hairbows" });
         }
 
         if (this.state.productInfo[0].category === "headbands") {
           this.props.getHeadband(this.state.productInfo[0].headbandsid);
-          this.setState({category: "headbands"})
+          this.setState({ category: "headbands" });
         }
 
         if (this.state.productInfo[0].category === "suspenders") {
           this.props.getSuspender(this.state.productInfo[0].suspendersid);
-          this.setState({category: "suspenders"})
+          this.setState({ category: "suspenders" });
         }
 
         if (this.state.productInfo[0].category === "flashsale") {
           this.props.getFlashsale(this.state.productInfo[0].flashid);
-          this.setState({category: "flashsale"})
+          this.setState({ category: "flashsale" });
         }
       });
   }
@@ -120,8 +125,30 @@ class Product extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  holdQuantity(e){
+    this.setState({[e.target.name]: e.target.value})
+  }
+
+  addToCart() {
+    if (!this.props.user) {
+      this.setState({ redirect: true }, () => {
+        alert("Please Log In");
+      });
+    } else if (this.state.size === ''){
+      alert('Please specify a size')
+    }
+    else {
+      this.props.addToCart(
+        this.props.currentProduct[0],
+        this.props.currentProduct[0].price,
+        this.state.size,
+        this.state.quantity
+      );
+    }
+  }
+
   render() {
-    this.props.currentProduct && console.log(this.props.currentProduct)
+    this.props.currentProduct && console.log(this.props.currentProduct);
     // console.log(this.state.size);
 
     let toggleBag;
@@ -130,6 +157,7 @@ class Product extends Component {
 
     return (
       <div>
+        {this.state.redirect === true ? <Redirect push to="/login" /> : null}
         <div className="container">
           <div className="column1">
             {this.props.currentProduct[0] && (
@@ -160,8 +188,8 @@ class Product extends Component {
                 </div>{" "}
               </div>
             )}
-            {(
-             this.state.category === "dresses") ||
+
+            {this.state.category === "dresses" ||
             this.state.category === "bonnets" ||
             this.state.category === "shorts" ||
             this.state.category === "bloomers" ||
@@ -192,16 +220,20 @@ class Product extends Component {
                 </select>
               </div>
             ) : null}
+
+            {this.props.currentProduct[0] && (
+              <div className="product-quantity-div">
+                Quantity:{" "}
+              
+                  <input className= 'product-quantity-input' value={this.state.quantity} name= 'quantity' onChange = {this.holdQuantity}/>
+     
+              </div>
+            )}
+
             <div className="product-add-to-bag-button-container">
               {this.props.currentProduct[0] && (
                 <button
-                  onClick={() =>
-                    this.props.addToCart(
-                      this.props.currentProduct[0],
-                      this.props.currentProduct[0].price,
-                      this.state.size
-                    )
-                  }
+                  onClick={this.addToCart}
                   className="product-add-to-bag-button"
                 >
                   ADD TO BAG

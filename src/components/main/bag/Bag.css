@@ -70,6 +70,10 @@
   width: 2.5em;
 }
 
+.BAG-ITEM-size{
+  margin-bottom: 1em;
+}
+
 .BAG-ITEM-img {
   width: 9vw;
   height: 18vh;
@@ -78,7 +82,7 @@
 .BAG-name-and-delete-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1vh;
+  margin-bottom: .5vh;
 }
 
 .BAG-checkout-button {
@@ -95,4 +99,12 @@
 .BAG-checkout-button:hover {
   background-color: #edb3c4;
   color: white;
+}
+
+.BAG-ITEM-flashsale div{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .5vh;
+
+
 }

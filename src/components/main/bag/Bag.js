@@ -54,7 +54,7 @@ class Bag extends Component {
                 return <BagItem key={index} product={product} index={index} />;
               })}
             <div>
-              {this.props.user && <h3>Total: {this.props.user.total} </h3>}
+              {this.props.user && <h3>Total: ${this.props.user.total} </h3>}
               <button className="BAG-checkout-button">CHECKOUT</button>
             </div>
           </div>
