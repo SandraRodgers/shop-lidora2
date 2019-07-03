@@ -18,20 +18,28 @@ class CheckoutOne extends Component {
   constructor() {
     super();
     this.state = {
+      currentAddress:[],
       customerAddressId: 0,
+      name: '',
       lineone: '',
       linetwo: '',
       city: '',
       state: '',
       zipcode: '',
-      country: ''
+      country: '',
+      current: false,
+      toggle: false
     };
     this.getCurrentAddress= this.getCurrentAddress.bind(this)
+    this.addAddress = this.addAddress.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.toggleAddress = this.toggleAddress.bind(this)
   }
 
   componentDidMount() {
     this.props.getUserSession();
     this.getCurrentAddress()
+  
   }
 
   
@@ -58,7 +66,9 @@ class CheckoutOne extends Component {
         console.log(currentAddress);
 
         this.setState({
+          currentAddress: [response.data[i]],
           customerAddressId: response.data[i].customer_address_id,
+          name: response.data[i].name,
           lineone: response.data[i].line_one,
           linetwo: response.data[i].line_two,
           city: response.data[i].city,
@@ -67,41 +77,88 @@ class CheckoutOne extends Component {
           country: response.data[i].country})}}})
   }
 
+  addAddress(){
+    if(this.state.toggle===true){
+    axios.post(`/api/shippingAddress`, {customerid: this.props.user.customerid,name:this.state.name, lineone: this.state.lineone, linetwo: this.state.linetwo, city: this.state.city, state: this.state.state,zipcode: this.state.zipcode,country: this.state.country})}
+  }
+
+  handleChange(e){
+    this.setState({[e.target.name]: e.target.value})}
+
+  toggleAddress(){
+    this.setState({toggle: !this.state.toggle}, ()=> {
+      if(this.state.toggle === true){
+        this.setState({
+          customerAddressId: '',
+          name: '',
+          lineone: '',
+          linetwo: '',
+          city: '',
+          state: '',
+          zipcode: '',
+          country: ''
+      })
+    } else {
+      this.setState({
+        customerAddressId: this.state.currentAddress[0].customer_address_id,
+        name: this.state.currentAddress[0].name,
+        lineone: this.state.currentAddress[0].line_one,
+        linetwo: this.state.currentAddress[0].line_two,
+        city: this.state.currentAddress[0].city,
+        state: this.state.currentAddress[0].state,
+        zipcode: this.state.currentAddress[0].zipcode,
+        country: this.state.currentAddress[0].country
+      })
+    }
+  
+  
+  })
+    
+  }
+
   render() {
-    console.log(this.state);
+    console.log(this.props.user);
 
     return (
       <div className="checkout-one-container">
+
+      
         <div className="checkout-one-column-1">
-            <img className='checkout-one-column-1-logo' src={Logo}/>
+            <img alt='logo' className='checkout-one-column-1-logo' src={Logo}/>
             <div className='checkout-column-1-steps'>
                 <div>cart</div>
-                <img className='checkout-column1-arrow' src={Arrow}/>
+                <img alt='arrow' className='checkout-column1-arrow' src={Arrow}/>
                 <div className='checkout-column-1-info'>information</div>
-                <img className='checkout-column1-arrow' src={Arrow}/>
+                <img alt='arrow' className='checkout-column1-arrow' src={Arrow}/>
                 <div>payment</div>
             </div>
+            {this.state.currentAddress.length && this.state.toggle===false?
             <div className='checkout-previous-shipping-address-container'>
                 <div className='checkout-previous-shipping-header'>Previous Shipping Address</div>
                 <div>Would you like to use your previous shipping address?</div>
                 <div className='checkout-checkbox-div'><input className=' checkout-checkbox' type='checkbox'/><div>Yes, use this address:</div></div>
                 <div className='checkout-previous-address'>
+                <div>{this.state.name} </div>
                 <div>{this.state.lineone} {this.state.linetwo}</div>
                 <div>{this.state.city} {this.state.state}</div>
                 <div>{this.state.zipcode}</div></div>
-            </div>
+                <div className='checkout-checkbox-div'><input onClick={this.toggleAddress} className=' checkout-checkbox' type='checkbox'/><div>No, use a different address:</div></div>
+            </div>: null}
+            
             <div className='checkout-previous-shipping-address-container'>
-                <div className='checkout-previous-shipping-header'> Shipping Address</div>
+                <div className='checkout-shipping-header'> Shipping Address</div>
                 <div className='checkout-shipping-address-div'>
-                  <input placeholder='Name' className='checkout-shipping-address-1'/>
-                  <input placeholder='Address line one' className='checkout-shipping-address-1' />
-                  <input placeholder='Address line two' className='checkout-shipping-address-1'/>
-                  <input placeholder='Apartment, suite, etc. (Optional)' className='checkout-shipping-address-1'/>
-                  <input placeholder='City'  className='checkout-shipping-address-1'/>
-                  <div className='checkout-shipping-address-2-div'>  <input placeholder='State'  className='checkout-shipping-address-2'/>  <input className='checkout-shipping-address-2'  placeholder='Zipcode'/></div>
+                  <input onChange={this.handleChange} value = {this.state.name} name = 'name' placeholder='Name' className='checkout-shipping-address-1'/>
+                  <input onChange={this.handleChange} value ={this.state.lineone} name = 'lineone'  placeholder='Address' className='checkout-shipping-address-1' />
+                  
+                  <input onChange={this.handleChange} value = {this.state.linetwo} name = 'linetwo'  placeholder='Apartment, suite, etc. (Optional)' className='checkout-shipping-address-1'/>
+                  <input onChange={this.handleChange} value = {this.state.city} name = 'city'  placeholder='City'  className='checkout-shipping-address-1'/>
+                  <div className='checkout-shipping-address-2-div'>  <input onChange={this.handleChange} value = {this.state.state} name = 'state'  placeholder='State'  className='checkout-shipping-address-2'/>  <input onChange={this.handleChange} value = {this.state.zipcode} name = 'zipcode'  className='checkout-shipping-address-2'  placeholder='Zipcode'/></div>
                 </div>
                
             </div>
+            <div className= 'checkout-one-payment-button-div'>
+            <button className='checkout-one-payment-button' onClick={this.addAddress}>Continue to Payment</button></div>
         </div>
         <div className="checkout-one-column-2">
           {" "}

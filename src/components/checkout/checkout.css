@@ -42,8 +42,15 @@
 .checkout-previous-shipping-header{
     font-family: 'Playfair Display';
     font-size: 1.2em;
-    margin-top: 10vh;
+    margin-top: 1vh;
     margin-bottom: 5vh;
+}
+
+.checkout-shipping-header{
+  font-family: 'Playfair Display';
+  font-size: 1.2em;
+  margin-top: 1vh;
+  margin-bottom: 5vh;
 }
 
 .checkout-previous-address{
@@ -59,6 +66,7 @@
     width: 44vh;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 10vh;
 }
 
 .checkout-column-1-info{
@@ -77,6 +85,7 @@ border:1px solid #bdc0bf;
 margin-bottom: 2vh;
 padding-left: 2vw;
 font-family: 'Source Sans Pro';
+font-size: .8em;
 }
 
 .checkout-shipping-address-2-div{
@@ -93,6 +102,24 @@ border:1px solid #bdc0bf;
 margin-bottom: 2vh;
 padding-left: 2vw;
 font-family: 'Source Sans Pro';
+font-size: .8em;
+
+}
+
+.checkout-one-payment-button{
+  height: 7vh;
+  width: 15vw;
+  border-radius: 2px;
+  background-color: #bdc0bf;
+  font-family: 'Source Sans Pro';
+  font-size: .8em;
+  margin-top: 2vh;
+}
+
+.checkout-one-payment-button-div{
+  display: flex;
+  justify-content: flex-end;
+  width: 39vw;
 
 }
 

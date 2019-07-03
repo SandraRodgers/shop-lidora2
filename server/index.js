@@ -62,7 +62,7 @@ const {
   logout
 } = require("./controllers/authenticationController");
 const { addToCart, removeFromCart, removeFlashItem } = require("./controllers/cartController");
-const {getPreviousAddress} = require("./controllers/checkoutController")
+const {getPreviousAddress, addNewAddress} = require("./controllers/checkoutController")
 
 
 //express session
@@ -156,6 +156,7 @@ app.delete("/api/flashsale/cart/:flashid", removeFlashItem)
 
 //checkout endpoints
 app.get('/api/previousAddress/:id', getPreviousAddress)
+app.post('/api/shippingAddress', addNewAddress)
 
 app.listen(4000, () => {
   console.log(`Listening on ${process.env.EXPRESS_PORT}`);
