@@ -30,16 +30,20 @@
 
 .checkout-checkbox-div{
   display: flex;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
   margin-left: 5vw;
+}
+
+.checkout-checkbox{
+     background-color: rgb(240, 240, 240);
 }
 
 .checkout-previous-shipping-header{
     font-family: 'Playfair Display';
     font-size: 1.2em;
-    margin-top: 5vh;
-    margin-bottom: 2vh;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
 }
 
 .checkout-previous-address{
@@ -61,12 +65,44 @@
     font-weight: 900;
 }
 
+.checkout-shipping-address-div{
+  
+}
+
+.checkout-shipping-address-1{
+height: 5vh;
+width: 40vw;
+border-radius: 2px;
+border:1px solid #bdc0bf;
+margin-bottom: 2vh;
+padding-left: 2vw;
+font-family: 'Source Sans Pro';
+}
+
+.checkout-shipping-address-2-div{
+  display: flex;
+  
+}
+
+.checkout-shipping-address-2{
+  height: 5vh;
+  width: 18.5vw;
+  margin-right: .7vw;
+  border-radius: 2px;
+border:1px solid #bdc0bf;
+margin-bottom: 2vh;
+padding-left: 2vw;
+font-family: 'Source Sans Pro';
+
+}
+
 .checkout-one-column-2 {
     
   display: flex;
   flex-direction: column;
   background: rgb(240, 240, 240);
   width: 45vw;
+  min-height: 150%;
   border-left: 1px solid #bdc0bf;
 }
 
@@ -105,8 +141,8 @@
 }
 .checkout-one-coupon-input {
   width: 60%;
-  font-size: 1.3em;
-  font-family: "Zilla Slab";
+  font-size: 1em;
+  font-family: 'Source Sans Pro';
   text-align: center;
 }
 

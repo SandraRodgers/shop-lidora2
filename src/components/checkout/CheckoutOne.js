@@ -83,8 +83,8 @@ class CheckoutOne extends Component {
             </div>
             <div className='checkout-previous-shipping-address-container'>
                 <div className='checkout-previous-shipping-header'>Previous Shipping Address</div>
-                <div>Would you like to use this shipping address?</div>
-                <div className='checkout-checkbox-div'><input type='checkbox'/><div>Yes, use this address</div></div>
+                <div>Would you like to use your previous shipping address?</div>
+                <div className='checkout-checkbox-div'><input className=' checkout-checkbox' type='checkbox'/><div>Yes, use this address:</div></div>
                 <div className='checkout-previous-address'>
                 <div>{this.state.lineone} {this.state.linetwo}</div>
                 <div>{this.state.city} {this.state.state}</div>
@@ -92,6 +92,14 @@ class CheckoutOne extends Component {
             </div>
             <div className='checkout-previous-shipping-address-container'>
                 <div className='checkout-previous-shipping-header'> Shipping Address</div>
+                <div className='checkout-shipping-address-div'>
+                  <input placeholder='Name' className='checkout-shipping-address-1'/>
+                  <input placeholder='Address line one' className='checkout-shipping-address-1' />
+                  <input placeholder='Address line two' className='checkout-shipping-address-1'/>
+                  <input placeholder='Apartment, suite, etc. (Optional)' className='checkout-shipping-address-1'/>
+                  <input placeholder='City'  className='checkout-shipping-address-1'/>
+                  <div className='checkout-shipping-address-2-div'>  <input placeholder='State'  className='checkout-shipping-address-2'/>  <input className='checkout-shipping-address-2'  placeholder='Zipcode'/></div>
+                </div>
                
             </div>
         </div>
