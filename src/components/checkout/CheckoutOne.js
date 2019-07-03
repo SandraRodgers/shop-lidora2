@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { withRouter } from "react-router-dom";
+import axios from 'axios'
 
 //assets
 import Logo from "../../assets/logo.png";
@@ -16,27 +17,58 @@ import { openBag, getUserSession } from "../../ducks/reducer";
 class CheckoutOne extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      customerAddressId: 0,
+      lineone: '',
+      linetwo: '',
+      city: '',
+      state: '',
+      zipcode: '',
+      country: ''
+    };
+    this.getCurrentAddress= this.getCurrentAddress.bind(this)
   }
 
   componentDidMount() {
     this.props.getUserSession();
+    this.getCurrentAddress()
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.user && this.props.user.cart) {
-      for (let i = 0; i < this.props.user.cart.length; i++) {
-        if (this.props.user.cart[i].flashid) {
-          if (prevProps.user.cart !== this.props.user.cart) {
-            this.props.getUserSession();
-          }
-        }
-      }
-    }
+  
+  // componentDidUpdate(prevProps) {
+  //   this.props.user && this.props.user.cart && console.log(prevProps.user.cart, this.props.user.cart)
+  //   if (this.props.user && this.props.user.cart) {
+  //     for (let i = 0; i < this.props.user.cart.length; i++) {
+  //       if (this.props.user.cart[i].flashid) {
+  //         if (prevProps.user.cart !== this.props.user.cart) {
+  //           this.props.getUserSession();
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+  getCurrentAddress(){
+    axios.get(`/api/previousAddress/${this.props.user.customerid}`).then((response) =>{
+      console.log(response.data)
+    let currentAddress = [];
+    for (let i = 0; i < response.data.length; i++) {
+      if (response.data[i].current === true) {
+        currentAddress.push(response.data[i]);
+        console.log(currentAddress);
+
+        this.setState({
+          customerAddressId: response.data[i].customer_address_id,
+          lineone: response.data[i].line_one,
+          linetwo: response.data[i].line_two,
+          city: response.data[i].city,
+          state: response.data[i].state,
+          zipcode: response.data[i].zipcode,
+          country: response.data[i].country})}}})
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.state);
 
     return (
       <div className="checkout-one-container">
@@ -49,8 +81,18 @@ class CheckoutOne extends Component {
                 <img className='checkout-column1-arrow' src={Arrow}/>
                 <div>payment</div>
             </div>
-            <div className='checkout-precious-shipping-address-container'>
+            <div className='checkout-previous-shipping-address-container'>
                 <div className='checkout-previous-shipping-header'>Previous Shipping Address</div>
+                <div>Would you like to use this shipping address?</div>
+                <div className='checkout-checkbox-div'><input type='checkbox'/><div>Yes, use this address</div></div>
+                <div className='checkout-previous-address'>
+                <div>{this.state.lineone} {this.state.linetwo}</div>
+                <div>{this.state.city} {this.state.state}</div>
+                <div>{this.state.zipcode}</div></div>
+            </div>
+            <div className='checkout-previous-shipping-address-container'>
+                <div className='checkout-previous-shipping-header'> Shipping Address</div>
+               
             </div>
         </div>
         <div className="checkout-one-column-2">

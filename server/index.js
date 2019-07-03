@@ -62,6 +62,8 @@ const {
   logout
 } = require("./controllers/authenticationController");
 const { addToCart, removeFromCart, removeFlashItem } = require("./controllers/cartController");
+const {getPreviousAddress} = require("./controllers/checkoutController")
+
 
 //express session
 const pgSession = require("connect-pg-simple")(session);
@@ -88,8 +90,9 @@ massive(process.env.CONNECTION_STRING).then(db => {
 });
 
 //ENDPOINTS
-app.post("/api/admin/createProduct", createProduct);
 
+//create products endpoints
+app.post("/api/admin/createProduct", createProduct);
 app.post("/api/admin/addDress", addDress);
 app.post("/api/admin/addBonnet", addBonnet);
 app.post("/api/admin/addShorts", addShorts);
@@ -104,6 +107,7 @@ app.post("/api/admin/addHairbows", addHairbow);
 app.post("/api/admin/addHeadbands", addHeadband);
 app.post("/api/admin/addSuspenders", addSuspenders);
 
+//get all of a product category endpoints
 app.get("/api/admin/getDresses", getDresses);
 app.get("/api/admin/getBonnets", getBonnets);
 app.get("/api/admin/getShorts", getShorts);
@@ -118,6 +122,7 @@ app.get("/api/admin/getHairbows", getHairbows);
 app.get("/api/admin/getHeadbands", getHeadbands);
 app.get("/api/admin/getSuspenders", getSuspenders);
 
+//get one specific product endpoints
 app.get("/api/product/:id", getProductInfo);
 app.get("/api/dress/:id", getDress);
 app.get("/api/bonnet/:id", getBonnet);
@@ -133,19 +138,24 @@ app.get("/api/hairbow/:id", getHairbow);
 app.get("/api/headband/:id", getHeadband);
 app.get("/api/suspender/:id", getSuspender);
 
+//flashsale and favorites endpoints
 app.get("/api/flashsale/:id", getFlashsaleProduct)
 app.get("/api/admin/flashsale", getFlashsale)
 app.post("/api/admin/flashsale", addFlashsale)
 app.get("/api/favorites", getFavorites)
 
-
-
+//auth endpoints
 app.post("/api/auth/signin", signin);
 app.get("/api/auth/user", getUser);
 app.get("/api/auth/logout", logout);
+
+//cart endpoints
 app.post("/api/cart", addToCart);
 app.delete("/api/cart/:productName", removeFromCart);
 app.delete("/api/flashsale/cart/:flashid", removeFlashItem)
+
+//checkout endpoints
+app.get('/api/previousAddress/:id', getPreviousAddress)
 
 app.listen(4000, () => {
   console.log(`Listening on ${process.env.EXPRESS_PORT}`);

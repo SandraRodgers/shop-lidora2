@@ -134,7 +134,7 @@ class Product extends Component {
       this.setState({ redirect: true }, () => {
         alert("Please Log In");
       });
-    } else if (this.state.size === ''){
+    } else if (this.state.size === '' && this.state.productInfo[0].category !== "flashsale"){
       alert('Please specify a size')
     }
     else {
@@ -144,6 +144,7 @@ class Product extends Component {
         this.state.size,
         this.state.quantity
       );
+      alert('Product added to cart')
     }
   }
 

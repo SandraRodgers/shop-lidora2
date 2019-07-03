@@ -21,16 +21,30 @@
     height: .8em
 }
 
-.checkout-precious-shipping-address-container{
+.checkout-previous-shipping-address-container{
     display: flex;
     width: 45vw;
     font-family: 'Source Sans Pro';
+    flex-direction: column;
+}
+
+.checkout-checkbox-div{
+  display: flex;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  margin-left: 5vw;
 }
 
 .checkout-previous-shipping-header{
     font-family: 'Playfair Display';
     font-size: 1.2em;
     margin-top: 5vh;
+    margin-bottom: 2vh;
+}
+
+.checkout-previous-address{
+  margin-left: 5vw;
+  font-weight: 900;
 }
 
 .checkout-column-1-steps{
