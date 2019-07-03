@@ -31,6 +31,7 @@ import Product from "../src/components/main/product/Product"
 
 //Checkout
 import CheckoutOne from "../src/components/checkout/CheckoutOne"
+import CheckoutTwo from "../src/components/checkout/CheckoutTwo"
 
 //StyleGuide
 import StyleGuide from "./components/main/styleguide/StyleGuide"
@@ -112,6 +113,7 @@ export default (
 
   {/* Checkout */}
   <Route path="/checkout/one" exact component={CheckoutOne}/>
+  <Route path="/checkout/two" exact component={CheckoutTwo}/>
   </Switch>
 );
 

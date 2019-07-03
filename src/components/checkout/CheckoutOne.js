@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import axios from 'axios'
 
 //assets
@@ -12,7 +12,7 @@ import "../checkout/checkout.css";
 
 //redux
 import { connect } from "react-redux";
-import { openBag, getUserSession } from "../../ducks/reducer";
+import { getUserSession } from "../../ducks/reducer";
 
 class CheckoutOne extends Component {
   constructor() {
@@ -73,13 +73,14 @@ class CheckoutOne extends Component {
           linetwo: response.data[i].line_two,
           city: response.data[i].city,
           state: response.data[i].state,
-          zipcode: response.data[i].zipcode,
-          country: response.data[i].country})}}})
+          zipcode: response.data[i].zipcode
+          })}}})
   }
 
   addAddress(){
     if(this.state.toggle===true){
-    axios.post(`/api/shippingAddress`, {customerid: this.props.user.customerid,name:this.state.name, lineone: this.state.lineone, linetwo: this.state.linetwo, city: this.state.city, state: this.state.state,zipcode: this.state.zipcode,country: this.state.country})}
+    axios.post(`/api/shippingAddress`, {customerid: this.props.user.customerid,name:this.state.name, lineone: this.state.lineone, linetwo: this.state.linetwo, city: this.state.city, state: this.state.state,zipcode: this.state.zipcode})} else{
+      console.log(this.state.currentAddress)}
   }
 
   handleChange(e){
@@ -117,7 +118,7 @@ class CheckoutOne extends Component {
   }
 
   render() {
-    console.log(this.props.user);
+  
 
     return (
       <div className="checkout-one-container">
@@ -126,11 +127,11 @@ class CheckoutOne extends Component {
         <div className="checkout-one-column-1">
             <img alt='logo' className='checkout-one-column-1-logo' src={Logo}/>
             <div className='checkout-column-1-steps'>
-                <div>cart</div>
+                <div>Cart</div>
                 <img alt='arrow' className='checkout-column1-arrow' src={Arrow}/>
-                <div className='checkout-column-1-info'>information</div>
+                <div className='checkout-column-1-info'>Information</div>
                 <img alt='arrow' className='checkout-column1-arrow' src={Arrow}/>
-                <div>payment</div>
+                <div>Payment</div>
             </div>
             {this.state.currentAddress.length && this.state.toggle===false?
             <div className='checkout-previous-shipping-address-container'>
@@ -158,11 +159,9 @@ class CheckoutOne extends Component {
                
             </div>
             <div className= 'checkout-one-payment-button-div'>
-            <button className='checkout-one-payment-button' onClick={this.addAddress}>Continue to Payment</button></div>
+            <Link to='/checkout/two'><button className='checkout-one-payment-button' onClick={this.addAddress}>Continue to Payment</button></Link></div>
         </div>
-        <div className="checkout-one-column-2">
-          {" "}
-       
+        <div className="checkout-one-column-2">     
           <div className="BAG-item-components">
             {this.props.user &&
               this.props.user.cart &&
@@ -212,6 +211,6 @@ const mapStateToProps = state => state;
 
 const MyComponent = connect(
   mapStateToProps,
-  { openBag: openBag, getUserSession: getUserSession }
+  {  getUserSession: getUserSession }
 )(CheckoutOne);
 export default withRouter(MyComponent);
