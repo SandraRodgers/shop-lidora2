@@ -61,9 +61,15 @@ const {
   getUser,
   logout
 } = require("./controllers/authenticationController");
-const { addToCart, removeFromCart, removeFlashItem } = require("./controllers/cartController");
-const {getPreviousAddress, addNewAddress} = require("./controllers/checkoutController")
-
+const {
+  addToCart,
+  removeFromCart,
+  removeFlashItem
+} = require("./controllers/cartController");
+const {
+  getPreviousAddress,
+  addNewAddress
+} = require("./controllers/checkoutController");
 
 //express session
 const pgSession = require("connect-pg-simple")(session);
@@ -88,6 +94,15 @@ massive(process.env.CONNECTION_STRING).then(db => {
   app.set("db", db);
   console.log("Database connected");
 });
+
+
+
+function checkTimestamp(req, res, next) {
+  removeFlashItem(req);
+  next();
+}
+
+
 
 //ENDPOINTS
 
@@ -123,7 +138,7 @@ app.get("/api/admin/getHeadbands", getHeadbands);
 app.get("/api/admin/getSuspenders", getSuspenders);
 
 //get one specific product endpoints
-app.get("/api/product/:id", getProductInfo);
+app.get("/api/product/:id", checkTimestamp, getProductInfo);
 app.get("/api/dress/:id", getDress);
 app.get("/api/bonnet/:id", getBonnet);
 app.get("/api/short/:id", getShort);
@@ -139,24 +154,24 @@ app.get("/api/headband/:id", getHeadband);
 app.get("/api/suspender/:id", getSuspender);
 
 //flashsale and favorites endpoints
-app.get("/api/flashsale/:id", getFlashsaleProduct)
-app.get("/api/admin/flashsale", getFlashsale)
-app.post("/api/admin/flashsale", addFlashsale)
-app.get("/api/favorites", getFavorites)
+app.get("/api/flashsale/:id", getFlashsaleProduct);
+app.get("/api/admin/flashsale", getFlashsale);
+app.post("/api/admin/flashsale", addFlashsale);
+app.get("/api/favorites", getFavorites);
 
 //auth endpoints
 app.post("/api/auth/signin", signin);
-app.get("/api/auth/user", getUser);
+app.get("/api/auth/user",checkTimestamp, getUser);
 app.get("/api/auth/logout", logout);
 
 //cart endpoints
 app.post("/api/cart", addToCart);
 app.delete("/api/cart/:productName", removeFromCart);
-app.delete("/api/flashsale/cart/:flashid", removeFlashItem)
+app.delete("/api/flashsale/cart/:flashid", removeFlashItem);
 
 //checkout endpoints
-app.get('/api/previousAddress/:id', getPreviousAddress)
-app.post('/api/shippingAddress', addNewAddress)
+app.get("/api/previousAddress/:id", getPreviousAddress);
+app.post("/api/shippingAddress", addNewAddress);
 
 app.listen(4000, () => {
   console.log(`Listening on ${process.env.EXPRESS_PORT}`);

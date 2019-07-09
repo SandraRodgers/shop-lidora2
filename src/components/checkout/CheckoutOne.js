@@ -43,18 +43,18 @@ class CheckoutOne extends Component {
   }
 
   
-  // componentDidUpdate(prevProps) {
-  //   this.props.user && this.props.user.cart && console.log(prevProps.user.cart, this.props.user.cart)
-  //   if (this.props.user && this.props.user.cart) {
-  //     for (let i = 0; i < this.props.user.cart.length; i++) {
-  //       if (this.props.user.cart[i].flashid) {
-  //         if (prevProps.user.cart !== this.props.user.cart) {
-  //           this.props.getUserSession();
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    this.props.user && this.props.user.cart && console.log(prevProps.user.cart, this.props.user.cart)
+    if (this.props.user && this.props.user.cart) {
+      for (let i = 0; i < this.props.user.cart.length; i++) {
+        if (this.props.user.cart[i].flashid) {
+          if (prevProps.user.cart !== this.props.user.cart) {
+            this.props.getUserSession();
+          }
+        }
+      }
+    }
+  }
 
   getCurrentAddress(){
     axios.get(`/api/previousAddress/${this.props.user.customerid}`).then((response) =>{
@@ -118,7 +118,9 @@ class CheckoutOne extends Component {
   }
 
   render() {
-  
+    let toggleBag;
+
+    this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
 
     return (
       <div className="checkout-one-container">

@@ -41,7 +41,11 @@ class BagItem extends Component {
             <div>${this.props.product.price}</div>
        
           </div>
-          {this.props.product.flashid ?  <div className='BAG-ITEM-flashsale div'><div>Flash Sale<Timer flashid={this.props.product.flashid}/></div></div> : null }
+          {this.props.product.flashid ?  <div className='BAG-ITEM-flashsale div'><div>Flash Sale
+          
+          {/* <Timer flashid={this.props.product.flashid}/> */}
+          
+          </div></div> : null }
          
         </div>
       </div>

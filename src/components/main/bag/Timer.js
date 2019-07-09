@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+//redux
+import { connect } from "react-redux";
+import { openBag, getUserSession } from "../../../ducks/reducer";
+
 class Timer extends Component {
   constructor() {
     super();
@@ -12,6 +16,7 @@ class Timer extends Component {
   }
 
   componentDidMount() {
+    this.props.getUserSession();
     var intervalId = setInterval(this.timer, 1000);
     // store intervalId in the state so it can be accessed later:
     this.setState({ intervalId: intervalId });
@@ -19,6 +24,10 @@ class Timer extends Component {
 
   componentWillUnmount() {
     clearInterval(this.state.intervalId);
+  }
+
+  convertTime = () => {
+    
   }
 
   timer = () => {
@@ -35,7 +44,7 @@ class Timer extends Component {
 
   render() {
     // console.log(this.state.timer)
-    if (this.state.clock === "00:00:10") {
+    if (this.state.clock === "00:01:10") {
         console.log('10 seconds')
       this.removeFlashItem();
     }
@@ -44,4 +53,10 @@ class Timer extends Component {
   }
 }
 
-export default Timer;
+const mapStateToProps = state => state;
+
+export default connect(
+  mapStateToProps,
+  { openBag: openBag, getUserSession: getUserSession }
+)(Timer);
+

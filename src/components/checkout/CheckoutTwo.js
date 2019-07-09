@@ -22,6 +22,9 @@ class CheckoutTwo extends Component {
       
       }
     render(){
+      let toggleBag;
+
+      this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
         return (
             <div className="checkout-one-container">
              <div className="checkout-one-column-1">
