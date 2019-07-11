@@ -25,6 +25,14 @@
   margin-top: 5vh;
 }
 
+.LM-links-admin{
+  display: flex;
+  justify-content: space-around;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-top: 5vh;
+}
+
 .LM-right-column {
   display: flex;
   justify-content: center;

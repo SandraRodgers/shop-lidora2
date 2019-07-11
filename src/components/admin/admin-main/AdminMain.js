@@ -1,29 +1,40 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
+import "./admin-main.css"
+import LilacLink from "../../styled/LilacLink"
 
 class AdminMain extends Component {
 
     render(){
         return(
-            <div>
-                <Link to="/admin/form/dresses">Form Dresses</Link>
-                <Link to="/admin/form/bonnets">Form Bonnets</Link>
-                <Link to="/admin/form/shorts" >Form Shorts</Link>
-                <Link to="/admin/form/bloomers">Form Bloomers</Link>
-                <Link to="/admin/form/skirts">Form Skirts</Link>
-                <Link to="/admin/form/vests">Form Vests</Link>
-                <Link to="/admin/form/bibdanas">Form Bibdanas</Link>
-                <Link to="/admin/form/bowties">Form Bowties</Link>
-                <Link to="/admin/form/burpcloths">Form Burpcloths</Link>
-                <Link to="/admin/form/droolpads">Form Droolpads</Link>
-                <Link to="/admin/form/hairbows">Form Hairbows</Link>
-                <Link to="/admin/form/headbands" >Form Headbands</Link>
-                <Link to="/admin/form/suspenders">Form Suspenders</Link>
-                <Link to="/admin/form/flashsale">Form Flashsale</Link>
+            <div className='AM-component'>
+              <div className="admin-header">Admin Page</div>
+        <div className="columns-container">
+          <div className="column-1">
+          <div className="admin-header">Create New Products</div>
+                <Link className="admin-link" to="/admin/form/dresses">Dresses</Link>
+                <Link className="admin-link"  to="/admin/form/bonnets" >Bonnets</Link>
+                <Link className="admin-link"  to="/admin/form/shorts" >Shorts</Link>
+                <Link className="admin-link"  to="/admin/form/bloomers"> Bloomers </Link>
+                <Link className="admin-link"  to="/admin/form/skirts"> Skirts </Link>
+                <Link className="admin-link"  to="/admin/form/vests"> Vests </Link>
+                <Link  className="admin-link" to="/admin/form/bibdanas" > Bibdanas</Link>
+                <Link className="admin-link"  to="/admin/form/bowties" > Bowties</Link>
+                <Link  className="admin-link" to="/admin/form/burpcloths" > Burpcloths </Link>
+                <Link  className="admin-link" to="/admin/form/droolpads"> Droolpads </Link>
+                <Link  className="admin-link" to="/admin/form/hairbows"> Hairbows </Link>
+                <Link  className="admin-link" to="/admin/form/headbands" >Headbands</Link>
+                <Link  className="admin-link" to="/admin/form/suspenders" >Suspenders</Link>
+                <Link  className="admin-link" to="/admin/form/flashsale">Flashsale</Link>
                
 
 
             </div>
+            </div>
+        </div>
+     
+  
+
         )
     }
 }

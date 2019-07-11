@@ -1,0 +1,45 @@
+.AM-component{
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 3vh;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.columns-container{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+
+.admin-header{
+    font-family: 'Lora', serif;
+    font-weight: 900;
+    margin-bottom: 4vh;
+    color: black;
+}
+
+.column-1{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 90vh;
+    flex-wrap: wrap;
+    border: gray;
+    border-style: solid;
+    padding: 4vh;
+    margin-bottom: 20vh;
+    font-family: 'Zilla Slab', serif;
+}
+
+.admin-link{
+    text-decoration: none;
+    color: rgb(74, 72, 96);
+}

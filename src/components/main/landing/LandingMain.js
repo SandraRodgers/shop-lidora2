@@ -46,14 +46,14 @@ class LandingMain extends Component {
             <Link to="/login">Login</Link>
           </div>
           {this.props.user && this.props.user.isadmin    ? 
-
-<Link to='/admin'>Admin Page</Link>: null
+<div className="LM-links-admin">
+<Link red to='/admin'>Admin Page</Link></div>: null
 }
 
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="LM-right-column">
+        <div  className="LM-right-column">
           <img alt="coverpic" src={coverpic} className="LM-coverpic" />
         </div>
         

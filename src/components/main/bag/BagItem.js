@@ -43,7 +43,7 @@ class BagItem extends Component {
           </div>
           {this.props.product.flashid ?  <div className='BAG-ITEM-flashsale div'><div>Flash Sale
           
-          {/* <Timer flashid={this.props.product.flashid}/> */}
+          <Timer flashid={this.props.product.flashid}/>
           
           </div></div> : null }
          

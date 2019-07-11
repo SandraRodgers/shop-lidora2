@@ -4,16 +4,18 @@ import styled from "styled-components";
 export default styled(Link)`
   text-decoration: none;
 
-  color: rgb(74, 72, 96);
-
+  ${'' /* color: rgb(74, 72, 96); */}
+  color: ${props => (props.red ? 'rgb(207, 8, 8)': "rgb(74, 72, 96)")};
   ${'' /* z-index: 2; */}
   font-size: 3.5vh;
   font-family: Lora;
   ${'' /* z-index: 1; */}
   font-weight: 900;
+
   &:hover { color: ${props =>
     props.primary ? "rgb(255,255,255)" : "rgb(74, 72, 96)"};}
-
+    ${'' /* &:hover { color: ${props =>
+    props.red ? "rgb(255,99,71)" : "rgb(74, 72, 96)"};} */}
   &:after {
     content: "";
     display: block;
@@ -21,6 +23,7 @@ export default styled(Link)`
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
   }
+  ${'' /* &:after  {border-bottom: ${props => props.red ? 'solid 1.5px rgb(255,99,71)' :'solid 1.5px rgb(74, 72, 96)'}}  */}
  
   &:hover:after {
     transform: scaleX(1);

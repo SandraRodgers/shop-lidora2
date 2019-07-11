@@ -118,9 +118,9 @@ class CheckoutOne extends Component {
   }
 
   render() {
-    let toggleBag;
+    // let toggleBag;
 
-    this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
+    // this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
 
     return (
       <div className="checkout-one-container">
