@@ -19,6 +19,7 @@ import bagIcon from "../../../assets/shopping-bag.png";
 import "./Bag.css";
 
 class Bag extends Component {
+ 
   componentDidMount() {
     this.props.getUserSession();
     
@@ -38,8 +39,9 @@ class Bag extends Component {
   
 
   render() {
-    // console.log(this.props.user.cart)
-
+let fixedTotal;
+if(this.props.user && this.props.user.total){
+ fixedTotal = this.props.user.total.toFixed(2)}
     return (
       <div className="bag-container">
         <BagSideMenu className="BAG-SM-component" open={this.props.open}>
@@ -58,7 +60,7 @@ class Bag extends Component {
                 return <BagItem key={index} product={product} index={index} />;
               })}
             <div>
-              {this.props.user && <h3>Total: ${this.props.user.total} </h3>}
+              {this.props.user && <h3>Total: ${fixedTotal} </h3>}
               <Link to='/checkout/one'><button className="BAG-checkout-button">CHECKOUT</button></Link>
             </div>
           </div>

@@ -1,0 +1,1 @@
+SELECT * FROM coupon WHERE code = $1;
