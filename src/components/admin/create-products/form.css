@@ -30,3 +30,19 @@
   background-color: white;
   width: 60vw;
 }
+
+
+/* Coupon Form */
+
+.coupon-form-instructions-container{
+  display: flex;
+  width: 100%;
+  margin-top: 10vh;
+}
+.coupon-form-instructions{
+  color: rgb(74, 72, 96);
+  font-size: 1.3em;
+
+
+}
+

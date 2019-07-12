@@ -25,7 +25,7 @@ class Bag extends Component {
   }
 
   componentDidUpdate(prevProps){
-    console.log(prevProps.user.cart, this.props.user.cart)
+    
     if(this.props.user && this.props.user.cart){
     for(let i=0; i<this.props.user.cart.length; i++){
       if(this.props.user.cart[i].flashid){

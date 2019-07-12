@@ -31,6 +31,15 @@ class AdminMain extends Component {
 
             </div>
             </div>
+            <div className="columns-container">
+          <div className="column-2">
+          <div className="admin-header">Manage Payments/Orders</div>
+          
+          <Link className="admin-link" to="/admin/form/coupon">Create Coupons</Link>
+
+
+            </div>
+            </div>
         </div>
      
   

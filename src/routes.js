@@ -46,7 +46,7 @@ import Account from "./components/user/Account"
 import Contact from "./components/main/contact/Contact"
 
 //ADMIN
-//Forms
+//Product Forms
 import FormDresses from "../src/components/admin/create-products/FormDresses"
 import FormBonnets from "../src/components/admin/create-products/FormBonnets"
 import FormShorts from "../src/components/admin/create-products/FormShorts"
@@ -63,6 +63,8 @@ import FormSuspenders from "../src/components/admin/create-products/FormSuspende
 import FormFlashsale from "../src/components/admin/create-products/FormFlashsale"
 import AdminMain from "../src/components/admin/admin-main/AdminMain"
 
+//Payment and Orders 
+import FormCoupon from "../src/components/admin/coupons/CouponForm"
 
 export default (
   <Switch>
@@ -109,6 +111,7 @@ export default (
     <Route path="/admin/form/headbands" exact component={FormHeadbands} />
     <Route path="/admin/form/suspenders" exact component={FormSuspenders} />
     <Route path="/admin/form/flashsale" exact component={FormFlashsale} />
+    <Route path="/admin/form/coupon" exact component={FormCoupon} />
 
 
   {/* Checkout */}

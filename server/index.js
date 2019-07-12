@@ -70,7 +70,7 @@ const {
   getPreviousAddress,
   addNewAddress
 } = require("./controllers/checkoutController");
-
+const {createCoupon} = require("./controllers/adminController")
 //express session
 const pgSession = require("connect-pg-simple")(session);
 app.use(
@@ -158,6 +158,9 @@ app.get("/api/flashsale/:id", getFlashsaleProduct);
 app.get("/api/admin/flashsale", getFlashsale);
 app.post("/api/admin/flashsale", addFlashsale);
 app.get("/api/favorites", getFavorites);
+
+//coupon endpoints
+app.post("/api/admin/coupon", createCoupon)
 
 //auth endpoints
 app.post("/api/auth/signin", signin);
