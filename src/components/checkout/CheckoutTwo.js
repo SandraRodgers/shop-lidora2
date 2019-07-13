@@ -85,28 +85,33 @@ class CheckoutTwo extends Component {
       let caliTax = (this.props.user.total * .0725)
       this.setState({caliTax: caliTax })
       let withCATax= (this.props.user.total * .0725) + this.props.user.total
-      console.log(withCATax)
+
     } else {
-      console.log("no california tax");
+     
     }
     for(let i=0; i<SDZips.length; i++){
       if(this.state.currentAddress[0].zipcode===SDZips[i]){
         let sdTax = (this.props.user.total * .0025)
         this.setState({sdTax: sdTax})
         let withSDTax = (this.props.user.total * .0025) + this.props.user.total
-        console.log(withSDTax)
+     
       }
     }
     
   };
 
   render() {
-    console.log(this.state.couponApplied)
+    let fixedCATax; 
+    let fixedSDTax;
+    let fixedTotal;
+    let fixedDiscount;
 
-    let fixedCATax = this.state.caliTax.toFixed(2);
-    let fixedSDTax = this.state.sdTax.toFixed(2)
-    let fixedTotal = (this.props.user.total + this.state.caliTax + this.state.sdTax).toFixed(2)
-    let fixedDiscount = this.props.user.discount.toFixed(2)
+
+if(this.props.user && this.state.caliTax && this.state.sdTax){
+     fixedCATax = this.state.caliTax.toFixed(2);
+     fixedSDTax = this.state.sdTax.toFixed(2)
+     fixedTotal = (this.props.user.total + this.state.caliTax + this.state.sdTax).toFixed(2)
+     fixedDiscount = this.props.user.discount.toFixed(2)}
 
   
     return (
@@ -156,15 +161,15 @@ class CheckoutTwo extends Component {
                 );
               })}
             
-            {this.state.caliTax > 0 ?  <div className="checkout-one-tax-div">
+            {this.state.caliTax > 0 ?  <div className="checkout-two-added">
             7.25% California Sales Tax: ${fixedCATax}
             </div>: null}
            
-              {this.state.sdTax > 0?  <div className="checkout-one-tax-div">
+              {this.state.sdTax > 0?  <div className="checkout-two-added">
             .25% San Diego County Sales Tax: ${fixedSDTax}
             </div>: null}
 
-             {this.state.couponApplied ?  <div className="checkout-one-tax-div">
+             {this.state.couponApplied ?  <div className="checkout-two-added">
             Coupon Applied: ${fixedDiscount}
             </div>: null}
 

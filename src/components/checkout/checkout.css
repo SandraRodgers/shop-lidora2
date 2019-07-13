@@ -191,6 +191,16 @@ font-size: .8em;
   font-family: 'Source Sans Pro';
 }
 
+
+.checkout-two-added {
+  display: flex;
+  justify-content: flex-end;
+  font-family: 'Source Sans Pro';
+  font-size: .8em;
+
+
+}
+
 .checkout-one-total {
   display: flex;
   justify-content: flex-end;
