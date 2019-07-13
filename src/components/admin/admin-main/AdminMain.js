@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import "./admin-main.css"
-import LilacLink from "../../styled/LilacLink"
+
 
 class AdminMain extends Component {
 

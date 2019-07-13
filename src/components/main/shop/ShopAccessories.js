@@ -18,7 +18,6 @@ class ShopAccessories extends Component {
             ){accessories.push(this.props.favorites[i])}
         }
       
-        console.log(accessories)
 
         let accessoriesList = accessories.map(element => {
             

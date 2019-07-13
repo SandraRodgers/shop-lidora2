@@ -106,6 +106,18 @@ font-size: .8em;
 
 }
 
+.checkout-shipping-address-2-select{
+  height: 5.5vh;
+  width: 21vw;
+  margin-right: .7vw;
+  
+border:1px solid #bdc0bf;
+margin-bottom: 2vh;
+padding-left: 2vw;
+font-family: 'Source Sans Pro';
+font-size: .8em;
+}
+
 .checkout-one-payment-button{
   height: 7vh;
   width: 15vw;

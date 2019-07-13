@@ -21,7 +21,6 @@ class ShopClothing extends Component {
         
 
         let clothingList = clothing.map(element => {
-                console.log(element)
                 return (
                   <div
                     style={{ zIndex: toggleBag }}

@@ -18,7 +18,8 @@ const initialState = {
   currentProduct: [],
   bagIsOpen: false,
   user: [],
-  loading: false
+  loading: false,
+  currentAddress:[]
 };
 
 //get product data
@@ -63,7 +64,11 @@ const GET_USER_SESSION = "GET_USER_SESSION";
 const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 
+//checkout
+const GET_CURRENT_ADDRESS = "GET_CURRENT_ADDRESS"
+
 export default function reducer(state = initialState, action) {
+
   switch (action.type) {
 
     case UPDATE_PRODUCT:
@@ -173,6 +178,10 @@ export default function reducer(state = initialState, action) {
 
     case `${REMOVE_FROM_CART}_FULFILLED`:
       return { ...state, user: action.payload.data };
+    
+    case `${GET_CURRENT_ADDRESS}_FULFILLED`:
+      return{...state, currentAddress: action.payload.data}
+    
     default:
       return state;
   }
@@ -424,4 +433,11 @@ export function removeFromCart(productName) {
     type: REMOVE_FROM_CART,
     payload: axios.delete(`/api/cart/${productName}`)
   };
+}
+
+export function getCurrentAddress(customerid){
+    return {
+      type: GET_CURRENT_ADDRESS,
+      payload: axios.get(`/api/previousAddress/${customerid}`).catch(err => err)
+    }
 }

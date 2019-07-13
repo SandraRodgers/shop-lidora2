@@ -12,8 +12,7 @@ import "../checkout/checkout.css";
 
 //redux
 import { connect } from "react-redux";
-import { getUserSession } from "../../ducks/reducer";
-import { app } from "firebase";
+import { getUserSession, getCurrentAddress } from "../../ducks/reducer";
 
 class CheckoutOne extends Component {
   constructor() {
@@ -32,7 +31,8 @@ class CheckoutOne extends Component {
       toggle: false,
       couponCode: "",
       coupon: [],
-      total: 0
+      total: 0,
+      addressComplete: false
     };
     this.getCurrentAddress = this.getCurrentAddress.bind(this);
     this.addAddress = this.addAddress.bind(this);
@@ -43,63 +43,69 @@ class CheckoutOne extends Component {
   }
 
   componentDidMount() {
-    this.props.getUserSession().then(()=>{this.setState({total: this.props.user.total})})
+    this.props.getUserSession().then(() => {
+      this.setState({ total: this.props.user.total });
+    });
     this.getCurrentAddress();
-    
   }
 
   componentDidUpdate(prevProps, prevState) {
-      // this.props.user &&
-      //   this.props.user.cart &&
-      //   console.log(prevProps.user.cart, this.props.user.cart);
-      if (this.props.user && this.props.user.cart) {
-        for (let i = 0; i < this.props.user.cart.length; i++) {
-          if (this.props.user.cart[i].flashid) {
-            if (prevProps.user.cart !== this.props.user.cart) {
-              this.props.getUserSession();
-            }
+    if (this.props.user && this.props.user.cart) {
+      for (let i = 0; i < this.props.user.cart.length; i++) {
+        if (this.props.user.cart[i].flashid) {
+          if (prevProps.user.cart !== this.props.user.cart) {
+            this.props.getUserSession();
           }
-        }
-      }
-      console.log(prevProps.user.total, this.props.user.total);
-      if(this.props.user && this.props.user.total){
-        if(prevState.total !== this.state.total){
-          this.setState({total:this.props.user.total})
         }
       }
     }
-  
-
-
+    if (this.props.user && this.props.user.total) {
+      if (prevState.total !== this.state.total) {
+        this.setState({ total: this.props.user.total });
+      }
+    }
+  }
 
   getCurrentAddress() {
-    axios
-      .get(`/api/previousAddress/${this.props.user.customerid}`)
-      .then(response => {
-        console.log(response.data);
-        let currentAddress = [];
-        for (let i = 0; i < response.data.length; i++) {
-          if (response.data[i].current === true) {
-            currentAddress.push(response.data[i]);
-            console.log(currentAddress);
+    this.props.getCurrentAddress(this.props.user.customerid).then(() => {
+      let currentAddress = [];
+      if (this.props.currentAddress)
+        for (let i = 0; i < this.props.currentAddress.length; i++) {
+          if (this.props.currentAddress[i].current === true) {
+            currentAddress.push(this.props.currentAddress[i]);
+            
 
             this.setState({
-              currentAddress: [response.data[i]],
-              customerAddressId: response.data[i].customer_address_id,
-              name: response.data[i].name,
-              lineone: response.data[i].line_one,
-              linetwo: response.data[i].line_two,
-              city: response.data[i].city,
-              state: response.data[i].state,
-              zipcode: response.data[i].zipcode
-            });
+              currentAddress: [this.props.currentAddress[i]],
+              customerAddressId: this.props.currentAddress[i]
+                .customer_address_id,
+              name: this.props.currentAddress[i].name,
+              lineone: this.props.currentAddress[i].line_one,
+              linetwo: this.props.currentAddress[i].line_two,
+              city: this.props.currentAddress[i].city,
+              state: this.props.currentAddress[i].state,
+              zipcode: this.props.currentAddress[i].zipcode,
+              addressComplete: true
+            }, ()=>{this.props.currentAddress.splice(0,1, this.state.currentAddress[0])});
           }
         }
-      });
+    });
   }
 
   addAddress() {
-    if (this.state.toggle === true) {
+    console.log(
+      this.props.user.customerid,
+      this.state.name.length,
+      this.state.lineone.length,
+      this.state.linetwo.length,
+      this.state.city.length,
+      this.state.state.length,
+      this.state.zipcode.length
+    );
+    if ( this.state.lineone.length===0 || this.state.city.length===0  || this.state.state.length===0  || this.state.zipcode.length===0 ){
+      alert('Address Form Incomplete')
+    }
+    else if (this.state.toggle === true || this.state.currentAddress.length === 0) {
       axios.post(`/api/shippingAddress`, {
         customerid: this.props.user.customerid,
         name: this.state.name,
@@ -108,9 +114,7 @@ class CheckoutOne extends Component {
         city: this.state.city,
         state: this.state.state,
         zipcode: this.state.zipcode
-      });
-    } else {
-      console.log(this.state.currentAddress);
+      }).then(()=>{this.getCurrentAddress()})
     }
   }
 
@@ -150,7 +154,6 @@ class CheckoutOne extends Component {
     axios
       .get(`/api/checkout/coupon/${this.state.couponCode}`)
       .then(response => {
-        console.log(response.data);
         this.setState({ coupon: response.data }, () => {
           if (this.state.coupon.length === 0) {
             alert("Code Not Found");
@@ -164,26 +167,31 @@ class CheckoutOne extends Component {
   }
 
   applyCoupon() {
-    axios.post("/api/checkout/coupon", {
-      discount: this.state.coupon[0].discount,
-      type: this.state.coupon[0].type,
-      code: this.state.coupon[0].code
-    }).then(()=> {
-      this.props.getUserSession()
-      alert('Discount Applied')
-    })
-  
-  
+    axios
+      .post("/api/checkout/coupon", {
+        discount: this.state.coupon[0].discount,
+        type: this.state.coupon[0].type,
+        code: this.state.coupon[0].code
+      })
+      .then(() => {
+        this.props.getUserSession();
+        alert("Discount Applied");
+      });
   }
 
   render() {
-    console.log(this.props.user)
-    
-let fixedTotal;
-    if(this.props.user && this.props.user.total){
+    console.log(this.props)
+    console.log(this.props.user);
+    let fixedTotal;
+    if (this.props.user && this.props.user.total) {
       fixedTotal = this.props.user.total.toFixed(2);
     }
-
+    let link;
+    if(this.state.addressComplete === true){
+      link = "/checkout/two"
+    } else{
+      link = this.props.location.pathname
+    }
 
     return (
       <div className="checkout-one-container">
@@ -261,13 +269,72 @@ let fixedTotal;
               />
               <div className="checkout-shipping-address-2-div">
                 {" "}
-                <input
+                {/* <input
                   onChange={this.handleChange}
                   value={this.state.state}
                   name="state"
                   placeholder="State"
                   className="checkout-shipping-address-2"
-                />{" "}
+                />{" "} */}
+                <select
+                  onChange={this.handleChange}
+                  value={this.state.state}
+                  name="state"
+                  placeholder="State"
+                  className="checkout-shipping-address-2-select"
+                >
+                  <option value="AL">Alabama</option>
+                  <option value="AK">Alaska</option>
+                  <option value="AZ">Arizona</option>
+                  <option value="AR">Arkansas</option>
+                  <option value="CA">California</option>
+                  <option value="CO">Colorado</option>
+                  <option value="CT">Connecticut</option>
+                  <option value="DE">Delaware</option>
+                  <option value="DC">District Of Columbia</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="HI">Hawaii</option>
+                  <option value="ID">Idaho</option>
+                  <option value="IL">Illinois</option>
+                  <option value="IN">Indiana</option>
+                  <option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="ME">Maine</option>
+                  <option value="MD">Maryland</option>
+                  <option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option>
+                  <option value="MN">Minnesota</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option>
+                  <option value="MT">Montana</option>
+                  <option value="NE">Nebraska</option>
+                  <option value="NV">Nevada</option>
+                  <option value="NH">New Hampshire</option>
+                  <option value="NJ">New Jersey</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="NY">New York</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="ND">North Dakota</option>
+                  <option value="OH">Ohio</option>
+                  <option value="OK">Oklahoma</option>
+                  <option value="OR">Oregon</option>
+                  <option value="PA">Pennsylvania</option>
+                  <option value="RI">Rhode Island</option>
+                  <option value="SC">South Carolina</option>
+                  <option value="SD">South Dakota</option>
+                  <option value="TN">Tennessee</option>
+                  <option value="TX">Texas</option>
+                  <option value="UT">Utah</option>
+                  <option value="VT">Vermont</option>
+                  <option value="VA">Virginia</option>
+                  <option value="WA">Washington</option>
+                  <option value="WV">West Virginia</option>
+                  <option value="WI">Wisconsin</option>
+                  <option value="WY">Wyoming</option>
+                </select>
                 <input
                   onChange={this.handleChange}
                   value={this.state.zipcode}
@@ -279,7 +346,7 @@ let fixedTotal;
             </div>
           </div>
           <div className="checkout-one-payment-button-div">
-            <Link to="/checkout/two">
+            <Link  to={link}>
               <button
                 className="checkout-one-payment-button"
                 onClick={this.addAddress}
@@ -330,7 +397,6 @@ let fixedTotal;
               Tax: Applied at next step
             </div>
             <div className="checkout-one-total">
-           
               {this.props.user && <h3>Total: ${fixedTotal} </h3>}
             </div>
           </div>
@@ -344,6 +410,6 @@ const mapStateToProps = state => state;
 
 const MyComponent = connect(
   mapStateToProps,
-  { getUserSession: getUserSession }
+  { getUserSession: getUserSession, getCurrentAddress: getCurrentAddress }
 )(CheckoutOne);
 export default withRouter(MyComponent);
