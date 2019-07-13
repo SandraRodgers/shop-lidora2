@@ -19,11 +19,12 @@ const initialState = {
   bagIsOpen: false,
   user: [],
   loading: false,
-  currentAddress:[]
+  currentAddress: [],
+  couponApplied: []
 };
 
 //get product data
-const UPDATE_PRODUCT = "UPDATE_PRODUCT"
+const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 const GET_DRESSES = "GET_DRESSES";
 const GET_DRESS = "GET_DRESS";
 const GET_BONNETS = "GET_BONNETS";
@@ -50,7 +51,7 @@ const GET_HEADBAND = "GET_HEADBAND";
 const GET_HEADBANDS = "GET_HEADBANDS";
 const GET_SUSPENDER = "GET_SUSPENDER";
 const GET_SUSPENDERS = "GET_SUSPENDERS";
-const GET_FLASHSALE = "GET_FLASHSALE"
+const GET_FLASHSALE = "GET_FLASHSALE";
 
 //UI
 const OPEN_BAG = "OPEN_BAG";
@@ -65,14 +66,14 @@ const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 
 //checkout
-const GET_CURRENT_ADDRESS = "GET_CURRENT_ADDRESS"
+const GET_CURRENT_ADDRESS = "GET_CURRENT_ADDRESS";
+const HOLD_COUPON = "HOLD_COUPON";
 
 export default function reducer(state = initialState, action) {
-
+  console.log(action);
   switch (action.type) {
-
     case UPDATE_PRODUCT:
-    return{...state, currentProduct: []}
+      return { ...state, currentProduct: [] };
 
     case `${GET_DRESSES}_FULFILLED`:
       return { ...state, dresses: action.payload.data };
@@ -158,7 +159,7 @@ export default function reducer(state = initialState, action) {
     case `${GET_SUSPENDER}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
-      case `${GET_FLASHSALE}_FULFILLED`:
+    case `${GET_FLASHSALE}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
     case `${OPEN_BAG}`:
@@ -178,20 +179,23 @@ export default function reducer(state = initialState, action) {
 
     case `${REMOVE_FROM_CART}_FULFILLED`:
       return { ...state, user: action.payload.data };
-    
+
     case `${GET_CURRENT_ADDRESS}_FULFILLED`:
-      return{...state, currentAddress: action.payload.data}
-    
+      return { ...state, currentAddress: action.payload.data };
+
+    case HOLD_COUPON:
+      return { ...state, couponApplied: action.couponApplied };
+
     default:
       return state;
   }
 }
 
-export function updateProduct(currentProduct){
-  return{
+export function updateProduct(currentProduct) {
+  return {
     type: UPDATE_PRODUCT,
     payload: currentProduct
-  }
+  };
 }
 
 export function getDresses() {
@@ -435,9 +439,18 @@ export function removeFromCart(productName) {
   };
 }
 
-export function getCurrentAddress(customerid){
-    return {
-      type: GET_CURRENT_ADDRESS,
-      payload: axios.get(`/api/previousAddress/${customerid}`).catch(err => err)
-    }
+export function getCurrentAddress(customerid) {
+  return {
+    type: GET_CURRENT_ADDRESS,
+    payload: axios.get(`/api/previousAddress/${customerid}`).catch(err => err)
+  };
+}
+
+export function holdCoupon(coupon) {
+  console.log(coupon);
+ 
+  return {
+    type: HOLD_COUPON,
+    couponApplied: coupon
+  };
 }

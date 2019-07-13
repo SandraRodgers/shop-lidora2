@@ -12,7 +12,7 @@ import "../checkout/checkout.css";
 
 //redux
 import { connect } from "react-redux";
-import { getUserSession, getCurrentAddress } from "../../ducks/reducer";
+import { getUserSession, getCurrentAddress, holdCoupon } from "../../ducks/reducer";
 
 class CheckoutOne extends Component {
   constructor() {
@@ -31,8 +31,10 @@ class CheckoutOne extends Component {
       toggle: false,
       couponCode: "",
       coupon: [],
+      prevTotal:0,
       total: 0,
-      addressComplete: false
+      addressComplete: false,
+      discount: 0
     };
     this.getCurrentAddress = this.getCurrentAddress.bind(this);
     this.addAddress = this.addAddress.bind(this);
@@ -44,7 +46,7 @@ class CheckoutOne extends Component {
 
   componentDidMount() {
     this.props.getUserSession().then(() => {
-      this.setState({ total: this.props.user.total });
+      this.setState({ prevTotal: this.props.user.total, total: this.props.user.total });
     });
     this.getCurrentAddress();
   }
@@ -174,23 +176,48 @@ class CheckoutOne extends Component {
         code: this.state.coupon[0].code
       })
       .then(() => {
-        this.props.getUserSession();
-        alert("Discount Applied");
+        this.holdCoupon()
+        // this.props.getUserSession();
+        // alert("Discount Applied");
       });
   }
 
-  render() {
+  holdCoupon=()=>{
+    console.log(this.state.coupon[0])
+    this.props.holdCoupon(this.state.coupon[0])
+      this.props.getUserSession();
+      alert("Discount Applied");
+    
+    }
+
+  holdDiscount = (discount) => {
+    this.setState({discount: discount})
+  }
   
+
+  render() {
+  console.log(this.props.user)
+  console.log('prevTotal', this.state.prevTotal, 'currenttotal', this.state.total)
     let fixedTotal;
     if (this.props.user && this.props.user.total) {
       fixedTotal = this.props.user.total.toFixed(2);
     }
+
+// let discount = this.state.prevTotal - fixedTotal
+// if(this.state.prevTotal !== fixedTotal){
+// this.holdDiscount(discount)
+// }
+     
+    console.log(this.state.total)
+    
     let link;
     if(this.state.addressComplete === true){
       link = "/checkout/two"
     } else{
       link = this.props.location.pathname
     }
+
+
 
     return (
       <div className="checkout-one-container">
@@ -409,6 +436,6 @@ const mapStateToProps = state => state;
 
 const MyComponent = connect(
   mapStateToProps,
-  { getUserSession: getUserSession, getCurrentAddress: getCurrentAddress }
+  { getUserSession: getUserSession, getCurrentAddress: getCurrentAddress, holdCoupon: holdCoupon }
 )(CheckoutOne);
 export default withRouter(MyComponent);

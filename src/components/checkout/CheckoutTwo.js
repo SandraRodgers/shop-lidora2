@@ -18,13 +18,19 @@ class CheckoutTwo extends Component {
       caliTax: 0,
       sdTax: 0,
       total: 0,
-      currentAddress: []
+      currentAddress: [],
+      couponApplied:[]
     };
   }
 
   componentDidMount() {
     this.props.getUserSession();
     this.getCurrentAddress();
+    if(this.props.couponApplied){
+      this.setState({couponApplied: [this.props.couponApplied]})
+
+      
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -95,11 +101,12 @@ class CheckoutTwo extends Component {
   };
 
   render() {
-    console.log(this.state.currentAddress);
+    console.log(this.state.couponApplied)
 
     let fixedCATax = this.state.caliTax.toFixed(2);
     let fixedSDTax = this.state.sdTax.toFixed(2)
     let fixedTotal = (this.props.user.total + this.state.caliTax + this.state.sdTax).toFixed(2)
+    let fixedDiscount = this.props.user.discount.toFixed(2)
 
   
     return (
@@ -155,6 +162,10 @@ class CheckoutTwo extends Component {
            
               {this.state.sdTax > 0?  <div className="checkout-one-tax-div">
             .25% San Diego County Sales Tax: ${fixedSDTax}
+            </div>: null}
+
+             {this.state.couponApplied ?  <div className="checkout-one-tax-div">
+            Coupon Applied: ${fixedDiscount}
             </div>: null}
 
            

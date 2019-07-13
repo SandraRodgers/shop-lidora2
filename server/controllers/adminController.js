@@ -1,3 +1,5 @@
+let prevTotal = 0
+
 module.exports = {
   createCoupon: (req, res) => {
     console.log(req.body);
@@ -29,14 +31,16 @@ module.exports = {
   applyCoupon: (req, res) => {
    
     let { discount, type, code } = req.body;
-
+    prevTotal = req.session.user.total
     console.log(req.body)
     if (type === "Percentage") {
-      let toSubtract = req.session.user.total * discount;
+      let toSubtract = (req.session.user.total * discount).toFixed(2);
       req.session.user.total  -= toSubtract;
+      req.session.user.discount = prevTotal - req.session.user.total
       console.log(req.session.user.total )
     } else if (type === "Dollar Amount") {
       req.session.user.total -= +discount;
+      req.session.user.discount = prevTotal - req.session.user.total
     }
     const dbInstance = req.app.get("db");
     dbInstance.applyCoupon(code).then(() => {
