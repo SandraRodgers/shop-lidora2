@@ -3,13 +3,14 @@ module.exports = {
     const dbInstance = req.app.get("db");
     let customer_id = +req.params.id;
     console.log("getprevadd:", customer_id);
+    if(customer_id){
     dbInstance
       .getPreviousAddress(customer_id)
       .then(response => res.status(200).json(response))
       .catch(err => {
         res.status(500).send({ errorMessage: "error" });
         console.log(err);
-      });
+      });}
   },
 
   addNewAddress: (req, res) => {

@@ -56,10 +56,28 @@ class CheckoutTwo extends Component {
           }
         }
     }
+    if (this.props.user && this.props.user.cart) {
+      for (let i = 0; i < this.props.user.cart.length; i++) {
+        if (this.props.user.cart[i].flashid) {
+          if (prevProps.user.cart !== this.props.user.cart) {
+            this.props.getUserSession();
+          }
+        }
+      }
+    }
     if(prevState.currentAddress !== this.state.currentAddress){
       this.calculateCATax()
     }
   }
+
+  timeConvert=(num)=>{ 
+    let hours = Math.floor(num / 60);  
+    let minutes = num % 60;
+     minutes = minutes.toString()
+   if(minutes.length===1){
+     minutes = '0'+minutes
+   }
+    return  hours + ":" + minutes   }   
 
   getCurrentAddress = () => {
     this.props.getCurrentAddress(this.props.user.customerid).then(() => {
@@ -152,7 +170,8 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
                           className="checkout-one-items-list-font"
                           style={{ fontWeight: "900" }}
                         >
-                          {product.name} x {product.quantity}
+                          {product.name} x {product.quantity}{product.time ? <div>  {
+                        this.timeConvert(Math.floor(Date.now()/1000 - product.time/1000 ))}</div>: null}
                         </div>
                         <div>${product.price}</div>
                       </div>

@@ -42,9 +42,9 @@ const removeFlashItem = req => {
   let currentTime = Date.now();
   for (let i = 0; i < req.session.user.cart.length; i++) {
     if (req.session.user.cart[i].time) {
-      console.log("time", req.session.user.cart[i].time);
-      if (currentTime > req.session.user.cart[i].time + 10000) {
-        let { flashid } = req.session.user.cart[i].flashid;
+      // console.log("time", req.session.user.cart[i].time);
+      if (currentTime > req.session.user.cart[i].time + 1000 *60 *10) {
+        // let { flashid } = req.session.user.cart[i].flashid;
         console.log("remove:", req.session.user.cart[i].flashid);
         req.session.user.total -= req.session.user.cart[i].price;
         req.session.user.cart.splice(i, 1);

@@ -149,7 +149,7 @@ class Product extends Component {
   }
 
   render() {
-    this.props.currentProduct && console.log(this.props.currentProduct);
+    // this.props.currentProduct && console.log(this.props.currentProduct);
     // console.log(this.state.size);
 
     let toggleBag;

@@ -34,7 +34,8 @@ class CheckoutOne extends Component {
       prevTotal:0,
       total: 0,
       addressComplete: false,
-      discount: 0
+      discount: 0,
+      time: ''
     };
     this.getCurrentAddress = this.getCurrentAddress.bind(this);
     this.addAddress = this.addAddress.bind(this);
@@ -49,6 +50,7 @@ class CheckoutOne extends Component {
       this.setState({ prevTotal: this.props.user.total, total: this.props.user.total });
     });
     this.getCurrentAddress();
+    
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -66,7 +68,22 @@ class CheckoutOne extends Component {
         this.setState({ total: this.props.user.total });
       }
     }
-  }
+
+}
+
+
+
+// let time = Math.floor(Date.now()/1000 - this.props.user.cart[i].time/1000 
+
+ timeConvert=(num)=>{ 
+ let hours = Math.floor(num / 60);  
+ let minutes = num % 60;
+  minutes = minutes.toString()
+if(minutes.length===1){
+  minutes = '0'+minutes
+}
+ return  hours + ":" + minutes   }   
+
 
   getCurrentAddress() {
     this.props.getCurrentAddress(this.props.user.customerid).then(() => {
@@ -168,6 +185,7 @@ class CheckoutOne extends Component {
       });
   }
 
+
   applyCoupon() {
     axios
       .post("/api/checkout/coupon", {
@@ -196,8 +214,7 @@ class CheckoutOne extends Component {
   
 
   render() {
-  console.log(this.props.user)
-  console.log('prevTotal', this.state.prevTotal, 'currenttotal', this.state.total)
+
     let fixedTotal;
     if (this.props.user && this.props.user.total) {
       fixedTotal = this.props.user.total.toFixed(2);
@@ -208,7 +225,7 @@ class CheckoutOne extends Component {
 // this.holdDiscount(discount)
 // }
      
-    console.log(this.state.total)
+    
     
     let link;
     if(this.state.addressComplete === true){
@@ -216,6 +233,7 @@ class CheckoutOne extends Component {
     } else{
       link = this.props.location.pathname
     }
+
 
 
 
@@ -387,6 +405,7 @@ class CheckoutOne extends Component {
             {this.props.user &&
               this.props.user.cart &&
               this.props.user.cart.map((product, index) => {
+
                 return (
                   <div key={index}>
                     <div className="checkout-one-items-list">
@@ -400,11 +419,16 @@ class CheckoutOne extends Component {
                           className="checkout-one-items-list-font"
                           style={{ fontWeight: "900" }}
                         >
-                          {product.name} x {product.quantity}
+                        
+                          {product.name} x {product.quantity} {product.time ? <div>  {
+                        this.timeConvert(Math.floor(Date.now()/1000 - product.time/1000 ))}</div>: null}
                         </div>
                         <div>${product.price}</div>
+                  
                       </div>
+                      
                     </div>
+                    
                   </div>
                 );
               })}

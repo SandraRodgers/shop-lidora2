@@ -29,14 +29,14 @@ class Bag extends Component {
     
     if(this.props.user && this.props.user.cart){
     for(let i=0; i<this.props.user.cart.length; i++){
-      if(this.props.user.cart[i].flashid){
+      if(this.props.user && this.props.user.cart[i].flashid){
         if (prevProps.user.cart !== this.props.user.cart) {
               this.props.getUserSession()}
       }
     }}
   }
 
-  
+ 
 
   render() {
 let fixedTotal;

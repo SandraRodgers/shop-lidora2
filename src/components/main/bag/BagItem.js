@@ -16,7 +16,14 @@ class BagItem extends Component {
     this.state = {};
   }
 
-  
+  timeConvert=(num)=>{ 
+    let hours = Math.floor(num / 60);  
+    let minutes = num % 60;
+     minutes = minutes.toString()
+   if(minutes.length===1){
+     minutes = '0'+minutes
+   }
+    return  hours + ":" + minutes   }  
 
   render() {
    
@@ -43,9 +50,11 @@ class BagItem extends Component {
           </div>
           {this.props.product.flashid ?  <div className='BAG-ITEM-flashsale div'><div>Flash Sale
           
-          <Timer flashid={this.props.product.flashid}/>
+     
           
           </div></div> : null }
+          {this.props.product.time ? <div>  {
+                        this.timeConvert(Math.floor(Date.now()/1000 - this.props.product.time/1000 ))}</div>: null}
          
         </div>
       </div>
