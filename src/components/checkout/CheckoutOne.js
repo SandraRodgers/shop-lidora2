@@ -180,8 +180,7 @@ class CheckoutOne extends Component {
   }
 
   render() {
-    console.log(this.props)
-    console.log(this.props.user);
+  
     let fixedTotal;
     if (this.props.user && this.props.user.total) {
       fixedTotal = this.props.user.total.toFixed(2);

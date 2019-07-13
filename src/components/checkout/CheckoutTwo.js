@@ -71,7 +71,9 @@ class CheckoutTwo extends Component {
   };
 
   calculateCATax = () => {
-    let SDZips = [91901, 91902, 91903, 91905, 91906, 91908, 91909, 91910, 91911, 91912, 91913, 91914, 91915, 91916, 91917, 91919, 91921, 91931, 91932, 91933, 91934, 91935, 91941, 91942, 91943, 91944, 91945, 91946, 91947, 91948, 91950, 91951, 91962, 91963, 91976, 91977, 91978, 91979, 91980, 91987, 91990, 92003, 92004, 92007, 92008, 92009, 92013, 92014]
+    let SDZips = ['91901', '91902', '91903', '91905', '91906', '91908', '91909', '91910', '91911', '91912', '91913', '91914', '91915', '91916', '91917', '91919', '91921', '91931', '91932', '91933', '91934', '91935', '91941', '91942', '91943', '91944', '91945', '91946', '91947', '91948', '91950', '91951', '91962', '91963', '91976', '91977', '91978', '91979', '91980', '91987', '91990', '92003', '92004', '92007', '92008', '92009', '92013', '92014', 
+    '92018', '92019', '92020', '92021', '92022', '92023', '92024', '92025', '92026', '92027', '92028', '92029', '92030', '92033', '92036', '92037', '92038', '92039', '92040', '92046', '92049', '92051', '92052', '92054', '92055', '92056', '92057', '92058', '92059', '92060', '92061', '92064', '92065', '92066', '92067', '92068', '92069', '92070', '92071', '92072', '92074', '92075', '92078', '92079', '92081', '92082', '92083', '92084', '92085', '92086', '92088', '92090', '92091', '92092', '92093', '92096', '92101', '92102', '92103', '92104', '92105', '92106', '92107', '92108', '92109', '92110', '92111', '92112', '92113', '92114', '92115', '92116', '92117', '92118', '92119', '92120', '92121', '92122', '92123', '92124', '92126', '92127', '92128', '92129', '92130', '92131', '92132', '92133', '92134', '92135', 
+    '92136', '92137', '92138', '92139', '92140', '92142', '92143', '92145', '92147', '92149', '92150', '92152', '92153', '92154', '92155', '92158', '92159', '92160', '92161', '92162', '92163', '92164', '92165', '92166', '92167', '92168', '92169', '92170', '92171', '92172', '92173', '92174', '92175', '92176', '92177', '92178', '92179', '92182', '92184', '92186', '92187', '92190', '92191', '92192', '92193', '92194', '92195', '92196', '92197', '92198', '92199' ]
 
     if (this.state.currentAddress[0].state === "CA") {
       let caliTax = (this.props.user.total * .0725)
@@ -81,12 +83,25 @@ class CheckoutTwo extends Component {
     } else {
       console.log("no california tax");
     }
-
-    if(this.state.currentAddress[0].zipcode){}
+    for(let i=0; i<SDZips.length; i++){
+      if(this.state.currentAddress[0].zipcode===SDZips[i]){
+        let sdTax = (this.props.user.total * .0025)
+        this.setState({sdTax: sdTax})
+        let withSDTax = (this.props.user.total * .0025) + this.props.user.total
+        console.log(withSDTax)
+      }
+    }
+    
   };
 
   render() {
     console.log(this.state.currentAddress);
+
+    let fixedCATax = this.state.caliTax.toFixed(2);
+    let fixedSDTax = this.state.sdTax.toFixed(2)
+    let fixedTotal = (this.props.user.total + this.state.caliTax + this.state.sdTax).toFixed(2)
+
+  
     return (
       <div className="checkout-one-container">
         <div className="checkout-one-column-1">
@@ -133,12 +148,18 @@ class CheckoutTwo extends Component {
                   </div>
                 );
               })}
+            
+            {this.state.caliTax > 0 ?  <div className="checkout-one-tax-div">
+            7.25% California Sales Tax: ${fixedCATax}
+            </div>: null}
+           
+              {this.state.sdTax > 0?  <div className="checkout-one-tax-div">
+            .25% San Diego County Sales Tax: ${fixedSDTax}
+            </div>: null}
 
-            <div className="checkout-one-tax-div">
-              Tax: Applied at next step
-            </div>
+           
             <div className="checkout-one-total">
-              {this.props.user && <h3>Total: ${this.props.user.total} </h3>}
+              {this.props.user && <h3>Total: ${fixedTotal} </h3>}
             </div>
           </div>
         </div>
