@@ -171,12 +171,13 @@ app.get("/api/auth/logout", logout);
 
 //cart endpoints
 app.post("/api/cart", addToCart);
-app.delete("/api/cart/:productName", removeFromCart);
+app.put("/api/cart/:productName", removeFromCart);
 app.delete("/api/flashsale/cart/:flashid", removeFlashItem);
 
 //checkout endpoints
 app.get("/api/previousAddress/:id", getPreviousAddress);
 app.post("/api/shippingAddress", addNewAddress);
+app.post("/api/checkout/order")
 
 app.listen(4000, () => {
   console.log(`Listening on ${process.env.EXPRESS_PORT}`);

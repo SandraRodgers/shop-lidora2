@@ -88,21 +88,20 @@ class PaypalButton extends Component {
           paymentID: data.paymentID,
           paymentToken: data.paymentToken,
           returnUrl: data.returnUrl
-        };
-
-        // .then(
-        //   axios
-        //     .post("/checkout/create-order", {
-        //       amount: this.props.total,
-        //       paymentChoice: "paypal",
-        //       orderDate: this.props.date,
-        //       shippedDate: null,
-        //       fulfilled: false,
-        //       productIds: this.props.productIds
-        //     })
-        //     .then(alert("Payment Successful"))
-        //     .then(() => this.setState({ redirect: true }))
-        // );
+        }
+        .then(
+          axios
+            .post("/api/checkout/order", {
+              amount: this.props.total,
+              paymentChoice: "paypal",
+              orderDate: this.props.date,
+              shippedDate: null,
+              fulfilled: false,
+              productIds: this.props.productIds
+            })
+            .then(alert("Payment Successful"))
+            .then(() => this.setState({ redirect: true }))
+        );
 
         onSuccess(payment);
       });

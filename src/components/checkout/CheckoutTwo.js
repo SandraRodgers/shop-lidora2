@@ -22,18 +22,35 @@ class CheckoutTwo extends Component {
       sdTax: 0,
       total: 0,
       currentAddress: [],
-      couponApplied:[]
+      couponApplied:[],
+      productIds: []
     };
   }
 
   componentDidMount() {
+   
+    
     this.props.getUserSession();
     this.getCurrentAddress();
-    if(this.props.couponApplied){
-      this.setState({couponApplied: [this.props.couponApplied]})
+    
 
-      
-    }
+    if(this.props.couponApplied){
+      this.setState({couponApplied: [this.props.couponApplied]})}
+    
+
+  //   let productids =[]
+  //   if(this.props.user && this.props.user.cart){
+  //     const {cart} = this.props.user.cart
+  //   for(let i=0; i<cart.length; i++){
+  //     if(cart[i].dressesid)
+  //     productids.push(cart[i].dressesid)
+  //   }
+  // }
+  // console.log(productids)
+
+    
+
+   
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -122,12 +139,13 @@ class CheckoutTwo extends Component {
   };
 
   render() {
-console.log(this.state.couponApplied[0])
+console.log(this.props.user)
     let fixedCATax; 
     let fixedSDTax;
     let fixedTotal;
     let fixedDiscount;
-  
+
+
 
 
 if(this.props.user && this.state.caliTax && this.state.sdTax){

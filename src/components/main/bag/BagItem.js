@@ -26,7 +26,7 @@ class BagItem extends Component {
     return  hours + ":" + minutes   }  
 
   render() {
-   
+   console.log(this.props.key)
     return (
      this.props.user && <div className="BAGITEM-container">
         <img
@@ -38,7 +38,7 @@ class BagItem extends Component {
           <div className="BAG-product-details-top-part">
             <div className="BAG-name-and-delete-row">
               <div className="BAG-ITEM-name"> {this.props.product.name}</div>
-              <img onClick={()=>this.props.removeFromCart(this.props.product.name)}  className="BAG-ITEM-delete" alt="delete" src={deleteX} />
+              <img onClick={()=>this.props.removeFromCart(this.props.product.name, this.props.productid)}  className="BAG-ITEM-delete" alt="delete" src={deleteX} />
             </div>
             <div className='BAG-ITEM-size'>{this.props.product.size}</div>
             <div>{this.props.product.style}</div>

@@ -420,22 +420,23 @@ export function getUserSession() {
   };
 }
 
-export function addToCart(product, price, size, quantity) {
+export function addToCart(product, price, size, quantity, productid) {
   return {
     type: ADD_TO_CART,
     payload: axios.post("/api/cart", {
       product: product,
       price: price,
       size: size,
-      quantity: quantity
+      quantity: quantity,
+      productid: productid
     })
   };
 }
 
-export function removeFromCart(productName) {
+export function removeFromCart(productName, productid) {
   return {
     type: REMOVE_FROM_CART,
-    payload: axios.delete(`/api/cart/${productName}`)
+    payload: axios.put(`/api/cart/${productName}`, {productid})
   };
 }
 
