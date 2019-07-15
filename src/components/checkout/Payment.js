@@ -47,7 +47,7 @@ class Payment extends Component {
           onCancel={onCancel}
           date={newDate}
           coupon ={this.props.coupon}
-        //   productIds={this.state.productIds}
+          productids={this.props.productids}
         />
       </div>
     );

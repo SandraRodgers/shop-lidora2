@@ -89,22 +89,21 @@ class PaypalButton extends Component {
           paymentToken: data.paymentToken,
           returnUrl: data.returnUrl
         }
-        .then(
-          axios
-            .post("/api/checkout/order", {
-              amount: this.props.total,
-              paymentChoice: "paypal",
-              orderDate: this.props.date,
-              shippedDate: null,
-              fulfilled: false,
-              productIds: this.props.productIds
-            })
-            .then(alert("Payment Successful"))
-            .then(() => this.setState({ redirect: true }))
-        );
-
-        onSuccess(payment);
-      });
+        onSuccess(payment)
+      }).then(()=>
+        axios
+          .post("/api/checkout/order", {
+            total: this.props.total,
+            payment: "paypal",
+            date: this.props.date,
+            shipped_date: null,
+            fulfilled: false,
+            productids: this.props.productids,
+            coupon: this.props.coupon
+          })
+          .then(alert("Payment Successful"))
+          // .then(() => this.setState({ redirect: true }))
+      );
     return (
       <div className = 'checkout-paypal-button-div'>
         {showButton && (

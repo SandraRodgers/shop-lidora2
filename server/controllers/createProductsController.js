@@ -51,7 +51,6 @@ module.exports = {
       });
   },
   addBonnet: (req, res) => {
-    console.log(req.body);
     const dbInstance = req.app.get("db");
     const {
       name,

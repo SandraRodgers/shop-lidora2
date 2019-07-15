@@ -160,10 +160,9 @@ class Product extends Component {
   }
 
   render() {
-    console.log(this.state.productInfo[0])
+
     this.props.currentProduct && console.log('current product:',this.props.currentProduct);
-    console.log(this.state.productid)
-    // console.log(this.state.size);
+ 
 
     let toggleBag;
 

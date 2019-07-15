@@ -68,7 +68,8 @@ const {
 } = require("./controllers/cartController");
 const {
   getPreviousAddress,
-  addNewAddress
+  addNewAddress,
+  postOrder
 } = require("./controllers/checkoutController");
 const {createCoupon, getCoupon, applyCoupon} = require("./controllers/adminController")
 //express session
@@ -177,7 +178,8 @@ app.delete("/api/flashsale/cart/:flashid", removeFlashItem);
 //checkout endpoints
 app.get("/api/previousAddress/:id", getPreviousAddress);
 app.post("/api/shippingAddress", addNewAddress);
-app.post("/api/checkout/order")
+app.post("/api/checkout/order", postOrder)
+
 
 app.listen(4000, () => {
   console.log(`Listening on ${process.env.EXPRESS_PORT}`);

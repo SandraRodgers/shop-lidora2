@@ -38,16 +38,6 @@ class CheckoutTwo extends Component {
       this.setState({couponApplied: [this.props.couponApplied]})}
     
 
-  //   let productids =[]
-  //   if(this.props.user && this.props.user.cart){
-  //     const {cart} = this.props.user.cart
-  //   for(let i=0; i<cart.length; i++){
-  //     if(cart[i].dressesid)
-  //     productids.push(cart[i].dressesid)
-  //   }
-  // }
-  // console.log(productids)
-
     
 
    
@@ -184,7 +174,7 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
               and encrypted. After clicking the button below, you will be
               redirected to PayPal to complete your purchases securely.
             </div>
-            <Payment  total = {fixedTotal} coupon={this.state.couponApplied[0]}/>
+            <Payment productids={this.props.user.productids}  total = {fixedTotal} coupon={this.state.couponApplied[0]}/>
           </div>
         </div>
         <div className="checkout-one-column-2">
