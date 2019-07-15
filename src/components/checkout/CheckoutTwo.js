@@ -119,16 +119,29 @@ class CheckoutTwo extends Component {
   };
 
   render() {
+console.log(this.state.couponApplied[0])
     let fixedCATax; 
     let fixedSDTax;
     let fixedTotal;
     let fixedDiscount;
+  
 
 
 if(this.props.user && this.state.caliTax && this.state.sdTax){
      fixedCATax = this.state.caliTax.toFixed(2);
-     fixedSDTax = this.state.sdTax.toFixed(2)
+     fixedSDTax = this.state.sdTax.toFixed(2)}
+
+if(this.props.user && this.state.caliTax && this.state.sdTax){
      fixedTotal = (this.props.user.total + this.state.caliTax + this.state.sdTax).toFixed(2)
+    } else if(
+      this.props.user && this.state.caliTax){
+        fixedTotal = (this.props.user.total + this.state.caliTax).toFixed(2)
+      } else if(this.props.user && this.props.user.total){
+        fixedTotal = (this.props.user.total ).toFixed(2)
+      }
+     
+     console.log(fixedTotal)
+    if(this.props.user && this.props.user.discount){
      fixedDiscount = this.props.user.discount.toFixed(2)}
 
   
@@ -188,9 +201,9 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
             .25% San Diego County Sales Tax: ${fixedSDTax}
             </div>: null}
 
-             {this.state.couponApplied ?  <div className="checkout-two-added">
+             {this.state.couponApplied[0] && this.state.couponApplied[0].length !==0  ?  <div className="checkout-two-added">
             Coupon Applied: ${fixedDiscount}
-            </div>: null}
+            </div> : null}
 
            
             <div className="checkout-one-total">

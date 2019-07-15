@@ -125,8 +125,8 @@ class Product extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  holdQuantity(e){
-    this.setState({[e.target.name]: e.target.value})
+  holdQuantity(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   addToCart() {
@@ -134,17 +134,25 @@ class Product extends Component {
       this.setState({ redirect: true }, () => {
         alert("Please Log In");
       });
-    } else if (this.state.size === '' && this.state.productInfo[0].category !== "flashsale"){
-      alert('Please specify a size')
-    }
-    else {
+    } else if (
+      (this.state.size === "" &&
+      this.state.productInfo[0].category === "dresses") ||
+      this.state.productInfo[0].category === "shorts" ||
+      this.state.productInfo[0].category === "bloomers" ||
+      this.state.productInfo[0].category === "skirts" ||
+      this.state.productInfo[0].category === "vests" ||
+      this.state.productInfo[0].category === "bonnets" ||
+      this.state.productInfo[0].category === "suspenders"
+    ) {
+      alert("Please specify a size");
+    } else {
       this.props.addToCart(
         this.props.currentProduct[0],
         this.props.currentProduct[0].price,
         this.state.size,
         this.state.quantity
       );
-      alert('Product added to cart')
+      alert("Product added to cart");
     }
   }
 
@@ -225,9 +233,12 @@ class Product extends Component {
             {this.props.currentProduct[0] && (
               <div className="product-quantity-div">
                 Quantity:{" "}
-              
-                  <input className= 'product-quantity-input' value={this.state.quantity} name= 'quantity' onChange = {this.holdQuantity}/>
-     
+                <input
+                  className="product-quantity-input"
+                  value={this.state.quantity}
+                  name="quantity"
+                  onChange={this.holdQuantity}
+                />
               </div>
             )}
 
