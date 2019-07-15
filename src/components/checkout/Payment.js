@@ -17,7 +17,7 @@ class Payment extends Component {
     ////paypal//////////////////////////////////////////////////////////////////////////////////////
 
     const CLIENT = {
-      production: process.env.REACT_APP_payPalKey
+      sandbox: process.env.REACT_APP_payPalKeySANDBOX
     };
 
     const onSuccess = payment => console.log("Successful payment!", payment);
@@ -35,11 +35,10 @@ class Payment extends Component {
 
     return (
       <div>
-        <div>Pay with Paypal:</div>
-        <br />
+      
         <PaypalButton
           client={CLIENT}
-          env={"production"}
+          env={"sandbox"}
           commit={true}
           currency={"USD"}
           total={this.props.total}
@@ -47,6 +46,7 @@ class Payment extends Component {
           onError={onError}
           onCancel={onCancel}
           date={newDate}
+          coupon ={this.props.coupon}
         //   productIds={this.state.productIds}
         />
       </div>

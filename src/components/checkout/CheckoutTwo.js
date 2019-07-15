@@ -149,7 +149,7 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
 
   
     return (
-      <div className="checkout-one-container">
+      <div className="checkout-two-container">
         <div className="checkout-one-column-1">
           <img alt="logo" className="checkout-one-column-1-logo" src={Logo} />
           <div className="checkout-column-1-steps">
@@ -161,12 +161,12 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
           </div>
           <div className="checkout-previous-shipping-address-container">
             <div className="checkout-previous-shipping-header">Payment</div>
-            <div>
+            <div className= "checkout-two-instructions">
               Shop Lidora uses PayPal to ensure that all transactions are secure
-              and encrypted. After clicking "Complete Order", you will be
-              redirected to PayPal to complete your purchases securely.{" "}
+              and encrypted. After clicking the button below, you will be
+              redirected to PayPal to complete your purchases securely.
             </div>
-            <Payment total = {fixedTotal}/>
+            <Payment  total = {fixedTotal} coupon={this.state.couponApplied[0]}/>
           </div>
         </div>
         <div className="checkout-one-column-2">
