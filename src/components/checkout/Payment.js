@@ -1,0 +1,67 @@
+import React, { Component } from "react";
+
+
+//redux
+import { connect } from "react-redux";
+import { getUserSession, getCurrentAddress } from "../../ducks/reducer";
+
+import PaypalButton from "./PaypalButton"
+
+class Payment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    ////paypal//////////////////////////////////////////////////////////////////////////////////////
+
+    const CLIENT = {
+      production: process.env.REACT_APP_payPalKey
+    };
+
+    const onSuccess = payment => console.log("Successful payment!", payment);
+
+    const onError = error =>
+      console.log("Erroneous payment OR failed to load script!", error);
+
+    const onCancel = data => console.log("Cancelled payment!", data);
+
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+    const newDate = year + "-" + month + "-" + day;
+
+    return (
+      <div>
+        <div>Pay with Paypal:</div>
+        <br />
+        <PaypalButton
+          client={CLIENT}
+          env={"production"}
+          commit={true}
+          currency={"USD"}
+          total={this.props.total}
+          onSuccess={onSuccess}
+          onError={onError}
+          onCancel={onCancel}
+          date={newDate}
+        //   productIds={this.state.productIds}
+        />
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    cart: state.cart,
+    user: state.user
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { getUserSession: getUserSession, getCurrentAddress: getCurrentAddress }
+)(Payment);

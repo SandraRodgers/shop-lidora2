@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+
 //assets
 import Logo from "../../assets/logo.png";
 import Arrow from "../../assets/arrow2.svg";
@@ -10,6 +11,8 @@ import "../checkout/checkout.css";
 //redux
 import { connect } from "react-redux";
 import { getUserSession, getCurrentAddress } from "../../ducks/reducer";
+
+import Payment from "./Payment"
 
 class CheckoutTwo extends Component {
   constructor(props) {
@@ -163,6 +166,7 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
               and encrypted. After clicking "Complete Order", you will be
               redirected to PayPal to complete your purchases securely.{" "}
             </div>
+            <Payment total = {fixedTotal}/>
           </div>
         </div>
         <div className="checkout-one-column-2">
