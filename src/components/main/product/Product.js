@@ -51,67 +51,109 @@ class Product extends Component {
       .then(() => {
         if (this.state.productInfo[0].category === "dresses") {
           this.props.getDress(this.state.productInfo[0].dressesid);
-          this.setState({ category: "dresses", productid: this.state.productInfo[0].productid  });
+          this.setState({
+            category: "dresses",
+            productid: this.state.productInfo[0].productid
+          });
         }
         if (this.state.productInfo[0].category === "bonnets") {
           this.props.getBonnet(this.state.productInfo[0].bonnetsid);
-          this.setState({ category: "bonnets", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "bonnets",
+            productid: this.state.productInfo[0].productid
+          });
         }
         if (this.state.productInfo[0].category === "shorts") {
           this.props.getShort(this.state.productInfo[0].shortsid);
-          this.setState({ category: "shorts", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "shorts",
+            productid: this.state.productInfo[0].productid
+          });
         }
         if (this.state.productInfo[0].category === "bloomers") {
           this.props.getBloomer(this.state.productInfo[0].bloomersid);
-          this.setState({ category: "bloomers", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "bloomers",
+            productid: this.state.productInfo[0].productid
+          });
         }
         if (this.state.productInfo[0].category === "skirts") {
           this.props.getSkirt(this.state.productInfo[0].skirtsid);
-          this.setState({ category: "skirts", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "skirts",
+            productid: this.state.productInfo[0].productid
+          });
         }
         if (this.state.productInfo[0].category === "vests") {
           this.props.getVest(this.state.productInfo[0].vestsid);
-          this.setState({ category: "vests", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "vests",
+            productid: this.state.productInfo[0].productid
+          });
         }
 
         if (this.state.productInfo[0].category === "bibdanas") {
           this.props.getBibdana(this.state.productInfo[0].bibdanasid);
-          this.setState({ category: "bibdanas", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "bibdanas",
+            productid: this.state.productInfo[0].productid
+          });
         }
 
         if (this.state.productInfo[0].category === "bowties") {
           this.props.getBowtie(this.state.productInfo[0].bowtiesid);
-          this.setState({ category: "bowties", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "bowties",
+            productid: this.state.productInfo[0].productid
+          });
         }
 
         if (this.state.productInfo[0].category === "burpcloths") {
           this.props.getBurpcloth(this.state.productInfo[0].burpclothsid);
-          this.setState({ category: "burpcloths", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "burpcloths",
+            productid: this.state.productInfo[0].productid
+          });
         }
 
         if (this.state.productInfo[0].category === "droolpads") {
           this.props.getDroolpad(this.state.productInfo[0].droolpadsid);
-          this.setState({ category: "droolpads", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "droolpads",
+            productid: this.state.productInfo[0].productid
+          });
         }
 
         if (this.state.productInfo[0].category === "hairbows") {
           this.props.getHairbow(this.state.productInfo[0].hairbowsid);
-          this.setState({ category: "hairbows", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "hairbows",
+            productid: this.state.productInfo[0].productid
+          });
         }
 
         if (this.state.productInfo[0].category === "headbands") {
           this.props.getHeadband(this.state.productInfo[0].headbandsid);
-          this.setState({ category: "headbands", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "headbands",
+            productid: this.state.productInfo[0].productid
+          });
         }
 
         if (this.state.productInfo[0].category === "suspenders") {
           this.props.getSuspender(this.state.productInfo[0].suspendersid);
-          this.setState({ category: "suspenders", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "suspenders",
+            productid: this.state.productInfo[0].productid
+          });
         }
 
         if (this.state.productInfo[0].category === "flashsale") {
           this.props.getFlashsale(this.state.productInfo[0].flashid);
-          this.setState({ category: "flashsale", productid: this.state.productInfo[0].productid });
+          this.setState({
+            category: "flashsale",
+            productid: this.state.productInfo[0].productid
+          });
         }
       });
   }
@@ -137,14 +179,37 @@ class Product extends Component {
       });
     } else if (
       this.state.size === "" &&
-      this.state.productInfo[0].category === "dresses" 
-      // ||
-      // this.state.productInfo[0].category === "shorts" ||
-      // this.state.productInfo[0].category === "bloomers" ||
-      // this.state.productInfo[0].category === "skirts" ||
-      // this.state.productInfo[0].category === "vests" ||
-      // this.state.productInfo[0].category === "bonnets" ||
-      // this.state.productInfo[0].category === "suspenders"
+      this.state.productInfo[0].category === "dresses"
+    ) {
+      alert("Please specify a size");
+    } else if (
+      this.state.size === "" &&
+      this.state.productInfo[0].category === "shorts"
+    ) {
+      alert("Please specify a size");
+    } else if (
+      this.state.size === "" &&
+      this.state.productInfo[0].category === "bloomers"
+    ) {
+      alert("Please specify a size");
+    } else if (
+      this.state.size === "" &&
+      this.state.productInfo[0].category === "skirts"
+    ) {
+      alert("Please specify a size");
+    } else if (
+      this.state.size === "" &&
+      this.state.productInfo[0].category === "vests"
+    ) {
+      alert("Please specify a size");
+    } else if (
+      this.state.size === "" &&
+      this.state.productInfo[0].category === "bonnets"
+    ) {
+      alert("Please specify a size");
+    } else if (
+      this.state.size === "" &&
+      this.state.productInfo[0].category === "suspenders"
     ) {
       alert("Please specify a size");
     } else {
@@ -160,9 +225,8 @@ class Product extends Component {
   }
 
   render() {
-
-    this.props.currentProduct && console.log('current product:',this.props.currentProduct);
- 
+    this.props.currentProduct &&
+      console.log("current product:", this.props.currentProduct);
 
     let toggleBag;
 

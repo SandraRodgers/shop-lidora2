@@ -3,14 +3,15 @@ module.exports = {
     const dbInstance = req.app.get("db");
     let customer_id = +req.params.id;
     console.log("getprevadd:", customer_id);
-    if(customer_id){
-    dbInstance
-      .getPreviousAddress(customer_id)
-      .then(response => res.status(200).json(response))
-      .catch(err => {
-        res.status(500).send({ errorMessage: "error" });
-        console.log(err);
-      });}
+    if (customer_id) {
+      dbInstance
+        .getPreviousAddress(customer_id)
+        .then(response => res.status(200).json(response))
+        .catch(err => {
+          res.status(500).send({ errorMessage: "error" });
+          console.log(err);
+        });
+    }
   },
 
   addNewAddress: (req, res) => {
@@ -54,37 +55,51 @@ module.exports = {
             zipcode,
             current
           )
-          .then(response => res.status(200).json(response)).catch(err => {
+          .then(response => res.status(200).json(response))
+          .catch(err => {
             res.status(500).send({ errorMessage: "error" });
             console.log(err);
-          })
+          });
       }
     });
   },
 
-postOrder: (req, res)=> {
-  console.log(req.body)
-  let {total, payment, date, shipped_date, fulfilled, productids, coupon } = req.body
-  let customer_id = req.session.user.customerid
-  const dbInstance = req.app.get("db");
-  
-  
-  dbInstance.createOrder([total, payment, date, shipped_date, fulfilled, productids, coupon, customer_id ])
+  postOrder: (req, res) => {
+    console.log("hit post order:", req.session.user.cart);
+    let {
+      total,
+      payment,
+      date,
+      shipped_date,
+      fulfilled,
+      productids,
+      coupon
+    } = req.body;
+    let customer_id = req.session.user.customerid;
+    const dbInstance = req.app.get("db");
 
-  if(req.session.user){
-    req.session.user.cart = [] 
-    req.session.user.total = 0
-    req.session.user.productids = []
-  }
-  
+    dbInstance.createOrder([
+      total,
+      payment,
+      date,
+      shipped_date,
+      fulfilled,
+      productids,
+      coupon,
+      customer_id
+    ]);
+
+    if (req.session.user) {
+      req.session.user.cart = [];
+      req.session.user.total = 0;
+      req.session.user.productids = [];
+    }
+
     res.json(req.session.user);
-  
-  
-  // .catch(err => {
-  //   res.status(500).send({ errorMessage: "error" });
-  //   console.log(err);
-  // })  
-console.log(req.session.user)
 
-}
+    // .catch(err => {
+    //   res.status(500).send({ errorMessage: "error" });
+    //   console.log(err);
+    // })
+  }
 };

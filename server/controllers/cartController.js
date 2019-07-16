@@ -1,8 +1,12 @@
 const addToCart = (req, res) => {
+  const dbInstance = req.app.get("db");
   const { product, price, size, quantity, productid } = req.body;
   console.log(req.body)
   if (product.flashid) {
+    let flashid = product.flashid
+    console.log('hit flashid', flashid)
     product.time = Date.now();
+    dbInstance.updateFlashsaleStatusT(flashid)
   }
 
   product.size = size;
@@ -48,20 +52,23 @@ const removeFromCart = (req, res) => {
 };
 
 const removeFlashItem = req => {
-
+  const dbInstance = req.app.get("db");
   let currentTime = Date.now();
   for (let i = 0; i < req.session.user.cart.length; i++) {
     if (req.session.user.cart[i].time) {
-      // console.log("time", req.session.user.cart[i].time);
-      if (currentTime > req.session.user.cart[i].time + 1000 *60 *10) {
-        // let { flashid } = req.session.user.cart[i].flashid;
       
+      if (currentTime > req.session.user.cart[i].time + 1000 *60) {
+      // if (currentTime > req.session.user.cart[i].time + 1000 *60 *10) {
+        let flashid = req.session.user.cart[i].flashid
+        console.log('hit',req.session.user.cart[i])
         req.session.user.total -= req.session.user.cart[i].price;
         req.session.user.cart.splice(i, 1);
-    
+        dbInstance.updateFlashsaleStatusF(flashid)
+
       }
     }
   }
+  
 };
 
 
