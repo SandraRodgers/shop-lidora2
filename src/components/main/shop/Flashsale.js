@@ -21,6 +21,12 @@ class Flashsale extends React.Component {
     })
   }
 
+  componentDidUpdate=(prevProps, prevState)=>{
+    if(prevState.productInfo !== this.state.productInfo){
+      this.getFlashsale()
+    }
+  }
+
   render() {
     let toggleBag;
 
