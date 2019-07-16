@@ -22,7 +22,6 @@ module.exports = {
       style,
       sleeves,
       length,
-      size,
       fabric,
       customize,
       image,
@@ -36,7 +35,6 @@ module.exports = {
         style,
         sleeves,
         length,
-        size,
         fabric,
         customize,
         image,
@@ -53,7 +51,6 @@ module.exports = {
       });
   },
   addBonnet: (req, res) => {
-    console.log(req.body);
     const dbInstance = req.app.get("db");
     const {
       name,

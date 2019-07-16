@@ -36,7 +36,6 @@ class CouponForm extends Component {
         expired
       })
       .then(response => {
-        console.log(response.data);
         return this.setState(
           {
             coupon: response.data,

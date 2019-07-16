@@ -42,7 +42,8 @@ const signin = (req, res) => {
           isadmin: response[0].isadmin,
           sessionid: req.sessionID,
           cart: [],
-          total: 0.0
+          total: 0.0,
+          productids: []
         };
       
      

@@ -112,15 +112,6 @@ if(minutes.length===1){
   }
 
   addAddress() {
-    console.log(
-      this.props.user.customerid,
-      this.state.name.length,
-      this.state.lineone.length,
-      this.state.linetwo.length,
-      this.state.city.length,
-      this.state.state.length,
-      this.state.zipcode.length
-    );
     if ( this.state.lineone.length===0 || this.state.city.length===0  || this.state.state.length===0  || this.state.zipcode.length===0 ){
       alert('Address Form Incomplete')
     }
@@ -201,7 +192,6 @@ if(minutes.length===1){
   }
 
   holdCoupon=()=>{
-    console.log(this.state.coupon[0])
     this.props.holdCoupon(this.state.coupon[0])
       this.props.getUserSession();
       alert("Discount Applied");

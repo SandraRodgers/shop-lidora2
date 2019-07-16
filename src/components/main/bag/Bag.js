@@ -57,7 +57,7 @@ if(this.props.user && this.props.user.total){
           <div className="BAG-item-components">
             {this.props.user && this.props.user.cart &&
               this.props.user.cart.map((product, index) => {
-                return <BagItem key={index} product={product} index={index} />;
+                return <BagItem key={product.productid} product={product} index={index} productid={product.productid} />;
               })}
             <div>
               {this.props.user && <h3>Total: ${fixedTotal} </h3>}

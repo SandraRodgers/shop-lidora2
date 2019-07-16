@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+
 //assets
 import Logo from "../../assets/logo.png";
 import Arrow from "../../assets/arrow2.svg";
@@ -11,6 +12,8 @@ import "../checkout/checkout.css";
 import { connect } from "react-redux";
 import { getUserSession, getCurrentAddress } from "../../ducks/reducer";
 
+import Payment from "./Payment"
+
 class CheckoutTwo extends Component {
   constructor(props) {
     super(props);
@@ -19,18 +22,25 @@ class CheckoutTwo extends Component {
       sdTax: 0,
       total: 0,
       currentAddress: [],
-      couponApplied:[]
+      couponApplied:[],
+      productIds: []
     };
   }
 
   componentDidMount() {
+   
+    
     this.props.getUserSession();
     this.getCurrentAddress();
-    if(this.props.couponApplied){
-      this.setState({couponApplied: [this.props.couponApplied]})
+    
 
-      
-    }
+    if(this.props.couponApplied){
+      this.setState({couponApplied: [this.props.couponApplied]})}
+    
+
+    
+
+   
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -67,6 +77,12 @@ class CheckoutTwo extends Component {
     }
     if(prevState.currentAddress !== this.state.currentAddress){
       this.calculateCATax()
+    }
+
+    if (this.props.user && this.props.user.cart) {
+      if (prevProps.user.cart !== this.props.user.cart) {
+        this.props.getUserSession();
+      }
     }
   }
 
@@ -119,12 +135,13 @@ class CheckoutTwo extends Component {
   };
 
   render() {
-console.log(this.state.couponApplied[0])
+
     let fixedCATax; 
     let fixedSDTax;
     let fixedTotal;
     let fixedDiscount;
-  
+
+
 
 
 if(this.props.user && this.state.caliTax && this.state.sdTax){
@@ -140,13 +157,13 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
         fixedTotal = (this.props.user.total ).toFixed(2)
       }
      
-     console.log(fixedTotal)
+ 
     if(this.props.user && this.props.user.discount){
      fixedDiscount = this.props.user.discount.toFixed(2)}
 
   
     return (
-      <div className="checkout-one-container">
+      <div className="checkout-two-container">
         <div className="checkout-one-column-1">
           <img alt="logo" className="checkout-one-column-1-logo" src={Logo} />
           <div className="checkout-column-1-steps">
@@ -158,11 +175,12 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
           </div>
           <div className="checkout-previous-shipping-address-container">
             <div className="checkout-previous-shipping-header">Payment</div>
-            <div>
+            <div className= "checkout-two-instructions">
               Shop Lidora uses PayPal to ensure that all transactions are secure
-              and encrypted. After clicking "Complete Order", you will be
-              redirected to PayPal to complete your purchases securely.{" "}
+              and encrypted. After clicking the button below, you will be
+              redirected to PayPal to complete your purchases securely.
             </div>
+            <Payment productids={this.props.user.productids}  total = {fixedTotal} coupon={this.state.couponApplied[0]}/>
           </div>
         </div>
         <div className="checkout-one-column-2">

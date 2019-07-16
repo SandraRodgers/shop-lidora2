@@ -60,5 +60,31 @@ module.exports = {
           })
       }
     });
+  },
+
+postOrder: (req, res)=> {
+  console.log(req.body)
+  let {total, payment, date, shipped_date, fulfilled, productids, coupon } = req.body
+  let customer_id = req.session.user.customerid
+  const dbInstance = req.app.get("db");
+  
+  
+  dbInstance.createOrder([total, payment, date, shipped_date, fulfilled, productids, coupon, customer_id ])
+
+  if(req.session.user){
+    req.session.user.cart = [] 
+    req.session.user.total = 0
+    req.session.user.productids = []
   }
+  
+    res.json(req.session.user);
+  
+  
+  // .catch(err => {
+  //   res.status(500).send({ errorMessage: "error" });
+  //   console.log(err);
+  // })  
+console.log(req.session.user)
+
+}
 };
