@@ -25,7 +25,6 @@ class PaypalButton extends Component {
     }
   }
 
-
   componentDidUpdate(prevProps) {
     const { isScriptLoaded, isScriptLoadSucceed } = this.props;
     if (
@@ -37,7 +36,6 @@ class PaypalButton extends Component {
   }
 
   render() {
-    console.log(this.props);
     const paypal = window.paypal;
     const { isScriptLoaded, isScriptLoadSucceed } = this.props;
     const PayPalButton =
@@ -88,9 +86,8 @@ class PaypalButton extends Component {
           paymentID: data.paymentID,
           paymentToken: data.paymentToken,
           returnUrl: data.returnUrl
-        }
-        onSuccess(payment)
-      }).then(()=>
+        };
+        onSuccess(payment);
         axios
           .post("/api/checkout/order", {
             total: this.props.total,
@@ -102,13 +99,13 @@ class PaypalButton extends Component {
             coupon: this.props.coupon
           })
           .then(alert("Payment Successful"))
-          // .then(() => this.setState({ redirect: true }))
-      );
+          .then(() => this.setState({ redirect: true }));
+      });
+
     return (
-      <div className = 'checkout-paypal-button-div'>
+      <div className="checkout-paypal-button-div">
         {showButton && (
           <PayPalButton
-
             env={this.props.env}
             client={client}
             commit={commit}

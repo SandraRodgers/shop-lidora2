@@ -78,6 +78,12 @@ class CheckoutTwo extends Component {
     if(prevState.currentAddress !== this.state.currentAddress){
       this.calculateCATax()
     }
+
+    if (this.props.user && this.props.user.cart) {
+      if (prevProps.user.cart !== this.props.user.cart) {
+        this.props.getUserSession();
+      }
+    }
   }
 
   timeConvert=(num)=>{ 
@@ -129,7 +135,7 @@ class CheckoutTwo extends Component {
   };
 
   render() {
-console.log(this.props.user)
+
     let fixedCATax; 
     let fixedSDTax;
     let fixedTotal;
@@ -151,7 +157,7 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
         fixedTotal = (this.props.user.total ).toFixed(2)
       }
      
-     console.log(fixedTotal)
+ 
     if(this.props.user && this.props.user.discount){
      fixedDiscount = this.props.user.discount.toFixed(2)}
 

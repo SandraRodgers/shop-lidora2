@@ -23,7 +23,7 @@ class Payment extends Component {
     const onSuccess = payment => console.log("Successful payment!", payment);
 
     const onError = error =>
-      console.log("Erroneous payment OR failed to load script!", error);
+      console.log(error);
 
     const onCancel = data => console.log("Cancelled payment!", data);
 
