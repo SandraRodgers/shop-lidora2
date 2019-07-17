@@ -1,8 +1,11 @@
 import React from 'react'
+import FabricCarousel from "../styleguide/FabricCarousel"
 
 const Custom = () => {
 return(
-    <div></div>
+    <div>
+        <FabricCarousel />
+    </div>
 )
 }
 

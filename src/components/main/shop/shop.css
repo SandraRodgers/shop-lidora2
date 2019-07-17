@@ -65,8 +65,8 @@
 }
 
 .product {
-  font-family: "Mermaid";
-  /* margin-top: 20vh; */
+  font-family: "DM Serif Display";
+  /* font-weight: 900; */
 }
 
 @media (max-width: 900px) {

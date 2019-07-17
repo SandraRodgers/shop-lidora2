@@ -1,0 +1,81 @@
+.style-guide-component{
+    /* border: solid black 1px; */
+}
+
+.row-styles-main-row{
+    /* border: solid black 1px; */
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+
+.row-styles-main-row-title{
+    display: flex;
+    flex-direction: column;
+    font-family: 'DM Serif Display';
+    font-size: 2em;
+}
+
+.row-fabrics-component{
+    /* border: solid black 1px; */
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin-top: 5vh;
+    justify-content: space-around;
+
+
+}
+
+.fabrics-title{
+    font-family: 'DM Serif Display';
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+}
+
+.fabric-carousel-div{
+    /* border: solid black 1px; */
+    height: 100%;
+    width: 45%;
+    display: flex;
+    /* justify-content: space-around; */
+   /* align-items: center; */
+    
+}
+
+
+.slider{
+
+    /* width: 40%;
+    width: 50vw; */
+    height: 35vh; 
+    width: 30vw;
+    /* width: 65%; */
+    /* margin-left: 5vw; */
+    /* border: solid black 1px; */
+    
+}
+
+.slick-track{
+    /* width: 70%;
+    border: solid black 1px; */
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: 
+  #be61a5!important;
+}
+
+.slider-img{
+    /* height: ;  */
+    height: 30vh;
+     width: 100%;
+     /* display: flex;
+     justify-content: center;
+     align-items: center; */
+
+}
