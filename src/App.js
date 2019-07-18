@@ -8,6 +8,10 @@ import NavMain from "../src/components/main/nav/NavMain"
 
 const GlobalStyles = createGlobalStyle`
 body {
+  @import url('https://fonts.googleapis.com/css?family=Junge&display=swap');
+  font-family: 'Junge', serif;
+  @import url('https://fonts.googleapis.com/css?family=DM+Serif+Display&display=swap');
+  font-family: 'DM Serif Display', serif;
   @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" );
   font-family: 'Source Sans Pro', sans-serif;
   @import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');

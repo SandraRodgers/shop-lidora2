@@ -72,6 +72,11 @@ const {
   postOrder
 } = require("./controllers/checkoutController");
 const {createCoupon, getCoupon, applyCoupon} = require("./controllers/adminController")
+const {postFabrics, getFabrics, postStyles, getStyles} = require("./controllers/styleguideController")
+
+
+
+
 //express session
 const pgSession = require("connect-pg-simple")(session);
 app.use(
@@ -153,6 +158,12 @@ app.get("/api/droolpad/:id", getDroolpad);
 app.get("/api/hairbow/:id", getHairbow);
 app.get("/api/headband/:id", getHeadband);
 app.get("/api/suspender/:id", getSuspender);
+
+//styleguide endpoints
+app.post("/api/style/fabrics", postFabrics)
+app.get("/api/style/fabrics", getFabrics)
+app.post("/api/style/styles", postStyles)
+app.get("/api/style/styles", getStyles)
 
 //flashsale and favorites endpoints
 app.get("/api/flashsale/:id", getFlashsaleProduct);

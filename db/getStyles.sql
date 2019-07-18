@@ -1,0 +1,1 @@
+SELECT * FROM style WHERE current = 'True';
