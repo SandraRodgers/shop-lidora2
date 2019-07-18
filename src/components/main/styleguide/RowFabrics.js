@@ -12,10 +12,11 @@ return(
         {/* <img src={imgPlaceholder}></img> */}
         <FabricCarousel />
  
-     
-        <div className='fabrics-title'>Fabrics </div>
+        <div className="row-fabrics-main-row-title">
+        <div className='fabrics-title'>Current Fabrics: </div>
+        <div className='fabrics-title-2'>Choose your favorites</div>
         {/* <div>Discover the Possibilities</div> */}
-       
+       </div>
         
         {/* </div> */}
     </div>

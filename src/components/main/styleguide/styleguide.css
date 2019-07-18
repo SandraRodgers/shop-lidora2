@@ -6,44 +6,97 @@
     /* border: solid black 1px; */
     display: flex;
     justify-content: space-around;
+    margin-top: 8vh;
+    margin-right: 16vw;
+    margin-left: 19vw;
 }
 
+.row-styles-img-top{
+    width: 28vw;
 
 
+}
+
+.row-styles-img-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.row-styles-img-text{
+    font-family: 'Cousine';
+    padding-top: .7em;
+}
 
 .row-styles-main-row-title{
     display: flex;
     flex-direction: column;
-    font-family: 'DM Serif Display';
+    font-family: 'Junge';
     font-size: 2em;
+    padding-top: 10vh;
+}
+
+.title-text-styles{
+    /* font-weight: 900; */
+    padding-bottom: .5em;
+    font-size: 1.2em;
+}
+.title-text-discover{
+    font-size: 1.6em;
+    padding-right: 4vw;
+    /* font-weight: 600; */
 }
 
 .row-fabrics-component{
     /* border: solid black 1px; */
     display: flex;
-    height: 100%;
-    width: 100%;
-    margin-top: 5vh;
-    justify-content: space-around;
+    height: 80vh;
+    width: 95vw;
+    margin-top: 10vh;
+    justify-content: space-between;
+    margin-bottom: 10vh;
+    
+    /* align-items: center; */
 
 
 }
 
 .fabrics-title{
-    font-family: 'DM Serif Display';
-    font-size: 2em;
+
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    font-family: 'Junge';
+    /* font-size: 2em; */
+    font-size: 2.1em;
+    padding-top: 10vh;
+    margin-right: 10vw;
+  
+}
+
+.fabrics-title-2{
+    font-family: 'Junge';
+    font-size: 3em;
 }
 
 .fabric-carousel-div{
-    /* border: solid black 1px; */
+display: flex;
+align-items: center;
     height: 100%;
     width: 45%;
     display: flex;
-    /* justify-content: space-around; */
+    /* justify-content: space-between; */
    /* align-items: center; */
-    
+   
+   /* margin-left:5vw; */
+}
+
+.row-fabrics-main-row-title{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Junge';
+    width: 40vw;
+    /* font-size: 2em; */
+    margin-top: 10vh;
+ 
 }
 
 
@@ -51,10 +104,10 @@
 
     /* width: 40%;
     width: 50vw; */
-    height: 35vh; 
+    height: 60vh; 
     width: 30vw;
     /* width: 65%; */
-    /* margin-left: 5vw; */
+    margin-left: 15vw;
     /* border: solid black 1px; */
     
 }
@@ -72,8 +125,8 @@
 
 .slider-img{
     /* height: ;  */
-    height: 30vh;
-     width: 100%;
+    height: 60vh;
+     width: 60vh;
      /* display: flex;
      justify-content: center;
      align-items: center; */
