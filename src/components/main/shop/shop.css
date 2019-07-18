@@ -65,8 +65,8 @@
 }
 
 .product {
-  font-family: "DM Serif Display";
-  /* font-weight: 900; */
+  font-family: "Junge";
+  font-weight: 900;
 }
 
 @media (max-width: 900px) {

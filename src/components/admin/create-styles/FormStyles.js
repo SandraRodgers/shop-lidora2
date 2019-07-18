@@ -5,11 +5,11 @@ import { Form, Input, Image, Select, FormSubmit } from "../../styled/Form";
 import "../create-products/form.css";
 import placeholder from "../../../assets/img-placeholder.jpg";
 
-class FormFabrics extends Component {
+class FormStyles extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
+      style: "",
       img: "",
       current: ""
     };
@@ -20,28 +20,28 @@ class FormFabrics extends Component {
   };
 
   handleSubmit = e => {
-    const { name, img, current } = this.state;
+    const { style, img, current } = this.state;
     e.preventDefault();
-    this.createFabric(name, img, current);
+    this.createFabric(style, img, current);
   };
 
   createFabric = () => {
     const {
-        name, img, current
+        style, img, current
     } = this.state;
     axios
-      .post("/api/style/fabrics", {
-        name, img, current
+      .post("/api/style/styles", {
+        style, img, current
       })
       .then(response => {
           console.log(response)
         return this.setState(
           {
-            name: "",
+            style: "",
             img: "",
             current: true
           },
-          () => alert("Your fabric has been created")
+          () => alert("Your style has been created")
         );
       });
   };
@@ -49,20 +49,20 @@ class FormFabrics extends Component {
   render() {
     return (
       <div className="form-component-container">
-        <div className="form-title">Add fabrics to style guide</div>
+        <div className="form-title">Add styles to style guide</div>
         <Form>
           <Image
             src={this.state.img === "" ? placeholder : this.state.img}
           />
           <div className="form-input-div">
             <div className="form-category-name">
-              Fabric Name:
+              Style Description:
        
               <Input
-                value={this.state.name}
+                value={this.state.style}
                 type="text"
-                name="name"
-                placeholder="Enter a fabric name"
+                name="style"
+                placeholder="Enter a description of the style"
                 onChange={this.handleChange}
               />
             </div>
@@ -102,4 +102,4 @@ class FormFabrics extends Component {
   }
 }
 
-export default FormFabrics;
+export default FormStyles;

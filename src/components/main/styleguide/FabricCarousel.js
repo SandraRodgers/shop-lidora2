@@ -20,14 +20,16 @@ export default class Fade extends Component {
   }
 
   componentDidMount(){
-    axios.get('api/style/fabrics').then((response)=>{
-    console.log(response)
+    axios.get('/api/style/fabrics').then((response)=>{
+    this.setState({fabrics: response.data})
     })
   }
 
+
   render() {
+
     const settings = {
-      arrows: false,
+      arrows: true,
       dots: true,
       fade: true,
       infinite: true,
@@ -37,17 +39,29 @@ export default class Fade extends Component {
       // centerMode: true,
       className: 'slider'
     };
+
+    let fabricsList = this.state.fabrics.map((fabric, index)=>{
+
+      return(
+        <div key={fabric.fabricid} >
+          <img className= 'slider-img' src={fabric.img} />
+          <div className='fabric-name'>{fabric.name}</div>
+        </div>
+      )
+    })
+
     return (
       <div className='fabric-carousel-div' >
           
         <Slider {...settings}  >
         
-          <div  >
+        {fabricsList}
+          {/* <div  >
             <img className= 'slider-img'src={lovelyllamas} />
           </div>
            <div>
             <img className= 'slider-img' src={unicornrainbow} />
-          </div>
+          </div> */}
           {/* <div>
             <img src={imgPlaceholder} />
           </div>

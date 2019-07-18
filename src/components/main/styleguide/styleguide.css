@@ -14,7 +14,6 @@
 .row-styles-img-top{
     width: 28vw;
 
-
 }
 
 .row-styles-img-div{
@@ -99,15 +98,35 @@ align-items: center;
  
 }
 
+.fabric-name{
+    font-family: 'Cousine';
+    padding-left: 3vw;
+}
+
+
+.row-custom-main-row-title{
+    width: 100%;
+    margin-left: 10vw;
+}
+
+.custom-carousel-div{
+    display: flex;
+align-items: center;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    margin-right: 10vw;
+}
+
 
 .slider{
 
     /* width: 40%;
     width: 50vw; */
     height: 60vh; 
-    width: 30vw;
+    width: 36vw;
     /* width: 65%; */
-    margin-left: 15vw;
+    margin-left: 10vw;
     /* border: solid black 1px; */
     
 }
@@ -119,6 +138,8 @@ align-items: center;
 
 .slick-prev:before,
 .slick-next:before {
+/* width: 20vw; */
+
   color: 
   #be61a5!important;
 }
@@ -127,8 +148,40 @@ align-items: center;
     /* height: ;  */
     height: 60vh;
      width: 60vh;
+     padding-left: 2vw;
+     padding-bottom: 5vh;
+    
      /* display: flex;
      justify-content: center;
      align-items: center; */
 
+}
+
+.custom-slider-img{
+    height: 70vh;
+    display: flex !important;
+    justify-content: center !important;
+    /* display: flex; */
+    /* justify-content: center; */
+     padding-left: 5vw;
+    padding-right: 1vw;  
+}
+
+.custom-slider-img-div{
+    display: flex !important;
+    justify-content: center !important;
+    width: 100%;
+}
+
+.slider-2{
+    height: 75vh; 
+    width: 45vw;
+
+    /* margin-left: 10vw; */
+}
+
+.style-description{
+    font-family: 'Cousine';
+    padding-left: 7vw;
+    padding-top: 12vh;
 }

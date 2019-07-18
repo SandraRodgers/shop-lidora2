@@ -1,7 +1,7 @@
 import React from 'react'
 
 import "./styleguide.css"
-import imgPlaceholder from "../../../assets/img-placeholder.jpg"
+
 
 import FabricCarousel from "./FabricCarousel"
 

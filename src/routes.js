@@ -36,6 +36,7 @@ import CheckoutTwo from "../src/components/checkout/CheckoutTwo"
 //StyleGuide
 import StyleGuide from "./components/main/styleguide/StyleGuide"
 import FormFabrics from "./components/admin/create-styles/FormFabrics"
+import FormStyles from "./components/admin/create-styles/FormStyles"
 
 //Custom
 import Custom from "./components/main/custom/Custom"
@@ -81,6 +82,7 @@ export default (
 
      <Route path="/styleguide" exact component={StyleGuide} />
      <Route path="/styleguide/form/fabrics" exact component={FormFabrics} />
+     <Route path="/styleguide/form/styles" exact component={FormStyles} />
 
     {/* Product Pages */}
     <Route path="/shop/dresses" exact component={Dresses} />

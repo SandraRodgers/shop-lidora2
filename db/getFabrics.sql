@@ -1,0 +1,1 @@
+SELECT * FROM fabric WHERE current = 'true';
