@@ -204,7 +204,7 @@ if(minutes.length===1){
   
 
   render() {
-
+    
     let fixedTotal;
     if (this.props.user && this.props.user.total) {
       fixedTotal = this.props.user.total.toFixed(2);
@@ -395,7 +395,7 @@ if(minutes.length===1){
             {this.props.user &&
               this.props.user.cart &&
               this.props.user.cart.map((product, index) => {
-
+                console.log(product)
                 return (
                   <div key={index}>
                     <div className="checkout-one-items-list">
@@ -412,7 +412,9 @@ if(minutes.length===1){
                         
                           {product.name} x {product.quantity} {product.time ? <div>  {
                         this.timeConvert(Math.floor(Date.now()/1000 - product.time/1000 ))}</div>: null}
+                        <div>{product.size}</div>
                         </div>
+                      
                         <div>${product.price}</div>
                   
                       </div>

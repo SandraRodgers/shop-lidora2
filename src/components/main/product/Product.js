@@ -148,7 +148,7 @@ class Product extends Component {
           });
         }
 
-        if (this.state.productInfo[0].category === "flashsale") {
+        if ( this.state.productInfo[0].category === "flashsale") {
           this.props.getFlashsale(this.state.productInfo[0].flashid);
           this.setState({
             category: "flashsale",
@@ -156,6 +156,13 @@ class Product extends Component {
           });
         }
       });
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if(this.props.currentProduct[0]){
+    if(prevState.size !== this.props.currentProduct[0].size){
+      this.setState({size: this.props.currentProduct[0].size})
+    }}
   }
 
   //Use this componentWillUnmount to change state in reducer so the this.props.currentProduct does not hold onto the product image. This will help when user navigates back to this page. They will see the updated product image immediately instead of a flash of the previous product image:
@@ -227,6 +234,7 @@ class Product extends Component {
   render() {
     this.props.currentProduct &&
       console.log("current product:", this.props.currentProduct);
+      console.log('state: productInfo',this.state.productInfo[0])
 
     let toggleBag;
 
@@ -245,17 +253,23 @@ class Product extends Component {
               />
             )}
           </div>
+
+          
           <div className="column2">
             {this.props.currentProduct[0] && (
               <div className="product-title">
                 {this.props.currentProduct[0].name}
-              </div>
+                {this.props.currentProduct[0] && this.state.category ==='flashsale' ? <div className='product-flashsale-size'>Size: {this.props.currentProduct[0].size}</div>: null}</div>
             )}
+
+            
             {this.props.currentProduct[0] && (
               <div className="product-description">
                 {this.props.currentProduct[0].description}
               </div>
             )}
+
+            
 
             {this.props.currentProduct[0] && (
               <div className="product-price-div">
@@ -297,6 +311,10 @@ class Product extends Component {
                 </select>
               </div>
             ) : null}
+
+      
+            
+            {/* <div>{this.props.currentProduct[0].size}</div>} */}
 
             {this.props.currentProduct[0] && (
               <div className="product-quantity-div">

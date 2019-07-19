@@ -26,6 +26,7 @@ class BagItem extends Component {
     return  hours + ":" + minutes   }  
 
   render() {
+    console.log(this.props.product)
     return (
      this.props.user && <div className="BAGITEM-container">
         <img

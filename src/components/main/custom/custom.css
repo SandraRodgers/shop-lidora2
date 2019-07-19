@@ -1,0 +1,91 @@
+.custom-component{
+    margin-top: 10vh;
+}
+
+.custom-main-image{
+    height: 80vh;
+    margin-left: 10vw;
+    /* padding-top: 2vh; */
+}
+
+.custom-main-div{
+    display: flex;
+    justify-content: space-around;
+  
+
+}
+
+.custom-title{
+    margin-right: 30vw;
+    font-family: 'Junge';
+    font-size: 2em;
+    font-weight: 900;
+    margin-bottom: 1em;
+    margin-left: 10vw;
+}
+
+.custom-text-div{
+
+}
+
+.custom-instructions{
+    margin-right: 10vw;
+    margin-left: 10vw;
+    font-size: 1.1em;
+    
+}
+
+.custom-row-1-inputs{
+display: flex;
+justify-content: space-between;
+margin-right: 10vw;
+margin-left: 10vw;
+margin-top: 6vh;
+}
+
+.custom-input-name, .custom-input-email{
+    width: 18vw;
+    border: none;
+    border-bottom: solid 1.2px #837187;
+    font-family: 'Cousine';
+    font-size: 1em;
+}
+
+.custom-input-textarea{
+    width: 42vw;
+    border: none;
+    border-bottom: solid 1.2px #837187;
+    font-family: 'Cousine';
+    font-size: 1em;
+    overflow: scroll;
+
+}
+
+.custom-input-textarea::placeholder{
+    padding-top: 12vh;
+}
+
+.product-add-to-bag-button-container{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .custom-order-button{
+    margin-top:10vh;
+    background-color: none;
+    border: solid 1px #3ca6cd;
+    width: 42vw;;
+    height: 6vh;
+    font-family: Cousine;
+    font-size: .66em;
+    margin-right: 10vw;
+margin-left: 10vw;
+  }
+
+  .custom-order-button:hover{
+    background-color: #3ca6cd;
+    color: white;
+    
+  }
+
+

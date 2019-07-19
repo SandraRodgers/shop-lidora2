@@ -23,7 +23,10 @@
   margin-left: 10vw;
   margin-right: 10vw;
   margin-top: 5vh;
+  font-family: 'Junge' !important;
 }
+
+
 
 .LM-links-admin{
   display: flex;
@@ -31,6 +34,7 @@
   margin-left: 10vw;
   margin-right: 10vw;
   margin-top: 5vh;
+
 }
 
 .LM-right-column {
@@ -41,8 +45,10 @@
 }
 
 .LM-coverpic {
-  height: 90%;
-  width: 90%;
+  height: 85%;
+  /* width: %; */
+opacity: .8;
+filter: contrast(1.5);
 }
 
 /* //////////////Login Page */
@@ -118,7 +124,13 @@ color: #4a434a;
     margin-left: 10vw;
     margin-right: 10vw;
     margin-top: 5vh;
+ 
   }
+
+  .LM-link{
+    font-family: 'Junge';
+  }
+
   .LM-left-column {
     align-items: center;
     width: 100%;

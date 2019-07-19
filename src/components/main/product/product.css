@@ -26,9 +26,9 @@
 
 .product-title {
   color: #39363d;
-  font-size: 5vh;
+  font-size: 4vh;
   font-weight: 600;
-  font-family: "Mermaid";
+  font-family: 'Junge';
 }
 
 .product-img {
@@ -151,6 +151,11 @@ select.product-select{
   background-color: #3ca6cd;
   color: white;
   
+}
+
+.product-flashsale-size{
+  font-size: .7em;
+  padding-top: 1vh;
 }
 
 
