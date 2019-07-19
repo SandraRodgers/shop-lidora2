@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import axios from 'axios'
 
-import imgPlaceholder from "../../../assets/img-placeholder.jpg"
-import lovelyllamas from "../../../assets/lovely llamas.jpg"
-import unicornrainbow from "../../../assets/UnicornRainbow.jpg"
+
 
 
 import "../../../../node_modules/slick-carousel/slick/slick.css"

@@ -73,7 +73,7 @@ const {
 } = require("./controllers/checkoutController");
 const {createCoupon, getCoupon, applyCoupon} = require("./controllers/adminController")
 const {postFabrics, getFabrics, postStyles, getStyles} = require("./controllers/styleguideController")
-
+const {customOrder} = require("./controllers/nodemailerController")
 
 
 
@@ -190,6 +190,9 @@ app.delete("/api/flashsale/cart/:flashid", removeFlashItem);
 app.get("/api/previousAddress/:id", getPreviousAddress);
 app.post("/api/shippingAddress", addNewAddress);
 app.post("/api/checkout/order", postOrder)
+
+//nodemailer endpoints
+app.post("/nodemailer/customOrder", customOrder)
 
 
 app.listen(4000, () => {

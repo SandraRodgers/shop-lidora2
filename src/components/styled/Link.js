@@ -8,7 +8,7 @@ export default styled(Link)`
   color: ${props => (props.red ? 'rgb(207, 8, 8)': "rgb(74, 72, 96)")};
   ${'' /* z-index: 2; */}
   font-size: 3.5vh;
-  font-family: Lora;
+  font-family: Junge;
   ${'' /* z-index: 1; */}
   font-weight: 900;
 

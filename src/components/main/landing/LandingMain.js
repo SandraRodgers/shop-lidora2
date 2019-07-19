@@ -9,7 +9,8 @@ import "./LandingMain.css";
 
 //imported assets
 import logo from "../../../assets/logo.png";
-import coverpic from "../../../assets/shop-lidora.jpeg";
+// import coverpic from "../../../assets/shop-lidora.jpeg";
+import coverpic from "../../../assets/Penny2.jpg"
 
 //styled components
 import Link from "../../styled/Link";
@@ -42,7 +43,7 @@ class LandingMain extends Component {
             for ready-made pieces or place your custom order.
           </Paragraph>
           <div className="LM-links">
-            <Link to="/shop">Shop</Link>
+            <Link  to="/shop">Shop</Link>
             <Link to="/login">Login</Link>
           </div>
           {this.props.user && this.props.user.isadmin    ? 
