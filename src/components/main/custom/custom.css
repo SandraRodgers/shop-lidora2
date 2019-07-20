@@ -53,17 +53,17 @@ margin-top: 6vh;
 
 .custom-input-textarea{
     width: 42vw;
-    border: none;
-    border-bottom: solid 1.2px #837187;
+  
+    border: solid 1.2px #837187;
     font-family: 'Cousine';
     font-size: 1em;
     overflow: scroll;
 
 }
 
-.custom-input-textarea::placeholder{
+/* .custom-input-textarea::placeholder{
     padding-top: 12vh;
-}
+} */
 
 .product-add-to-bag-button-container{
     display: flex;
