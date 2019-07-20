@@ -10,6 +10,7 @@ var transport = nodemailer.createTransport({
 });
 
 const customOrder = (req, res) => {
+  console.log(req.body)
   var { name } = req.body;
   var { email } = req.body;
   var { message } = req.body;
