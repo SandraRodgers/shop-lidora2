@@ -37,8 +37,7 @@ module.exports = {
               zipcode,
               current
             )
-            .then(response => 
-              res.status(200).json(response))
+            .then(response => res.status(200).json(response))
             .catch(err => {
               res.status(500).send({ errorMessage: "error" });
               console.log(err);
@@ -66,29 +65,63 @@ module.exports = {
   },
 
   postOrder: (req, res) => {
-    console.log("hit post order:", req.session.user.cart);
+    console.log(req.body);
+
     let {
       total,
       payment,
       date,
       shipped_date,
       fulfilled,
-      productids,
+      orderDetails,
       coupon
     } = req.body;
+
+    console.log(orderDetails);
+
     let customer_id = req.session.user.customerid;
     const dbInstance = req.app.get("db");
+    let productids = "temp";
 
-    dbInstance.createOrder([
-      total,
-      payment,
-      date,
-      shipped_date,
-      fulfilled,
-      productids,
-      coupon,
-      customer_id
-    ]);
+    dbInstance
+      .createOrder([
+        total,
+        payment,
+        date,
+        shipped_date,
+        fulfilled,
+        productids,
+        coupon,
+        customer_id
+      ])
+      .then(response => {
+        let orderid = response[0].orderid;
+        let customer_id = response[0].customer_id;
+        let productid;
+        let size;
+        let name;
+        let quantity;
+
+        for (let i = 0; i < orderDetails.length; i++) {
+          productid = orderDetails[i][0];
+          if (orderDetails[i][1] === null) {
+            size = "one size fits all";
+          } else {
+            size = orderDetails[i][1];
+          }
+
+          name = orderDetails[i][2];
+          quantity = orderDetails[i][3];
+          dbInstance.createOrderDetails([
+            orderid,
+            customer_id,
+            productid,
+            size,
+            name,
+            quantity
+          ]);
+        }
+      });
 
     if (req.session.user) {
       req.session.user.cart = [];
@@ -98,9 +131,6 @@ module.exports = {
 
     res.json(req.session.user);
 
-    // .catch(err => {
-    //   res.status(500).send({ errorMessage: "error" });
-    //   console.log(err);
-    // })
+
   }
 };

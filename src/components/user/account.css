@@ -119,13 +119,16 @@ padding-top: 1vh;
     margin-right: .7vw;
     text-transform: uppercase;
     letter-spacing: 1px;
+   
     
   border:1px solid #bdc0bf;
   margin-bottom: 2vh;
-  padding-left: 2vw;
+  padding-left: 5vw;
   font-family: 'Source Sans Pro';
   font-size: .8em;
   }
+
+
 
   .I-edit-button-2{
     margin-top:10vh;

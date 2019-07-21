@@ -23,6 +23,7 @@ import {
   updateProduct
 } from "../../../ducks/reducer";
 import "./product.css";
+import { runInThisContext } from "vm";
 
 class Product extends Component {
   constructor(props) {
@@ -180,21 +181,26 @@ class Product extends Component {
   }
 
   addToCart() {
+    console.log(this.state.size, this.state.productInfo[0].category)
+    
     if (!this.props.user) {
       this.setState({ redirect: true }, () => {
         alert("Please Log In");
-      });
-    } else if (
-      this.state.size === "" &&
+      })}
+    
+    if (
+      this.state.size === undefined &&
       this.state.productInfo[0].category === "dresses"
     ) {
       alert("Please specify a size");
+    
     } else if (
-      this.state.size === "" &&
+      this.state.size === undefined &&
       this.state.productInfo[0].category === "shorts"
     ) {
       alert("Please specify a size");
-    } else if (
+    }
+    else if (
       this.state.size === "" &&
       this.state.productInfo[0].category === "bloomers"
     ) {
@@ -297,7 +303,7 @@ class Product extends Component {
                   className="product-select"
                   onChange={this.holdSize}
                 >
-                  <option>Choose an option</option>
+                  <option>Please select a size</option>
                   <option>3-6 months</option>
                   <option>6-9 months</option>
                   <option>9-12 months</option>

@@ -95,8 +95,9 @@ class PaypalButton extends Component {
             date: this.props.date,
             shipped_date: null,
             fulfilled: false,
-            productids: this.props.productids,
-            coupon: this.props.coupon
+            orderDetails: this.props.orderDetails,
+            coupon: this.props.coupon,
+            // quantityByName: this.props.quantityByName
           })
           .then(alert("Payment Successful"))
           .then(() => this.setState({ redirect: true }));

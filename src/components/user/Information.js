@@ -254,7 +254,7 @@ class Information extends Component {
                 onClick={this.editAddress}
               className="I-edit-button-2"
 
-            >   EDIT ADDRESS
+            >   SAVE ADDRESS
             </button> 
             </div>: null}
             </div>
