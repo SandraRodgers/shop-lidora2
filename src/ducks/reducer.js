@@ -70,8 +70,9 @@ const GET_CURRENT_ADDRESS = "GET_CURRENT_ADDRESS";
 const HOLD_COUPON = "HOLD_COUPON";
 
 export default function reducer(state = initialState, action) {
-
+  console.log(action)
   switch (action.type) {
+    
     case UPDATE_PRODUCT:
       return { ...state, currentProduct: [] };
 
