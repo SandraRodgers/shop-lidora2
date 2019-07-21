@@ -1,3 +1,5 @@
+let sizeIds = []
+
 module.exports = {
   getPreviousAddress: (req, res) => {
     const dbInstance = req.app.get("db");
@@ -66,7 +68,9 @@ module.exports = {
   },
 
   postOrder: (req, res) => {
-    console.log("hit post order:", req.session.user.cart);
+    console.log(req.body)
+    
+    // console.log("hit post order:", req.session.user.cart);
     let {
       total,
       payment,
@@ -76,6 +80,11 @@ module.exports = {
       productids,
       coupon
     } = req.body;
+    for(let i=0; i<productids.length; i++){
+      sizeIds.push(productids[i])
+
+    }
+ 
     let customer_id = req.session.user.customerid;
     const dbInstance = req.app.get("db");
 
@@ -88,7 +97,26 @@ module.exports = {
       productids,
       coupon,
       customer_id
-    ]);
+    ]).then((response)=>{
+      console.log('response ids',response[0])
+      let orderid = response[0].orderid
+      let customer_id = response[0].customer_id
+      let productid;
+      let size
+      let name = 'temp'
+      for(let i=0; i<sizeIds.length; i++){
+        console.log('loop sizeIds', sizeIds[i])
+        for(let key in sizeIds[i]){
+           productid = sizeIds[i][key]
+           size = key
+          console.log('for-in-loop productid', productid)
+          console.log('for-in-loop size', size)
+        }
+        dbInstance.createOrderDetails([orderid, customer_id, productid, size, name])
+      }
+      sizeIds=[]
+
+    })
 
     if (req.session.user) {
       req.session.user.cart = [];

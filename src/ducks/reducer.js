@@ -70,7 +70,7 @@ const GET_CURRENT_ADDRESS = "GET_CURRENT_ADDRESS";
 const HOLD_COUPON = "HOLD_COUPON";
 
 export default function reducer(state = initialState, action) {
-  console.log(action)
+  // console.log(action)
   switch (action.type) {
     
     case UPDATE_PRODUCT:
@@ -434,10 +434,10 @@ export function addToCart(product, price, size, quantity, productid) {
   };
 }
 
-export function removeFromCart(productName, productid) {
+export function removeFromCart(productName, productid, index) {
   return {
     type: REMOVE_FROM_CART,
-    payload: axios.put(`/api/cart/${productName}`, {productid})
+    payload: axios.put(`/api/cart/${productName}`, {productid, index})
   };
 }
 

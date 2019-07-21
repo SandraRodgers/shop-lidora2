@@ -14,6 +14,7 @@ class Payment extends Component {
   }
 
   render() {
+    // console.log(this.props.productids)
     ////paypal//////////////////////////////////////////////////////////////////////////////////////
 
     const CLIENT = {
@@ -48,6 +49,7 @@ class Payment extends Component {
           date={newDate}
           coupon ={this.props.coupon}
           productids={this.props.productids}
+          quantityByName = {this.props.quantityByName}
         />
       </div>
     );

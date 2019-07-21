@@ -57,6 +57,7 @@ if(this.props.user && this.props.user.total){
           <div className="BAG-item-components">
             {this.props.user && this.props.user.cart &&
               this.props.user.cart.map((product, index) => {
+                console.log(product)
                 return <BagItem key={product.productid} product={product} index={index} productid={product.productid} />;
               })}
             <div>
