@@ -1,5 +1,3 @@
-let sizeIds = []
-
 module.exports = {
   getPreviousAddress: (req, res) => {
     const dbInstance = req.app.get("db");
@@ -39,8 +37,7 @@ module.exports = {
               zipcode,
               current
             )
-            .then(response => 
-              res.status(200).json(response))
+            .then(response => res.status(200).json(response))
             .catch(err => {
               res.status(500).send({ errorMessage: "error" });
               console.log(err);
@@ -68,55 +65,63 @@ module.exports = {
   },
 
   postOrder: (req, res) => {
-    console.log(req.body)
-    
-    // console.log("hit post order:", req.session.user.cart);
+    console.log(req.body);
+
     let {
       total,
       payment,
       date,
       shipped_date,
       fulfilled,
-      productids,
+      orderDetails,
       coupon
     } = req.body;
-    for(let i=0; i<productids.length; i++){
-      sizeIds.push(productids[i])
 
-    }
- 
+    console.log(orderDetails);
+
     let customer_id = req.session.user.customerid;
     const dbInstance = req.app.get("db");
+    let productids = "temp";
 
-    dbInstance.createOrder([
-      total,
-      payment,
-      date,
-      shipped_date,
-      fulfilled,
-      productids,
-      coupon,
-      customer_id
-    ]).then((response)=>{
-      console.log('response ids',response[0])
-      let orderid = response[0].orderid
-      let customer_id = response[0].customer_id
-      let productid;
-      let size
-      let name = 'temp'
-      for(let i=0; i<sizeIds.length; i++){
-        console.log('loop sizeIds', sizeIds[i])
-        for(let key in sizeIds[i]){
-           productid = sizeIds[i][key]
-           size = key
-          console.log('for-in-loop productid', productid)
-          console.log('for-in-loop size', size)
+    dbInstance
+      .createOrder([
+        total,
+        payment,
+        date,
+        shipped_date,
+        fulfilled,
+        productids,
+        coupon,
+        customer_id
+      ])
+      .then(response => {
+        let orderid = response[0].orderid;
+        let customer_id = response[0].customer_id;
+        let productid;
+        let size;
+        let name;
+        let quantity;
+
+        for (let i = 0; i < orderDetails.length; i++) {
+          productid = orderDetails[i][0];
+          if (orderDetails[i][1] === null) {
+            size = "one size fits all";
+          } else {
+            size = orderDetails[i][1];
+          }
+
+          name = orderDetails[i][2];
+          quantity = orderDetails[i][3];
+          dbInstance.createOrderDetails([
+            orderid,
+            customer_id,
+            productid,
+            size,
+            name,
+            quantity
+          ]);
         }
-        dbInstance.createOrderDetails([orderid, customer_id, productid, size, name])
-      }
-      sizeIds=[]
-
-    })
+      });
 
     if (req.session.user) {
       req.session.user.cart = [];
@@ -126,9 +131,6 @@ module.exports = {
 
     res.json(req.session.user);
 
-    // .catch(err => {
-    //   res.status(500).send({ errorMessage: "error" });
-    //   console.log(err);
-    // })
+
   }
 };

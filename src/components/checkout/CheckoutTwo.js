@@ -141,8 +141,8 @@ class CheckoutTwo extends Component {
     let fixedSDTax;
     let fixedTotal;
     let fixedDiscount;
-    let idSize =[]
-    let nameQuantity = []
+    let orderDetails =[]
+    // let nameQuantity = []
 
 
 
@@ -182,7 +182,7 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
               and encrypted. After clicking the button below, you will be
               redirected to PayPal to complete your purchases securely.
             </div>
-            <Payment quantityByName={nameQuantity} productids={idSize}  total = {fixedTotal} coupon={this.state.couponApplied[0]}/>
+            <Payment orderDetails={orderDetails}  total = {fixedTotal} coupon={this.state.couponApplied[0]}/>
           </div>
         </div>
         <div className="checkout-one-column-2">
@@ -191,12 +191,13 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
               this.props.user.cart &&
               this.props.user.cart.map((product, index) => {
                 console.log(product)
-                let prodObj ={[product.idSize.productid]:product.productid}
-                let nameQuantityObj = {[product.name]: product.quantity}
+                let prodArr =[product.productid, product.idSize.productid, product.name, product.quantity]
+                {/* let nameQuantityObj = {[product.name]: product.quantity} */}
                 {/* let prodObj = {[product.productid]: product.idSize.productid} */}
 
-                idSize.push(prodObj)
-                nameQuantity.push(nameQuantityObj)
+                orderDetails.push(prodArr)
+                console.log(orderDetails)
+                {/* nameQuantity.push(nameQuantityObj) */}
                 {/* console.log(idSize) */}
                 return (
                   <div key={index}>
