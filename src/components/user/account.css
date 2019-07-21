@@ -1,12 +1,13 @@
 .SB-component{
-    font-family: 'Junge';
-    font-size: 1.8em;
+
     padding-left: 8vw;
     /* padding-top: 5vh; */
     /* width: 25%; */
 }
 
 .SB-link-item{
+    font-family: 'Junge';
+    font-size: 1.8em;
     padding-top: 2vh;
 
 }
@@ -23,17 +24,9 @@
     font-family: 'Cousine';
     /* font-size: .5em; */
 }
-.I-component{
-    /* display: flex;
-    flex-direction: column;
-    width: 80%; */
-}
 
-.I-component-inner{
-/* display: flex;
-flex-direction: column;
-margin-left: 5vw; */
-}
+
+/* Information.js */
 
 .I-edit-button{
     margin-top:10vh;
@@ -148,3 +141,52 @@ margin-bottom: 15vh;
     color: white;
     
   }
+
+
+
+  /* Orders.js */
+
+  .user-order-items{
+display: flex;
+flex-direction: column;
+padding-left: 10vw;
+padding-left: 10vw;
+font-size: .8em;
+font-weight: 900;
+padding-top: 5vh;
+padding-left: 10vw;
+padding-bottom: 6vh;
+letter-spacing: 1px;
+width: 35%;
+  }
+
+.O-orders.title{
+    padding-left: 10vw;
+    font-size: .8em;
+    font-weight: 900;
+    padding-top: 5vh;
+    padding-left: 10vw;
+    padding-bottom: 6vh;
+    letter-spacing: 1px;
+}
+
+.O-order{
+    /* padding-top: .8em; */
+    /* padding-left: 10vw; */
+    letter-spacing: 1px;
+    font-size: 1em;
+    padding-top: 1vh;
+}
+
+.O-orders-date{
+    padding-top: 5vh;
+}
+
+.O-orders-item{
+    font-weight: 200;
+    
+    display: flex;
+    justify-content: space-between;
+    /* margin-right: 20vw; */
+
+}

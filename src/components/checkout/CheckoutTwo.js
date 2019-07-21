@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 //assets
 import Logo from "../../assets/logo.png";
@@ -23,7 +23,8 @@ class CheckoutTwo extends Component {
       total: 0,
       currentAddress: [],
       couponApplied:[],
-      productIds: []
+      productIds: [],
+      complete: false
     };
   }
 
@@ -118,33 +119,39 @@ class CheckoutTwo extends Component {
     if (this.state.currentAddress[0].state === "CA") {
       let caliTax = (this.props.user.total * .0725)
       this.setState({caliTax: caliTax })
-      let withCATax= (this.props.user.total * .0725) + this.props.user.total
-
+      // let withCATax= (this.props.user.total * .0725) + this.props.user.total
     } else {
-     
     }
     for(let i=0; i<SDZips.length; i++){
       if(this.state.currentAddress[0].zipcode===SDZips[i]){
         let sdTax = (this.props.user.total * .0025)
         this.setState({sdTax: sdTax})
-        let withSDTax = (this.props.user.total * .0025) + this.props.user.total
+        // let withSDTax = (this.props.user.total * .0025) + this.props.user.total
      
       }
     }
-    
   };
 
+
+  paymentComplete=()=>{
+    this.setState({complete: true})
+  }
+
   render() {
-    // console.log(this.props.user.cart)
+    // console.log(this.state.complete)
 
     let fixedCATax; 
     let fixedSDTax;
     let fixedTotal;
     let fixedDiscount;
     let orderDetails =[]
-    // let nameQuantity = []
+    let width;
 
-
+if(this.state.complete===false){
+  width='55vw'
+} else {
+  width = '100vw'
+}
 
 if(this.props.user && this.state.caliTax && this.state.sdTax){
      fixedCATax = this.state.caliTax.toFixed(2);
@@ -166,7 +173,8 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
   
     return (
       <div className="checkout-two-container">
-        <div className="checkout-one-column-1">
+        <div className="checkout-one-column-1"  style={{width:width}}>
+
           <img alt="logo" className="checkout-one-column-1-logo" src={Logo} />
           <div className="checkout-column-1-steps">
             <div>Cart</div>
@@ -175,6 +183,8 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
             <img alt="arrow" className="checkout-column1-arrow" src={Arrow} />
             <div className="checkout-column-1-info">Payment</div>
           </div>
+{this.state.complete === false ? 
+
           <div className="checkout-previous-shipping-address-container">
             <div className="checkout-previous-shipping-header">Payment</div>
             <div className= "checkout-two-instructions">
@@ -182,23 +192,55 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
               and encrypted. After clicking the button below, you will be
               redirected to PayPal to complete your purchases securely.
             </div>
-            <Payment orderDetails={orderDetails}  total = {fixedTotal} coupon={this.state.couponApplied[0]}/>
-          </div>
-        </div>
-        <div className="checkout-one-column-2">
+            <Payment paymentComplete={this.paymentComplete} orderDetails={orderDetails}  total = {fixedTotal} coupon={this.state.couponApplied[0]}/>
+          </div> 
+          
+          :
+          <div className="checkout-previous-shipping-address-container">
+            <div className="checkout-previous-shipping-header">Payment Complete!</div>
+            <div className= "checkout-two-instructions">
+              Your order is complete.  Most items are made by hand upon order, so please expect your order to take at least one week in addition to shipping time. 
+              
+              </div>
+              <div>Shop Lidora will contact you within the next 1-2 days to give you an estimate of when your items will be completed and shipped. Thank you for shopping at Shop Lidora and supporting small businesses!
+            </div>
+
+<Link to='/'>
+  <button
+              
+              className="checkout-return-to-store-button"
+
+            >   RETURN TO STORE
+            </button> </Link>
+
+            </div>
+        
+          
+          
+          
+          
+          
+          
+          
+          }
+
+
+
+       </div>
+
+       {this.state.complete === false ? 
+        <div className="checkout-one-column-2" >
           <div className="BAG-item-components">
             {this.props.user &&
               this.props.user.cart &&
               this.props.user.cart.map((product, index) => {
-                console.log(product)
+           
                 let prodArr =[product.productid, product.idSize.productid, product.name, product.quantity]
-                {/* let nameQuantityObj = {[product.name]: product.quantity} */}
-                {/* let prodObj = {[product.productid]: product.idSize.productid} */}
+            
 
                 orderDetails.push(prodArr)
-                console.log(orderDetails)
-                {/* nameQuantity.push(nameQuantityObj) */}
-                {/* console.log(idSize) */}
+
+         
                 return (
                   <div key={index}>
                     <div className="checkout-one-items-list">
@@ -239,7 +281,15 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
               {this.props.user && <h3>Total: ${fixedTotal} </h3>}
             </div>
           </div>
-        </div>
+        </div> : 
+        
+        
+        null
+        
+        }
+
+
+
       </div>
     );
   }

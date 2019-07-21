@@ -100,7 +100,7 @@ class PaypalButton extends Component {
             // quantityByName: this.props.quantityByName
           })
           .then(alert("Payment Successful"))
-          .then(() => this.setState({ redirect: true }));
+          .then(() => this.props.paymentComplete());
       });
 
     return (

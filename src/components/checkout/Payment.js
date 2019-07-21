@@ -49,7 +49,7 @@ class Payment extends Component {
           date={newDate}
           coupon ={this.props.coupon}
           orderDetails={this.props.orderDetails}
-          // quantityByName = {this.props.quantityByName}
+          paymentComplete={this.props.paymentComplete}
         />
       </div>
     );
