@@ -201,27 +201,27 @@ class Product extends Component {
       alert("Please specify a size");
     }
     else if (
-      this.state.size === "" &&
+      this.state.size === undefined &&
       this.state.productInfo[0].category === "bloomers"
     ) {
       alert("Please specify a size");
     } else if (
-      this.state.size === "" &&
+      this.state.size === undefined &&
       this.state.productInfo[0].category === "skirts"
     ) {
       alert("Please specify a size");
     } else if (
-      this.state.size === "" &&
+      this.state.size === undefined &&
       this.state.productInfo[0].category === "vests"
     ) {
       alert("Please specify a size");
     } else if (
-      this.state.size === "" &&
+      this.state.size === undefined &&
       this.state.productInfo[0].category === "bonnets"
     ) {
       alert("Please specify a size");
     } else if (
-      this.state.size === "" &&
+      this.state.size === undefined &&
       this.state.productInfo[0].category === "suspenders"
     ) {
       alert("Please specify a size");

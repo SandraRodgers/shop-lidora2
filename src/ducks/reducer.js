@@ -20,7 +20,8 @@ const initialState = {
   user: [],
   loading: false,
   currentAddress: [],
-  couponApplied: []
+  couponApplied: [],
+  orderDetails: []
 };
 
 //get product data
@@ -69,10 +70,14 @@ const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const GET_CURRENT_ADDRESS = "GET_CURRENT_ADDRESS";
 const HOLD_COUPON = "HOLD_COUPON";
 
+//user account
+const GET_ORDER_DETAILS = "GET_ORDER_DETAILS";
+
 export default function reducer(state = initialState, action) {
-  // console.log(action)
+  console.log(action)  
+  console.log(state)
+
   switch (action.type) {
-    
     case UPDATE_PRODUCT:
       return { ...state, currentProduct: [] };
 
@@ -183,6 +188,9 @@ export default function reducer(state = initialState, action) {
 
     case `${GET_CURRENT_ADDRESS}_FULFILLED`:
       return { ...state, currentAddress: action.payload.data };
+
+    case `${GET_ORDER_DETAILS}__FULFILLED`:
+      return { ...state, orderDetails: action.payload.data };
 
     case HOLD_COUPON:
       return { ...state, couponApplied: action.couponApplied };
@@ -437,22 +445,27 @@ export function addToCart(product, price, size, quantity, productid) {
 export function removeFromCart(productName, productid, index) {
   return {
     type: REMOVE_FROM_CART,
-    payload: axios.put(`/api/cart/${productName}`, {productid, index})
+    payload: axios.put(`/api/cart/${productName}`, { productid, index })
   };
 }
 
 export function getCurrentAddress(customerid) {
   return {
     type: GET_CURRENT_ADDRESS,
-    payload: axios.get(`/api/previousAddress/${customerid}`).catch(err => err)
+    payload: axios.get(`/api/previousAddress/${customerid}`)
   };
 }
 
 export function holdCoupon(coupon) {
-  console.log(coupon);
- 
   return {
     type: HOLD_COUPON,
     couponApplied: coupon
+  };
+}
+
+export function getOrderDetails() {
+  return {
+    type: GET_ORDER_DETAILS,
+    payload: axios.get("/api/account/orders")
   };
 }

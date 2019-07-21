@@ -219,3 +219,22 @@ font-size: .8em;
   display: flex;
   justify-content: center;
 }
+
+.checkout-return-to-store-button{
+  margin-top:10vh;
+  background-color: none;
+  border: solid 1px #3ca6cd;
+  width: 45vw;
+  height: 6vh;
+  font-family: Cousine;
+  font-size: .66em;
+  /* margin-right: 10vw; */
+/* margin-left: 10vw; */
+margin-bottom: 15vh;
+}
+
+.checkout-return-to-store-button:hover{
+  background-color: #3ca6cd;
+  color: white;
+  
+}

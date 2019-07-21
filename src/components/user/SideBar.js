@@ -3,7 +3,7 @@ import {Link, withRouter} from 'react-router-dom'
 import "./account.css"
 
 const SideBar = (props) => {
-    console.log(props.information)
+   
 
 return(
     <div className='SB-component'>
