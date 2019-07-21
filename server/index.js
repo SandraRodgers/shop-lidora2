@@ -74,7 +74,7 @@ const {
 const {createCoupon, getCoupon, applyCoupon} = require("./controllers/adminController")
 const {postFabrics, getFabrics, postStyles, getStyles} = require("./controllers/styleguideController")
 const {customOrder} = require("./controllers/nodemailerController")
-
+const {editAddress} = require("./controllers/userAccountController")
 
 
 //express session
@@ -170,6 +170,9 @@ app.get("/api/flashsale/:id", getFlashsaleProduct);
 app.get("/api/admin/flashsale", getFlashsale);
 app.post("/api/admin/flashsale", addFlashsale);
 app.get("/api/favorites", getFavorites);
+
+//user account endpoints
+app.put('/api/account/address/:id', editAddress)
 
 //coupon endpoints
 app.post("/api/admin/coupon", createCoupon)

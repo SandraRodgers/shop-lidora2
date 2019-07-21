@@ -1,0 +1,147 @@
+.SB-component{
+    font-family: 'Junge';
+    font-size: 1.8em;
+    padding-left: 8vw;
+    /* padding-top: 5vh; */
+    /* width: 25%; */
+}
+
+.SB-link-item{
+    padding-top: 2vh;
+
+}
+
+.SB-link {
+    text-decoration: none;
+    /* color: rgb(74, 72, 96) */
+    color: black;
+}
+
+.A-component,.I-component, .F-component, .O-component{
+    display: flex;
+    margin-top: 5vh;
+    font-family: 'Cousine';
+    /* font-size: .5em; */
+}
+.I-component{
+    /* display: flex;
+    flex-direction: column;
+    width: 80%; */
+}
+
+.I-component-inner{
+/* display: flex;
+flex-direction: column;
+margin-left: 5vw; */
+}
+
+.I-edit-button{
+    margin-top:10vh;
+    background-color: none;
+    border: solid 1px #3ca6cd;
+    width: 42vw;;
+    height: 6vh;
+    font-family: Cousine;
+    font-size: .66em;
+    margin-right: 10vw;
+margin-left: 10vw;
+margin-bottom: 15vh;
+  }
+
+  .I-edit-button:hover{
+    background-color: #3ca6cd;
+    color: white;
+    
+  }
+
+.I-address-title{
+    font-size: .8em;
+    font-weight: 900;
+    padding-top: 5vh;
+    padding-left: 10vw;
+    padding-bottom: 6vh;
+    letter-spacing: 1px;
+    
+}
+
+.I-previous-address{
+    /* padding-top: .8em; */
+    padding-left: 10vw;
+    letter-spacing: 1px;
+    font-size: .9em;
+}
+
+.I-pa-line{
+padding-top: 1vh;
+}
+
+.I-edit-address-form-container{
+    padding-left: 10vw;
+    
+}
+
+.I-shipping-address-1{
+    height: 5vh;
+    width: 40vw;
+    border-radius: 2px;
+    border:1px solid #bdc0bf;
+    margin-bottom: 2vh;
+    padding-left: 2vw;
+    font-family: 'Cousine';
+    font-size: .8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.I-shipping-address-2-div{
+    display: flex;
+    
+  }
+  
+  .I-shipping-address-2{
+    height: 5vh;
+    width: 18.5vw;
+    margin-right: .7vw;
+    border-radius: 2px;
+  border:1px solid #bdc0bf;
+  margin-bottom: 2vh;
+  padding-left: 2vw;
+  font-family: 'Source Sans Pro';
+  font-size: .8em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  }
+  
+  .I-shipping-address-2-select{
+    height: 5.5vh;
+    width: 21vw;
+    margin-right: .7vw;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+  border:1px solid #bdc0bf;
+  margin-bottom: 2vh;
+  padding-left: 2vw;
+  font-family: 'Source Sans Pro';
+  font-size: .8em;
+  }
+
+  .I-edit-button-2{
+    margin-top:10vh;
+    background-color: none;
+    border: solid 1px #3ca6cd;
+    width: 22vw;;
+    height: 6vh;
+    font-family: Cousine;
+    font-size: .66em;
+    margin-right: 10vw;
+margin-left: 10vw;
+margin-bottom: 15vh;
+  }
+
+  .I-edit-button-2:hover{
+    background-color: #3ca6cd;
+    color: white;
+    
+  }

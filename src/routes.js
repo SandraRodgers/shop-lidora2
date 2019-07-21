@@ -43,6 +43,9 @@ import Custom from "./components/main/custom/Custom"
 
 //Account
 import Account from "./components/user/Account"
+import Information from "./components/user/Information"
+import Orders from "./components/user/Orders"
+import Favorites from "./components/user/Favorites"
 
 //Contact
 import Contact from "./components/main/contact/Contact"
@@ -76,7 +79,7 @@ export default (
     <Route path="/shop" exact component={ShopMain} />
    
     <Route path="/custom" exact component={Custom} />
-    <Route path="/user/account" exact component={Account} />
+   
     <Route path="/contact" exact component={Contact} />
 
 
@@ -124,6 +127,13 @@ export default (
   {/* Checkout */}
   <Route path="/checkout/one" exact component={CheckoutOne}/>
   <Route path="/checkout/two" exact component={CheckoutTwo}/>
+
+{/* Account */}
+<Route path="/user/account" exact component={Account} />
+<Route path="/user/information" exact component={Information}/>
+<Route path="/user/orders" exact component={Orders}/>
+<Route path="/user/favorites" exact component={Favorites}/>
+
   </Switch>
 );
 

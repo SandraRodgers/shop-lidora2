@@ -204,7 +204,7 @@ if(minutes.length===1){
   
 
   render() {
-    
+    console.log(this.props.currentAddress)
     let fixedTotal;
     if (this.props.user && this.props.user.total) {
       fixedTotal = this.props.user.total.toFixed(2);
@@ -379,6 +379,9 @@ if(minutes.length===1){
               </div>
             </div>
           </div>
+
+
+          
           <div className="checkout-one-payment-button-div">
             <Link  to={link}>
               <button

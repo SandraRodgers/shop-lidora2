@@ -1,9 +1,18 @@
 import React from 'react'
+import SideBar from "./SideBar"
+import { withRouter } from "react-router-dom";
 
-const Account = () => {
+
+
+const Account = (props) => {
+
+  
+
 return(
-    <div></div>
+    <div className = 'A-component'>
+        <SideBar />
+    </div>
 )
 }
 
-export default Account
+export default withRouter(Account)
