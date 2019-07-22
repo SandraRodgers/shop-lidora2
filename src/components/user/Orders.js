@@ -3,7 +3,7 @@ import axios from "axios";
 
 //redux
 import { connect } from "react-redux";
-import { getUserSession, getOrderDetails } from "../../ducks/reducer";
+import { getUserSession } from "../../ducks/reducer";
 
 import SideBar from "./SideBar";
 
@@ -75,5 +75,5 @@ const mapStateToProps = state => state;
 
 export default connect(
   mapStateToProps,
-  { getUserSession: getUserSession, getOrderDetails: getOrderDetails }
+  { getUserSession: getUserSession}
 )(Orders);

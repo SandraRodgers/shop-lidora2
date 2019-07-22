@@ -3,7 +3,7 @@ import styled from "styled-components";
 //
 const Nav = styled.nav`
 ${'' /* min-width: 100%; */}
-height: 15vh;
+${'' /* height: 15vh; */}
 
 
 background: ${props =>

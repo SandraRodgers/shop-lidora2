@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {withRouter} from 'react-router-dom'
 import axios from "axios";
 import { connect } from "react-redux";
 import { openBag } from "../../../ducks/reducer";
@@ -34,12 +35,12 @@ class ShopMain extends Component {
   }
 
   render() {
-    
+    // console.log(this.props)
 
   
 
     return (
-        <div>
+        <div onScroll={this.props.handleScroll}>
             <ShopClothing bagIsOpen= {this.props.bagIsOpen} favorites = {this.state.favorites}/>
             <ShopAccessories bagIsOpen= {this.props.bagIsOpen} favorites = {this.state.favorites}/>
             <ShopBaby bagIsOpen= {this.props.bagIsOpen} favorites = {this.state.favorites}/>
@@ -48,13 +49,18 @@ class ShopMain extends Component {
       );
   }
 }
-const mapStateToProps = state => {
+
+
+
+const mapStateToProps = state=> {
   return {
-    bagIsOpen: state.bagIsOpen
+    bagIsOpen: state.bagIsOpen,
+    // handleScroll: handleScroll
   };
 };
 
-export default connect(
+const MyComponent = connect(
   mapStateToProps,
   { openBag: openBag }
 )(ShopMain);
+export default withRouter(MyComponent);

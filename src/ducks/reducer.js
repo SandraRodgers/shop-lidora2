@@ -21,7 +21,7 @@ const initialState = {
   loading: false,
   currentAddress: [],
   couponApplied: [],
-  orderDetails: []
+  // orderDetails: []
 };
 
 //get product data
@@ -56,6 +56,7 @@ const GET_FLASHSALE = "GET_FLASHSALE";
 
 //UI
 const OPEN_BAG = "OPEN_BAG";
+// const HANDLE_SCROLL= "HANDLE_SCROLL"
 
 //authentication
 const SIGN_IN = "SIGN_IN";
@@ -71,7 +72,7 @@ const GET_CURRENT_ADDRESS = "GET_CURRENT_ADDRESS";
 const HOLD_COUPON = "HOLD_COUPON";
 
 //user account
-const GET_ORDER_DETAILS = "GET_ORDER_DETAILS";
+// const GET_ORDER_DETAILS = "GET_ORDER_DETAILS";
 
 export default function reducer(state = initialState, action) {
   console.log(action)  
@@ -189,11 +190,14 @@ export default function reducer(state = initialState, action) {
     case `${GET_CURRENT_ADDRESS}_FULFILLED`:
       return { ...state, currentAddress: action.payload.data };
 
-    case `${GET_ORDER_DETAILS}__FULFILLED`:
-      return { ...state, orderDetails: action.payload.data };
+    // case `${GET_ORDER_DETAILS}__FULFILLED`:
+    //   return { ...state, orderDetails: action.payload.data };
 
     case HOLD_COUPON:
       return { ...state, couponApplied: action.couponApplied };
+    
+    // case HANDLE_SCROLL:
+    //   return { ...state, transform: action.payload}
 
     default:
       return state;
@@ -463,9 +467,31 @@ export function holdCoupon(coupon) {
   };
 }
 
-export function getOrderDetails() {
-  return {
-    type: GET_ORDER_DETAILS,
-    payload: axios.get("/api/account/orders")
-  };
-}
+// export function getOrderDetails() {
+//   return {
+//     type: GET_ORDER_DETAILS,
+//     payload: axios.get("/api/account/orders")
+//   };
+// }
+
+// export function handleScroll(event) {
+//   let scrollTop = event.srcElement.body.scrollTop,
+//       itemTranslate = Math.min(0, scrollTop/3 - 60);
+//       return{
+//         type: HANDLE_SCROLL,
+//         transform: itemTranslate
+//       }
+// }
+
+// export function scrollListen(){
+
+// }
+
+// handleScroll =(event) => {
+//   let scrollTop = event.srcElement.body.scrollTop,
+//       itemTranslate = Math.min(0, scrollTop/3 - 60);
+
+//   this.setState({
+//     transform: itemTranslate
+//   });
+// }

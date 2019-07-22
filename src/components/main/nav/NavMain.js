@@ -12,7 +12,7 @@ import Column from "../../styled/Column";
 import SecondaryLink from "../../styled/SecondaryLink";
 
 //imported assets
-import flower from "../../../assets/flower.png";
+import flower from "../../../assets/flower-transparent.png";
 
 //components
 import HiddenNav from "./HiddenNav";
@@ -37,9 +37,14 @@ class NavMain extends React.Component {
     this.state = {
       hiddenMenu: false,
       sideMenu: false,
-      scroll: false
+      update: false 
+     
+
     };
   }
+
+
+
 
 
   showSideMenu = () => {
@@ -52,24 +57,37 @@ class NavMain extends React.Component {
   };
 
   render() {
-    
-
+    console.log(this.props.backgroundColor)
+    let backgroundColor = this.props.backgroundColor
+    let transition = this.props.transition
     let position;
     let marginBottom;
+    let height;
+    let transitionFlower;
+    let navHeight;
+ 
     this.state.sideMenu === true ? position = 'fixed' : position = 'sticky'
     this.state.sideMenu === true ? marginBottom = '0' : marginBottom = '0'
     this.props.bagIsOpen === true ? position = 'relative' : position = 'sticky'
+    this.props.isTop === true ? height = '10vh' : height = '7vh' 
+    this.props.isTop === true ? transitionFlower = 'none' : transitionFlower = 'all .5s ease'
+    this.props.isTop === true ?navHeight = '15vh' : navHeight = '10vh'
 
+    
     return (
       <div
+        
         className="NM-container"
-        style={{position: position, marginBottom: marginBottom}}
+        style={{position: position, marginBottom: marginBottom, backgroundColor: backgroundColor, transition:transition }}
+      
       >
         <Bag open={this.props.bagIsOpen} />
-        <Nav >
-          <SideMenu open={this.state.sideMenu} />
+        <Nav   style={{height: navHeight,backgroundColor: backgroundColor, transition: transition}}>
+          <SideMenu open={this.state.sideMenu}  />
           <Column>
             <Hamburger
+              transtion={transition}
+              backgroundColor={backgroundColor}
               onClick={this.showSideMenu}
               showSideMenu={this.showSideMenu}
               className="NM-Hamburger"
@@ -84,7 +102,7 @@ class NavMain extends React.Component {
             </SecondaryLink>
           </Column>
           <Column>
-            <SecondaryLink to="/styleguide" primary="true">
+            <SecondaryLink to="/styleguide" primary="true" >
               Style Guide
             </SecondaryLink>
           </Column>
@@ -95,11 +113,11 @@ class NavMain extends React.Component {
           </Column>
           <SecondaryColumn>
             <SecondaryLink nothidden="true" to="/">
-              <img alt="flower" style={{ height: "10vh" }} src={flower} />
+              <img alt="flower" style={{ height: height, transition: transitionFlower, paddingBottom: '2vh', paddingTop: '2vh'}} src={flower} />
             </SecondaryLink>
           </SecondaryColumn>
           <Column>
-            <SecondaryLink to="/user/account" primary="true">
+            <SecondaryLink to="/user/information" primary="true">
               Account
             </SecondaryLink>
           </Column>
