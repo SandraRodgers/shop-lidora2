@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {withRouter} from 'react-router-dom'
 import axios from "axios";
 import { connect } from "react-redux";
-import { openBag } from "../../../ducks/reducer";
+import { openBag, hideMenu } from "../../../ducks/reducer";
 import ShopClothing from "./ShopClothing"
 import ShopAccessories from "./ShopAccessories"
 import ShopBaby from "./ShopBaby"
@@ -40,7 +40,7 @@ class ShopMain extends Component {
   
 
     return (
-        <div onScroll={this.props.handleScroll}>
+        <div onMouseOver={this.props.hideMenu} onScroll={this.props.handleScroll}>
             <ShopClothing bagIsOpen= {this.props.bagIsOpen} favorites = {this.state.favorites}/>
             <ShopAccessories bagIsOpen= {this.props.bagIsOpen} favorites = {this.state.favorites}/>
             <ShopBaby bagIsOpen= {this.props.bagIsOpen} favorites = {this.state.favorites}/>
@@ -61,6 +61,6 @@ const mapStateToProps = state=> {
 
 const MyComponent = connect(
   mapStateToProps,
-  { openBag: openBag }
+  { openBag: openBag, hideMenu: hideMenu }
 )(ShopMain);
 export default withRouter(MyComponent);

@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 
 //redux
 import { connect } from "react-redux";
-import { openBag } from "../../../ducks/reducer";
+import { openBag, showMenu, hideMenu } from "../../../ducks/reducer";
 
 //styled components
 import Nav from "../../styled/Nav";
@@ -39,7 +39,7 @@ class NavMain extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hiddenMenu: false,
+      // hiddenMenu: false,
       sideMenu: false,
       update: false 
      
@@ -56,12 +56,18 @@ class NavMain extends React.Component {
 
   };
 
-  showMenu = () => {
-    this.setState({ hiddenMenu: !this.state.hiddenMenu });
-  };
+  // showMenu = () => {
+  //   this.setState({ hiddenMenu: !this.state.hiddenMenu });
+  // };
+
+  // hideMenu = ()=> {
+  //   console.log('hit')
+  //   this.setState({ hiddenMenu: false });
+
+  // }
 
   render() {
-    console.log(this.props.backgroundColor)
+  
 
     // styles
     let backgroundColor = this.props.backgroundColor
@@ -73,6 +79,7 @@ class NavMain extends React.Component {
     let backgroundColorFlower
     let navHeight;
     let top
+    let hiddenMenu = this.props.hiddenMenu
  
     this.state.sideMenu === true ? position = 'fixed' : position = 'sticky'
     this.state.sideMenu === true ? marginBottom = '0' : marginBottom = '0'
@@ -83,7 +90,7 @@ class NavMain extends React.Component {
     this.props.isTop === true ?navHeight = '15vh' : navHeight = '10vh'
     this.props.isTop === true ? top = true : top = false
     
-    console.log(top)
+ 
     return (
       <div
         
@@ -94,7 +101,10 @@ class NavMain extends React.Component {
         <Bag open={this.props.bagIsOpen} />
         <Nav   style={{height: navHeight,backgroundColor: backgroundColor, transition: transition}}>
           <SideMenu open={this.state.sideMenu}  />
-          <Column class='styled-column' top={top}>
+          <Column class='styled-column' top={top}
+          onMouseOver={this.props.showMenu}
+          
+           >
             <Hamburger
               transtion={transition}
               backgroundColor={backgroundColor}
@@ -106,38 +116,39 @@ class NavMain extends React.Component {
 
             <SecondaryLink
               to="/shop"
-              onMouseOver={this.showMenu}
+              // onMouseOver={this.showMenu}
+              
               primary="true"
             >
               Products
             </SecondaryLink>
           </Column>
-          <Column top={top}>
+          <Column top={top} onMouseOut={this.props.hideMenu}>
             <SecondaryLink to="/styleguide" primary="true" >
               Style Guide
             </SecondaryLink>
           </Column>
-          <Column top={top}>
+          <Column top={top } onMouseOut={this.props.hideMenu}>
             <SecondaryLink to="/custom" primary="true">
               Custom
             </SecondaryLink>
           </Column>
-          <SecondaryColumn top={top}>
+          <SecondaryColumn top={top} onMouseOut={this.props.hideMenu}>
             <SecondaryLink nothidden="true" to="/">
-              <img alt="flower" top={top} style={{ height: height, transition: transitionFlower, paddingBottom: '2vh', paddingTop: '2vh', backgroundColor: backgroundColorFlower}} src={flower} />
+              <img  alt="flower" top={top} style={{ height: height, transition: transitionFlower, paddingBottom: '2vh', paddingTop: '2vh', backgroundColor: backgroundColorFlower}} src={flower}  />
             </SecondaryLink>
           </SecondaryColumn>
-          <Column top={top}>
+          <Column top={top} onMouseOut={this.props.hideMenu}>
             <SecondaryLink to="/user/information" primary="true">
               Account
             </SecondaryLink>
           </Column>
-          <Column top={top}>
+          <Column top={top} onMouseOut={this.props.hideMenu}>
             <SecondaryLink to="/contact" primary="true">
               Contact
             </SecondaryLink>
           </Column>
-          <Column nothidden="true" top={top} >
+          <Column nothidden="true" top={top} onMouseOut={this.props.hideMenu} >
             <SecondaryLink
               to={this.props.location.pathname}
               onClick={() => this.props.openBag()}
@@ -148,7 +159,10 @@ class NavMain extends React.Component {
           </Column>
         </Nav>
 
-        <HiddenNav open={this.state.hiddenMenu} onMouseOut={this.showMenu} />
+        <HiddenNav open={hiddenMenu} 
+          // hideMenu = {this.hideMenu} showMenu ={this.showMenu}
+     
+         />
       </div>
     );
   }
@@ -159,6 +173,6 @@ const mapStateToProps = state => state;
 export default withRouter(
   connect(
     mapStateToProps,
-    { openBag: openBag }
+    { openBag: openBag, showMenu: showMenu, hideMenu: hideMenu }
   )(NavMain)
 );

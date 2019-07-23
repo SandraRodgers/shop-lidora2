@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import { connect } from "react-redux";
+import {  openBag, hideMenu } from "../../../ducks/reducer";
+
 import "./custom.css";
 
 import bonnetgirl from "../../../assets/bonnetgirl.jpg";
@@ -34,7 +37,7 @@ class Custom extends Component {
   render() {
     console.log(this.state.message);
     return (
-      <div className="custom-component">
+      <div className="custom-component" onMouseOver={this.props.hideMenu}>
         <div className="custom-main-div">
           <img className="custom-main-image" src={bonnetgirl} />
           <div className="custom-text-div">
@@ -87,4 +90,9 @@ class Custom extends Component {
     );
   }
 }
-export default Custom;
+const mapStateToProps = state => state
+
+export default connect(
+  mapStateToProps,
+  { openBag, hideMenu }
+)(Custom);

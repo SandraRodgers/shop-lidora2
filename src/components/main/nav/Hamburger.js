@@ -19,7 +19,7 @@ openMenu = () => {
 }
 
     render( ){
-    let backgroundColor = this.props.backgroundColor
+    // let backgroundColor = this.props.backgroundColor
     let transition = this.props.transition
     let menuButtonBackColor
   
@@ -30,8 +30,7 @@ openMenu = () => {
         menuButtonBackColor = 'whitesmoke'
       } else {menuButtonBackColor = '#F0F0F0' }
       
-    console.log(this.state.openMenu)
-    console.log(menuButtonBackColor)
+  
 return (
 //The MenuButton shows up as screen is minimized (responsive design) The MenuSpan is each line of the button
   <MenuButton 

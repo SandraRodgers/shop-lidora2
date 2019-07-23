@@ -48,13 +48,19 @@ class App extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.isTop !== this.state.isTop){
+      this.handleScroll()
+    }
+  }
+
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
   }
 
   handleScroll = event => {
     // console.log(event)
-    console.log(this.state.isTop);
+    
     document.addEventListener("scroll", () => {
       const isTop = window.scrollY < 10;
       if (isTop !== this.state.isTop) {

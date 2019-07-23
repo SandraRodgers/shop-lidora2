@@ -3,7 +3,7 @@ import axios from "axios";
 
 //redux
 import { connect } from "react-redux";
-import { getUserSession } from "../../ducks/reducer";
+import { getUserSession, hideMenu } from "../../ducks/reducer";
 
 import SideBar from "./SideBar";
 
@@ -40,7 +40,7 @@ class Orders extends Component {
 
     let orderList = this.state.orders.map((order, index) => {
       return (
-        <div>
+        <div onMouseOver={this.props.hideMenu}>
           <div className="O-order">
             <div className="O-orders-date">{order.date}</div>
             <div className="O-orders-item">
@@ -75,5 +75,5 @@ const mapStateToProps = state => state;
 
 export default connect(
   mapStateToProps,
-  { getUserSession: getUserSession}
+  { getUserSession, hideMenu}
 )(Orders);

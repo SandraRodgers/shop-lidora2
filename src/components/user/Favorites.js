@@ -1,6 +1,8 @@
 import React from 'react'
 import SideBar from "./SideBar"
 
+import { connect } from "react-redux";
+import {  openBag, hideMenu } from "../../ducks/reducer";
 
 let information;
 let orders;
@@ -16,10 +18,15 @@ const Favorites = (props) => {
       }
 
 return(
-    <div className="F-component">
+    <div className="F-component" onMouseOver={this.props.hideMenu}>
  <SideBar   favorites={favorites}/>
     </div>
 )
 }
 
-export default Favorites
+const mapStateToProps = state => state
+
+export default connect(
+  mapStateToProps,
+  { openBag, hideMenu }
+)(Favorites);

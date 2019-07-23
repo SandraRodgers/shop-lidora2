@@ -7,6 +7,10 @@ import "./HiddenNav.css";
 import HiddenNavBar from "../../styled/HiddenNavBar";
 import LilacLink from "../../styled/LilacLink";
 
+//redux
+import { connect } from "react-redux";
+import { showMenu, hideMenu } from "../../../ducks/reducer";
+
 const Placeholder = styled.div`
   color: rgb(240, 240, 240);
   cursor: none;
@@ -21,9 +25,9 @@ class HiddenNav extends React.Component {
   render() {
 
     return (
-      <div>
-        <HiddenNavBar open={this.props.open}>
-          <div className="HNB-clothing-div">
+      <div  >
+        <HiddenNavBar open={this.props.open}    >
+          <div  className="HNB-clothing-div">
             <LilacLink to={this.props.location.pathname}>Clothing</LilacLink>
             <LilacLink to={"/shop/dresses"}  primary = "true">
               Dresses
@@ -87,4 +91,12 @@ class HiddenNav extends React.Component {
   }
 }
 
-export default withRouter(HiddenNav);
+// export default withRouter(HiddenNav);
+
+const mapStateToProps = state => state;
+
+const MyComponent = connect(
+  mapStateToProps,
+  { showMenu: showMenu, hideMenu: hideMenu }
+)(HiddenNav);
+export default withRouter(MyComponent);

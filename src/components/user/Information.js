@@ -3,7 +3,7 @@ import axios from 'axios'
 
 //redux
 import { connect } from "react-redux";
-import { getUserSession, getCurrentAddress } from "../../ducks/reducer";
+import { getUserSession, getCurrentAddress, hideMenu } from "../../ducks/reducer";
 
 import SideBar from "./SideBar";
 
@@ -111,7 +111,7 @@ class Information extends Component {
           }
         
           return (
-            <div className = 'I-component'>
+            <div className = 'I-component' onMouseOver={this.props.hideMenu}>
          <SideBar  information={information} />
 
 <div className='I-component-inner'>
@@ -274,6 +274,6 @@ const mapStateToProps = state => state;
 
 export default connect(
     mapStateToProps,
-    { getUserSession: getUserSession, getCurrentAddress: getCurrentAddress }
+    { getUserSession, getCurrentAddress,  hideMenu }
   )(Information);
   
