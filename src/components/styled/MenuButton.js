@@ -10,10 +10,12 @@ import styled from "styled-components";
     margin: 50vw auto;
     transform: rotate(0deg);
     transition:  0.5s ease-in-out;
-    background: ${props => (props.clicked ? "rgb(240,240,240)" : "white")};
+
+    ${'' /* background: ${props => (props.clicked ? "#f0f0f0" : "white")}; */}
     cursor: pointer;
     ${'' /* background-color: white; */}
   &:hover{opacity: .5}
+  &:hover{background:"#f0f0f0" }
   
     @media (max-width: 1030px) {
         display: block;

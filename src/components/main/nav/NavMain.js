@@ -25,9 +25,13 @@ import "./NavMain.css";
 
 const SecondaryColumn = styled(Column)`
   &:hover {
-    background: rgb(255, 255, 255);
+    background:${props => props.top ? 'white' : 'whitesmoke'}
+    
+  
   }
 `;
+
+
 
 ///This component is the TOP NAVBAR
 
@@ -58,22 +62,28 @@ class NavMain extends React.Component {
 
   render() {
     console.log(this.props.backgroundColor)
+
+    // styles
     let backgroundColor = this.props.backgroundColor
     let transition = this.props.transition
     let position;
     let marginBottom;
     let height;
     let transitionFlower;
+    let backgroundColorFlower
     let navHeight;
+    let top
  
     this.state.sideMenu === true ? position = 'fixed' : position = 'sticky'
     this.state.sideMenu === true ? marginBottom = '0' : marginBottom = '0'
     this.props.bagIsOpen === true ? position = 'relative' : position = 'sticky'
     this.props.isTop === true ? height = '10vh' : height = '7vh' 
     this.props.isTop === true ? transitionFlower = 'none' : transitionFlower = 'all .5s ease'
+    this.props.isTop === true ? backgroundColorFlower = 'white' : backgroundColorFlower= 'whitesmoke'
     this.props.isTop === true ?navHeight = '15vh' : navHeight = '10vh'
-
+    this.props.isTop === true ? top = true : top = false
     
+    console.log(top)
     return (
       <div
         
@@ -84,13 +94,14 @@ class NavMain extends React.Component {
         <Bag open={this.props.bagIsOpen} />
         <Nav   style={{height: navHeight,backgroundColor: backgroundColor, transition: transition}}>
           <SideMenu open={this.state.sideMenu}  />
-          <Column>
+          <Column class='styled-column' top={top}>
             <Hamburger
               transtion={transition}
               backgroundColor={backgroundColor}
               onClick={this.showSideMenu}
               showSideMenu={this.showSideMenu}
               className="NM-Hamburger"
+              top={top}
             />
 
             <SecondaryLink
@@ -101,32 +112,32 @@ class NavMain extends React.Component {
               Products
             </SecondaryLink>
           </Column>
-          <Column>
+          <Column top={top}>
             <SecondaryLink to="/styleguide" primary="true" >
               Style Guide
             </SecondaryLink>
           </Column>
-          <Column>
+          <Column top={top}>
             <SecondaryLink to="/custom" primary="true">
               Custom
             </SecondaryLink>
           </Column>
-          <SecondaryColumn>
+          <SecondaryColumn top={top}>
             <SecondaryLink nothidden="true" to="/">
-              <img alt="flower" style={{ height: height, transition: transitionFlower, paddingBottom: '2vh', paddingTop: '2vh'}} src={flower} />
+              <img alt="flower" top={top} style={{ height: height, transition: transitionFlower, paddingBottom: '2vh', paddingTop: '2vh', backgroundColor: backgroundColorFlower}} src={flower} />
             </SecondaryLink>
           </SecondaryColumn>
-          <Column>
+          <Column top={top}>
             <SecondaryLink to="/user/information" primary="true">
               Account
             </SecondaryLink>
           </Column>
-          <Column>
+          <Column top={top}>
             <SecondaryLink to="/contact" primary="true">
               Contact
             </SecondaryLink>
           </Column>
-          <Column nothidden="true">
+          <Column nothidden="true" top={top} >
             <SecondaryLink
               to={this.props.location.pathname}
               onClick={() => this.props.openBag()}

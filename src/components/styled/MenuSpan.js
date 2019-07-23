@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const MenuSpan = styled.span`
- 
+    
     display: block;
     display: none;
     position: absolute;
@@ -9,7 +9,7 @@ const MenuSpan = styled.span`
     width: 70%;
     background-color: rgb(74, 72, 96);
     &:hover{background-color: rgb(74, 72, 96);}
-  
+    
     border-radius: 9px;
     opacity: 1;
     left: 0;
