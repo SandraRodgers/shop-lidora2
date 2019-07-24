@@ -242,11 +242,7 @@ class Product extends Component {
   }
 
   render() {
-    
-    // this.props.currentProduct &&
-    //   console.log("current product:", this.props.currentProduct);
-    // console.log("state: productInfo", this.state.productInfo[0]);
-    // console.log(this.props.match.params)
+   
     let toggleBag;
 
     this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
@@ -278,11 +274,15 @@ class Product extends Component {
               </div>
             )}
 
-              {this.props.user && this.props.user.isadmin === true ? 
+
+{this.state.category === 'flashsale' && this.props.user && this.props.user.isadmin === true  ?  <Link className="product-edit-link" to=  {`/admin/edit/flashsale/${this.props.match.params.id}`} >
+              <div className="product-edit-link-div"> Admin: Edit This Product </div>  </Link> : this.props.user && this.props.user.isadmin === true ? 
               <Link className="product-edit-link" to=  {`/admin/edit/product/${this.props.match.params.id}`} >
               <div className="product-edit-link-div"> Admin: Edit This Product </div>  </Link> : null
             
             }
+
+              
 
             {this.props.currentProduct[0] && (
               <div className="product-description">

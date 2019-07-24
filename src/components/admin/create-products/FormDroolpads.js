@@ -16,6 +16,7 @@ class FormDroolpads extends Component {
       fabric: "",
       customize: "",
       location: "",
+      favorite: '',
       category: "droolpads"
     };
   }
@@ -32,7 +33,8 @@ class FormDroolpads extends Component {
       customize,
       image,
       description,
-      location
+      location,
+      favorite
     } = this.state;
     e.preventDefault();
     this.createDroolpads(
@@ -42,7 +44,8 @@ class FormDroolpads extends Component {
       customize,
       image,
       description,
-      location
+      location,
+      favorite
     );
   };
 
@@ -56,7 +59,8 @@ class FormDroolpads extends Component {
       image,
       description,
       location,
-      category
+      category,
+      favorite
     } = this.state;
     axios
       .post("/api/admin/addDroolpads", {
@@ -66,7 +70,8 @@ class FormDroolpads extends Component {
         fabric,
         image,
         description,
-        location
+        location,
+        favorite
       })
       .then(() => axios.post("/api/admin/createProduct", { category }))
       .then(response => {
@@ -78,7 +83,8 @@ class FormDroolpads extends Component {
             image: "",
             customize: "",
             description: "",
-            location: ""
+            location: "",
+            favorite:""
           },
           () => alert("Your product has been created")
         );
@@ -169,6 +175,20 @@ class FormDroolpads extends Component {
               onChange={this.handleChange}
             />
           </div>
+
+<div className="form-category-name">
+              Front Page:
+              <Select
+                value={this.state.favorite}
+                name="favorite"
+                onChange={this.handleChange}
+              >
+                <option>On front page of store?</option>
+                <option>Yes</option>
+                <option>No</option>
+              </Select>
+            </div>
+
           <FormSubmit onClick={this.handleSubmit}>Submit</FormSubmit>
         </Form>
       </div>

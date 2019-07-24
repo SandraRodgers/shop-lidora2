@@ -45,7 +45,8 @@ class EditDress extends Component {
       location: "",
       category: "",
       favorite: "",
-      productid: 0
+      productid: 0,
+      id: 0
     };
   }
 
@@ -74,7 +75,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].dressesid
             });
           })
         
@@ -91,7 +93,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].bonnetsid
             });
           })
         }
@@ -108,7 +111,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].shortsid
             });
           })
         }
@@ -124,7 +128,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].bloomersid
             });
           })
         
@@ -141,7 +146,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].skirtsid
             });
           })
         }
@@ -158,7 +164,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].vestsid
             });
           })
        
@@ -176,7 +183,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].bibdanasid
             });
           })
           
@@ -194,7 +202,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].bowtiesid
             });
           })
        
@@ -212,7 +221,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].burpclothsid
             });
           })
          
@@ -230,7 +240,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].droolpadsid
             });
           })
         
@@ -248,7 +259,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].hairbowsid
             });
           })
         
@@ -266,7 +278,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].headbandsid
             });
           })
        
@@ -284,7 +297,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].suspendersid
             });
           })
        
@@ -302,7 +316,8 @@ class EditDress extends Component {
               customize: this.props.currentProduct[0].customize,
               description: this.props.currentProduct[0].description,
               location: this.props.currentProduct[0].location,
-              favorite: this.props.currentProduct[0].favorite
+              favorite: this.props.currentProduct[0].favorite,
+              id: this.props.currentProduct[0].flashsaleid
             });
           })
         
@@ -370,7 +385,7 @@ class EditDress extends Component {
       category
     } = this.state;
     axios
-      .put(`/api/admin/product/${this.state.productid}`, {
+      .put(`/api/admin/product/${this.state.id}`, {
         name,
         price,
         style,
@@ -408,8 +423,8 @@ class EditDress extends Component {
   };
 
   render() {
-    console.log(this.state.productid);
-    console.log(this.props.currentProduct && this.props.currentProduct[0] );
+    console.log(this.state.id);
+    console.log(this.props.currentProduct  );
     return (
       <div className="form-component-container">
         <div className="form-title">Edit Product information</div>
@@ -521,6 +536,8 @@ class EditDress extends Component {
                 onChange={this.handleChange}
               />
             </div>
+
+            {this.state.category !== 'flashsale' ? 
             <div className="form-category-name">
               Location:
               <Select
@@ -533,7 +550,7 @@ class EditDress extends Component {
                 <option>Seasonal Collection</option>
                 <option>Closet</option>
               </Select>
-            </div>
+            </div> : null}
             <div className="form-category-name">
               Description:
               <Input
@@ -544,6 +561,7 @@ class EditDress extends Component {
                 onChange={this.handleChange}
               />
             </div>
+            {this.state.category !== 'flashsale' ? 
             <div className="form-category-name">
               Front Page:
               <Select
@@ -556,7 +574,10 @@ class EditDress extends Component {
                 <option>No</option>
            
               </Select>
-            </div>
+            </div> : 
+       null
+            
+            }
           </div>
           <FormSubmit onClick={this.handleSubmit}>Submit</FormSubmit>
         </Form>

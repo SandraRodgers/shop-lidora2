@@ -16,7 +16,8 @@ class FormHeadbands extends Component {
       fabric: "",
       customize: "",
       location: "",
-      category: "headbands"
+      category: "headbands",
+      favorite: '',
     };
   }
 
@@ -32,7 +33,8 @@ class FormHeadbands extends Component {
       customize,
       image,
       description,
-      location
+      location,
+      favorite
     } = this.state;
     e.preventDefault();
     this.createHeadbands(
@@ -42,7 +44,8 @@ class FormHeadbands extends Component {
       customize,
       image,
       description,
-      location
+      location,
+      favorite
     );
   };
 
@@ -55,7 +58,8 @@ class FormHeadbands extends Component {
       image,
       description,
       location,
-      category
+      category,
+      favorite
     } = this.state;
     axios
       .post("/api/admin/addHeadbands", {
@@ -65,7 +69,8 @@ class FormHeadbands extends Component {
         fabric,
         image,
         description,
-        location
+        location,
+        favorite
       })
       .then(() => axios.post("/api/admin/createProduct", { category }))
       .then(response => {
@@ -77,7 +82,8 @@ class FormHeadbands extends Component {
             image: "",
             customize: "",
             description: "",
-            location: ""
+            location: "",
+            favorite:""
           },
           () => alert("Your product has been created")
         );
@@ -168,6 +174,20 @@ class FormHeadbands extends Component {
               onChange={this.handleChange}
             />
           </div>
+
+   <div className="form-category-name">
+              Front Page:
+              <Select
+                value={this.state.favorite}
+                name="favorite"
+                onChange={this.handleChange}
+              >
+                <option>On front page of store?</option>
+                <option>Yes</option>
+                <option>No</option>
+              </Select>
+            </div>
+
           <FormSubmit onClick={this.handleSubmit}>Submit</FormSubmit>
         </Form>
       </div>

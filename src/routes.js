@@ -70,6 +70,7 @@ import AdminMain from "../src/components/admin/admin-main/AdminMain"
 
 //Edit Products
 import EditProduct from "../src/components/admin/edit-products/EditProduct"
+import EditFlashsale from "../src/components/admin/edit-products/EditFlashsale"
 
 //Payment and Orders 
 import FormCoupon from "../src/components/admin/coupons/CouponForm"
@@ -139,6 +140,10 @@ export default (
 
 {/* Edit Products */}
 <Route path="/admin/edit/product/:id" exact component={EditProduct} />
+<Route path="/admin/edit/flashsale/:id" exact component={EditFlashsale} />
+
+
+
 
   </Switch>
 );

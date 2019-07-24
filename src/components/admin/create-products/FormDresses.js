@@ -242,6 +242,7 @@ class FormDresses extends Component {
                 onChange={this.handleChange}
               />
             </div>
+         
             <div className="form-category-name">
               Front Page:
               <Select
@@ -252,7 +253,6 @@ class FormDresses extends Component {
                 <option>On front page of store?</option>
                 <option>Yes</option>
                 <option>No</option>
-                {/* <option>Closet</option> */}
               </Select>
             </div>
             

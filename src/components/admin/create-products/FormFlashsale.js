@@ -17,6 +17,7 @@ class FormFlashsale extends Component {
       image: "",
       sold: false,
       category: "flashsale"
+
     };
   }
 
@@ -159,29 +160,7 @@ class FormFlashsale extends Component {
                 <option>Other</option>
               </Select>
             </div>
-          {/* <div className="form-category-name">
-            Customize:
-            <Input
-              value={this.state.customize}
-              type="text"
-              name="customize"
-              placeholder="Describe customization options"
-              onChange={this.handleChange}
-            />
-          </div> */}
-          {/* <div className="form-category-name">
-            Location:
-            <Select
-              value={this.state.location}
-              name="location"
-              onChange={this.handleChange}
-            >
-              <option>Choose an option</option>
-              <option>Droolpads Main Page</option>
-              <option>Seasonal Collection</option>
-              <option>Closet</option>
-            </Select>
-          </div> */}
+      
           <div className="form-category-name">
             Description:
             <Input
@@ -192,6 +171,23 @@ class FormFlashsale extends Component {
               onChange={this.handleChange}
             />
           </div>
+
+  <div className="form-category-name">
+            Sold:
+            <Select
+                value={this.state.sold}
+                name="sold"
+                onChange={this.handleChange}
+              >
+                <option>{this.state.sold}</option>
+                <option>true</option>
+                <option>false</option>
+               
+              </Select>
+           
+          </div>
+          <div>(Select 'false' to display in store immediately; select true to put into closet)</div>
+
           <FormSubmit onClick={this.handleSubmit}>Submit</FormSubmit>
         </Form>
       </div>
