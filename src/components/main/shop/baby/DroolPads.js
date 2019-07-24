@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDroolpads, openBag } from "../../../../ducks/reducer";
+import { getDroolpads, openBag, hideMenu } from "../../../../ducks/reducer";
 import "../shop.css";
 
 class DroolPads extends React.Component {
@@ -24,7 +24,7 @@ class DroolPads extends React.Component {
                 style={{ zIndex: toggleBag }}
                 className="product-container"
                 key={element.productid}
-                ref={this.linkRef}
+                onMouseOver={this.props.hideMenu}
               >
                 <Link to={`/products/${element.productid}`}>
                   <img className="product-photo" src={element.image} alt="" />
@@ -54,14 +54,11 @@ class DroolPads extends React.Component {
 
 
 }
-const mapStateToProps = state => {
-    return {
-      droolpads: state.droolpads,
-      bagIsOpen: state.bagIsOpen
-    };
-  };
+
+
+const mapStateToProps = state => state
   
   export default connect(
     mapStateToProps,
-    { getDroolpads: getDroolpads, openBag: openBag }
+    { getDroolpads,  openBag, hideMenu }
   )(DroolPads);

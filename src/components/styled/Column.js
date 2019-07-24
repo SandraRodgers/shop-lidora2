@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Column = styled.div`
+  className: 'styled-column';
   width: 15%;
   height: 100%;
   display: flex;
@@ -17,11 +18,18 @@ const Column = styled.div`
   &:hover {
     background: rgb(125, 190, 216);
     transition:  250ms ease-in-out;
-    
+
+ 
+    ${'' /* &:hover { color: ${props =>
+    props.primary ? "rgb(255,255,255)" : "rgb(74, 72, 96)"};} */}
+  @media (max-width: 1030px) {
+    ${'' /* &:hover{
+    background: ${props => props.notHidden ? 'rgb(125, 190, 216)': 'whitesmoke'}} */}
+    &:hover{
+    background: ${props => props.top ? 'white': 'whitesmoke'}}   
   }
-  @media (max-width: 1030px) {&:hover{
-    background: ${props => props.notHidden ? 'rgb(125, 190, 216)': 'white'}}
-  }
+
+
   @media (max-width: 900px) {
   }
   @media (max-width: 800px) {

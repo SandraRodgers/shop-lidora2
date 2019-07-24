@@ -19,12 +19,24 @@ openMenu = () => {
 }
 
     render( ){
-    
+    // let backgroundColor = this.props.backgroundColor
+    let transition = this.props.transition
+    let menuButtonBackColor
+  
 
+      if(this.props.top === true && this.state.clicked === false){
+        menuButtonBackColor = 'white' 
+      } else if ( this.props.top === false && this.state.clicked === false){
+        menuButtonBackColor = 'whitesmoke'
+      } else {menuButtonBackColor = '#F0F0F0' }
+      
+  
 return (
 //The MenuButton shows up as screen is minimized (responsive design) The MenuSpan is each line of the button
-  <MenuButton clicked={this.state.clicked} onClick={this.openMenu}>
-    <MenuSpan open={this.state.openMenu} />
+  <MenuButton 
+  style={{backgroundColor: menuButtonBackColor, transition: transition}} clicked={this.state.clicked} onClick={this.openMenu}
+  >
+    <MenuSpan  open={this.state.openMenu}  />
     <MenuSpan open={this.state.openMenu} />
     <MenuSpan open={this.state.openMenu} />
   </MenuButton>

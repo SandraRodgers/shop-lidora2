@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getSkirts, openBag } from "../../../../ducks/reducer";
+import { getSkirts, openBag, hideMenu } from "../../../../ducks/reducer";
 import "../shop.css";
 
 class Skirts extends React.Component {
@@ -26,7 +26,7 @@ class Skirts extends React.Component {
           style={{ zIndex: toggleBag }}
           className="product-container"
           key={element.productid}
-        
+          onMouseOver ={this.props.hideMenu}
         >
           <Link to={`/products/${element.productid}`}>
             <img className="product-photo" src={element.image} alt="" />
@@ -58,14 +58,11 @@ class Skirts extends React.Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    skirts: state.skirts,
-    bagIsOpen: state.bagIsOpen
-  };
-};
+
+
+const mapStateToProps = state => state
 
 export default connect(
   mapStateToProps,
-  { getSkirts: getSkirts, openBag: openBag }
+  { getSkirts, openBag, hideMenu }
 )(Skirts);

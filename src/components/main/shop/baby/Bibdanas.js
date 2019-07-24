@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getBibdanas, openBag } from "../../../../ducks/reducer";
+import { getBibdanas, openBag, hideMenu } from "../../../../ducks/reducer";
 import "../shop.css";
 
 class Bibdanas extends React.Component {
@@ -24,7 +24,7 @@ class Bibdanas extends React.Component {
                 style={{ zIndex: toggleBag }}
                 className="product-container"
                 key={element.productid}
-                ref={this.linkRef}
+                onMouseOver={this.props.hideMenu}
               >
                 <Link to={`/products/${element.productid}`}>
                   <img className="product-photo" src={element.image} alt="" />
@@ -54,14 +54,11 @@ class Bibdanas extends React.Component {
 
 
 }
-const mapStateToProps = state => {
-    return {
-      bibdanas: state.bibdanas,
-      bagIsOpen: state.bagIsOpen
-    };
-  };
+
+
+const mapStateToProps = state => state
   
   export default connect(
     mapStateToProps,
-    { getBibdanas: getBibdanas, openBag: openBag }
+    { getBibdanas, openBag, hideMenu }
   )(Bibdanas);

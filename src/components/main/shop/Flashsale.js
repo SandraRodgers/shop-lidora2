@@ -1,8 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
+
 import axios from 'axios'
 import { Link } from "react-router-dom";
-import {  openBag } from "../../../../src/ducks/reducer";
+
+import { connect } from "react-redux";
+import {  openBag, hideMenu } from "../../../../src/ducks/reducer";
 import "../shop/shop.css";
 
 class Flashsale extends React.Component {
@@ -38,7 +40,7 @@ class Flashsale extends React.Component {
           style={{ zIndex: toggleBag }}
           className="product-container"
           key={element.productid}
-          
+          onMouseOver={this.props.hideMenu}
         >
           <Link to={`/products/${element.productid}`}>
             <img className="product-photo" src={element.image} alt="" />
@@ -72,14 +74,10 @@ class Flashsale extends React.Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    bloomers: state.bloomers,
-    bagIsOpen: state.bagIsOpen,
-  };
-};
+
+const mapStateToProps = state => state
 
 export default connect(
   mapStateToProps,
-  { openBag: openBag }
+  { openBag, hideMenu }
 )(Flashsale);

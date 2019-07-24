@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { createGlobalStyle } from "styled-components";
-import {withRouter} from 'react-router-dom'
+import { withRouter } from "react-router-dom";
 
-import routes from "./routes"
+import routes from "./routes";
 
-import NavMain from "../src/components/main/nav/NavMain"
+import ScrollToTop from "./ScrollToTop";
+import NavMain from "../src/components/main/nav/NavMain";
 
 const GlobalStyles = createGlobalStyle`
 body {
@@ -25,35 +26,81 @@ body {
 
 
 }
-`
-
+`;
 
 class App extends Component {
-  constructor(props){
-    super(props) 
-   this.state = {path: ''}
+  constructor(props) {
+    super(props);
+    this.state = {
+      path: "",
+      isTop: 0
+    };
   }
+
   componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+
     let pathName = this.props.location.pathname;
     this.setState(() => {
       return {
-        path: pathName,
-      }
-    })
+        path: pathName
+      };
+    });
   }
- 
+
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.isTop !== this.state.isTop){
+      this.handleScroll()
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
+
+  handleScroll = event => {
+    // console.log(event)
+    
+    document.addEventListener("scroll", () => {
+      const isTop = window.scrollY < 10;
+      if (isTop !== this.state.isTop) {
+        this.setState({ isTop });
+      }
+    });
+  };
+
   render() {
-    // console.log(this.props.location)
-   
-    return (
-      <div className="App">
-         <GlobalStyles />
-         {this.props.location.pathname !== '/' 
-         && this.props.location.pathname !== '/checkout/one' 
-         && this.props.location.pathname !=='/checkout/two' ? <NavMain /> : null }
+  
+
+    let backgroundColor;
+    let transition
+    
+      this.state.isTop === true
+        ? (backgroundColor = "rgb(255,255,255)")
+        : (backgroundColor = "rgb(245, 245, 245)") && (transition = 'background-color 1.5s ease') 
+    
         
-         {routes}
-      </div>
+
+    // let backgroundColor = this.state.backgroundColor
+    // console.log(this.props.location)
+
+    return (
+      <ScrollToTop>
+        <div
+          className="App"
+          onScroll={this.handleScroll}
+          
+        >
+          <GlobalStyles />
+          {this.props.location.pathname !== "/" &&
+          this.props.location.pathname !== "/checkout/one" &&
+          this.props.location.pathname !== "/checkout/two" ? (
+            <NavMain backgroundColor={backgroundColor} transition={transition} isTop={this.state.isTop}  />
+          ) : null}
+
+          {routes}
+        </div>
+      </ScrollToTop>
     );
   }
 }

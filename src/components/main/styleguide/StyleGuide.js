@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 
+import { connect } from "react-redux";
+import {  openBag, hideMenu } from "../../../../src/ducks/reducer";
+
 import "./styleguide.css"
 import RowStyles from "./RowStyles"
 import RowFabrics from "./RowFabrics"
@@ -12,7 +15,7 @@ class StyleGuide extends Component {
     }
     render(){
         return(
-            <div className= 'style-guide-component'>
+            <div className= 'style-guide-component' onMouseOver={this.props.hideMenu}>
                 <RowStyles/>
                 <RowFabrics/>
                 <RowCustomize/>
@@ -21,4 +24,9 @@ class StyleGuide extends Component {
     }
 }
 
-export default StyleGuide
+const mapStateToProps = state => state
+
+export default connect(
+  mapStateToProps,
+  { openBag, hideMenu }
+)(StyleGuide);

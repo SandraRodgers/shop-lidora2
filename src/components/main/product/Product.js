@@ -20,10 +20,11 @@ import {
   getFlashsale,
   getUserSession,
   addToCart,
-  updateProduct
+  updateProduct,
+  hideMenu
 } from "../../../ducks/reducer";
 import "./product.css";
-import { runInThisContext } from "vm";
+
 
 class Product extends Component {
   constructor(props) {
@@ -149,7 +150,7 @@ class Product extends Component {
           });
         }
 
-        if ( this.state.productInfo[0].category === "flashsale") {
+        if (this.state.productInfo[0].category === "flashsale") {
           this.props.getFlashsale(this.state.productInfo[0].flashid);
           this.setState({
             category: "flashsale",
@@ -159,11 +160,12 @@ class Product extends Component {
       });
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if(this.props.currentProduct[0]){
-    if(prevState.size !== this.props.currentProduct[0].size){
-      this.setState({size: this.props.currentProduct[0].size})
-    }}
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.currentProduct[0]) {
+      if (prevState.size !== this.props.currentProduct[0].size) {
+        this.setState({ size: this.props.currentProduct[0].size });
+      }
+    }
   }
 
   //Use this componentWillUnmount to change state in reducer so the this.props.currentProduct does not hold onto the product image. This will help when user navigates back to this page. They will see the updated product image immediately instead of a flash of the previous product image:
@@ -181,26 +183,25 @@ class Product extends Component {
   }
 
   addToCart() {
-    console.log(this.state.size, this.state.productInfo[0].category)
-    
+    console.log(this.state.size, this.state.productInfo[0].category);
+
     if (!this.props.user) {
       this.setState({ redirect: true }, () => {
         alert("Please Log In");
-      })}
-    
+      });
+    }
+
     if (
       this.state.size === undefined &&
       this.state.productInfo[0].category === "dresses"
     ) {
       alert("Please specify a size");
-    
     } else if (
       this.state.size === undefined &&
       this.state.productInfo[0].category === "shorts"
     ) {
       alert("Please specify a size");
-    }
-    else if (
+    } else if (
       this.state.size === undefined &&
       this.state.productInfo[0].category === "bloomers"
     ) {
@@ -240,14 +241,14 @@ class Product extends Component {
   render() {
     this.props.currentProduct &&
       console.log("current product:", this.props.currentProduct);
-      console.log('state: productInfo',this.state.productInfo[0])
+    console.log("state: productInfo", this.state.productInfo[0]);
 
     let toggleBag;
 
     this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
 
     return (
-      <div>
+      <div onMouseOver={this.props.hideMenu}>
         {this.state.redirect === true ? <Redirect push to="/login" /> : null}
         <div className="container">
           <div className="column1">
@@ -260,22 +261,24 @@ class Product extends Component {
             )}
           </div>
 
-          
           <div className="column2">
             {this.props.currentProduct[0] && (
               <div className="product-title">
                 {this.props.currentProduct[0].name}
-                {this.props.currentProduct[0] && this.state.category ==='flashsale' ? <div className='product-flashsale-size'>Size: {this.props.currentProduct[0].size}</div>: null}</div>
+                {this.props.currentProduct[0] &&
+                this.state.category === "flashsale" ? (
+                  <div className="product-flashsale-size">
+                    Size: {this.props.currentProduct[0].size}
+                  </div>
+                ) : null}
+              </div>
             )}
 
-            
             {this.props.currentProduct[0] && (
               <div className="product-description">
                 {this.props.currentProduct[0].description}
               </div>
             )}
-
-            
 
             {this.props.currentProduct[0] && (
               <div className="product-price-div">
@@ -318,8 +321,6 @@ class Product extends Component {
               </div>
             ) : null}
 
-      
-            
             {/* <div>{this.props.currentProduct[0].size}</div>} */}
 
             {this.props.currentProduct[0] && (
@@ -356,22 +357,23 @@ const mapStateToProps = state => state;
 export default connect(
   mapStateToProps,
   {
-    getDress: getDress,
-    getBonnet: getBonnet,
-    getShort: getShort,
-    getBloomer: getBloomer,
-    getSkirt: getSkirt,
-    getVest: getVest,
-    getUserSession: getUserSession,
-    addToCart: addToCart,
-    getBibdana: getBibdana,
-    getBowtie: getBowtie,
-    getBurpcloth: getBurpcloth,
-    getDroolpad: getDroolpad,
-    getHairbow: getHairbow,
-    getHeadband: getHeadband,
-    getSuspender: getSuspender,
-    getFlashsale: getFlashsale,
-    updateProduct: updateProduct
+    getDress,
+    getBonnet,
+    getShort,
+    getBloomer,
+    getSkirt,
+    getVest,
+    getUserSession,
+    addToCart,
+    getBibdana,
+    getBowtie,
+    getBurpcloth,
+    getDroolpad,
+    getHairbow,
+    getHeadband,
+    getSuspender,
+    getFlashsale,
+    updateProduct,
+    hideMenu
   }
 )(Product);
