@@ -7,6 +7,7 @@ class ShopClothing extends Component {
     
     
     render(){
+  
         let toggleBag;
         this.props.bagIsOpen === true ? (toggleBag = 0) : (toggleBag = 1);
         let clothing = []

@@ -16,7 +16,7 @@ let flashID = [];
 module.exports = {
   addDress: (req, res) => {
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       style,
@@ -26,8 +26,18 @@ module.exports = {
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
+    console.log('favorite',favorite)
+
     dbInstance
       .addDress([
         name,
@@ -39,7 +49,8 @@ module.exports = {
         customize,
         image,
         location,
-        description
+        description,
+        favorite
       ])
       .then(response => {
         dressesID.push(response[0].dressesid);

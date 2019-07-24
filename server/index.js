@@ -75,7 +75,7 @@ const {createCoupon, getCoupon, applyCoupon} = require("./controllers/adminContr
 const {postFabrics, getFabrics, postStyles, getStyles} = require("./controllers/styleguideController")
 const {customOrder} = require("./controllers/nodemailerController")
 const {editAddress, getOrderDetails} = require("./controllers/userAccountController")
-
+const { editProduct } = require("./controllers/editProductsController")
 
 //express session
 const pgSession = require("connect-pg-simple")(session);
@@ -158,6 +158,10 @@ app.get("/api/droolpad/:id", getDroolpad);
 app.get("/api/hairbow/:id", getHairbow);
 app.get("/api/headband/:id", getHeadband);
 app.get("/api/suspender/:id", getSuspender);
+
+//edit products endpoints
+app.put('/api/admin/product/:id', editProduct)
+
 
 //styleguide endpoints
 app.post("/api/style/fabrics", postFabrics)

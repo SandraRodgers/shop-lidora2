@@ -20,6 +20,7 @@ class FormDresses extends Component {
       customize: "",
       description: "",
       location: "",
+      favorite: '',
       category: "dresses"
     };
   }
@@ -40,7 +41,8 @@ class FormDresses extends Component {
       image,
       customize,
       description,
-      location
+      location, 
+      favorite
     } = this.state;
     e.preventDefault();
     this.createDress(
@@ -54,7 +56,8 @@ class FormDresses extends Component {
       image,
       customize,
       description,
-      location
+      location,
+      favorite
     );
   };
 
@@ -71,12 +74,12 @@ class FormDresses extends Component {
       customize,
       description,
       location,
-      category
+      category,
+      favorite
     } = this.state;
     axios
       .post("/api/admin/addDress", {
         name,
-
         price,
         style,
         sleeves,
@@ -86,7 +89,8 @@ class FormDresses extends Component {
         image,
         customize,
         description,
-        location
+        location,
+        favorite
       })
       .then(() => axios.post("/api/admin/createProduct", {category}))
       .then(response => {
@@ -102,7 +106,8 @@ class FormDresses extends Component {
             image: "",
             customize: "",
             description: "",
-            location: ""
+            location: "",
+            favorite: ""
           },
           () => alert("Your product has been created")
         );
@@ -174,27 +179,6 @@ class FormDresses extends Component {
                 <option>Other</option>
               </Select>
             </div>
-            {/* <div className="form-category-name">
-              Size:
-              <Select
-                value={this.state.size}
-                name="size"
-                onChange={this.handleChange}
-              >
-                <option>Choose an option</option>
-                <option>3-6 months</option>
-                <option>6-9 months</option>
-                <option>9-12 months</option>
-                <option>12-18 months</option>
-                <option>18-24 months</option>
-                <option>2T</option>
-                <option>3T</option>
-                <option>4T</option>
-                <option>5</option>
-                <option>6</option>
-                <option>Other</option>
-              </Select>
-            </div> */}
             <div className="form-category-name">
               Price:
               <Input
@@ -258,6 +242,21 @@ class FormDresses extends Component {
                 onChange={this.handleChange}
               />
             </div>
+         
+            <div className="form-category-name">
+              Front Page:
+              <Select
+                value={this.state.favorite}
+                name="favorite"
+                onChange={this.handleChange}
+              >
+                <option>On front page of store?</option>
+                <option>Yes</option>
+                <option>No</option>
+              </Select>
+            </div>
+            
+
           </div>
           <FormSubmit onClick={this.handleSubmit}>Submit</FormSubmit>
         </Form>

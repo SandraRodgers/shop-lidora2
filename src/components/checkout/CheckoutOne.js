@@ -398,7 +398,7 @@ if(minutes.length===1){
             {this.props.user &&
               this.props.user.cart &&
               this.props.user.cart.map((product, index) => {
-                {/* console.log(product) */}
+        
                 return (
                   <div key={index}>
                     <div className="checkout-one-items-list">

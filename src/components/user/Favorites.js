@@ -4,13 +4,12 @@ import SideBar from "./SideBar"
 import { connect } from "react-redux";
 import {  openBag, hideMenu } from "../../ducks/reducer";
 
-let information;
-let orders;
+
 let favorites;
 
 const Favorites = (props) => {
 
- 
+
       if (props.location.pathname === "/user/favorites") {
         favorites = "900";
       } else {
@@ -18,7 +17,7 @@ const Favorites = (props) => {
       }
 
 return(
-    <div className="F-component" onMouseOver={this.props.hideMenu}>
+    <div className="F-component" onMouseOver={props.hideMenu}>
  <SideBar   favorites={favorites}/>
     </div>
 )

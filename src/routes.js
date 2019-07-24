@@ -68,6 +68,10 @@ import FormSuspenders from "../src/components/admin/create-products/FormSuspende
 import FormFlashsale from "../src/components/admin/create-products/FormFlashsale"
 import AdminMain from "../src/components/admin/admin-main/AdminMain"
 
+//Edit Products
+import EditProduct from "../src/components/admin/edit-products/EditProduct"
+import EditFlashsale from "../src/components/admin/edit-products/EditFlashsale"
+
 //Payment and Orders 
 import FormCoupon from "../src/components/admin/coupons/CouponForm"
 
@@ -133,6 +137,13 @@ export default (
 <Route path="/user/information" exact component={Information}/>
 <Route path="/user/orders" exact component={Orders}/>
 <Route path="/user/favorites" exact component={Favorites}/>
+
+{/* Edit Products */}
+<Route path="/admin/edit/product/:id" exact component={EditProduct} />
+<Route path="/admin/edit/flashsale/:id" exact component={EditFlashsale} />
+
+
+
 
   </Switch>
 );

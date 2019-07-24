@@ -79,10 +79,6 @@ class App extends Component {
         ? (backgroundColor = "rgb(255,255,255)")
         : (backgroundColor = "rgb(245, 245, 245)") && (transition = 'background-color 1.5s ease') 
     
-        
-
-    // let backgroundColor = this.state.backgroundColor
-    // console.log(this.props.location)
 
     return (
       <ScrollToTop>

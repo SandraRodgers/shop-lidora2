@@ -39,7 +39,7 @@ class Custom extends Component {
     return (
       <div className="custom-component" onMouseOver={this.props.hideMenu}>
         <div className="custom-main-div">
-          <img className="custom-main-image" src={bonnetgirl} />
+          <img alt='girl in bonnet' className="custom-main-image" src={bonnetgirl} />
           <div className="custom-text-div">
             <div className="custom-title">Customize</div>
             <div className="custom-instructions">

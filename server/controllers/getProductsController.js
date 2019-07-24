@@ -340,6 +340,7 @@ module.exports = {
       });
   },
   getFavorites: (req, res) => {
+    ///need to decide how many of each category to display up front
     const dbInstance = req.app.get("db");
     let favorites = [];
     dbInstance.getFavoriteBibdanas().then(response => {
@@ -353,7 +354,8 @@ module.exports = {
     })).then(()=> dbInstance.getFavoriteBurpcloths().then(response => {
       favorites.push(response[0])
     })).then(()=> dbInstance.getFavoriteDresses().then(response => {
-      favorites.push(response[0])
+      console.log('favorite dress', response[0], response[1])
+      favorites.push(response[0], response[1],response[2])
     })).then(()=> dbInstance.getFavoriteDroolpads().then(response => {
       favorites.push(response[0])
     })).then(()=> dbInstance.getFavoriteHairbows().then(response => {
