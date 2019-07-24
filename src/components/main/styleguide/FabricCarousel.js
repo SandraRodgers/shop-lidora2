@@ -33,7 +33,7 @@ export default class Fade extends Component {
       infinite: true,
       speed: 500,
       slidesToShow: 1,
-      slidesToScroll: 2,
+      slidesToScroll: 1,
       // centerMode: true,
       className: 'slider'
     };
@@ -42,7 +42,7 @@ export default class Fade extends Component {
 
       return(
         <div key={fabric.fabricid} >
-          <img className= 'slider-img' src={fabric.img} />
+          <img alt='fabric' className= 'slider-img' src={fabric.img} />
           <div className='fabric-name'>{fabric.name}</div>
         </div>
       )

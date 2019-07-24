@@ -89,6 +89,7 @@ class NavMain extends React.Component {
     this.props.isTop === true ? backgroundColorFlower = 'white' : backgroundColorFlower= 'whitesmoke'
     this.props.isTop === true ?navHeight = '15vh' : navHeight = '10vh'
     this.props.isTop === true ? top = true : top = false
+   
     
  
     return (
@@ -101,7 +102,7 @@ class NavMain extends React.Component {
         <Bag open={this.props.bagIsOpen} />
         <Nav   style={{height: navHeight,backgroundColor: backgroundColor, transition: transition}}>
           <SideMenu open={this.state.sideMenu}  />
-          <Column class='styled-column' top={top}
+          <Column  top={top }
           onMouseOver={this.props.showMenu}
           
            >
@@ -111,7 +112,7 @@ class NavMain extends React.Component {
               onClick={this.showSideMenu}
               showSideMenu={this.showSideMenu}
               className="NM-Hamburger"
-              top={top}
+              top={top }
             />
 
             <SecondaryLink

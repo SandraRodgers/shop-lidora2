@@ -15,7 +15,6 @@ export default class Fade extends Component {
 
   componentDidMount() {
     axios.get("/api/style/styles").then(response => {
-      console.log(response);
       this.setState({ custom: response.data });
     });
   }
@@ -28,16 +27,16 @@ export default class Fade extends Component {
       infinite: true,
       speed: 500,
       slidesToShow: 1,
-      slidesToScroll: 2,
+      slidesToScroll: 1,
       // centerMode: true,
       className: "slider-2"
     };
 
     let stylesList = this.state.custom.map((style, index) => {
       return (
-        <div>
-        <div className="custom-slider-img-div" key={style.styleid}>
-          <img className="custom-slider-img" src={style.img} />
+        <div key={style.styleid}>
+        <div className="custom-slider-img-div" >
+          <img alt='styles' className="custom-slider-img" src={style.img} />
         
          
         </div>

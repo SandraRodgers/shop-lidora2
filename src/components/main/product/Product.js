@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom'
 import { connect } from "react-redux";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
@@ -48,9 +49,11 @@ class Product extends Component {
       .get(`/api/product/${this.props.match.params.id}`)
       .then(response => {
         this.setState({ productInfo: response.data });
+      
         //we get the productid from the component and set state so that productInfo contains that product (object)
       })
       .then(() => {
+
         if (this.state.productInfo[0].category === "dresses") {
           this.props.getDress(this.state.productInfo[0].dressesid);
           this.setState({
@@ -183,7 +186,7 @@ class Product extends Component {
   }
 
   addToCart() {
-    console.log(this.state.size, this.state.productInfo[0].category);
+    
 
     if (!this.props.user) {
       this.setState({ redirect: true }, () => {
@@ -239,10 +242,11 @@ class Product extends Component {
   }
 
   render() {
-    this.props.currentProduct &&
-      console.log("current product:", this.props.currentProduct);
-    console.log("state: productInfo", this.state.productInfo[0]);
-
+    
+    // this.props.currentProduct &&
+    //   console.log("current product:", this.props.currentProduct);
+    // console.log("state: productInfo", this.state.productInfo[0]);
+    // console.log(this.props.match.params)
     let toggleBag;
 
     this.props.bagIsOpen === true ? (toggleBag = -1) : (toggleBag = 1);
@@ -274,11 +278,19 @@ class Product extends Component {
               </div>
             )}
 
+              {this.props.user && this.props.user.isadmin === true ? 
+              <Link className="product-edit-link" to=  {`/admin/edit/product/${this.props.match.params.id}`} >
+              <div className="product-edit-link-div"> Admin: Edit This Product </div>  </Link> : null
+            
+            }
+
             {this.props.currentProduct[0] && (
               <div className="product-description">
                 {this.props.currentProduct[0].description}
               </div>
             )}
+
+          
 
             {this.props.currentProduct[0] && (
               <div className="product-price-div">
@@ -321,7 +333,7 @@ class Product extends Component {
               </div>
             ) : null}
 
-            {/* <div>{this.props.currentProduct[0].size}</div>} */}
+        
 
             {this.props.currentProduct[0] && (
               <div className="product-quantity-div">

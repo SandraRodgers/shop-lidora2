@@ -31,7 +31,7 @@ class LandingMain extends Component {
   }
 
   render() {
-    console.log(this.props.user)
+   
     return (
       <div className="LM-component">
         {/* LEFT COLUMN */}

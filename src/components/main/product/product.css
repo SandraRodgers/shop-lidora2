@@ -95,7 +95,7 @@
 
 .product-description{
     display: flex;
-    margin-top: 10vh;
+    margin-top: 5vh;
     height: 20vh;
     
     /* padding-right: 3vw; */
@@ -156,6 +156,23 @@ select.product-select{
 .product-flashsale-size{
   font-size: .7em;
   padding-top: 1vh;
+}
+
+.product-edit-link{
+  text-decoration: none;
+  
+}
+
+.product-edit-link-div{
+margin-bottom: 2vh;
+display: flex;
+/* justify-content: center; */
+color: #cf0808;
+font-family: 'Junge';
+font-weight: 900;
+
+top: 4;
+
 }
 
 
