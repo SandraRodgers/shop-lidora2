@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Redirect} from 'react-router-dom'
 
 //redux
 import { connect } from "react-redux";
@@ -28,7 +29,7 @@ class Login extends Component {
       user: {}
     };
 
-    this.logout = this.logout.bind(this);
+    
   }
 
   uiConfig = {
@@ -65,23 +66,14 @@ class Login extends Component {
     }
   }
 
-  logout() {
-    firebase
-      .auth()
-      .signOut()
-      .catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      });
-    this.setState({ isSignedIn: false, user: null }, () => {
-      this.props.logOut();
-    });
-  }
+
 
   render() {
     console.log(this.state.user);
+
+    if(this.state.isSignedIn ===true){
+      return <Redirect push to="/" />
+  }
 
     // this.state.user ? console.log(this.state.user) : console.log("no user");
     return (

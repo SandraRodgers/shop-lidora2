@@ -144,7 +144,7 @@ app.get("/api/admin/getHeadbands", getHeadbands);
 app.get("/api/admin/getSuspenders", getSuspenders);
 
 //get one specific product endpoints
-app.get("/api/product/:id", checkTimestamp, getProductInfo);
+app.get("/api/product/:id",  getProductInfo);
 app.get("/api/dress/:id", getDress);
 app.get("/api/bonnet/:id", getBonnet);
 app.get("/api/short/:id", getShort);

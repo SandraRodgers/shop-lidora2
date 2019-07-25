@@ -1,5 +1,6 @@
 .style-guide-component{
-    /* border: solid black 1px; */
+
+    min-height: 100vh;
 }
 
 .row-styles-main-row{

@@ -3,11 +3,13 @@
 .container {
   display: flex;
   justify-content: center;
+  min-height: 80vh;
 }
 
 .column1,
 .column2 {
   margin-top: 5vh;
+  min-height: 80vh;
 }
 
 .column1 {

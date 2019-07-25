@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import { createGlobalStyle } from "styled-components";
 import { withRouter } from "react-router-dom";
 
+
+
 import routes from "./routes";
 
 import ScrollToTop from "./ScrollToTop";
 import NavMain from "../src/components/main/nav/NavMain";
+import Footer from "../src/components/footer/Footer"
+import "./components/main/nav/NavMain.css"
 
 const GlobalStyles = createGlobalStyle`
 body {
@@ -81,7 +85,9 @@ class App extends Component {
     
 
     return (
+ 
       <ScrollToTop>
+
         <div
           className="App"
           onScroll={this.handleScroll}
@@ -95,8 +101,17 @@ class App extends Component {
           ) : null}
 
           {routes}
+
+         {this.props.location.pathname !== "/" &&
+          this.props.location.pathname !== "/checkout/one" &&
+          this.props.location.pathname !== "/checkout/two" ? (
+            <Footer  />
+          ) : null}
+       
         </div>
+
       </ScrollToTop>
+
     );
   }
 }

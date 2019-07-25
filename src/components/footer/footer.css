@@ -1,0 +1,100 @@
+.footer-component {
+    display: flex;
+   
+    font-family: 'Cousine';
+   
+    background-color: whitesmoke;
+    /* margin-top:10vh; */
+
+   
+    
+}
+
+.fc-column-1{
+    margin-left: 20vh;
+    background-color: whitesmoke;
+   
+}
+
+
+.fc-column-1, .fc-column-2, .fc-column-4, .logo-column{
+    display: flex;
+    margin-top: 3vh;
+    flex-direction: column;
+    margin-right: 15vh;
+    font-size: .8em;
+    background-color: whitesmoke;
+    width: 10vw;
+    margin-bottom: 3vh;
+}
+
+.logo-column{
+    width: 30vw;
+}
+
+.fc-text{
+    padding-top: 1.5vh;
+    /* color: #6d4878; */
+    background-color: whitesmoke;
+    
+}
+
+.fc-text-newsletter, .fc-text-newsletter-1{
+    padding-top: 1.5vh;
+    /* color: #6d4878; */
+    background-color: whitesmoke;
+    letter-spacing: 1px;
+}
+
+
+
+
+.fc-input-newsletter{
+    padding-top: 1.5vh;
+    width: 30vw;
+    border: none;
+    border-bottom: solid 1.2px ;
+    font-family: 'Cousine';
+    font-size: 1em;
+    background-color: whitesmoke;
+    padding-bottom: 1vh;
+
+}
+
+
+
+.flowerLogo{
+    height: 8vh;
+}
+
+.fc-text-CO{
+
+    /* color: #6d4878; */
+    background-color: whitesmoke;
+    padding-top: 1.5vh;
+    width: 20vh;
+}
+
+@media (max-width: 420px){
+    .footer-component {
+        display: flex;
+    flex-direction: column;
+justify-content: center;
+padding-top: 5vh;
+}
+.fc-column-1, .fc-column-2, .fc-column-4{
+    margin: 0;
+    margin-left: 10vh;
+  
+}
+
+.logo-column{
+    margin-left: 25vh;
+}
+
+.flowerLogo{
+    width: 10vh;
+    height: 10vh;
+
+}
+}
