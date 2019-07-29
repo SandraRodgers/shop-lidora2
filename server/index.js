@@ -73,7 +73,7 @@ const {
 } = require("./controllers/checkoutController");
 const {createCoupon, getCoupon, applyCoupon} = require("./controllers/adminController")
 const {postFabrics, getFabrics, postStyles, getStyles} = require("./controllers/styleguideController")
-const {customOrder} = require("./controllers/nodemailerController")
+const {customOrder, subscribeNews} = require("./controllers/nodemailerController")
 const {editAddress, getOrderDetails} = require("./controllers/userAccountController")
 const { editProduct } = require("./controllers/editProductsController")
 
@@ -201,6 +201,7 @@ app.post("/api/checkout/order", postOrder)
 
 //nodemailer endpoints
 app.post("/nodemailer/customOrder", customOrder)
+app.post("/nodemailer/newsletter", subscribeNews)
 
 
 app.listen(4000, () => {

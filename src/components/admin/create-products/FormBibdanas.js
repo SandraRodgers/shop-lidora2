@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {Redirect} from 'react-router-dom'
 
 import { Form, Input, Image, Select, FormSubmit } from "../../styled/Form";
 import "./form.css";
@@ -17,13 +18,26 @@ class FormBibdanas extends Component {
       customize: "",
       location: "",
       favorite: '',
-      category: "bibdanas"
+      category: "bibdanas",
+      redirect: false
     };
   }
+
+
+  checkUser = () => {
+    this.setState({redirect: true}
+    )
+  }
+
+  componentDidMount() {
+    this.checkUser()}
+
+
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
 
   handleSubmit = e => {
     const {

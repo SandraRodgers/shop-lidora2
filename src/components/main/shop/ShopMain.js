@@ -52,12 +52,8 @@ class ShopMain extends Component {
 
 
 
-const mapStateToProps = state=> {
-  return {
-    bagIsOpen: state.bagIsOpen,
-    // handleScroll: handleScroll
-  };
-};
+const mapStateToProps = state => state
+
 
 const MyComponent = connect(
   mapStateToProps,

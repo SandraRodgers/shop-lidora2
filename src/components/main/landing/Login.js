@@ -3,7 +3,7 @@ import {Redirect} from 'react-router-dom'
 
 //redux
 import { connect } from "react-redux";
-import { signIn, logOut } from "../../../ducks/reducer";
+import { signIn, logOut, hideMenu } from "../../../ducks/reducer";
 
 //firebase
 import firebase from "firebase/app";
@@ -69,7 +69,7 @@ class Login extends Component {
 
 
   render() {
-    console.log(this.state.user);
+    console.log(this.props);
 
     if(this.state.isSignedIn ===true){
       return <Redirect push to="/" />
@@ -77,7 +77,7 @@ class Login extends Component {
 
     // this.state.user ? console.log(this.state.user) : console.log("no user");
     return (
-      <div className="LOG-component">
+      <div onMouseOver={this.props.hideMenu} className="LOG-component">
         {this.state.isSignedIn ? (
           <div className="LOG-signout-button-div">
             <button onClick={this.logout} className="LOG-signout-button">
@@ -105,7 +105,8 @@ const mapStateToProps = state => state;
 export default connect(
   mapStateToProps,
   {
-    signIn: signIn,
-    logOut: logOut
+    signIn,
+    logOut,
+    hideMenu
   }
 )(Login);

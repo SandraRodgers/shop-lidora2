@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {Redirect} from 'react-router-dom'
 
 import { connect } from "react-redux";
 import {
@@ -46,11 +47,23 @@ class EditDress extends Component {
       category: "",
       favorite: "",
       productid: 0,
-      id: 0
+      id: 0,
+      redirect: false
     };
   }
 
+  ////need to get this working
+  checkUser = () => {
+    if(this.props.user.isadmin === false)
+    this.setState({redirect: true}, () =>{ this.setState({redirect: true})}
+    )
+  }
+
   componentDidMount() {
+
+  this.props.getUserSession()
+   this.checkUser()
+
     axios
       .get(`/api/product/${this.props.match.params.id}`)
       .then(response => {
@@ -60,7 +73,7 @@ class EditDress extends Component {
       })
       .then(() => {
         console.log(this.state.productInfo)
-        if (this.state.productInfo[0].category === "dresses") {
+        if (this.state.productInfo&& this.state.productInfo[0] && this.state.productInfo[0].category === "dresses") {
           this.props.getDress(this.state.productInfo[0].dressesid).then(()=>{
             this.setState({
               category: "dresses",
@@ -81,7 +94,7 @@ class EditDress extends Component {
           })
         
         }
-        if (this.state.productInfo[0].category === "bonnets") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "bonnets") {
           this.props.getBonnet(this.state.productInfo[0].bonnetsid).then(()=>{
             this.setState({
               category: "bonnets",
@@ -99,7 +112,7 @@ class EditDress extends Component {
           })
         }
 
-        if (this.state.productInfo[0].category === "shorts") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "shorts") {
           this.props.getShort(this.state.productInfo[0].shortsid).then(()=>{
             this.setState({
               category: "shorts",
@@ -116,7 +129,7 @@ class EditDress extends Component {
             });
           })
         }
-        if (this.state.productInfo[0].category === "bloomers") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "bloomers") {
           this.props.getBloomer(this.state.productInfo[0].bloomersid).then(()=>{
             this.setState({
               category: "bloomers",
@@ -134,7 +147,7 @@ class EditDress extends Component {
           })
         
         }
-        if (this.state.productInfo[0].category === "skirts") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "skirts") {
           this.props.getSkirt(this.state.productInfo[0].skirtsid).then(()=>{
             this.setState({
               category: "skirts",
@@ -152,7 +165,7 @@ class EditDress extends Component {
           })
         }
 
-        if (this.state.productInfo[0].category === "vests") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "vests") {
           this.props.getVest(this.state.productInfo[0].vestsid).then(()=>{
             this.setState({
               category: "vests",
@@ -171,7 +184,7 @@ class EditDress extends Component {
        
         }
 
-        if (this.state.productInfo[0].category === "bibdanas") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "bibdanas") {
           this.props.getBibdana(this.state.productInfo[0].bibdanasid).then(()=>{
             this.setState({
               category: "bibdanas",
@@ -190,7 +203,7 @@ class EditDress extends Component {
           
         }
 
-        if (this.state.productInfo[0].category === "bowties") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "bowties") {
           this.props.getBowtie(this.state.productInfo[0].bowtiesid).then(()=>{
             this.setState({
               category: "bowties",
@@ -209,7 +222,7 @@ class EditDress extends Component {
        
         }
 
-        if (this.state.productInfo[0].category === "burpcloths") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "burpcloths") {
           this.props.getBurpcloth(this.state.productInfo[0].burpclothsid).then(()=>{
             this.setState({
               category: "burpcloths",
@@ -228,7 +241,7 @@ class EditDress extends Component {
          
         }
 
-        if (this.state.productInfo[0].category === "droolpads") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "droolpads") {
           this.props.getDroolpad(this.state.productInfo[0].droolpadsid).then(()=>{
             this.setState({
               category: "droolpads",
@@ -247,7 +260,7 @@ class EditDress extends Component {
         
         }
 
-        if (this.state.productInfo[0].category === "hairbows") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "hairbows") {
           this.props.getHairbow(this.state.productInfo[0].hairbowsid).then(()=>{
             this.setState({
               category: "hairbows",
@@ -266,7 +279,7 @@ class EditDress extends Component {
         
         }
 
-        if (this.state.productInfo[0].category === "headbands") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "headbands") {
           this.props.getHeadband(this.state.productInfo[0].headbandsid).then(()=>{
             this.setState({
               category: "headbands",
@@ -285,7 +298,7 @@ class EditDress extends Component {
        
         }
 
-        if (this.state.productInfo[0].category === "suspenders") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "suspenders") {
           this.props.getSuspender(this.state.productInfo[0].suspendersid).then(()=>{
             this.setState({
               category: "suspenders",
@@ -304,7 +317,7 @@ class EditDress extends Component {
        
         }
 
-        if (this.state.productInfo[0].category === "flashsale") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "flashsale") {
           this.props.getFlashsale(this.state.productInfo[0].flashid).then(()=>{
             this.setState({
               category: "flashsale",
@@ -324,6 +337,8 @@ class EditDress extends Component {
         }
       });
   }
+
+
 
 
   componentWillUnmount() {
@@ -367,6 +382,12 @@ class EditDress extends Component {
       category
     );
   };
+
+
+
+  
+
+  
 
   editDress = () => {
     const {
@@ -423,8 +444,11 @@ class EditDress extends Component {
   };
 
   render() {
-    console.log(this.state.id);
-    console.log(this.props.currentProduct  );
+
+    if(this.state.redirect ===true){
+      return <Redirect push to="/" />
+  }
+
     return (
       <div className="form-component-container">
         <div className="form-title">Edit Product information</div>

@@ -42,14 +42,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+    // window.addEventListener("scroll", this.handleScroll);
 
-    let pathName = this.props.location.pathname;
-    this.setState(() => {
-      return {
-        path: pathName
-      };
-    });
+    // let pathName = this.props.location.pathname;
+    // this.setState(() => {
+    //   return {
+    //     path: pathName
+    //   };
+    // });
   }
 
   componentDidUpdate(prevProps, prevState){
