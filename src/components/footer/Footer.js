@@ -38,8 +38,6 @@ constructor(props){
             email: this.state.email
           })
           .then((response) => {
-        
-              console.log('hit hit hit')
             this.setState({ email: "" }, ()=>{
                 alert('Subscribed to newsletter')
             });
@@ -47,7 +45,7 @@ constructor(props){
       };
 
     render(){
-        console.log(this.props.user)
+        // console.log(this.props.user)
         return(
             <div>
 

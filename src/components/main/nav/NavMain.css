@@ -1,15 +1,16 @@
-/* .NM-Hamburger{
-    display: none;
-} */
+.App {
+  max-width: 100vw;
+}
+.NM-Hamburger {
+}
 
 .NM-container {
   z-index: 2;
   overflow: none;
   min-height: 100%;
-  min-width: 100%;
+  /* min-width: 100%; */
   top: 0;
-  
-  
+
   position: -webkit-sticky;
 }
 
@@ -18,7 +19,16 @@
   margin: 0;
   padding: 0;
 
+
 } */
 
+.nav-logo-flower {
+  padding-bottom: 2vh;
+  padding-top: 2vh;
+}
 
-
+@media (max-width: 600px) {
+  .nav-logo-flower {
+    padding-right: 4vw;
+  }
+}

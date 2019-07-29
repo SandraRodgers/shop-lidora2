@@ -62,7 +62,8 @@ class PaypalButton extends Component {
       shape: "rect",
       label: "paypal",
       // class:"paypal-button",
-      height: 30
+      height: 30,
+ 
     };
 
     const payment = () =>

@@ -24,7 +24,8 @@ import {
   getUserSession,
   addToCart,
   updateProduct,
-  hideMenu
+  hideMenu,
+  getLocationKey
 } from "../../../ducks/reducer";
 import "./product.css";
 
@@ -49,6 +50,7 @@ class Product extends Component {
 
   componentDidMount() {
     this.props.getUserSession();
+    this.props.getLocationKey(this.props.location.pathname)
  
     axios
       .get(`/api/product/${this.props.match.params.id}`)
@@ -182,6 +184,9 @@ class Product extends Component {
     this.props.updateProduct();
   }
 
+
+  
+
   holdSize(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -248,7 +253,7 @@ class Product extends Component {
 
   render() {
 
-  
+  console.log(this.props.location)
   
     if(this.state.redirect ===true){
       return <Redirect push to="/" />
@@ -399,7 +404,8 @@ export default connect(
     getSuspender,
     getFlashsale,
     updateProduct,
-    hideMenu
+    hideMenu,
+    getLocationKey
   }
 )(Product);
 

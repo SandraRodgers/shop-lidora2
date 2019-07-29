@@ -33,7 +33,7 @@ class EditFlashsale extends Component {
     };
   }
 
-    ////need to get this working
+    
   checkUser = () => {
     if(this.props.user.isadmin === false)
     this.setState({redirect: true}
@@ -41,8 +41,8 @@ class EditFlashsale extends Component {
   }
 
   componentDidMount() {
-    this.props.getUserSession()
-    this.checkUser()
+    this.props.getUserSession().then(()=>{this.checkUser()})
+
     axios
       .get(`/api/product/${this.props.match.params.id}`)
       .then(response => {

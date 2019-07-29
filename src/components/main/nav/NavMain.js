@@ -103,7 +103,7 @@ class NavMain extends React.Component {
         <Nav   style={{height: navHeight,backgroundColor: backgroundColor, transition: transition}}>
           <SideMenu open={this.state.sideMenu}  />
           <Column  top={top }
-          onMouseOver={this.props.showMenu}
+          // onMouseOver={this.props.showMenu}
           
            >
             <Hamburger
@@ -117,7 +117,7 @@ class NavMain extends React.Component {
 
             <SecondaryLink
               to="/shop"
-              // onMouseOver={this.showMenu}
+              onMouseOver={this.props.showMenu}
               
               primary="true"
             >
@@ -139,7 +139,7 @@ class NavMain extends React.Component {
           </Column>
           <SecondaryColumn top={top} onMouseOut={this.props.hideMenu}>
             <SecondaryLink nothidden="true" to="/">
-              <img  alt="flower" top={top} style={{ height: height, transition: transitionFlower, paddingBottom: '2vh', paddingTop: '2vh', backgroundColor: backgroundColorFlower}} src={flower}  />
+              <img className='nav-logo-flower'  alt="flower" top={top} style={{ height: height, transition: transitionFlower, paddingBottom: '2vh', paddingTop: '2vh', backgroundColor: backgroundColorFlower}} src={flower}  />
             </SecondaryLink>
           </SecondaryColumn>
           <Column top={top} onMouseOut={this.props.hideMenu}>
@@ -157,6 +157,7 @@ class NavMain extends React.Component {
               to={this.props.location.pathname}
               onClick={() => this.props.openBag()}
               primary="true"
+              nothidden
             >
               Bag
             </SecondaryLink>

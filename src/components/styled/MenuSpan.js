@@ -48,8 +48,8 @@ const MenuSpan = styled.span`
     @media (max-width: 1030px) {
         display: block;
   }
-  @media (max-width: 400px) {
-  
+  @media (max-width: 500px) {
+    margin-left: 5vw;
   }
   `;
 

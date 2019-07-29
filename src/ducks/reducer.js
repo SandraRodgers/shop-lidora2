@@ -21,8 +21,8 @@ const initialState = {
   loading: false,
   currentAddress: [],
   couponApplied: [],
-  hiddenMenu: false
-  // orderDetails: []
+  hiddenMenu: false,
+  locationKey: ''
 };
 
 //get product data
@@ -72,6 +72,7 @@ const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 //checkout
 const GET_CURRENT_ADDRESS = "GET_CURRENT_ADDRESS";
 const HOLD_COUPON = "HOLD_COUPON";
+const GET_LOCATION_KEY = "GET_LOCATION_KEY"
 
 //user account
 // const GET_ORDER_DETAILS = "GET_ORDER_DETAILS";
@@ -202,6 +203,8 @@ export default function reducer(state = initialState, action) {
       case HIDE_MENU:
       return {...state, hiddenMenu: action.hiddenMenu}
 
+      case GET_LOCATION_KEY:
+      return {...state, locationKey: action.locationKey}
       
     default:
       return state;
@@ -485,6 +488,13 @@ export function hideMenu(){
   return {
     type: HIDE_MENU,
     hiddenMenu: false
+  }
+}
+
+export function getLocationKey(key){
+  return {
+    type: GET_LOCATION_KEY,
+    locationKey: key
   }
 }
 
