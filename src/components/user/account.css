@@ -1,3 +1,5 @@
+.A-component{}
+
 .SB-component{
 
     padding-left: 8vw;
@@ -23,10 +25,13 @@
     margin-top: 5vh;
     font-family: 'Cousine';
     /* font-size: .5em; */
+    min-height: 80vh;
 }
 
 
 /* Information.js */
+
+
 
 .I-edit-button{
     margin-top:10vh;

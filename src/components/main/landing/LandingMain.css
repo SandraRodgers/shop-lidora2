@@ -51,11 +51,14 @@ opacity: .8;
 filter: contrast(1.5);
 }
 
+
+
 /* //////////////Login Page */
 
 .LOG-component{
 padding-top: 10vh;
  position: relative;
+min-height: 80vh;
 } 
 
 .LOG-signout-button{

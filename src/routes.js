@@ -49,6 +49,7 @@ import Favorites from "./components/user/Favorites"
 
 //Contact
 import Contact from "./components/main/contact/Contact"
+import About from "./components/main/contact/About"
 
 //ADMIN
 //Product Forms
@@ -85,6 +86,7 @@ export default (
     <Route path="/custom" exact component={Custom} />
    
     <Route path="/contact" exact component={Contact} />
+    <Route path="/about" exact component={About} />
 
 
      <Route path="/styleguide" exact component={StyleGuide} />

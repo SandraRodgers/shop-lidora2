@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
+
+
 import {
   getDress,
   getBonnet,
@@ -28,7 +30,7 @@ import "./product.css";
 
 
 class Product extends Component {
-  constructor(props) {
+  constructor(props ) {
     super(props);
     this.state = {
       productInfo: [],
@@ -43,8 +45,11 @@ class Product extends Component {
     this.addToCart = this.addToCart.bind(this);
   }
 
+
+
   componentDidMount() {
     this.props.getUserSession();
+ 
     axios
       .get(`/api/product/${this.props.match.params.id}`)
       .then(response => {
@@ -187,12 +192,12 @@ class Product extends Component {
 
   addToCart() {
     
-
-    if (!this.props.user) {
-      this.setState({ redirect: true }, () => {
-        alert("Please Log In");
-      });
-    }
+    if(!this.props.user){
+      this.setState({redirect: true}, alert('Please sign in to shop'))
+        
+  } else {
+  
+  
 
     if (
       this.state.size === undefined &&
@@ -238,10 +243,16 @@ class Product extends Component {
         this.state.productid
       );
       alert("Product added to cart");
-    }
+    }}
   }
 
   render() {
+
+  
+  
+    if(this.state.redirect ===true){
+      return <Redirect push to="/" />
+  }
    
     let toggleBag;
 
@@ -249,7 +260,7 @@ class Product extends Component {
 
     return (
       <div onMouseOver={this.props.hideMenu}>
-        {this.state.redirect === true ? <Redirect push to="/login" /> : null}
+        {/* {this.state.redirect === true ? <Redirect push to="/login" /> : null} */}
         <div className="container">
           <div className="column1">
             {this.props.currentProduct[0] && (
@@ -281,6 +292,8 @@ class Product extends Component {
               <div className="product-edit-link-div"> Admin: Edit This Product </div>  </Link> : null
             
             }
+            
+            
 
               
 
@@ -389,3 +402,5 @@ export default connect(
     hideMenu
   }
 )(Product);
+
+

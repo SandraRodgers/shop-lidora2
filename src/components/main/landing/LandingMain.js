@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 //redux
 import { connect } from "react-redux";
-import { getUserSession } from "../../../ducks/reducer";
+import { getUserSession, logOut } from "../../../ducks/reducer";
 
 //css
 import "./LandingMain.css";
@@ -16,18 +16,41 @@ import coverpic from "../../../assets/Penny2.jpg"
 import Link from "../../styled/Link";
 import Paragraph from "../../styled/Paragraph";
 
+//firebase
+import firebase from "firebase/app";
+import "firebase/auth";
+import "../../../firebase/firebase";
+
 class LandingMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
       open: false,
       signedIn: false,
-      profile: []
+      profile: [],
+      isSignedIn: false,
+      user: {}
     };
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
     this.props.getUserSession();
+  }
+
+  logout() {
+    firebase
+      .auth()
+      .signOut()
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+    this.setState({ isSignedIn: false, user: null }, () => {
+      this.props.logOut();
+    });
   }
 
   render() {
@@ -44,7 +67,8 @@ class LandingMain extends Component {
           </Paragraph>
           <div className="LM-links">
             <Link  to="/shop">Shop</Link>
-            <Link to="/login">Login</Link>
+            {this.props.user ?   <Link onClick={this.logout} className='LM-logout-text' >Logout</Link> :  <Link to="/login">Login</Link>}
+           
           </div>
           {this.props.user && this.props.user.isadmin    ? 
 <div className="LM-links-admin">
@@ -69,6 +93,6 @@ const mapStateToProps = state => state;
 export default connect(
   mapStateToProps,
   {
-    getUserSession: getUserSession
+    getUserSession, logOut
   }
 )(LandingMain);

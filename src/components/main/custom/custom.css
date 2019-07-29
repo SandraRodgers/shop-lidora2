@@ -1,5 +1,6 @@
 .custom-component{
     margin-top: 10vh;
+    min-height: 100vh;
 }
 
 .custom-main-image{

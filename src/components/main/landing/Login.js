@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import {Redirect} from 'react-router-dom'
 
 //redux
 import { connect } from "react-redux";
-import { signIn, logOut } from "../../../ducks/reducer";
+import { signIn, logOut, hideMenu } from "../../../ducks/reducer";
 
 //firebase
 import firebase from "firebase/app";
@@ -28,7 +29,7 @@ class Login extends Component {
       user: {}
     };
 
-    this.logout = this.logout.bind(this);
+    
   }
 
   uiConfig = {
@@ -65,27 +66,18 @@ class Login extends Component {
     }
   }
 
-  logout() {
-    firebase
-      .auth()
-      .signOut()
-      .catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      });
-    this.setState({ isSignedIn: false, user: null }, () => {
-      this.props.logOut();
-    });
-  }
+
 
   render() {
-    console.log(this.state.user);
+    console.log(this.props);
+
+    if(this.state.isSignedIn ===true){
+      return <Redirect push to="/" />
+  }
 
     // this.state.user ? console.log(this.state.user) : console.log("no user");
     return (
-      <div className="LOG-component">
+      <div onMouseOver={this.props.hideMenu} className="LOG-component">
         {this.state.isSignedIn ? (
           <div className="LOG-signout-button-div">
             <button onClick={this.logout} className="LOG-signout-button">
@@ -113,7 +105,8 @@ const mapStateToProps = state => state;
 export default connect(
   mapStateToProps,
   {
-    signIn: signIn,
-    logOut: logOut
+    signIn,
+    logOut,
+    hideMenu
   }
 )(Login);

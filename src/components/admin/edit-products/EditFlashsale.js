@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {Redirect} from 'react-router-dom'
 
 import { connect } from "react-redux";
 import {
   getFlashsale,
   updateProduct,
-  hideMenu
+  hideMenu,
+  getUserSession
 } from "../../../ducks/reducer";
 
 import { Form, Input, Image, Select, FormSubmit } from "../../styled/Form";
@@ -26,11 +28,21 @@ class EditFlashsale extends Component {
       category: "",
       productid: 0,
       id: 0,
-      sold: false
+      sold: false,
+      redirect: false
     };
   }
 
+    ////need to get this working
+  checkUser = () => {
+    if(this.props.user.isadmin === false)
+    this.setState({redirect: true}
+    )
+  }
+
   componentDidMount() {
+    this.props.getUserSession()
+    this.checkUser()
     axios
       .get(`/api/product/${this.props.match.params.id}`)
       .then(response => {
@@ -42,7 +54,7 @@ class EditFlashsale extends Component {
         console.log(this.state.productInfo)
        
 
-        if (this.state.productInfo[0].category === "flashsale") {
+        if (this.state.productInfo && this.state.productInfo[0] && this.state.productInfo[0].category === "flashsale") {
           this.props.getFlashsale(this.state.productInfo[0].flashid).then(()=>{
             
               let sold;
@@ -144,8 +156,10 @@ class EditFlashsale extends Component {
   };
 
   render() {
-    console.log(this.state.id);
-    console.log(this.props.currentProduct);
+    if(this.state.redirect ===true){
+      return <Redirect push to="/" />
+  }
+
     return (
       <div className="form-component-container">
         <div className="form-title">Edit Product information</div>
@@ -262,6 +276,7 @@ export default connect(
    
     getFlashsale,
     updateProduct,
-    hideMenu
+    hideMenu,
+    getUserSession
   }
 )(EditFlashsale);

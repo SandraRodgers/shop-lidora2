@@ -10,7 +10,7 @@ var transport = nodemailer.createTransport({
 });
 
 const customOrder = (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   var { name } = req.body;
   var { email } = req.body;
   var { message } = req.body;
@@ -21,7 +21,38 @@ const customOrder = (req, res) => {
     subject: "New Custom Order Message",
     text: content
   };
-  transport.sendMail(mail);
+  transport
+    .sendMail(mail)
+    .then(response => {
+      res.status(200).json(response);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).send(error);
+    });
 };
 
-module.exports ={customOrder}
+const subscribeNews = (req, res) => {
+  console.log(req.body);
+  var { name } = req.body;
+  var { email } = req.body;
+  var message = `Please add ${email} to the Shop-Lidora newsletter list.`;
+  // var content = `name: ${name} \n email: ${email} \n message: ${message} `;
+  var mail = {
+    from: name,
+    to: process.env.EMAIL,
+    subject: "Subscribe to Newsletter",
+    text: message
+  };
+  transport
+    .sendMail(mail)
+    .then(response => {
+      res.status(200).json(response);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).send(error);
+    });
+};
+
+module.exports = { customOrder, subscribeNews };

@@ -73,7 +73,7 @@ const {
 } = require("./controllers/checkoutController");
 const {createCoupon, getCoupon, applyCoupon} = require("./controllers/adminController")
 const {postFabrics, getFabrics, postStyles, getStyles} = require("./controllers/styleguideController")
-const {customOrder} = require("./controllers/nodemailerController")
+const {customOrder, subscribeNews} = require("./controllers/nodemailerController")
 const {editAddress, getOrderDetails} = require("./controllers/userAccountController")
 const { editProduct } = require("./controllers/editProductsController")
 
@@ -144,7 +144,7 @@ app.get("/api/admin/getHeadbands", getHeadbands);
 app.get("/api/admin/getSuspenders", getSuspenders);
 
 //get one specific product endpoints
-app.get("/api/product/:id", checkTimestamp, getProductInfo);
+app.get("/api/product/:id",  getProductInfo);
 app.get("/api/dress/:id", getDress);
 app.get("/api/bonnet/:id", getBonnet);
 app.get("/api/short/:id", getShort);
@@ -201,6 +201,7 @@ app.post("/api/checkout/order", postOrder)
 
 //nodemailer endpoints
 app.post("/nodemailer/customOrder", customOrder)
+app.post("/nodemailer/newsletter", subscribeNews)
 
 
 app.listen(4000, () => {

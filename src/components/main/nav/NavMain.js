@@ -124,11 +124,14 @@ class NavMain extends React.Component {
               Products
             </SecondaryLink>
           </Column>
+         
           <Column top={top} onMouseOut={this.props.hideMenu}>
             <SecondaryLink to="/styleguide" primary="true" >
               Style Guide
             </SecondaryLink>
           </Column>
+
+          
           <Column top={top } onMouseOut={this.props.hideMenu}>
             <SecondaryLink to="/custom" primary="true">
               Custom
