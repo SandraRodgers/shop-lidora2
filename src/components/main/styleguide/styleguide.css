@@ -187,6 +187,30 @@ align-items: center;
     padding-top: 12vh;
 }
 
+.row-customize-component{
+    display: flex;
+    height: 80vh;
+    width: 95vw;
+    margin-top: 10vh;
+    justify-content: space-between;
+    margin-bottom: 10vh;
+}
+
+.customize-title{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Junge';
+    /* font-size: 2em; */
+    font-size: 2.1em;
+    padding-top: 10vh;
+    margin-right: 10vw;
+}
+
+.customize-title-2{
+    font-family: 'Junge';
+    font-size: 3em;
+}
+
 @media (max-width: 1000px) {
 }
 
@@ -224,7 +248,7 @@ align-items: center;
         flex-direction: column-reverse;
         align-items: center;
         width: 35vh;
-        margin-top: 0;
+        margin-top: 10vh;
         height: 100vh;
 
     }
@@ -236,29 +260,62 @@ align-items: center;
 
      .fabric-carousel-div{
         /* width: 100%; */
-        width: 100vw;
+        /* width: 80vw; */
         /* height: 100vw; */
-        margin-left: 50vw; 
+        /* margin-left: 35vw;  */
         width: 60vw;
     }
 
      .slider-img{
-      width: 60vw;
+      width: 70vw;
         height: 60vw; 
         margin-top: 10vh;
         /* padding-left:5vw;
         padding-right:5vw; */
-        margin-left: 10vw;
-        margin-right:10vw;
+        /* margin-left: 10vw; */
+        /* margin-right:10vw; */
     }
 
     .fabric-img-div{
-        width: 60vw;
+        /* width: 80vw */
+        /* display: flex;
+        justify-content: center; */
+       
     } 
     
     .row-fabrics-component{
-        width: 60vw;
+        width: 80vw;
+        
     }
+
+    .slick-slider {
+        width: 70vw;
+        margin-left: 25vw;
+        
+    }
+
+
+.row-customize-component{
+    display: none;
+    flex-direction: column;
+    min-height: 110vh;
+}
+
+.customize-title{
+    /* width: 70vw; */
+    padding-top: 0vh;
+}
+
+.custom-carousel-div{
+    /* height: 50vh; */
+}
+
+.custom-slider-img{
+    /* height: 20vh; */
+}
+
+
+
 }
 
 

@@ -47,7 +47,7 @@ export default class Fade extends Component {
 
     return (
       <div className="custom-carousel-div">
-        <Slider {...settings}>{stylesList}</Slider>
+        <Slider  {...settings}>{stylesList}</Slider>
       </div>
     );
   }

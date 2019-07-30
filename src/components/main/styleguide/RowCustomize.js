@@ -6,10 +6,10 @@ import CustomizeCarousel from "../styleguide/CustomizeCarousel";
 
 const RowCustomize = props => {
   return (
-    <div className="row-fabrics-component">
+    <div className="row-customize-component">
       <div className="row-custom-main-row-title">
-        <div className="fabrics-title">Customize: </div>
-        <div className="fabrics-title-2">Get Inspired</div>
+        <div className="customize-title">Customize: </div>
+        <div className="customize-title-2">Get Inspired</div>
         
       </div>
       <CustomizeCarousel />

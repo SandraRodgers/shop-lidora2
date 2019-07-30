@@ -157,6 +157,11 @@ margin:0;
   .BAG-ITEM-size{
     margin-top: .5vh;
   }
+
+  .BAG-checkout-button {
+    width: 50%;
+    margin-right: 25vw;
+  }
 }
 
 @media (max-width: 600px) {

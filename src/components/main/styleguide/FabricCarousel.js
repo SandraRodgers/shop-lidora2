@@ -36,7 +36,8 @@ export default class Fade extends Component {
       slidesToScroll: 1,
       // centerMode: true,
       className: 'slider',
-      swipe: true
+      swipe: true,
+      adaptiveHeight: true
       
   
     };
