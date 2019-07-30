@@ -1,11 +1,12 @@
 .bag-container {
   min-height: 100%;
-
+  width: 50vw;
 }
 
 .BAG-SM-component {
   width: 50vw;
   overflow-y: scroll;
+  
 }
 
 .BAG-top-icons {
