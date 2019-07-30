@@ -1,10 +1,12 @@
 require("dotenv").config();
+const path = require('path');
 const express = require("express");
 const { json } = require("body-parser");
 const massive = require("massive");
 const session = require("express-session");
 const app = express();
 app.use(json());
+app.use( express.static( `${__dirname}/../build` ) );
 
 //controllers
 const {
@@ -203,6 +205,10 @@ app.post("/api/checkout/order", postOrder)
 app.post("/nodemailer/customOrder", customOrder)
 app.post("/nodemailer/newsletter", subscribeNews)
 
+
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.listen(4000, () => {
   console.log(`Listening on ${process.env.EXPRESS_PORT}`);
