@@ -28,20 +28,24 @@ export default class Fade extends Component {
 
     const settings = {
       arrows: true,
-      dots: true,
+      dots: false,
       fade: true,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
       // centerMode: true,
-      className: 'slider'
+      className: 'slider',
+      swipe: true,
+      adaptiveHeight: true
+      
+  
     };
 
     let fabricsList = this.state.fabrics.map((fabric, index)=>{
 
       return(
-        <div key={fabric.fabricid} >
+        <div className='fabric-img-div' key={fabric.fabricid} >
           <img alt='fabric' className= 'slider-img' src={fabric.img} />
           <div className='fabric-name'>{fabric.name}</div>
         </div>
@@ -49,23 +53,12 @@ export default class Fade extends Component {
     })
 
     return (
-      <div className='fabric-carousel-div' >
+      <div className='fabric-carousel-div' style={{width: '100vw'}}>
           
         <Slider {...settings}  >
         
         {fabricsList}
-          {/* <div  >
-            <img className= 'slider-img'src={lovelyllamas} />
-          </div>
-           <div>
-            <img className= 'slider-img' src={unicornrainbow} />
-          </div> */}
-          {/* <div>
-            <img src={imgPlaceholder} />
-          </div>
-          <div>
-            <img src={imgPlaceholder} />
-          </div> */} 
+     
         </Slider>
 
       </div>

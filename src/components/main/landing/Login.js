@@ -86,9 +86,9 @@ class Login extends Component {
           </div>
         ) : (
           <div className="LOG-sign-in-container">
-            <h1 className="LOG-sign-in-text">
+            <div className="LOG-sign-in-text">
               Sign in with Google or Facebook
-            </h1>
+            </div>
             <StyledFirebaseAuth
               uiConfig={this.uiConfig}
               firebaseAuth={firebase.auth()}

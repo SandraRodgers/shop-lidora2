@@ -52,8 +52,8 @@ class EditDress extends Component {
     };
   }
 
-  ////need to get this working
   checkUser = () => {
+    console.log('hit')
     if(this.props.user.isadmin === false)
     this.setState({redirect: true}, () =>{ this.setState({redirect: true})}
     )
@@ -61,18 +61,18 @@ class EditDress extends Component {
 
   componentDidMount() {
 
-  this.props.getUserSession()
-   this.checkUser()
+  this.props.getUserSession().then(()=>{this.checkUser()})
+  
 
     axios
       .get(`/api/product/${this.props.match.params.id}`)
       .then(response => {
-        console.log(response.data)
+        // console.log(response.data)
         this.setState({ productInfo: response.data });
         //we get the productid from the component and set state so that productInfo contains that product (object)
       })
       .then(() => {
-        console.log(this.state.productInfo)
+        // console.log(this.state.productInfo)
         if (this.state.productInfo&& this.state.productInfo[0] && this.state.productInfo[0].category === "dresses") {
           this.props.getDress(this.state.productInfo[0].dressesid).then(()=>{
             this.setState({

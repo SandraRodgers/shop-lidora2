@@ -19,6 +19,7 @@ const Paragraph = styled.div`
   @media (max-width: 700px) {
   }
   @media (max-width: 600px) {
+    font-size: 3vh;
   }
   @media (max-width: 500px) {
   }

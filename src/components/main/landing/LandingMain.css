@@ -49,6 +49,7 @@
   /* width: %; */
 opacity: .8;
 filter: contrast(1.5);
+/* margin-right: 1vw; */
 }
 
 
@@ -82,6 +83,7 @@ display: flex;
 justify-content: center;
 margin-bottom: 10vh;
 color: #4a434a;
+font-size: 2em;
 }
 
 .LOG-sign-in-container{
@@ -90,21 +92,26 @@ color: #4a434a;
   flex-direction: column;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1030px) {
   .LM-coverpic {
-    height: 90%;
-    width: 90%;
-    margin-right: 5vw;
+    height: 65%;
+    width: 65%;
+    margin-right: 7vw;
+    margin-left: 2vw;
   }
   .LM-logo {
     margin-left: 5vw;
   }
+
+ 
 }
 @media (max-width: 900px) {
   .LM-coverpic {
     height: 80%;
     width: 80%;
   }
+
+  
 }
 @media (max-width: 800px) {
   .LM-coverpic {
@@ -162,12 +169,26 @@ color: #4a434a;
     align-items: center;
     width: 70%;
   }
+  .LM-links {
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+  }
+  .LM-coverpic {
+    height: 85%;
+    width: 70%;
+    margin-top: 0vh;
+  }
+  .LOG-sign-in-text{
+
+    font-size: 1.5em;
+    }
+
 }
 @media (max-width: 500px) {
   .LM-coverpic {
-    height: 90%;
-    width: 90%;
-    margin-top: 2vh;
+    /* height: 90%; */
+    /* width: 80%; */
+    /* margin-top: 2vh; */
   }
   .LM-logo {
     width: 65vw;

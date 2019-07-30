@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, Redirect } from "react-router-dom";
 import axios from "axios";
 
 //assets
@@ -35,7 +35,8 @@ class CheckoutOne extends Component {
       total: 0,
       addressComplete: false,
       discount: 0,
-      time: ''
+      time: '',
+      redirect: false
     };
     this.getCurrentAddress = this.getCurrentAddress.bind(this);
     this.addAddress = this.addAddress.bind(this);
@@ -45,9 +46,12 @@ class CheckoutOne extends Component {
     this.applyCoupon = this.applyCoupon.bind(this);
   }
 
+
   componentDidMount() {
     this.props.getUserSession().then(() => {
-      this.setState({ prevTotal: this.props.user.total, total: this.props.user.total });
+      this.setState({ prevTotal: this.props.user.total, total: this.props.user.total }, ()=>{
+        this.checkUser()
+      });
     });
     this.getCurrentAddress();
     
@@ -71,7 +75,11 @@ class CheckoutOne extends Component {
 
 }
 
-
+ checkUser = () => {
+    if(this.props.user.cart.length === 0)
+    this.setState({redirect: true}, () =>{ this.setState({redirect: true})}
+    )
+  }
 
 // let time = Math.floor(Date.now()/1000 - this.props.user.cart[i].time/1000 
 
@@ -201,10 +209,18 @@ if(minutes.length===1){
   holdDiscount = (discount) => {
     this.setState({discount: discount})
   }
-  
+
+  goBack = ()=>{
+  this.props.history.goBack()
+}  
 
   render() {
-    // console.log(this.props.currentAddress)
+    if(this.props.user && this.props.user.cart){   console.log(this.props.user.cart.length)}
+ 
+    if(this.state.redirect ===true){
+      return <Redirect push to="/" />
+  }
+
     let fixedTotal;
     if (this.props.user && this.props.user.total) {
       fixedTotal = this.props.user.total.toFixed(2);
@@ -232,12 +248,78 @@ if(minutes.length===1){
         <div className="checkout-one-column-1">
           <img alt="logo" className="checkout-one-column-1-logo" src={Logo} />
           <div className="checkout-column-1-steps">
-            <div>Cart</div>
+            <div className='checkout-goback' onClick={this.goBack}>Cart</div>
             <img alt="arrow" className="checkout-column1-arrow" src={Arrow} />
             <div className="checkout-column-1-info">Information</div>
             <img alt="arrow" className="checkout-column1-arrow" src={Arrow} />
-            <div>Payment</div>
+            <div >Payment</div>
           </div>
+
+
+
+
+
+
+     <div className="checkout-one-column-3">
+    
+          <div className="BAG-item-components">
+     
+          <div className="checkout-order-summary"> Order Summary</div> 
+            
+            {this.props.user &&
+              this.props.user.cart &&
+              this.props.user.cart.map((product, index) => {
+        
+                return (
+                  <div key={index}>
+                    <div className="checkout-one-items-list">
+                      <img
+                        alt="product"
+                        className="checkout-one-items-list-images"
+                        src={product.image}
+                      />
+                      <div className=" checkout-one-items-list-name-quantity">
+                        <div
+                          className="checkout-one-items-list-font"
+                          style={{ fontWeight: "900" }}
+                        >
+                        
+                          {product.name} x {product.quantity} {product.time ? <div>  {
+                        this.timeConvert(Math.floor(Date.now()/1000 - product.time/1000 ))}</div>: null}
+                        <div>{product.size}</div>
+                        </div>
+                      
+                        <div>${product.price}</div>
+                  
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+                );
+              })}
+
+            <div className="checkout-one-coupon-div">
+              <input
+                onChange={this.handleChange}
+                name="couponCode"
+                value={this.state.couponCode}
+                className="checkout-one-coupon-input"
+                placeholder="Coupon Code"
+              />{" "}
+              <button className='checkout-apply-coupon-button' onClick={this.getCoupon}>Apply</button>{" "}
+            </div>
+            <div className="checkout-one-tax-div">
+              Tax: Applied at next step
+            </div>
+            <div className="checkout-one-total">
+              {this.props.user && <h3>Total: ${fixedTotal} </h3>}
+            </div>
+          </div>
+        </div>
+
+
+
           {this.state.currentAddress.length && this.state.toggle === false ? (
             <div className="checkout-previous-shipping-address-container">
               <div className="checkout-previous-shipping-header">
@@ -436,7 +518,7 @@ if(minutes.length===1){
                 className="checkout-one-coupon-input"
                 placeholder="Coupon Code"
               />{" "}
-              <button onClick={this.getCoupon}>Apply</button>{" "}
+              <button className='checkout-apply-coupon-button' onClick={this.getCoupon}>Apply</button>{" "}
             </div>
             <div className="checkout-one-tax-div">
               Tax: Applied at next step

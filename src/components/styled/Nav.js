@@ -10,7 +10,7 @@ background: ${props =>
   props.primary ? "rgb(255, 228, 250)" : "rgb(255,255,255)"};
 display: flex; */}
 ${'' /* justify-content: center; */}
-align-items: center;
+${'' /* align-items: center; */}
 @media (max-width: 1030px) {
     
   }
@@ -22,7 +22,7 @@ align-items: center;
   }
   @media (max-width: 600px) {
 
-width: 90%;
+width: 100%;
 z-index: -1;
 ${'' /* padding-left: 5%; */}
   }

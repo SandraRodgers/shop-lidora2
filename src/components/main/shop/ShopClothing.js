@@ -52,7 +52,7 @@ class ShopClothing extends Component {
         return(
        <div className="store-product-main">
           <div className="product-header">
-            <p className="product">Clothing Best Sellers</p>
+            <div className="product">Clothing Best Sellers</div>
           </div>
           <div className="product-rows">{clothingList}</div>
         </div>

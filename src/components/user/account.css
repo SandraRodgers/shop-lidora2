@@ -195,3 +195,37 @@ width: 35%;
     /* margin-right: 20vw; */
 
 }
+
+@media (max-width: 900px) {
+}
+
+@media (max-width: 800px) {
+}
+
+@media (max-width: 700px) {
+    .SB-component{
+        width: 20%;
+        padding-left: 2vw;
+    }
+
+    .SB-link{
+       
+        justify-content: flex-start;
+
+    }
+
+    .SB-link-item{
+        font-size: .5em;
+  
+    }
+}
+
+@media (max-width: 600px) {
+}
+
+
+@media (max-width: 500px) {
+}
+
+@media (max-width: 400px) {
+}

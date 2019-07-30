@@ -49,7 +49,7 @@ class BagItem extends Component {
 
             </div>
             <div className='BAG-ITEM-size'>{this.props.product.size}</div>
-            <div>{this.props.product.style}</div>
+            <div className='BAG-ITEM-style'>{this.props.product.style}</div>
           </div>
           <div className="BAG-name-and-delete-row">
            <div>QTY:{this.props.product.quantity}</div>

@@ -50,6 +50,7 @@ class Payment extends Component {
           coupon ={this.props.coupon}
           orderDetails={this.props.orderDetails}
           paymentComplete={this.props.paymentComplete}
+       
         />
       </div>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, Redirect } from "react-router-dom";
 
 //assets
 import Logo from "../../assets/logo.png";
@@ -24,24 +24,18 @@ class CheckoutTwo extends Component {
       currentAddress: [],
       couponApplied:[],
       productIds: [],
-      complete: false
+      complete: false,
+      redirect: false
     };
   }
 
   componentDidMount() {
-   
-    
-    this.props.getUserSession();
+    this.props.getUserSession().then(() => {
+      this.checkUser()
+    })
     this.getCurrentAddress();
-    
-
     if(this.props.couponApplied){
       this.setState({couponApplied: [this.props.couponApplied]})}
-    
-
-    
-
-   
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -132,13 +126,24 @@ class CheckoutTwo extends Component {
     }
   };
 
+  checkUser = () => {
+    if(
+      this.props.user &&
+      this.props.user.cart && this.props.user.cart.length === 0)
+    this.setState({redirect: true}, () =>{ this.setState({redirect: true})}
+    )
+  }
+
 
   paymentComplete=()=>{
     this.setState({complete: true})
   }
 
   render() {
-    // console.log(this.state.complete)
+
+    if(this.state.redirect ===true){
+      return <Redirect push to="/" />
+  }
 
     let fixedCATax; 
     let fixedSDTax;
@@ -173,16 +178,82 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
   
     return (
       <div className="checkout-two-container">
-        <div className="checkout-one-column-1"  style={{width:width}}>
+        <div className="checkout-two-column-1"  style={{width:width}}>
 
           <img alt="logo" className="checkout-one-column-1-logo" src={Logo} />
           <div className="checkout-column-1-steps">
-            <div>Cart</div>
+            <Link className='checkout-goback' to={this.props.locationKey}>Cart</Link>
             <img alt="arrow" className="checkout-column1-arrow" src={Arrow} />
-            <div>Information</div>
+            <Link to='/checkout/one' className='checkout-goback'>Information</Link>
             <img alt="arrow" className="checkout-column1-arrow" src={Arrow} />
-            <div className="checkout-column-1-info">Payment</div>
+            <Link className='checkout-goback'  >Payment</Link>
           </div>
+
+
+  {this.state.complete === false ? 
+        <div className="checkout-two-column-3" >
+          <div className="BAG-item-components">
+          <div className="checkout-order-summary"> Order Summary</div> 
+            {this.props.user &&
+              this.props.user.cart &&
+              this.props.user.cart.map((product, index) => {
+           
+                let prodArr =[product.productid, product.idSize.productid, product.name, product.quantity]
+            
+
+                orderDetails.push(prodArr)
+
+         
+                return (
+                  <div key={index}>
+                    <div className="checkout-one-items-list">
+                      <img
+                        alt="product"
+                        className="checkout-one-items-list-images"
+                        src={product.image}
+                      />
+                      <div className=" checkout-one-items-list-name-quantity">
+                        <div
+                          className="checkout-one-items-list-font"
+                          style={{ fontWeight: "900" }}
+                        >
+                          {product.name} x {product.quantity}{product.time ? <div>  {
+                        this.timeConvert(Math.floor(Date.now()/1000 - product.time/1000 ))}</div>: null}
+                        </div>
+                        <div>${product.price}</div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            
+            {this.state.caliTax > 0 ?  <div className="checkout-two-added">
+            7.25% California Sales Tax: ${fixedCATax}
+            </div>: null}
+           
+              {this.state.sdTax > 0?  <div className="checkout-two-added">
+            .25% San Diego County Sales Tax: ${fixedSDTax}
+            </div>: null}
+
+             {this.state.couponApplied[0] && this.state.couponApplied[0].length !==0  ?  <div className="checkout-two-added">
+            Coupon Applied: ${fixedDiscount}
+            </div> : null}
+
+           
+            <div className="checkout-one-total">
+              {this.props.user && <h3>Total: ${fixedTotal} </h3>}
+            </div>
+          </div>
+        </div> : 
+        
+        
+        null
+        
+        }
+
+
+
+
 {this.state.complete === false ? 
 
           <div className="checkout-previous-shipping-address-container">
@@ -192,7 +263,7 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
               and encrypted. After clicking the button below, you will be
               redirected to PayPal to complete your purchases securely.
             </div>
-            <Payment paymentComplete={this.paymentComplete} orderDetails={orderDetails}  total = {fixedTotal} coupon={this.state.couponApplied[0]}/>
+            <Payment  paymentComplete={this.paymentComplete} orderDetails={orderDetails}  total = {fixedTotal} coupon={this.state.couponApplied[0]}/>
           </div> 
           
           :
@@ -229,7 +300,7 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
        </div>
 
        {this.state.complete === false ? 
-        <div className="checkout-one-column-2" >
+        <div className="checkout-two-column-2" >
           <div className="BAG-item-components">
             {this.props.user &&
               this.props.user.cart &&

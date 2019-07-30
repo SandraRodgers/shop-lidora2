@@ -1,19 +1,13 @@
 .footer-component {
     display: flex;
-   
     font-family: 'Cousine';
-   
     background-color: whitesmoke;
-    /* margin-top:10vh; */
-
-   
-    
+  
 }
 
 .fc-column-1{
     margin-left: 20vh;
     background-color: whitesmoke;
-   
 }
 
 
@@ -63,8 +57,6 @@
 
 }
 
-
-
 .flowerLogo{
     height: 8vh;
 }
@@ -90,26 +82,61 @@
    
 }
 
-@media (max-width: 420px){
+
+@media (max-width: 800px){
     .footer-component {
+        width: 100%;
+     
+      
+    }
+    .fc-column-1{
+        display: none;
+   
+    }
+
+    .fc-column-4{
+        display: none;
+    }
+    .fc-column-3{
+        display: none;
+    }
+
+    .fc-column-2{
+        margin-left: 5vw;
+        margin-right: 5vw;
+        width: 24vw;
+     
+        font-size: .6em;
+    }
+
+    .fc-text{
         display: flex;
-    flex-direction: column;
-justify-content: center;
-padding-top: 5vh;
-}
-.fc-column-1, .fc-column-2, .fc-column-4{
-    margin: 0;
-    margin-left: 10vh;
-  
-}
+        justify-content: flex-start;
+        /* padding-top: 1.5vh; */
 
-.logo-column{
-    margin-left: 25vh;
-}
+    }
 
-.flowerLogo{
-    width: 10vh;
-    height: 10vh;
+    .logo-column{
+        width: 70vw;
+        margin-left: 0;
+        margin-right: 5vw;
+        font-size: .6em;
+      
+    }
+    .fc-text-newsletter-1{
+        width: 60vw;
 
-}
+    }
+    .fc-input-newsletter{
+        width: 60vw;
+        
+        
+    }
+    .fc-arrow{
+        height: 15px;
+        transform: rotate(270deg);
+        position: absolute;
+        right: 0px;  
+        left: 295px; 
+    }
 }

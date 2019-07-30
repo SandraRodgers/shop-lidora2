@@ -112,7 +112,7 @@ export default (
     <Route path="/products/:id" exact component={Product} />
 
     {/* AdminPages */}
-    <Route path="/admin" exact component={AdminMain}></Route>
+    <Route path="/admin" exact component={AdminMain}/>
     <Route path="/admin/form/dresses" exact component={FormDresses} />
     <Route path="/admin/form/bonnets" exact component={FormBonnets} />
     <Route path="/admin/form/shorts" exact component={FormShorts} />

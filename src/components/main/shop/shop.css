@@ -2,12 +2,12 @@
     width: 80vh;
     display: flex;
     justify-content: center;
-
     flex-direction: column;
 
     margin-left: 10vh;
    top:0;
    min-height: 80vh;
+   cursor: pointer !important;
   }
 
   .product-photo {
@@ -19,6 +19,8 @@
     display: flex;
  position: relative;
  /* z-index: -1; */
+ cursor: pointer !important;
+ 
    
   }
 
@@ -29,17 +31,22 @@
     margin-bottom: 5vh;
     position: relative;
     /* z-index: -1; */
+    cursor: pointer;
   }
 
   .product-name,
 .product-price {
   text-decoration: none;
   color: black;
-  font-size: 2.5vh;
+
   font-weight: 500;
   margin-left: 10vh;
-  font-size: 3vh;
+
   font-weight: 500;
+  font-family: 'Cousine';
+  font-size: 1em;
+  margin-top: .8em;
+  cursor: pointer;
 }
 
 .store-product-main{
@@ -50,11 +57,12 @@
 
 .product-header {
   position: relative;
-  font-size: 5vh;
+
   display: flex;
   margin-left: 30vh;
   font-weight: 550;
   min-width: 100%;
+  font-size: 1em;
 }
 
 .product-rows {
@@ -68,6 +76,14 @@
 .product {
   font-family: "Junge";
   font-weight: 900;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  font-size: 2em;
+
+}
+
+a{
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {
@@ -80,7 +96,15 @@
 
 }
 @media (max-width: 600px) {
-  .product-container {width: 50vh;}
+
+.product{
+  margin-top: 5vh;
+  
+}
+
+  .product-container {width: 100%;    margin-top: none;
+
+ }
   .product-header {
     min-width: 45%;
     display: flex;
@@ -88,28 +112,47 @@
     margin: 0;
   }
 
-  .product-name,
-  .product-price {
-    margin-left: 7vh;
+  .product-name, .product-price {
+    margin-left: 0vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+ 
+    align-items: flex-end;
   }
 
   .product-photo {
     margin: 0;
-    margin-bottom: 2vh;
-    height: 60vh;
-    width: 50vh;
+    margin-bottom: 1vh;
+    height: 55vh;
+    width: 45vh;
+    /* margin-top: 5vh; */
+    
+  
   }
 
   .product-info {
-    justify-content: space-around;
-    width: 50vh;
+    display: flex;
+    flex-direction: column;
+  
+    /* width: 80vh; */
+    width: 100%;
+    align-items: flex-end;
 
   }
   .product-rows {
     margin-right: 10vh;
+    margin-left: 0;
+
   }
 
- 
+ a{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* height: 100%; */
+  
+ }
 
 }
 @media (max-width: 500px) {

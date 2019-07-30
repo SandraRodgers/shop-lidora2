@@ -90,3 +90,56 @@ margin-left: 10vw;
   }
 
 
+  @media (max-width: 1000px) {
+}
+
+@media (max-width: 900px) {
+}
+
+@media (max-width: 800px) {
+}
+
+@media (max-width: 700px) {
+    .custom-main-div{
+       flex-direction: column;
+      
+    
+    }
+
+    .custom-main-image{
+        height: 45vh;
+        width: 60vw;
+        margin-left: 20vw;
+        margin-bottom: 5vh;
+    }
+    .custom-row-1-inputs{
+        flex-direction: column;
+    }
+    .custom-input-name, .custom-input-email{
+        width: 80vw;
+        margin-top: 2vh;
+    }
+    .custom-input-textarea{
+        width: 80vw;
+        margin-top: 2vh;
+    }
+
+    .custom-order-button{
+        margin-left: 30vw;
+        margin-bottom: 10vh;
+      }
+
+
+}
+
+@media (max-width: 600px) {
+}
+
+
+@media (max-width: 500px) {
+}
+
+@media (max-width: 400px) {
+}
+
+

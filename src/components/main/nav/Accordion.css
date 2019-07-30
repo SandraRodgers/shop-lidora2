@@ -107,15 +107,15 @@ p {
 @media (max-width: 600px) {
   .container {
     z-index: 1;
-  margin-top: 85vh;
+  /* margin-top: 85vh; */
   /* padding-right: 10vw; */
   min-height: 100vh;
 
   
  /* padding-right: 10vw; */
-  /* padding-left: 10vw; */ 
+  /* padding-left: 4vw;  */
   padding-top: 0vh;
-  margin-right: 10vw;
+  /* margin-right: 10vw; */
 
 
 
@@ -129,8 +129,8 @@ padding: 0;
 .accordion {
 
 /* margin-right: 20vw; */
-margin-left: 10vw;
-width: 50%;
+margin-left: 73vw;
+width: 40%;
 
 }
 

@@ -8,7 +8,7 @@ const BagSideMenu = styled.div`
     position: fixed;
     margin-left: 50vw;
     height: 100vh;
-    z-index: 1;
+    z-index: 5;
     width: 100%;
     opacity: ${props => (props.open ? "1" : "0")};
     background: rgb(240, 240, 240);
@@ -20,22 +20,21 @@ const BagSideMenu = styled.div`
    
   }
   @media (max-width: 900px) {
-    width: 35%;
+
   }
   @media (max-width: 800px) {
-    width: 40%;
+    margin-left: 20vw;
   }
   @media (max-width: 700px) {
-    width: 43%;
+   
   }
   @media (max-width: 600px) {
-    width: 46%;
   }
   @media (max-width: 500px) {
-    width: 50%;
+
   }
   @media (max-width: 400px) {
-    width: 60%;
+  
   }
 `;
 
