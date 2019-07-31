@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Paragraph = styled.div`
+  font-family: "Zilla Slab";
   font-size: 3.5vh;
   color: rgb(69, 67, 63);
   padding: 6vh;
@@ -25,7 +26,6 @@ const Paragraph = styled.div`
   }
   @media (max-width: 400px) {
     width: 85%;
-    
   }
 `;
 

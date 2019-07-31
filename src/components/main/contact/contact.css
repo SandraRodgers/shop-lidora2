@@ -1,6 +1,7 @@
 .CON-component{
     margin-top: 10vh;
     min-height: 80vh;
+
 }
 
 .CON-title-1{
@@ -15,6 +16,7 @@
 .CON-paragraph-1{
     margin-left: 10vw;
     font-size: 1.2em;
+    font-family: 'Zilla Slab'
 
 }
 
