@@ -312,10 +312,13 @@ class Product extends Component {
 
             {this.props.currentProduct[0] && (
               <div className="product-price-div">
-                Price:{" "}
-                <div className="product-price">
-                  ${this.props.currentProduct[0].price}
-                </div>{" "}
+           
+              <div>   Price:</div>
+             
+             
+                <div> ${this.props.currentProduct[0].price}</div>
+                 
+    
               </div>
             )}
 
