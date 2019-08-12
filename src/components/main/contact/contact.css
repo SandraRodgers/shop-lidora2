@@ -20,6 +20,16 @@
 
 }
 
+.CON-FB-href{
+    text-decoration: none;
+    color: #4a434a;
+}
+
+.CON-FB-href:hover{
+    color: 
+    #b68da4;
+}
+
 @media (max-width: 1000px) {
 }
 
