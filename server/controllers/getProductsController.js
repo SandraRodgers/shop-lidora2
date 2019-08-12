@@ -1,9 +1,11 @@
 module.exports = {
   getDresses: (req, res) => {
+   
     const dbInstance = req.app.get("db");
     dbInstance
       .getDresses()
       .then(response => {
+      
         res.status(200).json(response);
       })
       .catch(error => {
@@ -428,5 +430,45 @@ getFlashsaleProduct: (req, res) => {
       console.log(error);
       res.status(500).send(error);
     });
+},
+
+getCloset: (req, res) => {
+  const dbInstance = req.app.get("db");
+  let closet = []
+  dbInstance.getClosetBibdanas().then(response => {
+    closet.push(response);
+  }).then(()=> dbInstance.getClosetBloomers().then(response => {
+    closet.push(response);
+  })).then(()=>  dbInstance.getClosetBonnets().then(response => {
+    closet.push(response);
+  })).then(()=> dbInstance.getClosetBowties().then(response => {
+    closet.push(response)
+  })).then(()=> dbInstance.getClosetBurpcloths().then(response => {
+    closet.push(response)
+  })).then(()=> dbInstance.getClosetDresses().then(response => {
+    closet.push(response)
+  })).then(()=> dbInstance.getClosetDroolpads().then(response => {
+    closet.push(response)
+  })).then(()=> dbInstance.getClosetHairbows().then(response => {
+    closet.push(response)
+  })).then(()=> dbInstance.getClosetHeadbands().then(response => {
+    closet.push(response)
+  })).then(()=> dbInstance.getClosetShorts().then(response => {
+    closet.push(response)
+  })).then(()=> dbInstance.getClosetSkirts().then(response => {
+    closet.push(response)
+  })).then(()=> dbInstance.getClosetSuspenders().then(response => {
+    closet.push(response)
+  })).then(()=> dbInstance.getClosetVests().then(response => {
+    closet.push(response)
+  }))
+  .then(() =>{
+    res.status(200).json(closet);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).send(error);
+  });
+
 }
+
 };

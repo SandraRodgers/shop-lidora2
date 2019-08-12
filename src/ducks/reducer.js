@@ -234,7 +234,7 @@ export function updateProduct(currentProduct) {
 export function getDresses() {
   return {
     type: GET_DRESSES,
-    payload: axios.get("/api/admin/getDresses")
+    payload: axios.get("/api/admin/getDresses", {})
   };
 }
 

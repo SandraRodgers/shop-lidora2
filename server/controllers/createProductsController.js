@@ -64,17 +64,25 @@ module.exports = {
   },
   addBonnet: (req, res) => {
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
-      .addBonnet([name, price, fabric, customize, image, location, description])
+      .addBonnet([name, price, fabric, customize, image, location, description, favorite])
       .then(response => {
         bonnetsID.push(response[0].bonnetsid);
         res.status(200).json(response);
@@ -86,17 +94,25 @@ module.exports = {
   },
   addShorts: (req, res) => {
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
-      .addShorts([name, price, fabric, customize, image, location, description])
+      .addShorts([name, price, fabric, customize, image, location, description, favorite])
       .then(response => {
         shortsID.push(response[0].shortsid);
         res.status(200).json(response);
@@ -109,15 +125,23 @@ module.exports = {
   addBloomers: (req, res) => {
     console.log(req.body);
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
       .addBloomers([
         name,
@@ -126,7 +150,8 @@ module.exports = {
         customize,
         image,
         location,
-        description
+        description,
+        favorite
       ])
       .then(response => {
         bloomersID.push(response[0].bloomersid);
@@ -140,17 +165,25 @@ module.exports = {
   addSkirt: (req, res) => {
     console.log(req.body);
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
-      .addSkirt([name, price, fabric, customize, image, location, description])
+      .addSkirt([name, price, fabric, customize, image, location, description, favorite])
       .then(response => {
         skirtsID.push(response[0].skirtsid);
         res.status(200).json(response);
@@ -163,17 +196,25 @@ module.exports = {
   addShirt: (req, res) => {
     console.log(req.body);
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
-      .addShirt([name, price, fabric, customize, image, location, description])
+      .addShirt([name, price, fabric, customize, image, location, description, favorite])
       .then(response => {
         shirtsID.push(response[0].shirtsid);
         res.status(200).json(response);
@@ -186,17 +227,25 @@ module.exports = {
   addVest: (req, res) => {
     console.log(req.body);
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
-      .addVest([name, price, fabric, customize, image, location, description])
+      .addVest([name, price, fabric, customize, image, location, description, favorite])
       .then(response => {
         vestsID.push(response[0].vestsid);
         res.status(200).json(response);
@@ -208,17 +257,25 @@ module.exports = {
   },
   addBowtie: (req, res) => {
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
-      .addBowtie([name, price, fabric, customize, image, location, description])
+      .addBowtie([name, price, fabric, customize, image, location, description, favorite])
       .then(response => {
         bowtiesID.push(response[0].bowtiesid);
         res.status(200).json(response);
@@ -230,17 +287,25 @@ module.exports = {
   },
   addSuspenders: (req, res) => {
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
-      .addSuspenders([name, price, fabric, customize, image, location, description])
+      .addSuspenders([name, price, fabric, customize, image, location, description, favorite])
       .then(response => {
         suspendersID.push(response[0].suspendersid);
         res.status(200).json(response);
@@ -252,17 +317,25 @@ module.exports = {
   },
   addHairbow: (req, res) => {
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
-      .addHairbow([name, price, fabric, customize, image, location, description])
+      .addHairbow([name, price, fabric, customize, image, location, description, favorite])
       .then(response => {
         hairbowsID.push(response[0].hairbowsid);
         res.status(200).json(response);
@@ -274,17 +347,25 @@ module.exports = {
   },
   addHeadband: (req, res) => {
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
-      .addHeadband([name, price, fabric, customize, image, location, description])
+      .addHeadband([name, price, fabric, customize, image, location, description, favorite])
       .then(response => {
         headbandsID.push(response[0].headbandsid);
         res.status(200).json(response);
@@ -296,17 +377,25 @@ module.exports = {
   },
   addBibdana: (req, res) => {
     const dbInstance = req.app.get("db");
-    const {
+   let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
-      .addBibdana([name, price, fabric, customize, image, location, description])
+      .addBibdana([name, price, fabric, customize, image, location, description, favorite])
       .then(response => {
         bibdanasID.push(response[0].bibdanasid);
         res.status(200).json(response);
@@ -318,17 +407,25 @@ module.exports = {
   },
   addBurpcloth: (req, res) => {
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
-      .addBurpcloth([name, price, fabric, customize, image, location, description])
+      .addBurpcloth([name, price, fabric, customize, image, location, description, favorite])
       .then(response => {
         burpclothsID.push(response[0].burpclothsid);
         res.status(200).json(response);
@@ -340,17 +437,25 @@ module.exports = {
   },
   addDroolpad: (req, res) => {
     const dbInstance = req.app.get("db");
-    const {
+    let {
       name,
       price,
       fabric,
       customize,
       image,
       location,
-      description
+      description,
+      favorite
     } = req.body;
+    console.log(favorite)
+    if(favorite === 'Yes'){
+      favorite = true
+    } else {
+      favorite = false
+    }
+
     dbInstance
-      .addDroolpad([name, price, fabric, customize, image, location, description])
+      .addDroolpad([name, price, fabric, customize, image, location, description, favorite])
       .then(response => {
         droolpadsID.push(response[0].droolpadsid);
         res.status(200).json(response);
