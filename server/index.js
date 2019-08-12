@@ -12,7 +12,7 @@ app.use(json());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "shoplidora-beta.com"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  console.log(res)
+
   next();
 
 });
@@ -70,7 +70,8 @@ const {
   getSuspender,
   getFavorites,
   getFlashsale,
-  getFlashsaleProduct
+  getFlashsaleProduct,
+  getCloset
 } = require("./controllers/getProductsController");
 const {
   signin,
@@ -183,6 +184,7 @@ app.get("/api/suspender/:id", getSuspender);
 
 //edit products endpoints
 app.put('/api/admin/product/:id', editProduct)
+app.get('/api/closet', getCloset)
 
 
 //styleguide endpoints

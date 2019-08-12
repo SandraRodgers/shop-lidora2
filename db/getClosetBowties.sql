@@ -2,4 +2,4 @@ SELECT products.productid, products.category, bowties.name, bowties.price, bowti
 
 FROM bowties 
 INNER JOIN products ON products.bowtiesid = bowties.bowtiesid
-WHERE location = "Closet"
+WHERE location = 'Closet'

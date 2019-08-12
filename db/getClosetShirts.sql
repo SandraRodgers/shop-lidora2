@@ -2,4 +2,4 @@ SELECT products.productid, products.category, shirts.name, shirts.price, shirts.
 
 FROM shirts 
 INNER JOIN products ON products.shirtsid = shirts.shirtsid
-WHERE location = "Closet"
+WHERE location = 'Closet'

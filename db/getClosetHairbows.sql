@@ -2,4 +2,4 @@ SELECT products.productid, products.category, hairbows.name, hairbows.price, hai
 
 FROM hairbows 
 INNER JOIN products ON products.hairbowsid = hairbows.hairbowsid
-WHERE location = "Closet"
+WHERE location = 'Closet'
