@@ -12,6 +12,7 @@ import {
   getShort,
   getBloomer,
   getSkirt,
+  getShirt,
   getVest,
   getBibdana,
   getBowtie,
@@ -93,6 +94,13 @@ class Product extends Component {
           this.props.getSkirt(this.state.productInfo[0].skirtsid);
           this.setState({
             category: "skirts",
+            productid: this.state.productInfo[0].productid
+          });
+        }
+        if (this.state.productInfo[0].category === "shirts") {
+          this.props.getShirt(this.state.productInfo[0].shirtsid);
+          this.setState({
+            category: "shirts",
             productid: this.state.productInfo[0].productid
           });
         }
@@ -224,7 +232,15 @@ class Product extends Component {
       this.state.productInfo[0].category === "skirts"
     ) {
       alert("Please specify a size");
-    } else if (
+      
+    } 
+    else if (
+      this.state.size === undefined &&
+      this.state.productInfo[0].category === "shirts"
+    ) {
+      alert("Please specify a size")}
+    
+    else if (
       this.state.size === undefined &&
       this.state.productInfo[0].category === "vests"
     ) {
@@ -253,7 +269,7 @@ class Product extends Component {
 
   render() {
 
-  console.log(this.props.location)
+  console.log(this.props.currentProduct[0])
   
     if(this.state.redirect ===true){
       return <Redirect push to="/" />
@@ -327,6 +343,7 @@ class Product extends Component {
             this.state.category === "shorts" ||
             this.state.category === "bloomers" ||
             this.state.category === "skirts" ||
+            this.state.category === "shirts" ||
             this.state.category === "vests" ||
             this.state.category === "suspenders" ? (
               <div className="product-size-options">
@@ -395,6 +412,7 @@ export default connect(
     getShort,
     getBloomer,
     getSkirt,
+    getShirt,
     getVest,
     getUserSession,
     addToCart,

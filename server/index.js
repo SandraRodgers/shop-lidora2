@@ -5,7 +5,18 @@ const { json } = require("body-parser");
 const massive = require("massive");
 const session = require("express-session");
 const app = express();
+const cors = require("cors")
+app.use(cors())
 app.use(json());
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "shoplidora-beta.com"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  console.log(res)
+  next();
+
+});
+
 app.use( express.static( `${__dirname}/../build` ) );
 
 //controllers
@@ -84,6 +95,8 @@ const { editProduct } = require("./controllers/editProductsController")
 
 //express session
 const pgSession = require("connect-pg-simple")(session);
+
+
 app.use(
   session({
     store: new pgSession({
@@ -99,6 +112,7 @@ app.use(
     }
   })
 );
+
 
 //database connection
 massive(process.env.CONNECTION_STRING).then(db => {

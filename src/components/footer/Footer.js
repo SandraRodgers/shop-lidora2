@@ -26,12 +26,18 @@ constructor(props){
       };
 
     sendMessage = () => {
+        const {email} = this.state
+        console.log(email.includes('.'))
         let name;
         if(this.props.user && this.props.user.displayName){
             name = this.props.user.displayName
         } else{
             name = 'unknown name'
         }
+        if (email.includes('@')=== false || email.includes('.')===false){
+            alert ("Please enter a valid email address.")
+        }
+        else {
         axios
           .post("/nodemailer/newsletter", {
             name: name,
@@ -42,7 +48,7 @@ constructor(props){
                 alert('Subscribed to newsletter')
             });
           });
-      };
+      }};
 
     render(){
         // console.log(this.props.user)
