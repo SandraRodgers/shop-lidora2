@@ -65,6 +65,7 @@ div {
 }
 p {
   opacity: 1;
+  max-height: 700px;
 }
 
 /* p:after {
@@ -84,7 +85,7 @@ p {
   display: flex;
   flex-direction: column;
 
-  max-height: 15vh;
+  max-height: 20vh;
   padding: 10px 0;
   margin: 0;
   opacity: 0;

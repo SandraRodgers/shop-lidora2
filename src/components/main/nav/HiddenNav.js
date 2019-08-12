@@ -35,6 +35,9 @@ class HiddenNav extends React.Component {
             <LilacLink  to={"/shop/shorts"} primary = "true">
               Shorts
             </LilacLink>
+            <LilacLink  to={"/shop/shirts"} primary = "true">
+              Shirts
+            </LilacLink>
             <LilacLink  primary = "true" to={"/shop/bloomers"}>
               Bloomers
             </LilacLink>
@@ -44,6 +47,7 @@ class HiddenNav extends React.Component {
             <LilacLink  to={"/shop/vests"} primary = "true">
               Vests
             </LilacLink>
+            
           </div>
           <div className="HNB-accessories-div">
             <LilacLink to={this.props.location.pathname}>Accessories</LilacLink>
@@ -66,6 +70,7 @@ class HiddenNav extends React.Component {
             <LilacLink  to={"/shop/headbands"} primary = "true">
               Headbands
             </LilacLink>
+            <Placeholder primary = "true">placeholder</Placeholder>
           </div>
           <div className="HNB-baby-div">
             <LilacLink to={this.props.location.pathname}>Baby</LilacLink>
@@ -82,6 +87,7 @@ class HiddenNav extends React.Component {
             <LilacLink  to={"/shop/droolpads"} primary = "true">
               Drool Pads
             </LilacLink>
+            <Placeholder primary = "true">placeholder</Placeholder>
             <Placeholder primary = "true">placeholder</Placeholder>
             <LilacLink to={"/shop/flashsale"}  primary = "true">Flash Sale!</LilacLink>
           </div>

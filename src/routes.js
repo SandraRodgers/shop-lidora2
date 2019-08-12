@@ -13,6 +13,7 @@ import Dresses from "./components/main/shop/clothing/Dresses";
 import Shorts from "./components/main/shop/clothing/Shorts";
 import Bloomers from "./components/main/shop/clothing/Bloomers";
 import Skirts from "./components/main/shop/clothing/Skirts";
+import Shirts from "./components/main/shop/clothing/Shirts";
 import Vests from "./components/main/shop/clothing/Vests";
 import Bonnets from "./components/main/shop/accessories/Bonnets";
 import Bowties from "./components/main/shop/accessories/Bowties";
@@ -58,6 +59,7 @@ import FormBonnets from "../src/components/admin/create-products/FormBonnets"
 import FormShorts from "../src/components/admin/create-products/FormShorts"
 import FormBloomers from "../src/components/admin/create-products/FormBloomers"
 import FormSkirts from "../src/components/admin/create-products/FormSkirts"
+import FormShirts from "../src/components/admin/create-products/FormShirts"
 import FormVests from "../src/components/admin/create-products/FormVests"
 import FormBibdanas from "../src/components/admin/create-products/FormBibdanas"
 import FormBowties from "../src/components/admin/create-products/FormBowties"
@@ -99,6 +101,7 @@ export default (
     <Route path="/shop/bloomers" exact component={Bloomers} />
     <Route path="/shop/skirts" exact component={Skirts} />
     <Route path="/shop/vests" exact component={Vests} />
+    <Route path="/shop/shirts" exact component={Shirts}/>
     <Route path="/shop/bonnets" exact component={Bonnets} />
     <Route path="/shop/bowties" exact component={Bowties} />{" "}
     <Route path="/shop/hairbows" exact component={Hairbows} />{" "}
@@ -108,6 +111,8 @@ export default (
     <Route path="/shop/burpcloths" exact component={BurpCloths} />
     <Route path="/shop/droolpads" exact component={DroolPads} />
     <Route path="/shop/flashsale" exact component={Flashsale} />
+
+
 {/* Product Page */}
     <Route path="/products/:id" exact component={Product} />
 
@@ -118,6 +123,7 @@ export default (
     <Route path="/admin/form/shorts" exact component={FormShorts} />
     <Route path="/admin/form/bloomers" exact component={FormBloomers} />
     <Route path="/admin/form/skirts" exact component={FormSkirts} />
+    <Route path="/admin/form/shirts" exact component={FormShirts} />
     <Route path="/admin/form/vests" exact component={FormVests} />
     <Route path="/admin/form/bibdanas" exact component={FormBibdanas} />
     <Route path="/admin/form/bowties" exact component={FormBowties} />

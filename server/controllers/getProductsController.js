@@ -65,6 +65,19 @@ module.exports = {
         res.status(500).send(error);
       });
   },
+  getShirts: (req, res) => {
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getShirts()
+      .then(response => {
+        console.log(response);
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
+  },
   getVests: (req, res) => {
     const dbInstance = req.app.get("db");
     dbInstance
@@ -235,6 +248,18 @@ module.exports = {
     const dbInstance = req.app.get("db");
     dbInstance
       .getSkirt(req.params.id)
+      .then(response => {
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
+  },
+  getShirt: (req, res) => {
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .getShirt(req.params.id)
       .then(response => {
         res.status(200).json(response);
       })
