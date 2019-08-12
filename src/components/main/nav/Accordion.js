@@ -81,9 +81,9 @@ class Accordion extends React.Component {
                   {content[1]}
                 </LilacLink>
               ) : null}
-              {content[2] === "Bloomers" ? (
+              {content[2] === "Shirts" ? (
                 <LilacLink
-                  to={"/shop/bloomers"}
+                  to={"/shop/shirts"}
                  
                   className="Acc-link"
                   primary = "true"
@@ -92,10 +92,9 @@ class Accordion extends React.Component {
                   {content[2]}
                 </LilacLink>
               ) : null}
-
-              {content[3] === "Skirts" ? (
+              {content[3] === "Bloomers" ? (
                 <LilacLink
-                  to={"/shop/skirts"}
+                  to={"/shop/bloomers"}
                  
                   className="Acc-link"
                   primary = "true"
@@ -104,7 +103,19 @@ class Accordion extends React.Component {
                   {content[3]}
                 </LilacLink>
               ) : null}
-              {content[4] === "Vests" ? (
+
+              {content[4] === "Skirts" ? (
+                <LilacLink
+                  to={"/shop/skirts"}
+                 
+                  className="Acc-link"
+                  primary = "true"
+                  nothidden = "true"
+                >
+                  {content[4]}
+                </LilacLink>
+              ) : null}
+              {content[5] === "Vests" ? (
                 <LilacLink
                   to={"/shop/vests"}
                  
@@ -112,7 +123,7 @@ class Accordion extends React.Component {
                   primary = "true"
                   nothidden = "true"
                 >
-                  {content[4]}
+                  {content[5]}
                 </LilacLink>
               ) : null}
 

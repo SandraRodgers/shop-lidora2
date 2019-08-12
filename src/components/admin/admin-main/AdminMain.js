@@ -27,6 +27,10 @@ class AdminMain extends Component {
               {" "}
               Skirts{" "}
             </Link>
+            <Link className="admin-link" to="/admin/form/shirts">
+              {" "}
+              Shirts{" "}
+            </Link>
             <Link className="admin-link" to="/admin/form/vests">
               {" "}
               Vests{" "}

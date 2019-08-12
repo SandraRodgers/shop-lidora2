@@ -3,6 +3,7 @@ let bonnetsID = [];
 let shortsID = [];
 let bloomersID = [];
 let skirtsID = [];
+let shirtsID = [];
 let vestsID = [];
 let bowtiesID = [];
 let suspendersID = [];
@@ -152,6 +153,29 @@ module.exports = {
       .addSkirt([name, price, fabric, customize, image, location, description])
       .then(response => {
         skirtsID.push(response[0].skirtsid);
+        res.status(200).json(response);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
+  },
+  addShirt: (req, res) => {
+    console.log(req.body);
+    const dbInstance = req.app.get("db");
+    const {
+      name,
+      price,
+      fabric,
+      customize,
+      image,
+      location,
+      description
+    } = req.body;
+    dbInstance
+      .addShirt([name, price, fabric, customize, image, location, description])
+      .then(response => {
+        shirtsID.push(response[0].shirtsid);
         res.status(200).json(response);
       })
       .catch(error => {
@@ -361,6 +385,7 @@ module.exports = {
     let shortsid = shortsID[0];
     let bloomersid = bloomersID[0];
     let skirtsid = skirtsID[0];
+    let shirtsid = shirtsID[0];
     let vestsid = vestsID[0];
     let bowtiesid = bowtiesID[0];
     let suspendersid = suspendersID[0];
@@ -379,6 +404,7 @@ module.exports = {
         shortsid,
         bloomersid,
         skirtsid,
+        shirtsid,
         vestsid,
         bowtiesid,
         suspendersid,
@@ -396,6 +422,7 @@ module.exports = {
         shortsID = [];
         bloomersID = [];
         skirtsID = [];
+        shirtsID = [];
         vestsID = [];
         bowtiesID = [];
         suspendersID = [];

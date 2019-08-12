@@ -7,6 +7,7 @@ const initialState = {
   shorts: [],
   bloomers: [],
   skirts: [],
+  shirts:[],
   vests: [],
   bibdanas: [],
   bowties: [],
@@ -36,7 +37,9 @@ const GET_SHORT = "GET_SHORT";
 const GET_BLOOMERS = "GET_BLOOMERS";
 const GET_BLOOMER = "GET_BLOOMER";
 const GET_SKIRTS = "GET_SKIRTS";
+const GET_SHIRTS = "GET_SHIRTS";
 const GET_SKIRT = "GET_SKIRT";
+const GET_SHIRT = "GET_SHIRT";
 const GET_VESTS = "GET_VESTS";
 const GET_VEST = "GET_VEST";
 const GET_BIBDANA = "GET_BIBDANA";
@@ -119,6 +122,12 @@ export default function reducer(state = initialState, action) {
       return { ...state, skirts: action.payload.data };
 
     case `${GET_SKIRT}_FULFILLED`:
+      return { ...state, currentProduct: action.payload.data };
+
+    case `${GET_SHIRTS}_FULFILLED`:
+      return { ...state, shirts: action.payload.data };
+
+    case `${GET_SHIRT}_FULFILLED`:
       return { ...state, currentProduct: action.payload.data };
 
     case `${GET_VESTS}_FULFILLED`:
@@ -289,6 +298,20 @@ export function getSkirt(skirtsid) {
   return {
     type: GET_SKIRT,
     payload: axios.get(`/api/skirt/${skirtsid}`)
+  };
+}
+
+export function getShirts() {
+  return {
+    type: GET_SHIRTS,
+    payload: axios.get("/api/admin/getShirts")
+  };
+}
+
+export function getShirt(shirtsid) {
+  return {
+    type: GET_SHIRT,
+    payload: axios.get(`/api/shirt/${shirtsid}`)
   };
 }
 

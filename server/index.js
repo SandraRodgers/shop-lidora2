@@ -15,6 +15,7 @@ const {
   addShorts,
   addBloomers,
   addSkirt,
+  addShirt,
   addVest,
   addBowtie,
   addBibdana,
@@ -33,6 +34,7 @@ const {
   getShorts,
   getBloomers,
   getSkirts,
+  getShirts,
   getVests,
   getBibdanas,
   getBowties,
@@ -46,6 +48,7 @@ const {
   getShort,
   getBloomer,
   getSkirt,
+  getShirt,
   getVest,
   getBibdana,
   getBowtie,
@@ -121,6 +124,7 @@ app.post("/api/admin/addBonnet", addBonnet);
 app.post("/api/admin/addShorts", addShorts);
 app.post("/api/admin/addBloomers", addBloomers);
 app.post("/api/admin/addSkirt", addSkirt);
+app.post("/api/admin/addShirt", addShirt);
 app.post("/api/admin/addVest", addVest);
 app.post("/api/admin/addBibdanas", addBibdana);
 app.post("/api/admin/addBowties", addBowtie);
@@ -136,6 +140,7 @@ app.get("/api/admin/getBonnets", getBonnets);
 app.get("/api/admin/getShorts", getShorts);
 app.get("/api/admin/getBloomers", getBloomers);
 app.get("/api/admin/getSkirts", getSkirts);
+app.get("/api/admin/getShirts", getShirts);
 app.get("/api/admin/getVests", getVests);
 app.get("/api/admin/getBibdanas", getBibdanas);
 app.get("/api/admin/getBowties", getBowties);
@@ -152,6 +157,7 @@ app.get("/api/bonnet/:id", getBonnet);
 app.get("/api/short/:id", getShort);
 app.get("/api/bloomer/:id", getBloomer);
 app.get("/api/skirt/:id", getSkirt);
+app.get("/api/shirt/:id", getShirt);
 app.get("/api/vest/:id", getVest);
 app.get("/api/bibdana/:id", getBibdana);
 app.get("/api/bowtie/:id", getBowtie);
