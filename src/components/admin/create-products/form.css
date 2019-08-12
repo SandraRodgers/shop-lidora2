@@ -1,6 +1,6 @@
 .form-component-container {
   display: flex;
-
+  font-family: "Zilla Slab";
   flex-direction: column;
   align-items: center;
   background-color: rgb(240, 220, 221);
@@ -11,6 +11,7 @@
   margin-top: 8vh;
   font-size: 2em;
   font-weight: 800;
+  font-family: "Zilla Slab";
 }
 
 .form-category-name {
@@ -21,6 +22,7 @@
   align-items: center;
   justify-content: space-between;
   width: 60vw;
+  font-family: "Zilla Slab";
 }
 
 .form-input-div {
@@ -29,6 +31,7 @@
   align-items: center;
   background-color: white;
   width: 60vw;
+  font-family: "Zilla Slab";
 }
 
 
@@ -38,10 +41,12 @@
   display: flex;
   width: 100%;
   margin-top: 10vh;
+  font-family: "Zilla Slab";
 }
 .coupon-form-instructions{
   color: rgb(74, 72, 96);
   font-size: 1.3em;
+  font-family: "Zilla Slab";
 
 
 }

@@ -263,6 +263,7 @@ if(this.props.user && this.state.caliTax && this.state.sdTax){
               and encrypted. After clicking the button below, you will be
               redirected to PayPal to complete your purchases securely.
             </div>
+            <div className= "checkout-two-instructions">A PayPal account is NOT required to make your payment. You can choose to checkout with PayPal, or you can click on the button which says "Pay with Debit or Credit Card" to enter your payment information directly. </div>
             <Payment  paymentComplete={this.paymentComplete} orderDetails={orderDetails}  total = {fixedTotal} coupon={this.state.couponApplied[0]}/>
           </div> 
           

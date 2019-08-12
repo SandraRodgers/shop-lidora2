@@ -60,7 +60,7 @@ if(this.props.user && this.props.user.total){
                 return <BagItem key={product.productid} product={product} index={index} productid={product.productid} />;
               })}
             <div>
-              {this.props.user && <h3>Total: ${fixedTotal} </h3>}
+              {this.props.user && <h3 className="BAG-total">Total: ${fixedTotal} </h3>}
               <Link to='/checkout/one'><button className="BAG-checkout-button">CHECKOUT</button></Link>
             </div>
           </div>

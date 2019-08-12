@@ -30,6 +30,9 @@
   width: 6vh;
 }
 
+.BAG-total{
+  font-family: "Zilla Slab";
+}
 /* Bag Item Component */
 
 .BAG-item-components {
