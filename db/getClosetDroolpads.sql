@@ -2,4 +2,4 @@ SELECT products.productid, products.category, droolpads.name, droolpads.price, d
 
 FROM droolpads 
 INNER JOIN products ON products.droolpadsid = droolpads.droolpadsid
-WHERE location = "Closet"
+WHERE location = 'Closet'

@@ -2,4 +2,4 @@ SELECT products.productid, products.category, burpcloths.name, burpcloths.price,
 
 FROM burpcloths 
 INNER JOIN products ON products.burpclothsid = burpcloths.burpclothsid
-WHERE location = "Closet"
+WHERE location = 'Closet'

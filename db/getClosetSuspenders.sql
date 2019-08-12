@@ -2,4 +2,4 @@ SELECT products.productid, products.category, suspenders.name, suspenders.price,
 
 FROM suspenders 
 INNER JOIN products ON products.suspendersid = suspenders.suspendersid
-WHERE location = "Closet"
+WHERE location = 'Closet'

@@ -2,4 +2,4 @@ SELECT products.productid, products.category, vests.name, vests.price, vests.fab
 
 FROM vests 
 INNER JOIN products ON products.vestsid = vests.vestsid
-WHERE location = "Closet"
+WHERE location = 'Closet'

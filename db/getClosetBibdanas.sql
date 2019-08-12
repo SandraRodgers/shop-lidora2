@@ -2,4 +2,4 @@ SELECT products.productid, products.category, bibdanas.name, bibdanas.price, bib
 
 FROM bibdanas 
 INNER JOIN products ON products.bibdanasid = bibdanas.bibdanasid
-WHERE location = "Closet"
+WHERE location = 'Closet'

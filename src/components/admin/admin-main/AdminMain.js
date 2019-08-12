@@ -86,6 +86,15 @@ class AdminMain extends Component {
             </Link>
           </div>
         </div>
+        <div className="columns-container">
+          <div className="column-3">
+            <div className="admin-header">Manage Inventory</div>
+            <Link className="admin-link" to="/admin/closet">
+              Closet
+            </Link>
+          
+          </div>
+        </div>
       </div>
     );
   }

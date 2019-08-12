@@ -2,4 +2,4 @@ SELECT products.productid, products.category, bloomers.name, bloomers.price, blo
 
 FROM bloomers 
 INNER JOIN products ON products.bloomersid = bloomers.bloomersid
-WHERE location = "Closet"
+WHERE location = 'Closet'

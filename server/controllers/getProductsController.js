@@ -433,36 +433,67 @@ getFlashsaleProduct: (req, res) => {
 },
 
 getCloset: (req, res) => {
+  console.log('hit')
   const dbInstance = req.app.get("db");
   let closet = []
   dbInstance.getClosetBibdanas().then(response => {
-    closet.push(response);
-  }).then(()=> dbInstance.getClosetBloomers().then(response => {
-    closet.push(response);
+    console.log(response)
+    for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
+ 
+  })
+  .then(()=> dbInstance.getClosetBloomers().then(response => {
+     for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
   })).then(()=>  dbInstance.getClosetBonnets().then(response => {
-    closet.push(response);
+     for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
   })).then(()=> dbInstance.getClosetBowties().then(response => {
-    closet.push(response)
+    for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
   })).then(()=> dbInstance.getClosetBurpcloths().then(response => {
-    closet.push(response)
+    for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
   })).then(()=> dbInstance.getClosetDresses().then(response => {
-    closet.push(response)
+    for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
   })).then(()=> dbInstance.getClosetDroolpads().then(response => {
-    closet.push(response)
+    for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
   })).then(()=> dbInstance.getClosetHairbows().then(response => {
-    closet.push(response)
+    for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
   })).then(()=> dbInstance.getClosetHeadbands().then(response => {
-    closet.push(response)
+    for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
   })).then(()=> dbInstance.getClosetShorts().then(response => {
-    closet.push(response)
+    for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
   })).then(()=> dbInstance.getClosetSkirts().then(response => {
-    closet.push(response)
+    for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
   })).then(()=> dbInstance.getClosetSuspenders().then(response => {
-    closet.push(response)
+    for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
   })).then(()=> dbInstance.getClosetVests().then(response => {
-    closet.push(response)
+    for(let i=0; i<response.length; i++){
+      closet.push(response[i]);
+    }
   }))
   .then(() =>{
+    console.log(closet)
     res.status(200).json(closet);
   }).catch(error => {
     console.log(error);

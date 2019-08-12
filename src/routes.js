@@ -78,6 +78,9 @@ import EditFlashsale from "../src/components/admin/edit-products/EditFlashsale"
 //Payment and Orders 
 import FormCoupon from "../src/components/admin/coupons/CouponForm"
 
+//Closet
+import Closet from "../src/components/admin/closet/Closet"
+
 export default (
   <Switch>
 
@@ -134,6 +137,7 @@ export default (
     <Route path="/admin/form/suspenders" exact component={FormSuspenders} />
     <Route path="/admin/form/flashsale" exact component={FormFlashsale} />
     <Route path="/admin/form/coupon" exact component={FormCoupon} />
+    <Route path="/admin/closet" exact component={Closet} />
 
 
   {/* Checkout */}

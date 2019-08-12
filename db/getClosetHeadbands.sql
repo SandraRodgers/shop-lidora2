@@ -2,4 +2,4 @@ SELECT products.productid, products.category, headbands.name, headbands.price, h
 
 FROM headbands 
 INNER JOIN products ON products.headbandsid = headbands.headbandsid
-WHERE location = "Closet"
+WHERE location = 'Closet'
