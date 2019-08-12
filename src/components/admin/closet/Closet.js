@@ -26,7 +26,7 @@ class Closet extends Component {
         
 
         let clothingList;
-        
+        if(this.state.clothing.length > 0){
          clothingList = this.state.clothing.map(element => {
             console.log(element)
                 return (
@@ -54,7 +54,7 @@ class Closet extends Component {
                     </div>
                   </div>
                 );
-              })
+              })}
 
         return(
        <div className="store-product-main">
