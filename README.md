@@ -1,3 +1,3 @@
 # Shop Lidora (Official Version)
 
-This is the updated website for shoplidora.com which will be launched in August 2019. It is currently a work in progress.
+This is an ecommerce site that I created as my final project at the end of my full-stack bootcamp program at Dev Mountain. April 2019.
